@@ -5,7 +5,7 @@
     <parent>
         <artifactId>blazar-fix-parser-all</artifactId>
         <groupId>net.openblazar</groupId>
-        <version>1.0</version>
+        <version>${bfp.version}</version>
     </parent>
 
     <artifactId>blazar-fix-parser</artifactId>
@@ -116,16 +116,17 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.6</version>
+                <version>${maven.war.plugin}</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
