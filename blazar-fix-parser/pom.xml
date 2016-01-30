@@ -5,7 +5,7 @@
     <parent>
         <artifactId>blazar-fix-parser-all</artifactId>
         <groupId>net.openblazar</groupId>
-        <version>${bfp.version}</version>
+        <version>0.1</version>
     </parent>
 
     <artifactId>blazar-fix-parser</artifactId>
