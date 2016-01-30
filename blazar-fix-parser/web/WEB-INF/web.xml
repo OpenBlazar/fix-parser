@@ -59,7 +59,7 @@
     </context-param>
 
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
 
     <servlet>
@@ -82,11 +82,6 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
-
-    <!-- Listener, to allow Jetty serving MyFaces apps -->
-    <listener>
-        <listener-class>org.apache.myfaces.webapp.StartupServletContextListener</listener-class>
-    </listener>
     
     <listener>
         <listener-class>net.openblazar.bfp.context.BlazarFixParserContextListener</listener-class>
