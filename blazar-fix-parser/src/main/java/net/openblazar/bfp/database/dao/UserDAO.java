@@ -6,9 +6,7 @@ import net.openblazar.bfp.database.typehandlers.ActiveUserTypeHandler;
 import net.openblazar.bfp.database.typehandlers.LocalDateTimeTypeHandler;
 import net.openblazar.bfp.database.typehandlers.UserIDTypeHandler;
 import net.openblazar.bfp.database.utils.Tables;
-import org.apache.ibatis.annotations.Arg;
-import org.apache.ibatis.annotations.ConstructorArgs;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 
 import java.time.Instant;
@@ -20,8 +18,12 @@ import java.util.List;
  */
 public interface UserDAO {
 
-	final String SELECT_ALL = "SELECT * FROM " + Tables.USERS_TABLE;
-	final String SELECT_USER_BY_LOGIN = "SELECT * FROM "+Tables.USERS_TABLE + " WHERE user_login = #{userName}";
+	String SELECT_ALL = "SELECT * FROM " + Tables.USERS_TABLE;
+	String SELECT_USER_BY_LOGIN = "SELECT * FROM " + Tables.USERS_TABLE + " WHERE user_login = #{userName}";
+	String INSERT_USER_REGISTER = "INSERT INTO " + Tables.USERS_TABLE + " (user_login, " +
+			"user_pass, user_email, user_status, user_registerdate, user_lastlogin) VALUES " +
+			"(#{userName}, #{hashedPassword}, #{userMail}, #{isActive}, #{registrationDate}, " +
+			"#{lastLogin})";
 
 	@Select(SELECT_ALL)
 	@ConstructorArgs(value = {
@@ -44,4 +46,13 @@ public interface UserDAO {
 			@Arg(column="user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = LocalDateTimeTypeHandler.class)
 	})
 	UserDetails findUser(String userName);
+
+	@Insert(INSERT_USER_REGISTER)
+	void saveUser(
+			@Param("userName") String userName,
+			@Param("userMail") String userMail,
+			@Param("hashedPassword") String hashedPassword,
+			@Param("isActive") int isActive,
+			@Param("registrationDate") String registrationDate,
+			@Param("lastLogin") String lastLogin);
 }

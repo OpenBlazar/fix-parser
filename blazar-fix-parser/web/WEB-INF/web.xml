@@ -26,36 +26,8 @@
         <param-value>resources.application</param-value>
     </context-param>
     <context-param>
-        <param-name>org.apache.myfaces.ALLOW_JAVASCRIPT</param-name>
-        <param-value>true</param-value>
-    </context-param>
-    <context-param>
-        <param-name>org.apache.myfaces.AUTO_SCROLL</param-name>
-        <param-value>false</param-value>
-    </context-param>
-    <context-param>
-        <param-name>org.apache.myfaces.DETECT_JAVASCRIPT</param-name>
-        <param-value>false</param-value>
-    </context-param>
-    <context-param>
-        <param-name>org.apache.myfaces.ERROR_HANDLING</param-name>
-        <param-value>false</param-value>
-    </context-param>
-    <context-param>
-        <param-name>org.apache.myfaces.EXPRESSION_FACTORY</param-name>
-        <param-value>org.jboss.el.ExpressionFactoryImpl</param-value>
-    </context-param>
-    <context-param>
-        <param-name>org.apache.myfaces.PRETTY_HTML</param-name>
-        <param-value>false</param-value>
-    </context-param>
-    <context-param>
         <param-name>primefaces.THEME</param-name>
         <param-value>bootstrap</param-value>
-    </context-param>
-    <context-param>
-        <param-name>org.apache.myfaces.config.annotation.LifecycleProvider2</param-name>
-        <param-value>org.apache.myfaces.config.annotation.Tomcat7AnnotationLifecycleProvider</param-value>
     </context-param>
 
     <welcome-file-list>
@@ -64,7 +36,7 @@
 
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
-        <servlet-class>org.apache.myfaces.webapp.MyFacesServlet</servlet-class>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
