@@ -2,9 +2,7 @@ package net.openblazar.bfp.bean.users;
 
 import net.openblazar.bfp.bean.AbstractBean;
 import net.openblazar.bfp.common.users.UserDetails;
-import net.openblazar.bfp.services.UserServiceImpl;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import net.openblazar.bfp.services.UserService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -19,16 +17,12 @@ import java.util.List;
 @ViewScoped
 public class UserListBean extends AbstractBean {
 
-	private final static Logger LOGGER = LoggerFactory.getLogger(UserListBean.class);
-
-	private UserServiceImpl userService;
+	private UserService userService;
 
 	private List<UserDetails> userDetailsList;
 
-	private String test="testBean";
-
 	@Inject
-	public void setUserService(UserServiceImpl userService) {
+	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
 
@@ -42,7 +36,4 @@ public class UserListBean extends AbstractBean {
 		return userDetailsList;
 	}
 
-	public String getTest() {
-		return test;
-	}
 }

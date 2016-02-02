@@ -1,28 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template/layoutTemplate.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+>
+    <ui:define name="content">
 
-<h:head>
+        <h:form>
+            <p:dataTable var="user" value="#{userListBean.userDetailsList}">
+                <p:column headerText="User Name">
+                    <h:outputText value="#{user.userName}" />
+                </p:column>
 
-</h:head>
+                <p:column headerText="User Mail">
+                    <h:outputText value="#{user.userMail}" />
+                </p:column>
 
-<h:body>
+                <p:column headerText="Registration Date">
+                    <h:outputText value="#{user.registrationDate}" />
+                </p:column>
 
-   <p:spinner />
+                <p:column headerText="Last Login">
+                    <h:outputText value="#{user.lastLogin}" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
 
-   <h:outputText value="#{userListBean.userDetailsList}" />
-
-   <h:outputText value="test" />
-
-   <h:outputText value="#{userListBean.test}" />
-
-   <h:dataTable value="#{userListBean.userDetailsList}" var="user">
-      <h:outputText value="#{user.userName}" />
-   </h:dataTable>
-
-</h:body>
-</html>
+    </ui:define>
+</ui:composition>
