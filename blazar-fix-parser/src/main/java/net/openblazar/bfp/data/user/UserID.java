@@ -1,4 +1,4 @@
-package net.openblazar.bfp.common.users;
+package net.openblazar.bfp.data.user;
 
 /**
  * @author Wojciech Zankowski
@@ -9,6 +9,10 @@ public class UserID {
 
 	public UserID(long id) {
 		this.id = id;
+	}
+
+	public long getId() {
+		return id;
 	}
 
 	@Override

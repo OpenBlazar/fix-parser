@@ -2,8 +2,8 @@ package net.openblazar.bfp.database;
 
 import com.google.inject.Singleton;
 import com.google.inject.name.Names;
-import net.openblazar.bfp.core.user.SecurityUtil;
-import net.openblazar.bfp.core.user.SecurityUtilImpl;
+import net.openblazar.bfp.core.security.util.SecurityUtil;
+import net.openblazar.bfp.core.security.util.SecurityUtilImpl;
 import net.openblazar.bfp.database.dao.UserDAO;
 import net.openblazar.bfp.services.UserService;
 import net.openblazar.bfp.services.UserServiceImpl;

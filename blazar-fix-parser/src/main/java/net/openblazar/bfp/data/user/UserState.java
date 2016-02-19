@@ -1,4 +1,4 @@
-package net.openblazar.bfp.core.user.enums;
+package net.openblazar.bfp.data.user;
 
 /**
  * @author Wojciech Zankowski

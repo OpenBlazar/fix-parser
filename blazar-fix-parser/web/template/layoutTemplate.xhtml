@@ -10,20 +10,19 @@
     <title>Title</title>
 </h:head>
 <h:body>
-    <p:layout fullPage="true">
-        <p:layoutUnit position="north" resizable="true">
-            <h:form>
-                <ui:include src="../template/menuTemplate.xhtml"/>
-            </h:form>
-        </p:layoutUnit>
+    <div class="">
+        <ui:include src="../template/menuTemplate.xhtml"/>
+    </div>
+    <div class="ui-grid ui-grid-responsive">
+        <div class="ui-grid-row">
 
-        <p:layoutUnit position="south" resizable="true">
-            <h:outputText value="South unit content."/>
-        </p:layoutUnit>
+        </div>
 
-        <p:layoutUnit position="center" resizable="true">
-            <ui:insert name="content">Put default content here, if any.</ui:insert>
-        </p:layoutUnit>
-    </p:layout>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-9">
+                <ui:insert name="content">Put default content here, if any.</ui:insert>
+            </div>
+        </div>
+    </div>
 </h:body>
 </html>

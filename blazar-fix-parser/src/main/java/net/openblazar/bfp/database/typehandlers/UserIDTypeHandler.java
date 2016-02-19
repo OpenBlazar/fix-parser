@@ -1,6 +1,6 @@
 package net.openblazar.bfp.database.typehandlers;
 
-import net.openblazar.bfp.common.users.UserID;
+import net.openblazar.bfp.data.user.UserID;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandler;
 
