@@ -1,4 +1,4 @@
-package net.openblazar.bfp.core.user;
+package net.openblazar.bfp.core.security.util;
 
 /**
  * @author Wojciech Zankowski

@@ -1,16 +1,16 @@
 package net.openblazar.bfp.services;
 
 import com.google.inject.Inject;
-import net.openblazar.bfp.common.users.UserDetails;
-import net.openblazar.bfp.core.user.SecurityUtil;
-import net.openblazar.bfp.core.user.SecurityUtilImpl;
-import net.openblazar.bfp.core.user.enums.UserState;
+import net.openblazar.bfp.data.user.Role;
+import net.openblazar.bfp.data.user.UserDetails;
+import net.openblazar.bfp.data.user.UserID;
+import net.openblazar.bfp.core.security.util.SecurityUtil;
+import net.openblazar.bfp.data.user.UserState;
 import net.openblazar.bfp.database.dao.UserDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserDetails getUserDetails(String userName) {
-		return userDAO.findUser(userName);
+		return userDAO.findUserByLogin(userName);
 	}
 
 	@Override
@@ -48,20 +48,20 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public List<Role> getUserRoles(UserID userID) {
+		return userDAO.findUserRoles(userID);
+	}
+
+	@Override
+	public boolean isUserExists(String userName) {
+		return userDAO.isUserExists(userName) == 1;
+	}
+
+	@Override
 	public boolean registerUser(String userName, String userMail, char[] password) {
-		try {
-			String currentTime = formatter.format(Instant.now());
-			userDAO.saveUser(
-					userName,
-					userMail,
-					securityUtil.hashPassword(password),
-					UserState.ACTIVE.getState(),
-					currentTime,
-					currentTime);
-		} catch (Exception e) {
-			LOGGER.warn("Failed to register user " + userName + ". {}", e);
-			return false;
-		}
+		String currentTime = formatter.format(Instant.now());
+		userDAO.saveUser(userName, userMail, securityUtil.hashPassword(password),
+				UserState.ACTIVE.getState(), currentTime, currentTime);
 		return true;
 	}
 

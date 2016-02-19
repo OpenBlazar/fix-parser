@@ -65,6 +65,8 @@
         <guice>4.0</guice>
         <guice.multibindings>4.0</guice.multibindings>
 
+        <shiro>1.2.4</shiro>
+
         <log4j.core>2.5</log4j.core>
         <log4j.slf4j>2.5</log4j.slf4j>
         <log4j.web>2.5</log4j.web>
@@ -199,8 +201,40 @@
 
             <dependency>
                 <groupId>com.google.inject.extensions</groupId>
+                <artifactId>guice-servlet</artifactId>
+                <version>${guice}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.inject.extensions</groupId>
                 <artifactId>guice-multibindings</artifactId>
                 <version>${guice.multibindings}</version>
+            </dependency>
+
+            <!-- Shiro security -->
+
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-core</artifactId>
+                <version>${shiro}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-web</artifactId>
+                <version>${shiro}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-guice</artifactId>
+                <version>${shiro}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mindrot</groupId>
+                <artifactId>jbcrypt</artifactId>
+                <version>0.3m</version>
             </dependency>
 
             <!-- Logging -->

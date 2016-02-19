@@ -1,4 +1,4 @@
-package net.openblazar.bfp.common.users;
+package net.openblazar.bfp.data.user;
 
 import java.time.Instant;
 
@@ -10,15 +10,17 @@ public class UserDetails {
 	private final UserID userID;
 	private final String userName;
 	private final String userMail;
+	private final String password;
 	private final Boolean isActive;
 	private final Instant registrationDate;
 	private final Instant lastLogin;
 
-	public UserDetails(UserID userID, String userName, String userMail, Boolean isActive,
+	public UserDetails(UserID userID, String userName, String userMail, String password, Boolean isActive,
 	                   Instant registrationDate, Instant lastLogin) {
 		this.userID = userID;
 		this.userName = userName;
 		this.userMail = userMail;
+		this.password = password;
 		this.isActive = isActive;
 		this.registrationDate = registrationDate;
 		this.lastLogin = lastLogin;
@@ -34,6 +36,10 @@ public class UserDetails {
 
 	public String getUserMail() {
 		return userMail;
+	}
+
+	public String getPassword() {
+		return password;
 	}
 
 	public boolean isActive() {
@@ -55,21 +61,17 @@ public class UserDetails {
 
 		UserDetails that = (UserDetails) o;
 
-		if (isActive() != that.isActive()) return false;
-		if (getUserID() != null ? ! getUserID().equals(that.getUserID()) : that.getUserID() !=
-				null)
+		if (getUserID() != null ? !getUserID().equals(that.getUserID()) : that.getUserID() != null) return false;
+		if (getUserName() != null ? !getUserName().equals(that.getUserName()) : that.getUserName() != null)
 			return false;
-		if (getUserName() != null ? ! getUserName().equals(that.getUserName()) : that.getUserName
-				() != null)
+		if (getUserMail() != null ? !getUserMail().equals(that.getUserMail()) : that.getUserMail() != null)
 			return false;
-		if (getUserMail() != null ? ! getUserMail().equals(that.getUserMail()) : that.getUserMail
-				() != null)
+		if (getPassword() != null ? !getPassword().equals(that.getPassword()) : that.getPassword() != null)
 			return false;
-		if (getRegistrationDate() != null ? ! getRegistrationDate().equals(that
-				.getRegistrationDate()) : that.getRegistrationDate() != null)
+		if (isActive != null ? !isActive.equals(that.isActive) : that.isActive != null) return false;
+		if (getRegistrationDate() != null ? !getRegistrationDate().equals(that.getRegistrationDate()) : that.getRegistrationDate() != null)
 			return false;
-		return getLastLogin() != null ? getLastLogin().equals(that.getLastLogin()) : that
-				.getLastLogin() == null;
+		return getLastLogin() != null ? getLastLogin().equals(that.getLastLogin()) : that.getLastLogin() == null;
 
 	}
 
@@ -78,9 +80,9 @@ public class UserDetails {
 		int result = getUserID() != null ? getUserID().hashCode() : 0;
 		result = 31 * result + (getUserName() != null ? getUserName().hashCode() : 0);
 		result = 31 * result + (getUserMail() != null ? getUserMail().hashCode() : 0);
-		result = 31 * result + (isActive() ? 1 : 0);
-		result = 31 * result + (getRegistrationDate() != null ? getRegistrationDate().hashCode() :
-				0);
+		result = 31 * result + (getPassword() != null ? getPassword().hashCode() : 0);
+		result = 31 * result + (isActive != null ? isActive.hashCode() : 0);
+		result = 31 * result + (getRegistrationDate() != null ? getRegistrationDate().hashCode() : 0);
 		result = 31 * result + (getLastLogin() != null ? getLastLogin().hashCode() : 0);
 		return result;
 	}
@@ -91,9 +93,11 @@ public class UserDetails {
 				"userID=" + userID +
 				", userName='" + userName + '\'' +
 				", userMail='" + userMail + '\'' +
+				", password='" + password + '\'' +
 				", isActive=" + isActive +
 				", registrationDate=" + registrationDate +
 				", lastLogin=" + lastLogin +
 				'}';
 	}
+
 }

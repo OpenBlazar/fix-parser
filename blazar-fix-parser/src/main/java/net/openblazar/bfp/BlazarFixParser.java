@@ -1,43 +1,40 @@
 package net.openblazar.bfp;
 
 import com.google.inject.Guice;
-import com.google.inject.Inject;
 import com.google.inject.Injector;
-import net.openblazar.bfp.common.users.UserDetails;
 import net.openblazar.bfp.database.DatabaseModule;
-import net.openblazar.bfp.database.dao.UserDAO;
+import net.openblazar.bfp.core.security.SecurityModule;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.mgt.SecurityManager;
 
-import java.util.List;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 import java.util.Properties;
 
 /**
  * @author Wojciech Zankowski
  */
-public class BlazarFixParser {
+public class BlazarFixParser implements ServletContextListener {
 
-	private UserDAO userDAO;
-
-	@Inject
-	public void setUserDAO(UserDAO userDAO) {
-		this.userDAO = userDAO;
-	}
-
-	public static void main(String[] args) {
-		BlazarFixParser fixParser = new BlazarFixParser();
+	@Override
+	public void contextInitialized(ServletContextEvent servletContextEvent) {
+		ServletContext servletContext = servletContextEvent.getServletContext();
 
 		Injector injector = Guice.createInjector(
-				new DatabaseModule(fixParser.getProperties()));
+				new DatabaseModule(getProperties()),
+				new SecurityModule());
 
-		UserDAO userDAO = injector.getInstance(UserDAO.class);
-		List<UserDetails> users = userDAO.findAllUsers();
-		System.out.println(users);
-		UserDetails userDetails = userDAO.findUser("admin");
-		System.out.println(userDetails);
+		SecurityManager securityManager = injector.getInstance(SecurityManager.class);
+		SecurityUtils.setSecurityManager(securityManager);
+
+		servletContext.setAttribute(Injector.class.getName(), injector);
 	}
 
-	public void test() {
-		List<UserDetails> users = userDAO.findAllUsers();
-		System.out.println(users);
+	@Override
+	public void contextDestroyed(ServletContextEvent servletContextEvent) {
+		ServletContext servletContext = servletContextEvent.getServletContext();
+		servletContext.removeAttribute(Injector.class.getName());
 	}
 
 	private Properties getProperties() {
