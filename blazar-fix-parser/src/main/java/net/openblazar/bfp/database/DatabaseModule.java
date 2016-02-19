@@ -4,9 +4,9 @@ import com.google.inject.Singleton;
 import com.google.inject.name.Names;
 import net.openblazar.bfp.core.security.util.SecurityUtil;
 import net.openblazar.bfp.core.security.util.SecurityUtilImpl;
+import net.openblazar.bfp.database.dao.MessageDAO;
 import net.openblazar.bfp.database.dao.UserDAO;
-import net.openblazar.bfp.services.UserService;
-import net.openblazar.bfp.services.UserServiceImpl;
+import net.openblazar.bfp.services.*;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.mybatis.guice.MyBatisModule;
 import org.mybatis.guice.datasource.dbcp.BasicDataSourceProvider;
@@ -38,7 +38,10 @@ public class DatabaseModule extends MyBatisModule {
 		bind(UserService.class).to(UserServiceImpl.class).in(Singleton.class);
 		bind(SecurityUtil.class).to(SecurityUtilImpl.class);
 
+		bind(ParserService.class).to(ParserServiceImpl.class).in(Singleton.class);
+
 		addMapperClass(UserDAO.class);
+		addMapperClass(MessageDAO.class);
 	}
 
 }
