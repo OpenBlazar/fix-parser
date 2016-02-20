@@ -1,4 +1,4 @@
-package net.openblazar.bfp.bean.users;
+package net.openblazar.bfp.bean.user;
 
 import net.openblazar.bfp.bean.AbstractBean;
 import org.apache.shiro.SecurityUtils;
@@ -6,9 +6,8 @@ import org.apache.shiro.authc.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
 
@@ -16,7 +15,7 @@ import java.io.IOException;
  * @author Wojciech Zankowski
  */
 @ManagedBean(name = "loginBean")
-@ViewScoped
+@SessionScoped
 public class LoginBean extends AbstractBean {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(LoginBean.class);
@@ -46,8 +45,8 @@ public class LoginBean extends AbstractBean {
         }
     }
 
-    private void facesError(String message, Exception exception) {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, message, null));
+    protected void facesError(String message, Exception exception) {
+        super.facesError(message, exception);
         LOGGER.error(message, exception);
     }
 

@@ -1,4 +1,4 @@
-package net.openblazar.bfp.services;
+package net.openblazar.bfp.services.user;
 
 import net.openblazar.bfp.data.user.Role;
 import net.openblazar.bfp.data.user.UserDetails;

@@ -1,4 +1,4 @@
-package net.openblazar.bfp.database.typehandlers;
+package net.openblazar.bfp.database.typehandlers.user;
 
 import net.openblazar.bfp.data.user.UserID;
 import org.apache.ibatis.type.JdbcType;

@@ -1,4 +1,4 @@
-package net.openblazar.bfp.services;
+package net.openblazar.bfp.services.parser;
 
 import net.openblazar.bfp.data.fix.FixMessage;
 

@@ -1,6 +1,7 @@
 package net.openblazar.bfp.data.user;
 
 import java.time.Instant;
+import java.util.Objects;
 
 /**
  * @author Wojciech Zankowski
@@ -11,17 +12,25 @@ public class UserDetails {
 	private final String userName;
 	private final String userMail;
 	private final String password;
-	private final Boolean isActive;
+	private final UserState userState;
 	private final Instant registrationDate;
 	private final Instant lastLogin;
 
-	public UserDetails(UserID userID, String userName, String userMail, String password, Boolean isActive,
+	public UserDetails(UserID userID, String userName, String userMail, String password, UserState isActive,
 	                   Instant registrationDate, Instant lastLogin) {
+		Objects.nonNull(userID);
+		Objects.nonNull(userName);
+		Objects.nonNull(userMail);
+		Objects.nonNull(password);
+		Objects.nonNull(isActive);
+		Objects.nonNull(registrationDate);
+		Objects.nonNull(lastLogin);
+
 		this.userID = userID;
 		this.userName = userName;
 		this.userMail = userMail;
 		this.password = password;
-		this.isActive = isActive;
+		this.userState = isActive;
 		this.registrationDate = registrationDate;
 		this.lastLogin = lastLogin;
 	}
@@ -42,8 +51,8 @@ public class UserDetails {
 		return password;
 	}
 
-	public boolean isActive() {
-		return isActive;
+	public UserState isActive() {
+		return userState;
 	}
 
 	public Instant getRegistrationDate() {
@@ -68,11 +77,10 @@ public class UserDetails {
 			return false;
 		if (getPassword() != null ? !getPassword().equals(that.getPassword()) : that.getPassword() != null)
 			return false;
-		if (isActive != null ? !isActive.equals(that.isActive) : that.isActive != null) return false;
+		if (userState != that.userState) return false;
 		if (getRegistrationDate() != null ? !getRegistrationDate().equals(that.getRegistrationDate()) : that.getRegistrationDate() != null)
 			return false;
 		return getLastLogin() != null ? getLastLogin().equals(that.getLastLogin()) : that.getLastLogin() == null;
-
 	}
 
 	@Override
@@ -81,7 +89,7 @@ public class UserDetails {
 		result = 31 * result + (getUserName() != null ? getUserName().hashCode() : 0);
 		result = 31 * result + (getUserMail() != null ? getUserMail().hashCode() : 0);
 		result = 31 * result + (getPassword() != null ? getPassword().hashCode() : 0);
-		result = 31 * result + (isActive != null ? isActive.hashCode() : 0);
+		result = 31 * result + (userState != null ? userState.hashCode() : 0);
 		result = 31 * result + (getRegistrationDate() != null ? getRegistrationDate().hashCode() : 0);
 		result = 31 * result + (getLastLogin() != null ? getLastLogin().hashCode() : 0);
 		return result;
@@ -94,7 +102,7 @@ public class UserDetails {
 				", userName='" + userName + '\'' +
 				", userMail='" + userMail + '\'' +
 				", password='" + password + '\'' +
-				", isActive=" + isActive +
+				", userState=" + userState +
 				", registrationDate=" + registrationDate +
 				", lastLogin=" + lastLogin +
 				'}';

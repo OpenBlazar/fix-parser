@@ -2,6 +2,7 @@ package net.openblazar.bfp.bean;
 
 import com.google.inject.Injector;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 import java.io.Serializable;
@@ -28,6 +29,10 @@ public abstract class AbstractBean implements Serializable {
 
     public void init() {
         getInjector().injectMembers(this);
+    }
+
+    protected void facesError(String message, Exception exception) {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, message, null));
     }
 
 }

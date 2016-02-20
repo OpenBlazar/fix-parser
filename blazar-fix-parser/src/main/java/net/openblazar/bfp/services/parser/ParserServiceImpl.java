@@ -1,11 +1,10 @@
-package net.openblazar.bfp.services;
+package net.openblazar.bfp.services.parser;
 
 import com.google.inject.Inject;
 import net.openblazar.bfp.core.parser.FixParser;
 import net.openblazar.bfp.data.fix.FixMessage;
 import net.openblazar.bfp.database.dao.MessageDAO;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -24,7 +23,7 @@ public class ParserServiceImpl implements ParserService {
 
     @Override
     public List<FixMessage> parseInput(String input) {
-        return Collections.emptyList();
+        return fixParser.parseInput(input);
     }
 
     @Override

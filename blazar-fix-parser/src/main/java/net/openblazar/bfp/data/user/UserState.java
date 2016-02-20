@@ -5,24 +5,33 @@ package net.openblazar.bfp.data.user;
  */
 public enum UserState {
 
-	ACTIVE(1),
-	INACTIVE(0),
-	UNKNOWN(-1);
+    ACTIVE(1),
+    INACTIVE(0),
+    UNKNOWN(-1);
 
-	private final int state;
+    private final int state;
 
-	UserState(int state) {
-		this.state = state;
-	}
+    UserState(int state) {
+        this.state = state;
+    }
 
-	public int getState() {
-		return state;
-	}
+    public static UserState getUserStateFromCode(int code) {
+        for (UserState userState : values()) {
+            if (userState.getState() == code) {
+                return userState;
+            }
+        }
+        return UNKNOWN;
+    }
 
-	@Override
-	public String toString() {
-		return "UserState{" +
-				"state=" + state +
-				'}';
-	}
+    public int getState() {
+        return state;
+    }
+
+    @Override
+    public String toString() {
+        return "UserState{" +
+                "state=" + state +
+                '}';
+    }
 }

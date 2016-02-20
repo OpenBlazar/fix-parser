@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.Instant;
-import java.time.LocalDateTime;
 
 /**
  * @author Wojciech Zankowski
@@ -16,8 +15,7 @@ import java.time.LocalDateTime;
 public class LocalDateTimeTypeHandler implements TypeHandler<Instant> {
 
 	@Override
-	public void setParameter(PreparedStatement ps, int i, Instant parameter, JdbcType
-			jdbcType) throws SQLException {
+	public void setParameter(PreparedStatement ps, int i, Instant parameter, JdbcType jdbcType) throws SQLException {
 		// ignore for now
 	}
 

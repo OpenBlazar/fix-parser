@@ -1,5 +1,6 @@
 package net.openblazar.bfp.data.fix;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -65,6 +66,35 @@ public class FixMessage {
                 "messageType=" + messageType +
                 ", messageFields=" + messageFields +
                 '}';
+    }
+
+    public static class Builder {
+
+        private FixVersion version = FixVersion.UNKNOWN;
+        private FixMessageType messageType = FixMessageType.UNKNOWN;
+        private Map<FixField, String> messageFields = new HashMap<>();
+
+        public Builder() {}
+
+        public Builder version(FixVersion version) {
+            this.version = version;
+            return this;
+        }
+
+        public Builder messageType(FixMessageType messageType) {
+            this.messageType = messageType;
+            return this;
+        }
+
+        public Builder messageFields(Map<FixField, String> messageFields) {
+            this.messageFields = messageFields;
+            return this;
+        }
+
+        public FixMessage build() {
+            return new FixMessage(version, messageType, messageFields);
+        }
+
     }
 
 }
