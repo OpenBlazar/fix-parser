@@ -1,4 +1,4 @@
-package net.openblazar.bfp.services;
+package net.openblazar.bfp.services.user;
 
 import com.google.inject.Inject;
 import net.openblazar.bfp.data.user.Role;
@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
 	public boolean registerUser(String userName, String userMail, char[] password) {
 		String currentTime = formatter.format(Instant.now());
 		userDAO.saveUser(userName, userMail, securityUtil.hashPassword(password),
-				UserState.ACTIVE.getState(), currentTime, currentTime);
+				UserState.ACTIVE, currentTime, currentTime);
 		return true;
 	}
 

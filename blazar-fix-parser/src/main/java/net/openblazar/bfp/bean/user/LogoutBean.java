@@ -1,4 +1,4 @@
-package net.openblazar.bfp.bean.users;
+package net.openblazar.bfp.bean.user;
 
 import net.openblazar.bfp.bean.AbstractBean;
 import org.apache.shiro.SecurityUtils;
@@ -7,13 +7,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 /**
  * @author Wojciech Zankowski
  */
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class LogoutBean extends AbstractBean {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(LogoutBean.class);

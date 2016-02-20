@@ -1,14 +1,14 @@
-package net.openblazar.bfp.bean.users;
+package net.openblazar.bfp.bean.user;
 
 import net.openblazar.bfp.bean.AbstractBean;
-import net.openblazar.bfp.services.UserService;
+import net.openblazar.bfp.services.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
@@ -16,7 +16,7 @@ import javax.inject.Inject;
  * @author Wojciech Zankowski
  */
 @ManagedBean(name = "registerBean")
-@ViewScoped
+@SessionScoped
 public class RegisterBean extends AbstractBean {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(RegisterBean.class);
@@ -83,8 +83,8 @@ public class RegisterBean extends AbstractBean {
         }
     }
 
-    private void facesError(String message, Exception exception) {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, message, null));
+    protected void facesError(String message, Exception exception) {
+        super.facesError(message, exception);
         LOGGER.error(message, exception);
     }
 

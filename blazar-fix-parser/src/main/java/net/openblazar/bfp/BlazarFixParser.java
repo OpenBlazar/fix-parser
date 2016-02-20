@@ -4,6 +4,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import net.openblazar.bfp.database.DatabaseModule;
 import net.openblazar.bfp.core.security.SecurityModule;
+import net.openblazar.bfp.services.ServiceModule;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.mgt.SecurityManager;
 
@@ -23,6 +24,7 @@ public class BlazarFixParser implements ServletContextListener {
 
 		Injector injector = Guice.createInjector(
 				new DatabaseModule(getProperties()),
+				new ServiceModule(),
 				new SecurityModule());
 
 		SecurityManager securityManager = injector.getInstance(SecurityManager.class);
