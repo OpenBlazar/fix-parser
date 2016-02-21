@@ -3,6 +3,7 @@ package net.openblazar.bfp.bean.user;
 import net.openblazar.bfp.bean.AbstractBean;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +19,8 @@ import java.io.IOException;
 @SessionScoped
 public class LoginBean extends AbstractBean {
 
+    public static final String HOME_URL = "/";
+
     private final static Logger LOGGER = LoggerFactory.getLogger(LoginBean.class);
 
     private String username;
@@ -26,10 +29,14 @@ public class LoginBean extends AbstractBean {
 
     public void doLogin() {
         UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), getPassword(), getRememberMe());
+        token.setRememberMe(true);
         try {
-            SecurityUtils.getSubject().login(token);
+            Subject currentUser = SecurityUtils.getSubject();
+            if (!currentUser.isAuthenticated()) {
+                currentUser.login(token);
 
-            FacesContext.getCurrentInstance().getExternalContext().redirect("index.html");
+                FacesContext.getCurrentInstance().getExternalContext().redirect(HOME_URL);
+            }
         } catch (UnknownAccountException e) {
             facesError("Unknown account.", e);
         } catch (IncorrectCredentialsException e) {
@@ -43,6 +50,11 @@ public class LoginBean extends AbstractBean {
         } finally {
             token.clear();
         }
+    }
+
+    public boolean isAuthenticated() {
+        Subject user = SecurityUtils.getSubject();
+        return user.isAuthenticated();
     }
 
     protected void facesError(String message, Exception exception) {

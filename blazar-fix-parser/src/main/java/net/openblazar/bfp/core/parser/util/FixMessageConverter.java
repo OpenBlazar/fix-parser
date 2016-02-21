@@ -1,12 +1,9 @@
 package net.openblazar.bfp.core.parser.util;
 
-import net.openblazar.bfp.data.fix.FixField;
-import net.openblazar.bfp.data.fix.FixMessage;
-import net.openblazar.bfp.data.fix.FixMessageType;
-import net.openblazar.bfp.data.fix.FixVersion;
+import net.openblazar.bfp.data.fix.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,15 +18,16 @@ public class FixMessageConverter {
 
     public List<FixMessage> convertToFixMessages(List<String> textMessages, String delimiter) {
         List<FixMessage> messages = new ArrayList<>();
+        long counter = 0;
         for (String textMessage : textMessages) {
-            messages.add(convertToFixMessage(textMessage, delimiter));
+            messages.add(convertToFixMessage(textMessage, delimiter, counter++));
         }
         return messages;
     }
 
-    public FixMessage convertToFixMessage(String textMessage, String delimiter) {
+    public FixMessage convertToFixMessage(String textMessage, String delimiter, long counter) {
         String[] fields = textMessage.split(delimiter);
-        Map<FixField, String> messageFields = new HashMap<>();
+        Map<FixField, FixValue> messageFields = new LinkedHashMap<>();
 
         for (String field : fields) {
             String[] values = field.split(FIELD_DELIMITER);
@@ -37,21 +35,27 @@ public class FixMessageConverter {
                 continue;
             }
             FixField fieldKey = FixField.getFieldFromCode(Integer.parseInt(values[FIX_KEY]));
-            messageFields.put(fieldKey, values[FIX_VALUE]);
+            FixValue fieldValue = toFixValue(values[FIX_VALUE], fieldKey);
+            messageFields.put(fieldKey, fieldValue);
         }
-        return toFixMessage(messageFields);
+        return toFixMessage(messageFields, counter);
     }
 
-    protected FixMessage toFixMessage(Map<FixField, String> messageFields) {
+    protected FixValue toFixValue(String value, FixField field) {
+        return new FixValue(value);
+    }
+
+    protected FixMessage toFixMessage(Map<FixField, FixValue> messageFields, long counter) {
         FixMessage.Builder messageBuilder = new FixMessage.Builder();
-        String textVersion = messageFields.get(FixField.BeginString);
-        if (textVersion != null) {
-            messageBuilder.version(FixVersion.getFixVersionFromCode(textVersion));
+        FixValue version = messageFields.get(FixField.BeginString);
+        if (version != null) {
+            messageBuilder.version(FixVersion.getFixVersionFromCode(version.getValue()));
         }
-        String textMessageType = messageFields.get(FixField.MsgType);
-        if (textMessageType != null) {
-            messageBuilder.messageType(FixMessageType.getMessageTypeFromCode(Integer.parseInt(textMessageType)));
+        FixValue messageType = messageFields.get(FixField.MsgType);
+        if (messageType != null) {
+            messageBuilder.messageType(FixMessageType.getMessageTypeFromCode(Integer.parseInt(messageType.getValue())));
         }
+        messageBuilder.messageID(counter);
         messageBuilder.messageFields(messageFields);
         return messageBuilder.build();
     }

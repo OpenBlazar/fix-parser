@@ -27,7 +27,7 @@ public interface UserDAO {
 	String CHECK_IF_USER_EXISTS = "SELECT count(1) FROM " + Tables.USERS_TABLE + " WHERE user_login = #{userName}";
 	String INSERT_USER_REGISTER = "INSERT INTO " + Tables.USERS_TABLE + " (user_login, " +
 			"user_pass, user_email, user_status, user_registerdate, user_lastlogin) VALUES " +
-			"(#{userName}, #{hashedPassword}, #{userMail}, #{isActive, typeHandler=ActiveUserTypeHandler.class}, #{registrationDate}, " +
+			"(#{userName}, #{hashedPassword}, #{userMail}, #{isActive, typeHandler=net.openblazar.bfp.database.typehandlers.user.ActiveUserTypeHandler}, #{registrationDate}, " +
 			"#{lastLogin})";
 
 	@Select(SELECT_ALL)
@@ -36,7 +36,7 @@ public interface UserDAO {
 			@Arg(column="user_login", javaType = String.class, jdbcType = JdbcType.VARCHAR),
 			@Arg(column="user_email", javaType = String.class, jdbcType = JdbcType.VARCHAR),
 			@Arg(column="user_pass", javaType = String.class, jdbcType = JdbcType.VARCHAR),
-			@Arg(column="user_status", javaType = Boolean.class, jdbcType = JdbcType.INTEGER, typeHandler = ActiveUserTypeHandler.class),
+			@Arg(column="user_status", javaType = UserState.class, jdbcType = JdbcType.INTEGER, typeHandler = ActiveUserTypeHandler.class),
 			@Arg(column="user_registerdate", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = LocalDateTimeTypeHandler.class),
 			@Arg(column="user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = LocalDateTimeTypeHandler.class)
 	})
@@ -48,7 +48,7 @@ public interface UserDAO {
 			@Arg(column="user_login", javaType = String.class, jdbcType = JdbcType.VARCHAR),
 			@Arg(column="user_email", javaType = String.class, jdbcType = JdbcType.VARCHAR),
 			@Arg(column="user_pass", javaType = String.class, jdbcType = JdbcType.VARCHAR),
-			@Arg(column="user_status", javaType = Boolean.class, jdbcType = JdbcType.INTEGER, typeHandler = ActiveUserTypeHandler.class),
+			@Arg(column="user_status", javaType = UserState.class, jdbcType = JdbcType.INTEGER, typeHandler = ActiveUserTypeHandler.class),
 			@Arg(column="user_registerdate", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = LocalDateTimeTypeHandler.class),
 			@Arg(column="user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = LocalDateTimeTypeHandler.class)
 	})
@@ -60,7 +60,7 @@ public interface UserDAO {
 			@Arg(column="user_login", javaType = String.class, jdbcType = JdbcType.VARCHAR),
 			@Arg(column="user_email", javaType = String.class, jdbcType = JdbcType.VARCHAR),
 			@Arg(column="user_pass", javaType = String.class, jdbcType = JdbcType.VARCHAR),
-			@Arg(column="user_status", javaType = Boolean.class, jdbcType = JdbcType.INTEGER, typeHandler = ActiveUserTypeHandler.class),
+			@Arg(column="user_status", javaType = UserState.class, jdbcType = JdbcType.INTEGER, typeHandler = ActiveUserTypeHandler.class),
 			@Arg(column="user_registerdate", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = LocalDateTimeTypeHandler.class),
 			@Arg(column="user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = LocalDateTimeTypeHandler.class)
 	})
