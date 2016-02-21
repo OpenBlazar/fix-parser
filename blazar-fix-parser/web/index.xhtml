@@ -7,28 +7,58 @@
 >
     <ui:define name="content">
 
-        <h:form>
-            <p:dataTable var="user" value="#{userListBean.userDetailsList}">
-                <p:column headerText="User Name">
-                    <h:outputText value="#{user.userName}" />
-                </p:column>
+        <div class="ui-grid-row">
+            <h:form id="input">
+                <p:inputTextarea id="inputArea" rows="10" cols="150" autoResize="false" value="#{parserBean.input}"/>
 
-                <p:column headerText="User Mail">
-                    <h:outputText value="#{user.userMail}" />
-                </p:column>
+                <p:commandButton value="Submit" id="submit" actionListener="#{parserBean.doParse(parserBean.input)}"
+                                 update=":output:messagesTable" styleClass="ui-priority-primary"/>
+            </h:form>
+        </div>
 
-                <p:column headerText="Registration Date">
-                    <h:outputText value="#{user.registrationDate}" />
-                </p:column>
+        <div class="ui-grid-row">
+            <h:form id="output">
+                <div class="ui-grid-col-7">
+                    <p:dataTable id="messagesTable" var="message" value="#{parserBean.messages}" selectionMode="single"
+                                 selection="#{parserBean.selectedMessage}" rowKey="#{message.messageID}">
+                        <p:ajax event="rowSelect" update=":output:singleTable"/>
 
-                <p:column headerText="Last Login">
-                    <h:outputText value="#{user.lastLogin}" />
-                </p:column>
-            </p:dataTable>
-        </h:form>
+                        <p:column headerText="Id">
+                            <h:outputText value="#{message.messageID}"/>
+                        </p:column>
 
-        <a href="pages/login.xhtml">LOGIN</a>
-        <a href="pages/register.xhtml">REGISTER</a>
+                        <p:column headerText="Version">
+                            <h:outputText value="#{message.version.code}"/>
+                        </p:column>
+
+                        <p:column headerText="MsgType">
+                            <h:outputText value="#{message.messageType}"/>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+
+                <div class="ui-grid-col-5">
+                    <p:dataTable id="singleTable" var="entry"
+                                 value="#{parserBean.selectedMessage.messageFields.entrySet().toArray()}">
+                        <p:column headerText="Tag">
+                            <h:outputText value="#{entry.key.tag}"/>
+                        </p:column>
+
+                        <p:column headerText="Name">
+                            <h:outputText value="#{entry.key}"/>
+                        </p:column>
+
+                        <p:column headerText="Value">
+                            <h:outputText value="#{entry.value.value}"/>
+                        </p:column>
+
+                        <p:column headerText="Description">
+                            <h:outputText value="#{entry.value.description}"/>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+            </h:form>
+        </div>
 
     </ui:define>
 </ui:composition>

@@ -7,30 +7,31 @@
       xmlns:p="http://primefaces.org/ui"
 >
 
-<h:form>
-    <p:growl id="messages"/>
+<!-- Static navbar -->
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                    <li><p:link value="Help" style="margin-right: 10px;"/></li>
+                <li><p:link value="Sign In" outcome="/pages/login" style="margin-right: 10px;"
+                            rendered="#{!loginBean.authenticated}"/></li>
+                <li><p:button value="Sign Up" outcome="/pages/register" styleClass="ui-priority-primary"
+                              rendered="#{!loginBean.authenticated}"/></li>
+                <li><p:button value="Sign Out" outcome="/pages/logout" styleClass="ui-priority-primary"
+                              rendered="#{loginBean.authenticated}"/></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
 
-    <p:toolbar id="tb" style="height: 50px;">
-        <f:facet name="left">
-            <p:commandButton id="dynaButton" type="button" icon="ui-icon-grip-solid-horizontal"/>
-            <p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom">
-                <p:submenu label="Ajax">
-                    <p:menuitem value="Save" update="messages" icon="ui-icon-disk"/>
-                    <p:menuitem value="Update" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
-                </p:submenu>
-                <p:submenu label="Non-Ajax">
-                    <p:menuitem value="Delete" update="messages" ajax="false" icon="ui-icon-close"/>
-                </p:submenu>
-                <p:submenu label="Navigations">
-                    <p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/>
-                    <p:menuitem value="Internal" icon="ui-icon-star"/>
-                </p:submenu>
-            </p:menu>
-        </f:facet>
-    </p:toolbar>
-
-    <div style="height:1000px"></div>
-
-    <p:sticky target="tb" />
-</h:form>
 </html>

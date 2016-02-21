@@ -9,20 +9,22 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import java.util.List;
 
 /**
  * @author Wojciech Zankowski
  */
-@ManagedBean
-@RequestScoped
+@ManagedBean(name = "parserBean")
+@ViewScoped
 public class ParserBean extends AbstractBean {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(ParserBean.class);
 
     private ParserService parserService;
     private List<FixMessage> messages;
+    private FixMessage selectedMessage;
+    private String input;
 
     @Inject
     public void setParserService(ParserService parserService) {
@@ -36,7 +38,26 @@ public class ParserBean extends AbstractBean {
 
     public void doParse(String input) {
         messages = parserService.parseInput(input);
-        System.out.println(messages);
+    }
+
+    public List<FixMessage> getMessages() {
+        return messages;
+    }
+
+    public FixMessage getSelectedMessage() {
+        return selectedMessage;
+    }
+
+    public void setSelectedMessage(FixMessage selectedMessage) {
+        this.selectedMessage = selectedMessage;
+    }
+
+    public String getInput() {
+        return input;
+    }
+
+    public void setInput(String input) {
+        this.input = input;
     }
 
 }

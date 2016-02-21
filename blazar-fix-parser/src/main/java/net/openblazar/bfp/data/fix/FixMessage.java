@@ -10,33 +10,40 @@ import java.util.Optional;
  */
 public class FixMessage {
 
+    private final Long messageID;
     private final FixVersion version;
     private final FixMessageType messageType;
-    private final Map<FixField, String> messageFields;
+    private final Map<FixField, FixValue> messageFields;
 
-    public FixMessage(FixVersion version, FixMessageType messageType, Map<FixField, String> messageFields) {
+    public FixMessage(Long messageID, FixVersion version, FixMessageType messageType, Map<FixField, FixValue> messageFields) {
+        Objects.nonNull(messageID);
         Objects.nonNull(version);
         Objects.nonNull(messageType);
         Objects.nonNull(messageFields);
 
+        this.messageID = messageID;
         this.version = version;
         this.messageType = messageType;
         this.messageFields = messageFields;
     }
 
-    public void addField(FixField field, String value) {
-        messageFields.put(field, value);
+    public Long getMessageID() {
+        return messageID;
     }
 
     public FixMessageType getMessageType() {
         return messageType;
     }
 
-    public Map<FixField, String> getMessageFields() {
+    public FixVersion getVersion() {
+        return version;
+    }
+
+    public Map<FixField, FixValue> getMessageFields() {
         return messageFields;
     }
 
-    public Optional<String> getField(FixField field) {
+    public Optional<FixValue> getField(FixField field) {
         return Optional.ofNullable(messageFields.get(field));
     }
 
@@ -47,34 +54,45 @@ public class FixMessage {
 
         FixMessage that = (FixMessage) o;
 
-        if (version != that.version) return false;
-        if (messageType != that.messageType) return false;
-        return messageFields != null ? messageFields.equals(that.messageFields) : that.messageFields == null;
+        if (getMessageID() != null ? !getMessageID().equals(that.getMessageID()) : that.getMessageID() != null)
+            return false;
+        if (getVersion() != that.getVersion()) return false;
+        if (getMessageType() != that.getMessageType()) return false;
+        return getMessageFields() != null ? getMessageFields().equals(that.getMessageFields()) : that.getMessageFields() == null;
     }
 
     @Override
     public int hashCode() {
-        int result = version != null ? version.hashCode() : 0;
-        result = 31 * result + (messageType != null ? messageType.hashCode() : 0);
-        result = 31 * result + (messageFields != null ? messageFields.hashCode() : 0);
+        int result = getMessageID() != null ? getMessageID().hashCode() : 0;
+        result = 31 * result + (getVersion() != null ? getVersion().hashCode() : 0);
+        result = 31 * result + (getMessageType() != null ? getMessageType().hashCode() : 0);
+        result = 31 * result + (getMessageFields() != null ? getMessageFields().hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         return "FixMessage{" +
-                "messageType=" + messageType +
+                "messageID=" + messageID +
+                ", version=" + version +
+                ", messageType=" + messageType +
                 ", messageFields=" + messageFields +
                 '}';
     }
 
     public static class Builder {
 
+        private Long messageID = -1L;
         private FixVersion version = FixVersion.UNKNOWN;
-        private FixMessageType messageType = FixMessageType.UNKNOWN;
-        private Map<FixField, String> messageFields = new HashMap<>();
+        private FixMessageType messageType = FixMessageType.Unknown;
+        private Map<FixField, FixValue> messageFields = new HashMap<>();
 
         public Builder() {}
+
+        public Builder messageID(Long messageID) {
+            this.messageID = messageID;
+            return this;
+        }
 
         public Builder version(FixVersion version) {
             this.version = version;
@@ -86,13 +104,13 @@ public class FixMessage {
             return this;
         }
 
-        public Builder messageFields(Map<FixField, String> messageFields) {
+        public Builder messageFields(Map<FixField, FixValue> messageFields) {
             this.messageFields = messageFields;
             return this;
         }
 
         public FixMessage build() {
-            return new FixMessage(version, messageType, messageFields);
+            return new FixMessage(messageID, version, messageType, messageFields);
         }
 
     }

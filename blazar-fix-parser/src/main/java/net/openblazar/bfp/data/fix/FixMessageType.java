@@ -5,8 +5,8 @@ package net.openblazar.bfp.data.fix;
  */
 public enum FixMessageType {
 
-    EXECUTION_REPORT(8),
-    UNKNOWN(-1);
+    ExecutionReport(8),
+    Unknown(-1);
 
     private final int code;
 
@@ -20,7 +20,7 @@ public enum FixMessageType {
                 return messageType;
             }
         }
-        return UNKNOWN;
+        return Unknown;
     }
 
     public int getCode() {
