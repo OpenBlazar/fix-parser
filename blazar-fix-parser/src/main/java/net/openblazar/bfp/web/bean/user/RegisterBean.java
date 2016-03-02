@@ -1,6 +1,6 @@
-package net.openblazar.bfp.bean.user;
+package net.openblazar.bfp.web.bean.user;
 
-import net.openblazar.bfp.bean.AbstractBean;
+import net.openblazar.bfp.web.bean.AbstractBean;
 import net.openblazar.bfp.services.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
@@ -16,7 +16,7 @@ import javax.inject.Inject;
  * @author Wojciech Zankowski
  */
 @ManagedBean(name = "registerBean")
-@SessionScoped
+@RequestScoped
 public class RegisterBean extends AbstractBean {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(RegisterBean.class);

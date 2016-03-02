@@ -1,9 +1,11 @@
 package net.openblazar.bfp.data.user;
 
+import java.io.Serializable;
+
 /**
  * @author Wojciech Zankowski
  */
-public class UserID {
+public class UserID implements Serializable {
 
 	private final long id;
 

@@ -1,9 +1,11 @@
 package net.openblazar.bfp.data.user;
 
+import java.io.Serializable;
+
 /**
  * @author Wojciech Zankowski
  */
-public enum UserState {
+public enum UserState implements Serializable {
 
     ACTIVE(1),
     INACTIVE(0),

@@ -1,14 +1,15 @@
-package net.openblazar.bfp.bean.user;
+package net.openblazar.bfp.web.bean.user;
 
-import net.openblazar.bfp.bean.AbstractBean;
+import net.openblazar.bfp.web.bean.AbstractBean;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
 
@@ -16,7 +17,7 @@ import java.io.IOException;
  * @author Wojciech Zankowski
  */
 @ManagedBean(name = "loginBean")
-@SessionScoped
+@ApplicationScoped
 public class LoginBean extends AbstractBean {
 
     public static final String HOME_URL = "/";
@@ -27,9 +28,13 @@ public class LoginBean extends AbstractBean {
     private String password;
     private Boolean rememberMe;
 
+    @PostConstruct
+    public void init() {
+        super.init();
+    }
+
     public void doLogin() {
         UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), getPassword(), getRememberMe());
-        token.setRememberMe(true);
         try {
             Subject currentUser = SecurityUtils.getSubject();
             if (!currentUser.isAuthenticated()) {
@@ -47,14 +52,11 @@ public class LoginBean extends AbstractBean {
             facesError("Unknown error.", e);
         } catch (IOException e) {
             facesError("Failed to load page.", e);
+        } catch (Exception e) {
+            facesError("Whatever", e);
         } finally {
             token.clear();
         }
-    }
-
-    public boolean isAuthenticated() {
-        Subject user = SecurityUtils.getSubject();
-        return user.isAuthenticated();
     }
 
     protected void facesError(String message, Exception exception) {

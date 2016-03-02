@@ -2,41 +2,42 @@ package net.openblazar.bfp;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import net.openblazar.bfp.database.DatabaseModule;
+import com.google.inject.servlet.GuiceServletContextListener;
 import net.openblazar.bfp.core.security.SecurityModule;
+import net.openblazar.bfp.database.DatabaseModule;
 import net.openblazar.bfp.services.ServiceModule;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.mgt.SecurityManager;
+import net.openblazar.bfp.web.WebModule;
+import org.apache.shiro.guice.aop.ShiroAopModule;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
 import java.util.Properties;
 
 /**
  * @author Wojciech Zankowski
  */
-public class BlazarFixParser implements ServletContextListener {
+public class BlazarFixParser extends GuiceServletContextListener {
+
+	private final static Logger LOGGER = LoggerFactory.getLogger(BlazarFixParser.class);
+
+	private ServletContext servletContext;
 
 	@Override
 	public void contextInitialized(ServletContextEvent servletContextEvent) {
-		ServletContext servletContext = servletContextEvent.getServletContext();
-
-		Injector injector = Guice.createInjector(
-				new DatabaseModule(getProperties()),
-				new ServiceModule(),
-				new SecurityModule());
-
-		SecurityManager securityManager = injector.getInstance(SecurityManager.class);
-		SecurityUtils.setSecurityManager(securityManager);
-
-		servletContext.setAttribute(Injector.class.getName(), injector);
+		this.servletContext = servletContextEvent.getServletContext();
+		super.contextInitialized(servletContextEvent);
 	}
 
 	@Override
-	public void contextDestroyed(ServletContextEvent servletContextEvent) {
-		ServletContext servletContext = servletContextEvent.getServletContext();
-		servletContext.removeAttribute(Injector.class.getName());
+	protected Injector getInjector() {
+		return Guice.createInjector(
+				new DatabaseModule(getProperties()),
+				new ServiceModule(),
+				new SecurityModule(servletContext),
+				new ShiroAopModule(),
+				new WebModule());
 	}
 
 	private Properties getProperties() {

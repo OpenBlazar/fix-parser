@@ -15,6 +15,7 @@ public class FixMessageConverter {
     public static final String FIELD_DELIMITER = "=";
     public static final int FIX_KEY = 0;
     public static final int FIX_VALUE = 1;
+    public static final char ENTRY_DELIMITER = '\u0001';
 
     public List<FixMessage> convertToFixMessages(List<String> textMessages, String delimiter) {
         List<FixMessage> messages = new ArrayList<>();
@@ -58,6 +59,17 @@ public class FixMessageConverter {
         messageBuilder.messageID(counter);
         messageBuilder.messageFields(messageFields);
         return messageBuilder.build();
+    }
+
+    public String convertToString(FixMessage fixMessage) {
+        StringBuilder builder = new StringBuilder();
+        fixMessage.getMessageFields().entrySet().stream().forEach((entry) -> {
+            builder.append(entry.getKey().getTag());
+            builder.append(FIELD_DELIMITER);
+            builder.append(entry.getValue().getValue());
+            builder.append(ENTRY_DELIMITER);
+        });
+        return builder.toString();
     }
 
 }

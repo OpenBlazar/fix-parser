@@ -1,6 +1,6 @@
-package net.openblazar.bfp.bean.user;
+package net.openblazar.bfp.web.bean.user;
 
-import net.openblazar.bfp.bean.AbstractBean;
+import net.openblazar.bfp.web.bean.AbstractBean;
 import net.openblazar.bfp.data.user.UserDetails;
 import net.openblazar.bfp.services.user.UserService;
 import org.slf4j.Logger;

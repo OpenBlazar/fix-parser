@@ -9,28 +9,27 @@
 <h:head>
     <title>Title</title>
     <!-- Bootstrap core CSS -->
-    <link href="/resources/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/resources/css/bootstrap.min.css" rel="stylesheet"/>
     <!-- Custom styles for this template -->
-    <link href="/resources/css/navbar.css" rel="stylesheet" />
+    <link href="/resources/css/navbar.css" rel="stylesheet"/>
+    <link href="/resources/css/footer.css" rel="stylesheet"/>
 </h:head>
 
-<h:body>
+<h:body style="margin:0px; padding:0px;">
+    <div class="ui-grid-responsive">
+        <ui:include src="frontMenu.xhtml" />
 
-    <div class="ui-grid ui-grid-responsive">
-        <ui:include src="../template/menuTemplate.xhtml" />
-
-        <div class="ui-grid-row">
-            <div class="ui-grid-col-12">
-                <ui:insert name="content">Put default content here, if any.</ui:insert>
-            </div>
+        <div class="container">
+            <ui:insert name="content" />
         </div>
+
+        <ui:include src="footerTemplate.xhtml" />
     </div>
 </h:body>
 
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 </html>

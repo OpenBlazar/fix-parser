@@ -33,7 +33,7 @@ public class DatabaseUserRealm extends AuthorizingRealm {
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         UserDetails userDetails = userDAO.findUserByLogin(token.getUsername());
         if (userDetails != null) {
-            return new SimpleAuthenticationInfo(userDetails.getUserID().getId(), userDetails.getPassword(), getName());
+            return new SimpleAuthenticationInfo(userDetails, userDetails.getPassword(), getName());
         } else {
             throw new AuthenticationException("Failed to find user " + ((UsernamePasswordToken) authenticationToken).getUsername());
         }

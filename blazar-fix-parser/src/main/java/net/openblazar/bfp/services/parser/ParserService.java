@@ -1,6 +1,7 @@
 package net.openblazar.bfp.services.parser;
 
 import net.openblazar.bfp.data.fix.FixMessage;
+import net.openblazar.bfp.data.user.UserDetails;
 
 import java.util.List;
 
@@ -9,7 +10,10 @@ import java.util.List;
  */
 public interface ParserService {
 
+    List<FixMessage> findMessagesById(UserDetails userDetails);
+
     List<FixMessage> parseInput(String input);
 
-    void addMessages(List<FixMessage> messages);
+    void saveMessages(UserDetails userDetails, List<FixMessage> messages);
+
 }
