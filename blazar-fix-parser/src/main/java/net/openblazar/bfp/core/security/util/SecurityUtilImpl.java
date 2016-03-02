@@ -1,6 +1,6 @@
 package net.openblazar.bfp.core.security.util;
 
-import org.picketlink.idm.credential.util.BCrypt;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  * @author Wojciech Zankowski

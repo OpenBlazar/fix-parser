@@ -7,6 +7,8 @@ import net.openblazar.bfp.data.user.UserID;
 import net.openblazar.bfp.core.security.util.SecurityUtil;
 import net.openblazar.bfp.data.user.UserState;
 import net.openblazar.bfp.database.dao.UserDAO;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -63,6 +65,11 @@ public class UserServiceImpl implements UserService {
 		userDAO.saveUser(userName, userMail, securityUtil.hashPassword(password),
 				UserState.ACTIVE, currentTime, currentTime);
 		return true;
+	}
+
+	@Override
+	public Subject getCurrentUser() {
+		return SecurityUtils.getSubject();
 	}
 
 }

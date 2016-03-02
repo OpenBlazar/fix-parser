@@ -1,15 +1,19 @@
-package net.openblazar.bfp.bean.parser;
+package net.openblazar.bfp.web.bean.parser;
 
-import com.google.inject.Inject;
-import net.openblazar.bfp.bean.AbstractBean;
 import net.openblazar.bfp.data.fix.FixMessage;
+import net.openblazar.bfp.data.user.UserDetails;
 import net.openblazar.bfp.services.parser.ParserService;
+import net.openblazar.bfp.web.bean.AbstractBean;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,10 +25,10 @@ public class ParserBean extends AbstractBean {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(ParserBean.class);
 
-    private ParserService parserService;
-    private List<FixMessage> messages;
-    private FixMessage selectedMessage;
-    private String input;
+    protected ParserService parserService;
+    protected List<FixMessage> messages = new ArrayList<>();
+    protected FixMessage selectedMessage;
+    protected String input;
 
     @Inject
     public void setParserService(ParserService parserService) {
@@ -37,7 +41,16 @@ public class ParserBean extends AbstractBean {
     }
 
     public void doParse(String input) {
-        messages = parserService.parseInput(input);
+        messages = new ArrayList<>(parserService.parseInput(input));
+        doSaveMessages(messages);
+    }
+
+    @RequiresAuthentication
+    protected void doSaveMessages(List<FixMessage> messages) {
+        UserDetails userDetails = (UserDetails) SecurityUtils.getSubject().getPrincipal();
+        if (userDetails != null) {
+            parserService.saveMessages(userDetails, messages);
+        }
     }
 
     public List<FixMessage> getMessages() {

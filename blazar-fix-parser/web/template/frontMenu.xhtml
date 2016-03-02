@@ -8,7 +8,7 @@
 >
 
 <!-- Static navbar -->
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-default navbar-static-top" style="background-color: #004fcc;">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -27,11 +27,11 @@
                 <li><p:link value="History" outcome="/pages/history" style="margin-right: 10px;"/></li>
                 <li><p:link value="Help" style="margin-right: 10px;"/></li>
                 <li><p:link value="Sign In" outcome="/pages/login" style="margin-right: 10px;"
-                            rendered="#{!currentUser.authenticated}"/></li>
+                              rendered="#{!currentUser.authenticated}"/></li>
                 <li><p:button value="Sign Up" outcome="/pages/register" styleClass="ui-priority-primary"
                               rendered="#{!currentUser.authenticated}"/></li>
                 <li><p:commandButton value="Sign Out" action="#{logoutBean.doLogout}" styleClass="ui-priority-primary"
-                                     rendered="#{currentUser.authenticated}"/></li>
+                              rendered="#{currentUser.authenticated}"/></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

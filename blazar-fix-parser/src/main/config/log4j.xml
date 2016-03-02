@@ -27,12 +27,12 @@
         </RollingFile>
     </Appenders>
     <Loggers>
-        <Logger name="com.mycuteblog.log4j2" level="debug" additivity="false">
-            <appender-ref ref="trace-log" level="debug"/>
-            <appender-ref ref="error-log" level="error"/>
-            <appender-ref ref="console-log" level="debug"/>
+        <Logger level="trace" additivity="false">
+            <appender-ref ref="trace-log" level="trace"/>
+            <appender-ref ref="error-log" level="trace"/>
+            <appender-ref ref="console-log" level="trace"/>
         </Logger>
-        <Root level="info" additivity="false">
+        <Root level="trace" additivity="false">
             <AppenderRef ref="console-log"/>
         </Root>
     </Loggers>

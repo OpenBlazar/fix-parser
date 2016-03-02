@@ -1,4 +1,4 @@
-package net.openblazar.bfp.bean;
+package net.openblazar.bfp.web.bean;
 
 import com.google.inject.Injector;
 
@@ -21,10 +21,6 @@ public abstract class AbstractBean implements Serializable {
             injector = (Injector) servletContext.getAttribute(Injector.class.getName());
         }
         return injector;
-    }
-
-    public void setInjector(Injector injector) {
-        this.injector = injector;
     }
 
     public void init() {

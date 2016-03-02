@@ -1,12 +1,13 @@
 package net.openblazar.bfp.data.user;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
 /**
  * @author Wojciech Zankowski
  */
-public class UserDetails {
+public class UserDetails implements Serializable {
 
 	private final UserID userID;
 	private final String userName;
