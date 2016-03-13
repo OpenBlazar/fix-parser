@@ -1,4 +1,4 @@
-package net.openblazar.bfp.core.security.matcher;
+package net.openblazar.bfp.core.security.config;
 
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;

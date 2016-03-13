@@ -1,7 +1,7 @@
 package net.openblazar.bfp.web.bean.user;
 
-import net.openblazar.bfp.web.bean.AbstractBean;
 import net.openblazar.bfp.services.user.UserService;
+import net.openblazar.bfp.web.bean.AbstractBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,6 +24,7 @@ public class RegisterBean extends AbstractBean {
     private UserService userService;
 
     private String username;
+    private String email;
     private String password;
     private String passwordConfirm;
 
@@ -44,6 +45,14 @@ public class RegisterBean extends AbstractBean {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -78,13 +87,13 @@ public class RegisterBean extends AbstractBean {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Congratulations, registration has been successful", ""));
         } catch (Exception e) {
-            FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Failed to register user.", ""));
+            facesError("Failed to register user.", e);
         }
     }
 
     protected void facesError(String message, Exception exception) {
         super.facesError(message, exception);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, exception.getMessage(), null));
         LOGGER.error(message, exception);
     }
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <link href="/resources/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/resources/css/signin.css" rel="stylesheet"/>
+    <link href="/resources/css/footer.css" rel="stylesheet"/>
+    <link href="/resources/css/blazar.css" rel="stylesheet"/>
+</h:head>
+<h:body>
+    <h:form id="registerForm" styleClass="form-signin">
+        <h2 class="form-signin-heading">Create free acount</h2>
+
+        <p:inputText value="#{registerBean.username}" styleClass="form-control" required="true" placeholder="Username" id="Username" autocomplete="off" />
+        <p:inputText value="#{registerBean.email}" styleClass="form-control" required="true" placeholder="Email address" id="Email" autocomplete="off"/>
+
+        <p:password value="#{registerBean.password}" styleClass="form-control" required="true" placeholder="Password" feedback="true" id="Password" autocomplete="off"/>
+        <p:password value="#{registerBean.passwordConfirm}" styleClass="form-control" required="true" placeholder="Confirm password" id="ConfirmPassword" autocomplete="off"/>
+
+        <p:commandButton action="#{registerBean.doRegister}" styleClass="btn btn-lg btn-primary btn-block btn-blazar" value="Register"/>
+        <h:link value="Already have an account? Sign In!" outcome="/pages/public/login.xhtml"/>
+
+        <p:messages id="messages" autoUpdate="true" closable="true"/>
+    </h:form>
+    <ui:include src="/components/formfooter.xhtml" />
+</h:body>
+</html>

@@ -7,6 +7,7 @@ import net.openblazar.bfp.services.parser.ParserService;
 import net.openblazar.bfp.web.bean.AbstractBean;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.subject.Subject;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -29,15 +30,30 @@ public class HistoryBean extends AbstractBean {
     @Override
     public void init() {
         super.init();
-        UserDetails userDetails = (UserDetails) SecurityUtils.getSubject().getPrincipal();
-        if(userDetails != null) {
-            messages = parserService.findMessagesById(userDetails);
+        Subject currentUser = SecurityUtils.getSubject();
+        if(currentUser.isAuthenticated()) {
+            UserDetails userDetails = (UserDetails) currentUser.getPrincipal();
+            if (userDetails != null) {
+                messages = parserService.findMessagesById(userDetails);
+            }
         }
     }
 
     @Inject
     public void setParserService(ParserService parserService) {
         this.parserService = parserService;
+    }
+
+    public String getSender(FixMessage message) {
+        return parserService.getSender(message);
+    }
+
+    public String getReceiver(FixMessage message) {
+        return parserService.getReceiver(message);
+    }
+
+    public String getSendingTime(FixMessage message) {
+        return parserService.getSendingTime(message);
     }
 
     @RequiresAuthentication

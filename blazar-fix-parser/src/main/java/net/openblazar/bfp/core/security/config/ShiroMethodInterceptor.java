@@ -1,4 +1,4 @@
-package net.openblazar.bfp.core.security.interceptor;
+package net.openblazar.bfp.core.security.config;
 
 
 import org.aopalliance.intercept.MethodInterceptor;

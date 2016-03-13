@@ -1,6 +1,7 @@
 package net.openblazar.bfp.web.bean.user;
 
 import net.openblazar.bfp.web.bean.AbstractBean;
+import net.openblazar.bfp.web.util.BlazarURL;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -20,8 +21,6 @@ import java.io.IOException;
 @ApplicationScoped
 public class LoginBean extends AbstractBean {
 
-    public static final String HOME_URL = "/";
-
     private final static Logger LOGGER = LoggerFactory.getLogger(LoginBean.class);
 
     private String username;
@@ -40,7 +39,7 @@ public class LoginBean extends AbstractBean {
             if (!currentUser.isAuthenticated()) {
                 currentUser.login(token);
 
-                FacesContext.getCurrentInstance().getExternalContext().redirect(HOME_URL);
+                FacesContext.getCurrentInstance().getExternalContext().redirect(BlazarURL.HOME_URL);
             }
         } catch (UnknownAccountException e) {
             facesError("Unknown account.", e);

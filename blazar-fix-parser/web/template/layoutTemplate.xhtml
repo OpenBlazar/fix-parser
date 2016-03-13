@@ -1,35 +1,28 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
 >
 <h:head>
-    <title>Title</title>
-    <!-- Bootstrap core CSS -->
+    <title>Blazar Fix Parser</title>
     <link href="/resources/css/bootstrap.min.css" rel="stylesheet"/>
-    <!-- Custom styles for this template -->
     <link href="/resources/css/navbar.css" rel="stylesheet"/>
     <link href="/resources/css/footer.css" rel="stylesheet"/>
+    <link href="/resources/css/blazar.css" rel="stylesheet"/>
 </h:head>
 
-<h:body style="margin:0px; padding:0px;">
+<h:body style="margin:0px; padding:0px; margin-bottom: 70px;">
     <div class="ui-grid-responsive">
-        <ui:include src="frontMenu.xhtml" />
+        <ui:include src="../components/menu.xhtml" />
 
         <div class="container">
             <ui:insert name="content" />
         </div>
 
-        <ui:include src="footerTemplate.xhtml" />
+        <ui:include src="../components/footer.xhtml" />
     </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </h:body>
-
-<!-- Bootstrap core JavaScript
-    ================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
 </html>

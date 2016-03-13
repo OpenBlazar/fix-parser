@@ -27,7 +27,7 @@
     </context-param>
 
     <welcome-file-list>
-        <welcome-file>/pages/parser.xhtml</welcome-file>
+        <welcome-file>/pages/public/parser.xhtml</welcome-file>
     </welcome-file-list>
 
     <servlet>
@@ -74,5 +74,26 @@
         <servlet-name>Faces Servlet</servlet-name>
     </filter-mapping>
 
+    <listener>
+        <listener-class>org.ocpsoft.rewrite.servlet.impl.RewriteServletRequestListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>org.ocpsoft.rewrite.servlet.impl.RewriteServletContextListener</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>OCPsoft Rewrite Filter</filter-name>
+        <filter-class>org.ocpsoft.rewrite.servlet.RewriteFilter</filter-class>
+        <async-supported>true</async-supported>
+    </filter>
+    <filter-mapping>
+        <filter-name>OCPsoft Rewrite Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
 
 </web-app>

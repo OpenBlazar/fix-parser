@@ -1,5 +1,7 @@
 package net.openblazar.bfp.data.fix;
 
+import net.openblazar.bfp.data.fix.field.MsgType;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -12,10 +14,10 @@ public class FixMessage {
 
     private final Long messageID;
     private final FixVersion version;
-    private final FixMessageType messageType;
+    private final MsgType messageType;
     private final Map<FixField, FixValue> messageFields;
 
-    public FixMessage(Long messageID, FixVersion version, FixMessageType messageType, Map<FixField, FixValue> messageFields) {
+    public FixMessage(Long messageID, FixVersion version, MsgType messageType, Map<FixField, FixValue> messageFields) {
         Objects.nonNull(messageID);
         Objects.nonNull(version);
         Objects.nonNull(messageType);
@@ -31,7 +33,7 @@ public class FixMessage {
         return messageID;
     }
 
-    public FixMessageType getMessageType() {
+    public MsgType getMessageType() {
         return messageType;
     }
 
@@ -84,7 +86,7 @@ public class FixMessage {
 
         private Long messageID = -1L;
         private FixVersion version = FixVersion.UNKNOWN;
-        private FixMessageType messageType = FixMessageType.Unknown;
+        private MsgType messageType = MsgType.Unknown;
         private Map<FixField, FixValue> messageFields = new HashMap<>();
 
         public Builder() {}
@@ -99,7 +101,7 @@ public class FixMessage {
             return this;
         }
 
-        public Builder messageType(FixMessageType messageType) {
+        public Builder messageType(MsgType messageType) {
             this.messageType = messageType;
             return this;
         }

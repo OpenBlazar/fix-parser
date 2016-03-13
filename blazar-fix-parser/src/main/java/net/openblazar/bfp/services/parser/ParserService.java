@@ -16,4 +16,10 @@ public interface ParserService {
 
     void saveMessages(UserDetails userDetails, List<FixMessage> messages);
 
+    String getSender(FixMessage message);
+
+    String getReceiver(FixMessage message);
+
+    String getSendingTime(FixMessage message);
+
 }

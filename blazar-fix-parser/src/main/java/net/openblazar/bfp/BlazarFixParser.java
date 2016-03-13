@@ -13,7 +13,6 @@ import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
-import java.util.Properties;
 
 /**
  * @author Wojciech Zankowski
@@ -33,25 +32,11 @@ public class BlazarFixParser extends GuiceServletContextListener {
 	@Override
 	protected Injector getInjector() {
 		return Guice.createInjector(
-				new DatabaseModule(getProperties()),
+				new DatabaseModule(),
 				new ServiceModule(),
 				new SecurityModule(servletContext),
 				new ShiroAopModule(),
 				new WebModule());
-	}
-
-	private Properties getProperties() {
-		Properties properties = new Properties();
-
-		properties.setProperty("JDBC.host", "localhost");
-		properties.setProperty("JDBC.port", "3306");
-		properties.setProperty("JDBC.schema", "blazarfixparser");
-
-		properties.setProperty("JDBC.username", "root");
-		properties.setProperty("JDBC.password", "werty56");
-		properties.setProperty("JDBC.autoCommit", "false");
-
-		return properties;
 	}
 
 }

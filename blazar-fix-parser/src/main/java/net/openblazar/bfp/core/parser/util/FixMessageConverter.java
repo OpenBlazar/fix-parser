@@ -1,6 +1,7 @@
 package net.openblazar.bfp.core.parser.util;
 
 import net.openblazar.bfp.data.fix.*;
+import net.openblazar.bfp.data.fix.field.MsgType;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -35,7 +36,7 @@ public class FixMessageConverter {
             if (values.length != 2) {
                 continue;
             }
-            FixField fieldKey = FixField.getFieldFromCode(Integer.parseInt(values[FIX_KEY]));
+            FixField fieldKey = FixField.getFieldFromTag(Integer.parseInt(values[FIX_KEY]));
             FixValue fieldValue = toFixValue(values[FIX_VALUE], fieldKey);
             messageFields.put(fieldKey, fieldValue);
         }
@@ -43,7 +44,7 @@ public class FixMessageConverter {
     }
 
     protected FixValue toFixValue(String value, FixField field) {
-        return new FixValue(value);
+        return new FixValue(value, field.getValueDescription(value));
     }
 
     protected FixMessage toFixMessage(Map<FixField, FixValue> messageFields, long counter) {
@@ -54,7 +55,7 @@ public class FixMessageConverter {
         }
         FixValue messageType = messageFields.get(FixField.MsgType);
         if (messageType != null) {
-            messageBuilder.messageType(FixMessageType.getMessageTypeFromCode(Integer.parseInt(messageType.getValue())));
+            messageBuilder.messageType(MsgType.getMsgTypeFromValue(messageType.getValue()));
         }
         messageBuilder.messageID(counter);
         messageBuilder.messageFields(messageFields);

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <link href="/resources/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/resources/css/signin.css" rel="stylesheet"/>
+    <link href="/resources/css/footer.css" rel="stylesheet"/>
+    <link href="/resources/css/blazar.css" rel="stylesheet"/>
+</h:head>
+<h:body>
+    <h:form id="loginForm" styleClass="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+
+        <p:inputText id="username" styleClass="form-control" required="true" placeholder="Email address" value="#{loginBean.username}"/>
+        <p:password id="password" styleClass="form-control" required="true" placeholder="Password" value="#{loginBean.password}"/>
+
+        <div class="checkbox">
+            <p:selectBooleanCheckbox id="rememberMe" value="#{loginBean.rememberMe}"/>
+            <h:outputText style="margin-left: 5px;" value="Remember me"/>
+        </div>
+
+        <p:commandButton value="Sign In" styleClass="btn btn-lg btn-primary btn-block btn-blazar" action="#{loginBean.doLogin}"/>
+        <h:link value="No account? Sign Up!" outcome="/pages/public/register.xhtml"/>
+
+        <p:messages id="messages" autoUpdate="true" closable="true"/>
+    </h:form>
+    <ui:include src="/components/formfooter.xhtml" />
+</h:body>
+</html>
