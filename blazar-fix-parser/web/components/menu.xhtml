@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
 >
-
-<!-- Static navbar -->
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header">
@@ -22,19 +17,16 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><p:link value="Parser" outcome="/pages/parser" style="margin-right: 10px;"/></li>
-                <li><p:link value="File Parser" outcome="/pages/fileparser" style="margin-right: 10px;"/></li>
-                <li><p:link value="History" outcome="/pages/history" style="margin-right: 10px;"/></li>
+                <li><p:link value="Parser" outcome="/pages/public/parser" style="margin-right: 10px;"/></li>
+                <li><p:link value="File Parser" outcome="/pages/public/fileparser" style="margin-right: 10px;"/></li>
+                <li><p:link value="History" outcome="/pages/user/history" style="margin-right: 10px;"/></li>
                 <li><p:link value="Help" style="margin-right: 10px;"/></li>
-                <li><p:link value="Sign In" outcome="/pages/login" style="margin-right: 10px;"
-                            rendered="#{!currentUser.authenticated}"/></li>
-                <li><p:button value="Sign Up" outcome="/pages/register" styleClass="ui-priority-primary"
-                              rendered="#{!currentUser.authenticated}"/></li>
-                <li><p:commandButton value="Sign Out" action="#{logoutBean.doLogout}" styleClass="ui-priority-primary"
+                <li><p:link value="Sign In" outcome="/pages/public/login" style="margin-right: 10px;" rendered="#{!currentUser.authenticated}"/></li>
+                <li><p:button value="Sign Up" outcome="/pages/public/register" styleClass="btn btn-primary btn-blazar-menu" rendered="#{!currentUser.authenticated}"/></li>
+                <li><p:commandButton value="Sign Out" action="#{logoutBean.doLogout}" styleClass="btn btn-primary btn-blazar-menu"
                                      rendered="#{currentUser.authenticated}"/></li>
             </ul>
-        </div><!--/.nav-collapse -->
+        </div>
     </div>
 </nav>
-
 </html>

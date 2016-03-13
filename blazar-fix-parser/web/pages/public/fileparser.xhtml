@@ -1,0 +1,75 @@
+<ui:composition template="/template/layoutTemplate.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+>
+    <ui:define name="content">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-12">
+                <h:form enctype="multipart/form-data">
+                    <p:fileUpload fileUploadListener="#{fileParserBean.handleFileUpload}" required="true"
+                                  mode="advanced"
+                                  dragDropSupport="true" multiple="false" sizeLimit="1000000"
+                                  update=":output:messagesTable"
+                                  allowTypes="/(\.|\/)(txt|log)$/"/>
+                </h:form>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <h:form id="output">
+                <div class="row">
+                    <div class="col-md-7">
+                        <p:dataTable id="messagesTable" var="message" value="#{fileParserBean.messages}"
+                                     resizableColumns="true"
+                                     selectionMode="single" selection="#{fileParserBean.selectedMessage}"
+                                     rowKey="#{message.messageID}">
+                            <p:ajax event="rowSelect" update=":output:singleTable"/>
+
+                            <p:column headerText="Id" width="40">
+                                <h:outputText value="#{message.messageID}"/>
+                            </p:column>
+
+                            <p:column headerText="Sender">
+                                <h:outputText value="#{fileParserBean.getSender(message)}"/>
+                            </p:column>
+
+                            <p:column headerText="Receiver">
+                                <h:outputText value="#{fileParserBean.getReceiver(message)}"/>
+                            </p:column>
+
+                            <p:column headerText="Sending time">
+                                <h:outputText value="#{fileParserBean.getSendingTime(message)}"/>
+                            </p:column>
+
+                            <p:column headerText="MsgType">
+                                <h:outputText value="#{message.messageType}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+
+                    <div class="col-md-5">
+                        <p:dataTable id="singleTable" var="entry" resizableColumns="true"
+                                     value="#{fileParserBean.selectedMessage.messageFields.entrySet().toArray()}">
+                            <p:column headerText="Tag" width="60">
+                                <h:outputText value="#{entry.key.tag}"/>
+                            </p:column>
+
+                            <p:column headerText="Name">
+                                <h:outputText value="#{entry.key}"/>
+                            </p:column>
+
+                            <p:column headerText="Value" width="100">
+                                <h:outputText value="#{entry.value.value}"/>
+                            </p:column>
+
+                            <p:column headerText="Description">
+                                <h:outputText value="#{entry.value.description}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

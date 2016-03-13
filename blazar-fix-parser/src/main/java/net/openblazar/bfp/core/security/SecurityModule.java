@@ -3,15 +3,17 @@ package net.openblazar.bfp.core.security;
 import com.google.inject.Singleton;
 import com.google.inject.binder.AnnotatedBindingBuilder;
 import com.google.inject.matcher.Matchers;
-import net.openblazar.bfp.core.security.interceptor.ShiroMethodInterceptor;
-import net.openblazar.bfp.core.security.matcher.BcryptCredentialsMatcher;
-import net.openblazar.bfp.core.security.realm.DatabaseUserRealm;
+import com.google.inject.name.Names;
+import net.openblazar.bfp.core.security.config.BcryptCredentialsMatcher;
+import net.openblazar.bfp.core.security.config.DatabaseUserRealm;
+import net.openblazar.bfp.core.security.config.FixedCookieRememberMeManager;
+import net.openblazar.bfp.core.security.config.ShiroMethodInterceptor;
+import net.openblazar.bfp.web.util.BlazarURL;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.guice.web.ShiroWebModule;
 import org.apache.shiro.mgt.RememberMeManager;
 import org.apache.shiro.session.mgt.SessionManager;
-import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.session.mgt.ServletContainerSessionManager;
 
 import javax.servlet.ServletContext;
@@ -30,10 +32,22 @@ public class SecurityModule extends ShiroWebModule {
         bind(CredentialsMatcher.class).to(BcryptCredentialsMatcher.class);
         bindRealm().to(DatabaseUserRealm.class).asEagerSingleton();
 
+        bindConstant().annotatedWith(Names.named("shiro.sessionMode")).to("http");
+        bindConstant().annotatedWith(Names.named("shiro.globalSessionTimeout")).to(3000L);
+        bindConstant().annotatedWith(Names.named("shiro.loginUrl")).to("/signin");
+
         bindInterceptor(Matchers.any(), Matchers.annotatedWith(RequiresAuthentication.class),
                 new ShiroMethodInterceptor());
-        bind(RememberMeManager.class).to(CookieRememberMeManager.class).in(Singleton.class);
-        addFilterChain("/**", ANON);
+        bind(RememberMeManager.class).to(FixedCookieRememberMeManager.class).in(Singleton.class);
+
+        addFilterChain(BlazarURL.HOME_URL, ANON);
+        addFilterChain(BlazarURL.PARSER_URL, ANON);
+        addFilterChain(BlazarURL.FILEPARSER_URL, ANON);
+        addFilterChain(BlazarURL.HELP_URL, ANON);
+        addFilterChain(BlazarURL.SIGNUP_URL, ANON);
+        addFilterChain(BlazarURL.SIGNIN_URL, ANON);
+
+        addFilterChain(BlazarURL.HISTORY_URL, AUTHC);
     }
 
     @Override

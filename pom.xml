@@ -158,6 +158,17 @@
                 <version>${primefaces.bootstrap}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.ocpsoft.rewrite</groupId>
+                <artifactId>rewrite-servlet</artifactId>
+                <version>2.0.12.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ocpsoft.rewrite</groupId>
+                <artifactId>rewrite-config-prettyfaces</artifactId>
+                <version>2.0.12.Final</version>
+            </dependency>
+
             <!-- Database / ORM / MyBatis -->
 
             <dependency>
@@ -254,12 +265,6 @@
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-slf4j-impl</artifactId>
                 <version>${log4j.slf4j}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-web</artifactId>
-                <version>${log4j.web}</version>
             </dependency>
 
             <!-- test libraries -->

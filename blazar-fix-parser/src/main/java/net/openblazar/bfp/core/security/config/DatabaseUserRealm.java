@@ -1,4 +1,4 @@
-package net.openblazar.bfp.core.security.realm;
+package net.openblazar.bfp.core.security.config;
 
 import com.google.inject.Inject;
 import net.openblazar.bfp.data.user.Role;

@@ -1,11 +1,12 @@
 package net.openblazar.bfp.web.bean.parser;
 
+import net.openblazar.bfp.core.parser.util.FixParserConstants;
 import net.openblazar.bfp.data.fix.FixMessage;
 import net.openblazar.bfp.data.user.UserDetails;
 import net.openblazar.bfp.services.parser.ParserService;
 import net.openblazar.bfp.web.bean.AbstractBean;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,6 +37,7 @@ public class ParserBean extends AbstractBean {
     }
 
     @PostConstruct
+    @Override
     public void init() {
         super.init();
     }
@@ -45,12 +47,30 @@ public class ParserBean extends AbstractBean {
         doSaveMessages(messages);
     }
 
-    @RequiresAuthentication
     protected void doSaveMessages(List<FixMessage> messages) {
-        UserDetails userDetails = (UserDetails) SecurityUtils.getSubject().getPrincipal();
-        if (userDetails != null) {
-            parserService.saveMessages(userDetails, messages);
+        Subject currentUser = SecurityUtils.getSubject();
+        if (currentUser.isAuthenticated()) {
+            UserDetails userDetails = (UserDetails) currentUser.getPrincipal();
+            if (userDetails != null) {
+                parserService.saveMessages(userDetails, messages);
+            }
         }
+    }
+
+    public void doInjectSampleData() {
+        input = FixParserConstants.SAMPLE_DATA;
+    }
+
+    public String getSender(FixMessage message) {
+        return parserService.getSender(message);
+    }
+
+    public String getReceiver(FixMessage message) {
+       return parserService.getReceiver(message);
+    }
+
+    public String getSendingTime(FixMessage message) {
+        return parserService.getSendingTime(message);
     }
 
     public List<FixMessage> getMessages() {

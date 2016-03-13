@@ -2,7 +2,6 @@ package net.openblazar.bfp.services;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
-import com.google.inject.name.Names;
 import net.openblazar.bfp.core.security.util.SecurityUtil;
 import net.openblazar.bfp.core.security.util.SecurityUtilImpl;
 import net.openblazar.bfp.services.parser.ParserService;
@@ -17,8 +16,6 @@ public class ServiceModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        bindConstant().annotatedWith(Names.named("shiro.globalSessionTimeout")).to(1800000L);
-
         bind(UserService.class).to(UserServiceImpl.class).in(Singleton.class);
         bind(SecurityUtil.class).to(SecurityUtilImpl.class);
 
