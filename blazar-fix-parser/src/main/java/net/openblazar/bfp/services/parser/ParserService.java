@@ -10,7 +10,9 @@ import java.util.List;
  */
 public interface ParserService {
 
-    List<FixMessage> findMessagesById(UserDetails userDetails);
+    List<FixMessage> findMessagesByUser(UserDetails userDetails, int lowerLimit, int upperLimit);
+
+    int countUserMessages(UserDetails userDetails);
 
     List<FixMessage> parseInput(String input);
 

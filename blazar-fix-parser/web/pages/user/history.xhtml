@@ -9,13 +9,12 @@
             <h:form id="output">
                 <div class="row">
                     <div class="col-md-7">
-                        <p:dataTable id="messagesTable" var="message" value="#{historyBean.messages}" resizableColumns="true"
+                        <p:dataTable id="messagesTable" var="message" value="#{historyBean.messagesModel}" resizableColumns="true"
+                                     lazy="true"
+                                     paginator="true" rows="50"
+                                     paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                                      selectionMode="single" selection="#{historyBean.selectedMessage}" rowKey="#{message.messageID}">
                             <p:ajax event="rowSelect" update=":output:singleTable"/>
-
-                            <p:column headerText="Id" width="40">
-                                <h:outputText value="#{message.messageID}"/>
-                            </p:column>
 
                             <p:column headerText="Sender">
                                 <h:outputText value="#{historyBean.getSender(message)}"/>
