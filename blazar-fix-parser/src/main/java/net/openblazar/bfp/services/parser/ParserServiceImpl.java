@@ -54,20 +54,4 @@ public class ParserServiceImpl implements ParserService {
         }
     }
 
-    public String getSender(FixMessage message) {
-        Optional<FixValue> sender = message.getField(FixField.SenderCompID);
-        return sender.isPresent() ? sender.get().getValue() : "Unknown";
-    }
-
-    public String getReceiver(FixMessage message) {
-        Optional<FixValue> receiver = message.getField(FixField.TargetCompID);
-        return receiver.isPresent() ? receiver.get().getValue() : "Unknown";
-    }
-
-    public String getSendingTime(FixMessage message) {
-        Optional<FixValue> sendingTime = message.getField(FixField.SendingTime);
-        return sendingTime.isPresent() ? sendingTime.get().getValue() : "Unknown";
-    }
-
-
 }

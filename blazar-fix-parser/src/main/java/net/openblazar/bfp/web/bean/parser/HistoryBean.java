@@ -1,6 +1,7 @@
 package net.openblazar.bfp.web.bean.parser;
 
 import com.google.inject.Inject;
+import net.openblazar.bfp.core.parser.util.FixUtilities;
 import net.openblazar.bfp.data.fix.FixMessage;
 import net.openblazar.bfp.data.user.UserDetails;
 import net.openblazar.bfp.services.parser.ParserService;
@@ -50,15 +51,15 @@ public class HistoryBean extends AbstractBean {
     }
 
     public String getSender(FixMessage message) {
-        return parserService.getSender(message);
+        return FixUtilities.getSender(message);
     }
 
     public String getReceiver(FixMessage message) {
-        return parserService.getReceiver(message);
+        return FixUtilities.getReceiver(message);
     }
 
     public String getSendingTime(FixMessage message) {
-        return parserService.getSendingTime(message);
+        return FixUtilities.getSendingTime(message);
     }
 
     @RequiresAuthentication
