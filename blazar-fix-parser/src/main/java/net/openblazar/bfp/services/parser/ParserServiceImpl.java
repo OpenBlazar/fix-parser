@@ -29,10 +29,15 @@ public class ParserServiceImpl implements ParserService {
     }
 
     @Override
-    public List<FixMessage> findMessagesById(UserDetails userDetails) {
+    public List<FixMessage> findMessagesByUser(UserDetails userDetails, int lowerLimit, int upperLimit) {
         return messageConverter.convertToFixMessages(
-                messageDAO.findMessageByUserID(userDetails.getUserID(), 100),
+                messageDAO.findMessageByUserID(userDetails.getUserID(), lowerLimit, upperLimit),
                 String.valueOf(FixMessageConverter.ENTRY_DELIMITER));
+    }
+
+    @Override
+    public int countUserMessages(UserDetails userDetails) {
+        return messageDAO.countUserMessages(userDetails.getUserID());
     }
 
     @Override
@@ -45,7 +50,7 @@ public class ParserServiceImpl implements ParserService {
         System.out.println(userDetails);
         System.out.println(messages);
         for (FixMessage message : messages) {
-                messageDAO.saveMessage(userDetails.getUserID(), message);
+            messageDAO.saveMessage(userDetails.getUserID(), message);
         }
     }
 
@@ -63,7 +68,6 @@ public class ParserServiceImpl implements ParserService {
         Optional<FixValue> sendingTime = message.getField(FixField.SendingTime);
         return sendingTime.isPresent() ? sendingTime.get().getValue() : "Unknown";
     }
-
 
 
 }

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<p:dialog id="messageDialog" widgetVar="messageDialog">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default" style="margin-top: 10px;">
+                <div class="panel-heading">First messages</div>
+                <div class="panel-body">
+                    <h:form id="firstTable">
+                        <p:dataTable id="singleTable1" var="entry" resizableColumns="true"
+                                     value="#{comparatorBean.selectedMessage_1.messageFields.entrySet().toArray()}">
+                            <p:column headerText="Tag" width="60">
+                                <h:outputText value="#{entry.key.tag}"/>
+                            </p:column>
+
+                            <p:column headerText="Name">
+                                <h:outputText value="#{entry.key}"/>
+                            </p:column>
+
+                            <p:column headerText="Value" width="100">
+                                <h:outputText value="#{entry.value.value}"/>
+                            </p:column>
+
+                            <p:column headerText="Description">
+                                <h:outputText value="#{entry.value.description}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-default" style="margin-top: 10px;">
+                <div class="panel-heading">Second messages</div>
+                <div class="panel-body">
+                    <h:form id="secondTable">
+                        <p:dataTable id="singleTable2" var="entry" resizableColumns="true"
+                                     value="#{comparatorBean.selectedMessage_2.messageFields.entrySet().toArray()}">
+                            <p:column headerText="Tag" width="60">
+                                <h:outputText value="#{entry.key.tag}"/>
+                            </p:column>
+
+                            <p:column headerText="Name">
+                                <h:outputText value="#{entry.key}"/>
+                            </p:column>
+
+                            <p:column headerText="Value" width="100">
+                                <h:outputText value="#{entry.value.value}"/>
+                            </p:column>
+
+                            <p:column headerText="Description">
+                                <h:outputText value="#{entry.value.description}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </div>
+</p:dialog>
+
+</html>

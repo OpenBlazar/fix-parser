@@ -63,12 +63,16 @@ public class FixMessageConverter {
     }
 
     public String convertToString(FixMessage fixMessage) {
+        return convertToString(fixMessage, ENTRY_DELIMITER);
+    }
+
+    public String convertToString(FixMessage fixMessage, char entryDelimiter) {
         StringBuilder builder = new StringBuilder();
         fixMessage.getMessageFields().entrySet().stream().forEach((entry) -> {
             builder.append(entry.getKey().getTag());
             builder.append(FIELD_DELIMITER);
             builder.append(entry.getValue().getValue());
-            builder.append(ENTRY_DELIMITER);
+            builder.append(entryDelimiter);
         });
         return builder.toString();
     }

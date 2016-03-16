@@ -14,13 +14,19 @@ import java.util.List;
  */
 public interface MessageDAO {
 
-    String SELECT_MESSAGES_BY_USER_ID = "SELECT message FROM " + Tables.MESSAGES + " WHERE user_id = #{userId.id} LIMIT #{limit}";
+    String SELECT_MESSAGES_BY_USER_ID = "SELECT message FROM " + Tables.MESSAGES + " WHERE user_id = #{userId.id} LIMIT #{lowerlimit}, #{upperlimit}";
+    String SELECT_NUMBER_OF_MSG_FROM_USER_ID = "SELECT count(*) FROM " + Tables.MESSAGES + " WHERE user_id = #{userId.id}";
     String INSERT_MESSAGE = "INSERT INTO " + Tables.MESSAGES + "(user_id, message) VALUES (#{userId.id}, #{message, typeHandler=net.openblazar.bfp.database.typehandlers.fix.FixMessageTypeHandler})";
+
+    @Select(SELECT_NUMBER_OF_MSG_FROM_USER_ID)
+    int countUserMessages(
+            @Param("userId") UserID userID);
 
     @Select(SELECT_MESSAGES_BY_USER_ID)
     List<String> findMessageByUserID(
             @Param("userId") UserID userID,
-            @Param("limit") int limit);
+            @Param("lowerlimit") int lowerLimit,
+            @Param("upperlimit") int upperLimit);
 
     @Insert(INSERT_MESSAGE)
     void saveMessage(
