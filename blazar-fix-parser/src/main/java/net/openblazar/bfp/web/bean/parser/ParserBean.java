@@ -1,7 +1,6 @@
 package net.openblazar.bfp.web.bean.parser;
 
 import net.openblazar.bfp.core.parser.util.FixParserConstants;
-import net.openblazar.bfp.core.parser.util.FixUtilities;
 import net.openblazar.bfp.data.fix.FixMessage;
 import net.openblazar.bfp.data.user.UserDetails;
 import net.openblazar.bfp.services.parser.ParserService;
@@ -60,22 +59,6 @@ public class ParserBean extends AbstractBean {
 
     public void doInjectSampleData() {
         input = FixParserConstants.SAMPLE_DATA;
-    }
-
-    public String getSender(FixMessage message) {
-        return FixUtilities.getSender(message);
-    }
-
-    public String getReceiver(FixMessage message) {
-       return FixUtilities.getReceiver(message);
-    }
-
-    public String getSendingTime(FixMessage message) {
-        return FixUtilities.getSendingTime(message);
-    }
-
-    public String getOrdStatusDescription(FixMessage message) {
-        return FixUtilities.getOrdStatusDescription(message);
     }
 
     public List<FixMessage> getMessages() {

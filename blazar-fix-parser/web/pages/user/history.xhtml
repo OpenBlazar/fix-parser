@@ -10,26 +10,30 @@
                 <div class="row">
                     <div class="col-md-7">
                         <p:dataTable id="messagesTable" var="message" value="#{historyBean.messagesModel}" resizableColumns="true"
-                                     lazy="true"
-                                     paginator="true" rows="50"
+                                     lazy="true" paginator="true" rows="20"
                                      paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                                      selectionMode="single" selection="#{historyBean.selectedMessage}" rowKey="#{message.messageID}">
                             <p:ajax event="rowSelect" update=":output:singleTable"/>
 
-                            <p:column headerText="Sender">
-                                <h:outputText value="#{historyBean.getSender(message)}"/>
+                            <p:column headerText="Sender" width="90">
+                                <h:outputText value="#{fixBean.getSender(message)}" style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="Receiver">
-                                <h:outputText value="#{historyBean.getReceiver(message)}"/>
+                            <p:column headerText="Receiver" width="90">
+                                <h:outputText value="#{fixBean.getReceiver(message)}" style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="Sending time">
-                                <h:outputText value="#{historyBean.getSendingTime(message)}"/>
+                            <p:column headerText="Sending time" width="120">
+                                <h:outputText value="#{fixBean.getSendingTime(message)}" style="font-size: 12px;"/>
                             </p:column>
 
                             <p:column headerText="MsgType">
-                                <h:outputText value="#{message.messageType}"/>
+                                <h:outputText value="#{message.messageType}" styleClass="#{styleBean.getStyleForMsgType(message.messageType)}" style="font-size: 12px;"/>
+                            </p:column>
+
+                            <p:column headerText="Summary" width="120">
+                                <h:outputText value="#{fixBean.getOrdStatusDescription(message)}"
+                                              styleClass="#{styleBean.getStyleForOrdStatus(message)}" style="font-size: 10px;"/>
                             </p:column>
                         </p:dataTable>
                     </div>
@@ -37,20 +41,20 @@
                     <div class="col-md-5">
                         <p:dataTable id="singleTable" var="entry" resizableColumns="true"
                                      value="#{historyBean.selectedMessage.messageFields.entrySet().toArray()}">
-                            <p:column headerText="Tag" width="60">
-                                <h:outputText value="#{entry.key.tag}"/>
+                            <p:column headerText="Tag" width="50">
+                                <h:outputText value="#{entry.key.tag}" style="font-size: 12px;"/>
                             </p:column>
 
                             <p:column headerText="Name">
-                                <h:outputText value="#{entry.key}"/>
+                                <h:outputText value="#{entry.key}" styleClass="#{styleBean.getStyleForField(entry.key)}" style="font-size: 12px;"/>
                             </p:column>
 
                             <p:column headerText="Value" width="100">
-                                <h:outputText value="#{entry.value.value}"/>
+                                <h:outputText value="#{entry.value.value}" style="font-size: 12px;"/>
                             </p:column>
 
                             <p:column headerText="Description">
-                                <h:outputText value="#{entry.value.description}"/>
+                                <h:outputText value="#{entry.value.description}" style="font-size: 12px;"/>
                             </p:column>
                         </p:dataTable>
                     </div>

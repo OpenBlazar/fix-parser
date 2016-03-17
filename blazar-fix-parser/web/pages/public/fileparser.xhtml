@@ -14,7 +14,8 @@
                                   dragDropSupport="true" multiple="false" sizeLimit="1000000"
                                   update=":output:messagesTable :comparator:accordion:firstMessage
                                    :comparator:accordion:secondMessage"
-                                  allowTypes="/(\.|\/)(txt|log)$/"/>
+                                  allowTypes="/(\.|\/)(txt|log)$/"
+                                  style="margin-bottom: 10px;" />
                 </h:form>
             </div>
         </div>
@@ -29,23 +30,28 @@
                             <p:ajax event="rowSelect" update=":output:singleTable"/>
 
                             <p:column headerText="Id" width="40">
-                                <h:outputText value="#{message.messageID}"/>
+                                <h:outputText value="#{message.messageID}" style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="Sender">
-                                <h:outputText value="#{fileParserBean.getSender(message)}"/>
+                            <p:column headerText="Sender" width="90">
+                                <h:outputText value="#{fixBean.getSender(message)}" style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="Receiver">
-                                <h:outputText value="#{fileParserBean.getReceiver(message)}"/>
+                            <p:column headerText="Receiver" width="90">
+                                <h:outputText value="#{fixBean.getReceiver(message)}" style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="Sending time">
-                                <h:outputText value="#{fileParserBean.getSendingTime(message)}"/>
+                            <p:column headerText="Sending time" width="120">
+                                <h:outputText value="#{fixBean.getSendingTime(message)}" style="font-size: 12px;"/>
                             </p:column>
 
                             <p:column headerText="MsgType">
-                                <h:outputText value="#{message.messageType}"/>
+                                <h:outputText value="#{message.messageType}" styleClass="#{styleBean.getStyleForMsgType(message.messageType)}" style="font-size: 12px;"/>
+                            </p:column>
+
+                            <p:column headerText="Summary" width="120">
+                                <h:outputText value="#{fixBean.getOrdStatusDescription(message)}"
+                                              styleClass="#{styleBean.getStyleForOrdStatus(message)}" style="font-size: 10px;"/>
                             </p:column>
                         </p:dataTable>
                     </div>
@@ -53,20 +59,20 @@
                     <div class="col-md-5">
                         <p:dataTable id="singleTable" var="entry" resizableColumns="true"
                                      value="#{fileParserBean.selectedMessage.messageFields.entrySet().toArray()}">
-                            <p:column headerText="Tag" width="60">
-                                <h:outputText value="#{entry.key.tag}"/>
+                            <p:column headerText="Tag" width="50">
+                                <h:outputText value="#{entry.key.tag}" style="font-size: 12px;"/>
                             </p:column>
 
                             <p:column headerText="Name">
-                                <h:outputText value="#{entry.key}"/>
+                                <h:outputText value="#{entry.key}" styleClass="#{styleBean.getStyleForField(entry.key)}" style="font-size: 12px;"/>
                             </p:column>
 
                             <p:column headerText="Value" width="100">
-                                <h:outputText value="#{entry.value.value}"/>
+                                <h:outputText value="#{entry.value.value}" style="font-size: 12px;"/>
                             </p:column>
 
                             <p:column headerText="Description">
-                                <h:outputText value="#{entry.value.description}"/>
+                                <h:outputText value="#{entry.value.description}" style="font-size: 12px;"/>
                             </p:column>
                         </p:dataTable>
                     </div>
@@ -110,20 +116,20 @@
 
                                     <p:dataTable id="singleTable1" var="entry" resizableColumns="true"
                                                  value="#{comparatorBean.selectedMessage_1.messageFields.entrySet().toArray()}">
-                                        <p:column headerText="Tag" width="60">
-                                            <h:outputText value="#{entry.key.tag}"/>
+                                        <p:column headerText="Tag" width="50">
+                                            <h:outputText value="#{entry.key.tag}" style="font-size: 12px;"/>
                                         </p:column>
 
                                         <p:column headerText="Name">
-                                            <h:outputText value="#{entry.key}"/>
+                                            <h:outputText value="#{entry.key}" styleClass="#{styleBean.getStyleForField(entry.key)}" style="font-size: 12px;"/>
                                         </p:column>
 
                                         <p:column headerText="Value" width="100">
-                                            <h:outputText value="#{entry.value.value}"/>
+                                            <h:outputText value="#{entry.value.value}" style="font-size: 12px;"/>
                                         </p:column>
 
                                         <p:column headerText="Description">
-                                            <h:outputText value="#{entry.value.description}"/>
+                                            <h:outputText value="#{entry.value.description}" style="font-size: 12px;"/>
                                         </p:column>
                                     </p:dataTable>
 
@@ -137,20 +143,20 @@
                                 <div class="panel-body">
                                     <p:dataTable id="singleTable2" var="entry" resizableColumns="true"
                                                  value="#{comparatorBean.selectedMessage_2.messageFields.entrySet().toArray()}">
-                                        <p:column headerText="Tag" width="60">
-                                            <h:outputText value="#{entry.key.tag}"/>
+                                        <p:column headerText="Tag" width="50">
+                                            <h:outputText value="#{entry.key.tag}" style="font-size: 12px;"/>
                                         </p:column>
 
                                         <p:column headerText="Name">
-                                            <h:outputText value="#{entry.key}"/>
+                                            <h:outputText value="#{entry.key}" styleClass="#{styleBean.getStyleForField(entry.key)}" style="font-size: 12px;"/>
                                         </p:column>
 
                                         <p:column headerText="Value" width="100">
-                                            <h:outputText value="#{entry.value.value}"/>
+                                            <h:outputText value="#{entry.value.value}" style="font-size: 12px;"/>
                                         </p:column>
 
                                         <p:column headerText="Description">
-                                            <h:outputText value="#{entry.value.description}"/>
+                                            <h:outputText value="#{entry.value.description}" style="font-size: 12px;"/>
                                         </p:column>
                                     </p:dataTable>
                                 </div>
