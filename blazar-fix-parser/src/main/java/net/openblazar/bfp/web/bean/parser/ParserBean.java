@@ -57,7 +57,7 @@ public class ParserBean extends AbstractBean {
             }
         }
     }
-    
+
     public void doInjectSampleData() {
         input = FixParserConstants.SAMPLE_DATA;
     }
