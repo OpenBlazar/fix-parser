@@ -12,7 +12,8 @@
                     <p:fileUpload fileUploadListener="#{fileParserBean.handleFileUpload}" required="true"
                                   mode="advanced"
                                   dragDropSupport="true" multiple="false" sizeLimit="1000000"
-                                  update=":output:messagesTable"
+                                  update=":output:messagesTable :comparator:accordion:firstMessage
+                                   :comparator:accordion:secondMessage"
                                   allowTypes="/(\.|\/)(txt|log)$/"/>
                 </h:form>
             </div>
@@ -73,91 +74,92 @@
             </h:form>
         </div>
 
-        <div class="panel panel-default" style="margin-top: 10px;">
-            <div class="panel-heading">Compare messages</div>
-            <div class="panel-body">
-                <h:form id="comparator">
+        <h:form id="comparator">
+            <p:accordionPanel id="accordion" style="margin-top: 10px;" activeIndex="null">
+                <p:tab title="Comparator" closable="true">
+
                     <p:outputLabel for="firstMessage" value="First message: " style="padding-right: 5px;"/>
                     <p:selectOneMenu id="firstMessage" value="#{comparatorBean.selectedMessage_1}"
                                      converter="fixMessageConverter"
                                      styleClass=".ui-selectonemenu-panel" update=":firstTable :secondTable"
                                      style="width:200px; padding-right: 0px; margin-right: 10px;">
-                        <f:selectItem itemLabel="-- Select FIX Message --" />
-                        <f:selectItems value="#{parserBean.messages}" var="messageVar"
+                        <f:selectItem itemLabel="-- Select FIX Message --"/>
+                        <f:selectItems value="#{fileParserBean.messages}" var="messageVar"
                                        itemLabel="#{messageVar.messageID}" itemValue="#{messageVar}"/>
                     </p:selectOneMenu>
 
-                    <p:outputLabel for="secondMessage" value="Second message: " style="padding-right: 5px;"/>
+                    <p:outputLabel for="secondMessage" value="Second message: "
+                                   style="padding-right: 5px;"/>
                     <p:selectOneMenu id="secondMessage" value="#{comparatorBean.selectedMessage_2}"
                                      converter="fixMessageConverter"
                                      styleClass=".ui-selectonemenu-panel" update=":firstTable :secondTable"
                                      style="width:200px; padding-right: 0px; padding-left: 0px; margin-right: 10px;">
-                        <f:selectItem itemLabel="-- Select FIX Message --" />
-                        <f:selectItems value="#{parserBean.messages}" var="messageVar"
+                        <f:selectItem itemLabel="-- Select FIX Message --"/>
+                        <f:selectItems value="#{fileParserBean.messages}" var="messageVar"
                                        itemLabel="#{messageVar.messageID}" itemValue="#{messageVar}"/>
                     </p:selectOneMenu>
 
-                    <p:commandButton value="Compare" id="compare" update=":compareTables:singleTable1 :compareTables:singleTable2"
-                                     styleClass="btn btn-primary btn-blazar-menu"/>
-                </h:form>
-            </div>
-        </div>
-        <h:form id="compareTables">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="panel panel-default" style="margin-top: 10px;">
-                        <div class="panel-heading">First messages</div>
-                        <div class="panel-body">
+                    <p:commandButton value="Compare" id="compare"
+                                     update="singleTable1 singleTable2"/>
 
-                            <p:dataTable id="singleTable1" var="entry" resizableColumns="true"
-                                         value="#{comparatorBean.selectedMessage_1.messageFields.entrySet().toArray()}">
-                                <p:column headerText="Tag" width="60">
-                                    <h:outputText value="#{entry.key.tag}"/>
-                                </p:column>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel panel-default" style="margin-top: 10px;">
+                                <div class="panel-heading">First messages</div>
+                                <div class="panel-body">
 
-                                <p:column headerText="Name">
-                                    <h:outputText value="#{entry.key}"/>
-                                </p:column>
+                                    <p:dataTable id="singleTable1" var="entry" resizableColumns="true"
+                                                 value="#{comparatorBean.selectedMessage_1.messageFields.entrySet().toArray()}">
+                                        <p:column headerText="Tag" width="60">
+                                            <h:outputText value="#{entry.key.tag}"/>
+                                        </p:column>
 
-                                <p:column headerText="Value" width="100">
-                                    <h:outputText value="#{entry.value.value}"/>
-                                </p:column>
+                                        <p:column headerText="Name">
+                                            <h:outputText value="#{entry.key}"/>
+                                        </p:column>
 
-                                <p:column headerText="Description">
-                                    <h:outputText value="#{entry.value.description}"/>
-                                </p:column>
-                            </p:dataTable>
+                                        <p:column headerText="Value" width="100">
+                                            <h:outputText value="#{entry.value.value}"/>
+                                        </p:column>
 
+                                        <p:column headerText="Description">
+                                            <h:outputText value="#{entry.value.description}"/>
+                                        </p:column>
+                                    </p:dataTable>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="panel panel-default" style="margin-top: 10px;">
+                                <div class="panel-heading">Second messages</div>
+                                <div class="panel-body">
+                                    <p:dataTable id="singleTable2" var="entry" resizableColumns="true"
+                                                 value="#{comparatorBean.selectedMessage_2.messageFields.entrySet().toArray()}">
+                                        <p:column headerText="Tag" width="60">
+                                            <h:outputText value="#{entry.key.tag}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Name">
+                                            <h:outputText value="#{entry.key}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Value" width="100">
+                                            <h:outputText value="#{entry.value.value}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Description">
+                                            <h:outputText value="#{entry.value.description}"/>
+                                        </p:column>
+                                    </p:dataTable>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="panel panel-default" style="margin-top: 10px;">
-                        <div class="panel-heading">Second messages</div>
-                        <div class="panel-body">
-                            <p:dataTable id="singleTable2" var="entry" resizableColumns="true"
-                                         value="#{comparatorBean.selectedMessage_2.messageFields.entrySet().toArray()}">
-                                <p:column headerText="Tag" width="60">
-                                    <h:outputText value="#{entry.key.tag}"/>
-                                </p:column>
-
-                                <p:column headerText="Name">
-                                    <h:outputText value="#{entry.key}"/>
-                                </p:column>
-
-                                <p:column headerText="Value" width="100">
-                                    <h:outputText value="#{entry.value.value}"/>
-                                </p:column>
-
-                                <p:column headerText="Description">
-                                    <h:outputText value="#{entry.value.description}"/>
-                                </p:column>
-                            </p:dataTable>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                </p:tab>
+            </p:accordionPanel>
         </h:form>
+
     </ui:define>
 </ui:composition>

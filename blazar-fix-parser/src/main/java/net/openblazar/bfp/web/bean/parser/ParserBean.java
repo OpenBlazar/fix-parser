@@ -16,9 +16,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Wojciech Zankowski
@@ -59,16 +57,7 @@ public class ParserBean extends AbstractBean {
             }
         }
     }
-
-    public void doCompare() {
-
-        Map<String, Object> options = new HashMap<>();
-        options.put("resizable", false);
-        options.put("draggable", false);
-        options.put("modal", true);
-        LOGGER.info("Comparing messages: ");
-    }
-
+    
     public void doInjectSampleData() {
         input = FixParserConstants.SAMPLE_DATA;
     }
