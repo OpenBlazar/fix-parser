@@ -1,4 +1,4 @@
-package net.openblazar.bfp.web.bean.parser;
+package net.openblazar.bfp.web.bean.help;
 
 import net.openblazar.bfp.core.parser.util.FixUtilities;
 import net.openblazar.bfp.data.fix.FixField;

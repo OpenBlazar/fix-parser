@@ -34,15 +34,15 @@
                         </p:column>
 
                         <p:column headerText="Sender" width="90">
-                            <h:outputText value="#{parserBean.getSender(message)}" style="font-size: 12px;"/>
+                            <h:outputText value="#{fixBean.getSender(message)}" style="font-size: 12px;"/>
                         </p:column>
 
                         <p:column headerText="Receiver" width="90">
-                            <h:outputText value="#{parserBean.getReceiver(message)}" style="font-size: 12px;"/>
+                            <h:outputText value="#{fixBean.getReceiver(message)}" style="font-size: 12px;"/>
                         </p:column>
 
                         <p:column headerText="Sending time" width="120">
-                            <h:outputText value="#{parserBean.getSendingTime(message)}" style="font-size: 12px;"/>
+                            <h:outputText value="#{fixBean.getSendingTime(message)}" style="font-size: 12px;"/>
                         </p:column>
 
                         <p:column headerText="MsgType">
@@ -50,7 +50,7 @@
                         </p:column>
 
                         <p:column headerText="Summary" width="120">
-                            <h:outputText value="#{parserBean.getOrdStatusDescription(message)}"
+                            <h:outputText value="#{fixBean.getOrdStatusDescription(message)}"
                                           styleClass="#{styleBean.getStyleForOrdStatus(message)}" style="font-size: 10px;"/>
                         </p:column>
                     </p:dataTable>
