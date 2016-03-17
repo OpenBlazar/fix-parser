@@ -3,14 +3,11 @@ package net.openblazar.bfp.services.parser;
 import com.google.inject.Inject;
 import net.openblazar.bfp.core.parser.FixParser;
 import net.openblazar.bfp.core.parser.util.FixMessageConverter;
-import net.openblazar.bfp.data.fix.FixField;
 import net.openblazar.bfp.data.fix.FixMessage;
-import net.openblazar.bfp.data.fix.FixValue;
 import net.openblazar.bfp.data.user.UserDetails;
 import net.openblazar.bfp.database.dao.MessageDAO;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author Wojciech Zankowski
@@ -47,8 +44,6 @@ public class ParserServiceImpl implements ParserService {
 
     @Override
     public void saveMessages(UserDetails userDetails, List<FixMessage> messages) {
-        System.out.println(userDetails);
-        System.out.println(messages);
         for (FixMessage message : messages) {
             messageDAO.saveMessage(userDetails.getUserID(), message);
         }

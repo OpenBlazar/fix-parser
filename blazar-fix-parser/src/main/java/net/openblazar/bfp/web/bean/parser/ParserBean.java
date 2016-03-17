@@ -74,6 +74,10 @@ public class ParserBean extends AbstractBean {
         return FixUtilities.getSendingTime(message);
     }
 
+    public String getOrdStatusDescription(FixMessage message) {
+        return FixUtilities.getOrdStatusDescription(message);
+    }
+
     public List<FixMessage> getMessages() {
         return messages;
     }
@@ -83,7 +87,6 @@ public class ParserBean extends AbstractBean {
     }
 
     public void setSelectedMessage(FixMessage selectedMessage) {
-        System.out.println(selectedMessage);
         this.selectedMessage = selectedMessage;
     }
 
