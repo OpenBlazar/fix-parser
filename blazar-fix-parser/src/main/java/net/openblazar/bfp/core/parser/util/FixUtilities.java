@@ -26,4 +26,14 @@ public class FixUtilities {
         return sendingTime.isPresent() ? sendingTime.get().getValue() : "Unknown";
     }
 
+    public static String getOrdStatus(FixMessage message) {
+        Optional<FixValue> ordStatus = message.getField(FixField.OrdStatus);
+        return ordStatus.isPresent() ? ordStatus.get().getValue() : "";
+    }
+
+    public static String getOrdStatusDescription(FixMessage message) {
+        Optional<FixValue> ordStatus = message.getField(FixField.OrdStatus);
+        return ordStatus.isPresent() ? ordStatus.get().getDescription() : "";
+    }
+
 }
