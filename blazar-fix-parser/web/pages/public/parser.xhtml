@@ -7,16 +7,19 @@
 >
     <ui:define name="content">
         <h:form id="input">
-            <p:inputTextarea id="inputArea" rows="10" cols="160" autoResize="false"
-                             value="#{parserBean.input}"/>
-
-            <p:commandButton value="Sample data" id="sample" action="#{parserBean.doInjectSampleData}"
-                             update="inputArea" styleClass="btn btn-primary btn-blazar-menu"
-                             style="margin-bottom: 10px;"/>
-            <p:commandButton value="Submit" id="submit" action="#{parserBean.doParse(parserBean.input)}"
-                             update=":output:messagesTable :comparator:accordion:firstMessage
+            <div class="content">
+                <p:inputTextarea id="inputArea" rows="10" cols="178" autoResize="false"
+                                 value="#{parserBean.input}"/>
+            </div>
+            <div class="content">
+                <p:commandButton value="Sample data" id="sample" action="#{parserBean.doInjectSampleData}"
+                                 update="inputArea" styleClass="btn btn-primary btn-blazar-menu"
+                                 style="margin-bottom: 10px;"/>
+                <p:commandButton value="Submit" id="submit" action="#{parserBean.doParse(parserBean.input)}"
+                                 update=":output:messagesTable :comparator:accordion:firstMessage
                                    :comparator:accordion:secondMessage"
-                             styleClass="btn btn-primary btn-blazar-menu" style="margin-bottom: 10px;"/>
+                                 styleClass="btn btn-primary btn-blazar-menu" style="margin-bottom: 10px;"/>
+            </div>
         </h:form>
         <h:form id="output">
             <div class="row">
@@ -27,23 +30,23 @@
                         <p:ajax event="rowSelect" update=":output:singleTable"/>
 
                         <p:column headerText="Id" width="40">
-                            <h:outputText value="#{message.messageID}"/>
+                            <h:outputText value="#{message.messageID}" style="font-size: 12px;"/>
                         </p:column>
 
                         <p:column headerText="Sender">
-                            <h:outputText value="#{parserBean.getSender(message)}"/>
+                            <h:outputText value="#{parserBean.getSender(message)}" style="font-size: 12px;"/>
                         </p:column>
 
                         <p:column headerText="Receiver">
-                            <h:outputText value="#{parserBean.getReceiver(message)}"/>
+                            <h:outputText value="#{parserBean.getReceiver(message)}" style="font-size: 12px;"/>
                         </p:column>
 
                         <p:column headerText="Sending time">
-                            <h:outputText value="#{parserBean.getSendingTime(message)}"/>
+                            <h:outputText value="#{parserBean.getSendingTime(message)}" style="font-size: 12px;"/>
                         </p:column>
 
                         <p:column headerText="MsgType">
-                            <h:outputText value="#{message.messageType}"/>
+                            <h:outputText value="#{message.messageType}" style="font-size: 12px;"/>
                         </p:column>
                     </p:dataTable>
                 </div>
@@ -51,20 +54,20 @@
                 <div class="col-md-5">
                     <p:dataTable id="singleTable" var="entry" resizableColumns="true"
                                  value="#{parserBean.selectedMessage.messageFields.entrySet().toArray()}">
-                        <p:column headerText="Tag" width="60">
-                            <h:outputText value="#{entry.key.tag}"/>
+                        <p:column headerText="Tag" width="50">
+                            <h:outputText value="#{entry.key.tag}" style="font-size: 12px;"/>
                         </p:column>
 
                         <p:column headerText="Name">
-                            <h:outputText value="#{entry.key}"/>
+                            <h:outputText value="#{entry.key}" style="font-size: 12px;"/>
                         </p:column>
 
                         <p:column headerText="Value" width="100">
-                            <h:outputText value="#{entry.value.value}"/>
+                            <h:outputText value="#{entry.value.value}" style="font-size: 12px;"/>
                         </p:column>
 
                         <p:column headerText="Description">
-                            <h:outputText value="#{entry.value.description}"/>
+                            <h:outputText value="#{entry.value.description}" style="font-size: 12px;"/>
                         </p:column>
                     </p:dataTable>
                 </div>
@@ -102,7 +105,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="panel panel-default" style="margin-top: 10px;">
-                                <div class="panel-heading">First messages</div>
+                                <div class="panel-heading">First message</div>
                                 <div class="panel-body">
 
                                     <p:dataTable id="singleTable1" var="entry" resizableColumns="true"
@@ -130,7 +133,7 @@
 
                         <div class="col-md-6">
                             <div class="panel panel-default" style="margin-top: 10px;">
-                                <div class="panel-heading">Second messages</div>
+                                <div class="panel-heading">Second message</div>
                                 <div class="panel-body">
                                     <p:dataTable id="singleTable2" var="entry" resizableColumns="true"
                                                  value="#{comparatorBean.selectedMessage_2.messageFields.entrySet().toArray()}">
