@@ -48,4 +48,12 @@ public class FixMessageFactory {
         return messages;
     }
 
+    public FixMessage createFixMessage(String sendingTime, String sender, String target) {
+        Map<FixField, FixValue> msgFields = new HashMap<>();
+        msgFields.put(FixField.SendingTime, new FixValue(sendingTime));
+        msgFields.put(FixField.SenderCompID, new FixValue(sender));
+        msgFields.put(FixField.TargetCompID, new FixValue(target));
+        return new FixMessage(0L, FixVersion.FIX_50, MsgType.ExecutionReport, msgFields);
+    }
+
 }
