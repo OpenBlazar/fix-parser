@@ -39,12 +39,7 @@ public enum OrdStatus {
     }
 
     public static String getDescriptionFromValue(String value) {
-        for (OrdStatus status : values()) {
-            if (status.getValue().equals(value)) {
-                return status.getDescription();
-            }
-        }
-        return Unknown.getDescription();
+        return getOrdStatusFromValue(value).getDescription();
     }
 
     public static OrdStatus getOrdStatusFromValue(String value) {
