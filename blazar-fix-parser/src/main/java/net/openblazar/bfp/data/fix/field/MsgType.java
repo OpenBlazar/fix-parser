@@ -144,11 +144,7 @@ public enum MsgType {
     }
 
     public static String getDescriptionFromValue(String value) {
-        MsgType msgType = map.get(value);
-        if (msgType == null) {
-            return Unknown.name();
-        }
-        return msgType.name();
+        return getMsgTypeFromValue(value).name();
     }
 
 }
