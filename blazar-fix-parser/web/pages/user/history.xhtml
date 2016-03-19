@@ -12,7 +12,8 @@
                         <p:dataTable id="messagesTable" var="message" value="#{historyBean.messagesModel}" resizableColumns="true"
                                      lazy="true" paginator="true" rows="20"
                                      paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                                     selectionMode="single" selection="#{historyBean.selectedMessage}" rowKey="#{message.messageID}">
+                                     selectionMode="single" selection="#{historyBean.selectedMessage}" rowKey="#{message.messageID}"
+                                     tableStyle="width:auto">
                             <p:ajax event="rowSelect" update=":output:singleTable"/>
 
                             <p:column headerText="Sender" width="90">
@@ -40,7 +41,8 @@
 
                     <div class="col-md-5">
                         <p:dataTable id="singleTable" var="entry" resizableColumns="true"
-                                     value="#{historyBean.selectedMessage.messageFields.entrySet().toArray()}">
+                                     value="#{historyBean.selectedMessage.messageFields.entrySet().toArray()}"
+                                     tableStyle="width:auto">
                             <p:column headerText="Tag" width="50">
                                 <h:outputText value="#{entry.key.tag}" style="font-size: 12px;"/>
                             </p:column>

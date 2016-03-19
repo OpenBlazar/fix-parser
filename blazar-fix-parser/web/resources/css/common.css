@@ -90,7 +90,7 @@ table .formColumn2 .ui-datepicker-trigger {
 
 .fieldcolumn {
     display:inline-block;
-    padding:6px 12px;
+    padding:1px 2px;
     margin-bottom:0;
     font-size:14px;
     font-weight:400;
@@ -100,10 +100,7 @@ table .formColumn2 .ui-datepicker-trigger {
     vertical-align:middle;
     -ms-touch-action:manipulation;
     touch-action:manipulation;
-    -webkit-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
-    user-select:none;
+
     background-image:none;
     border:1px solid transparent;
     border-radius:4px;

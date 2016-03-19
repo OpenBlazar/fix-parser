@@ -26,7 +26,7 @@
                 <div class="col-md-7">
                     <p:dataTable id="messagesTable" var="message" value="#{parserBean.messages}" resizableColumns="true"
                                  selectionMode="single" selection="#{parserBean.selectedMessage}"
-                                 rowKey="#{message.messageID}">
+                                 rowKey="#{message.messageID}" tableStyle="width:auto">
                         <p:ajax event="rowSelect" update=":output:singleTable"/>
 
                         <p:column headerText="Id" width="40">
@@ -41,7 +41,7 @@
                             <h:outputText value="#{fixBean.getReceiver(message)}" style="font-size: 12px;"/>
                         </p:column>
 
-                        <p:column headerText="Sending time" width="120">
+                        <p:column headerText="Sending time" width="150">
                             <h:outputText value="#{fixBean.getSendingTime(message)}" style="font-size: 12px;"/>
                         </p:column>
 
@@ -58,16 +58,17 @@
 
                 <div class="col-md-5">
                     <p:dataTable id="singleTable" var="entry" resizableColumns="true"
-                                 value="#{parserBean.selectedMessage.messageFields.entrySet().toArray()}">
+                                 value="#{parserBean.selectedMessage.messageFields.entrySet().toArray()}"
+                                 tableStyle="width:auto">
                         <p:column headerText="Tag" width="50">
                             <h:outputText value="#{entry.key.tag}" style="font-size: 12px;"/>
                         </p:column>
 
-                        <p:column headerText="Name">
+                        <p:column headerText="Name" width="130">
                             <h:outputText value="#{entry.key}" styleClass="#{styleBean.getStyleForField(entry.key)}" style="font-size: 12px;"/>
                         </p:column>
 
-                        <p:column headerText="Value" width="100">
+                        <p:column headerText="Value" width="32%">
                             <h:outputText value="#{entry.value.value}" style="font-size: 12px;"/>
                         </p:column>
 
@@ -114,7 +115,8 @@
                                 <div class="panel-body">
 
                                     <p:dataTable id="singleTable1" var="entry" resizableColumns="true"
-                                                 value="#{comparatorBean.selectedMessage_1.messageFields.entrySet().toArray()}">
+                                                 value="#{comparatorBean.selectedMessage_1.messageFields.entrySet().toArray()}"
+                                                 tableStyle="width:auto">
                                         <p:column headerText="Tag" width="50">
                                             <h:outputText value="#{entry.key.tag}" style="font-size: 12px;"/>
                                         </p:column>
@@ -141,7 +143,8 @@
                                 <div class="panel-heading">Second message</div>
                                 <div class="panel-body">
                                     <p:dataTable id="singleTable2" var="entry" resizableColumns="true"
-                                                 value="#{comparatorBean.selectedMessage_2.messageFields.entrySet().toArray()}">
+                                                 value="#{comparatorBean.selectedMessage_2.messageFields.entrySet().toArray()}"
+                                                 tableStyle="width:auto">
                                         <p:column headerText="Tag" width="50">
                                             <h:outputText value="#{entry.key.tag}" style="font-size: 12px;"/>
                                         </p:column>
