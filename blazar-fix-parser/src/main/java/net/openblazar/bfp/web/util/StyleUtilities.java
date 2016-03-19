@@ -31,6 +31,9 @@ public class StyleUtilities {
             case OrdType:
             case Side:
             case TimeInForce:
+            case CxlRejReason:
+            case OrdRejReason:
+            case ExecType:
                 return "fieldcolumn fieldcolumn-blue";
             default:
                 return "fieldcolumn fieldcolumn-grey";

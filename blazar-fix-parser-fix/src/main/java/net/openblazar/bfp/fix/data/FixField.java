@@ -110,8 +110,8 @@ public enum FixField {
     StopPx(99),
     ExDestination(100),
     NotDefined(101),
-    CxlRejReason(102),
-    OrdRejReason(103),
+    CxlRejReason(102, net.openblazar.bfp.fix.data.field.CxlRejReason::getDescriptionFromValue),
+    OrdRejReason(103, net.openblazar.bfp.fix.data.field.OrdRejReason::getDescriptionFromValue),
     IOIQualifier(104),
     WaveNo(105),
     Issuer(106),
@@ -158,7 +158,7 @@ public enum FixField {
     Subject(147),
     Headline(148),
     URLLink(149),
-    ExecType(150),
+    ExecType(150, net.openblazar.bfp.fix.data.field.ExecType::getDescriptionFromValue),
     LeavesQty(151),
     CashOrderQty(152),
     AllocAvgPx(153),
@@ -1145,6 +1145,14 @@ public enum FixField {
     Unknown(-1);
 
     private static final Map<Integer, FixField> map;
+
+    static {
+        map = new HashMap<>();
+        for (FixField field : values()) {
+            map.put(field.getTag(), field);
+        }
+    }
+
     private final int tag;
     private final Function<String, String> valueFunction;
 
@@ -1168,13 +1176,6 @@ public enum FixField {
 
     public String getValueDescription(String value) {
         return valueFunction.apply(value);
-    }
-
-    static {
-        map = new HashMap<>();
-        for (FixField field : values()) {
-            map.put(field.getTag(), field);
-        }
     }
 
 }
