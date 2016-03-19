@@ -17,12 +17,7 @@
 
         <dependency>
             <groupId>net.openblazar</groupId>
-            <artifactId>blazar-fix-parser-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>net.openblazar</groupId>
-            <artifactId>blazar-fix-parser-common</artifactId>
+            <artifactId>blazar-fix-parser-fix</artifactId>
         </dependency>
 
         <!-- libraries -->

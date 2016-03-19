@@ -1,7 +1,7 @@
 package net.openblazar.bfp.web.bean.help;
 
-import net.openblazar.bfp.core.parser.util.FixUtilities;
-import net.openblazar.bfp.data.fix.FixMessage;
+import net.openblazar.bfp.fix.data.FixMessage;
+import net.openblazar.bfp.fix.parser.util.FixUtilities;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;

@@ -1,8 +1,8 @@
 package net.openblazar.bfp.web.bean.parser;
 
 import com.google.inject.Inject;
-import net.openblazar.bfp.data.fix.FixMessage;
 import net.openblazar.bfp.data.user.UserDetails;
+import net.openblazar.bfp.fix.data.FixMessage;
 import net.openblazar.bfp.services.parser.ParserService;
 import net.openblazar.bfp.web.bean.AbstractBean;
 import net.openblazar.bfp.web.model.FixMessageLazyDataModel;

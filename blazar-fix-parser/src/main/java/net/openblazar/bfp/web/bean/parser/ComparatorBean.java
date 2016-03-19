@@ -1,6 +1,6 @@
 package net.openblazar.bfp.web.bean.parser;
 
-import net.openblazar.bfp.data.fix.FixMessage;
+import net.openblazar.bfp.fix.data.FixMessage;
 import net.openblazar.bfp.web.bean.AbstractBean;
 
 import javax.faces.bean.ManagedBean;

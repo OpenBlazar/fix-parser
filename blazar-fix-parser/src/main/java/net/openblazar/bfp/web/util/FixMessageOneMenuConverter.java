@@ -1,7 +1,7 @@
 package net.openblazar.bfp.web.util;
 
-import net.openblazar.bfp.core.parser.util.FixMessageConverter;
-import net.openblazar.bfp.data.fix.FixMessage;
+import net.openblazar.bfp.fix.data.FixMessage;
+import net.openblazar.bfp.fix.parser.util.FixMessageConverter;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;

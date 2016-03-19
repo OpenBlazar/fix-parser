@@ -1,7 +1,7 @@
 package net.openblazar.bfp.database.typehandlers.fix;
 
-import net.openblazar.bfp.core.parser.util.FixMessageConverter;
-import net.openblazar.bfp.data.fix.FixMessage;
+import net.openblazar.bfp.fix.data.FixMessage;
+import net.openblazar.bfp.fix.parser.util.FixMessageConverter;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandler;
 

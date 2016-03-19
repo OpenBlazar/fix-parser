@@ -1,8 +1,8 @@
 package net.openblazar.bfp.web.bean.parser;
 
-import net.openblazar.bfp.core.parser.util.FixParserConstants;
-import net.openblazar.bfp.data.fix.FixMessage;
 import net.openblazar.bfp.data.user.UserDetails;
+import net.openblazar.bfp.fix.data.FixMessage;
+import net.openblazar.bfp.fix.parser.util.FixParserConstants;
 import net.openblazar.bfp.services.parser.ParserService;
 import net.openblazar.bfp.web.bean.AbstractBean;
 import org.apache.shiro.SecurityUtils;

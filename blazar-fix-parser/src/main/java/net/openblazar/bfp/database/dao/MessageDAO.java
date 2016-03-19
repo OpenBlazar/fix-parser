@@ -1,8 +1,8 @@
 package net.openblazar.bfp.database.dao;
 
-import net.openblazar.bfp.data.fix.FixMessage;
 import net.openblazar.bfp.data.user.UserID;
 import net.openblazar.bfp.database.utils.Tables;
+import net.openblazar.bfp.fix.data.FixMessage;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

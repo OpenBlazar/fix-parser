@@ -79,8 +79,7 @@
 
     <modules>
         <module>blazar-fix-parser</module>
-        <module>blazar-fix-parser-core</module>
-        <module>blazar-fix-parser-common</module>
+        <module>blazar-fix-parser-fix</module>
     </modules>
 
     <dependencyManagement>
@@ -96,13 +95,7 @@
 
             <dependency>
                 <groupId>net.openblazar</groupId>
-                <artifactId>blazar-fix-parser-core</artifactId>
-                <version>${bfp.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>net.openblazar</groupId>
-                <artifactId>blazar-fix-parser-common</artifactId>
+                <artifactId>blazar-fix-parser-fix</artifactId>
                 <version>${bfp.version}</version>
             </dependency>
 

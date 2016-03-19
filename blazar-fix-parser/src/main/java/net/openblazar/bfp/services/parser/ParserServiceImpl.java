@@ -1,11 +1,11 @@
 package net.openblazar.bfp.services.parser;
 
 import com.google.inject.Inject;
-import net.openblazar.bfp.core.parser.FixParser;
-import net.openblazar.bfp.core.parser.util.FixMessageConverter;
-import net.openblazar.bfp.data.fix.FixMessage;
 import net.openblazar.bfp.data.user.UserDetails;
 import net.openblazar.bfp.database.dao.MessageDAO;
+import net.openblazar.bfp.fix.data.FixMessage;
+import net.openblazar.bfp.fix.parser.FixParser;
+import net.openblazar.bfp.fix.parser.util.FixMessageConverter;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
 package net.openblazar.bfp.web.util;
 
-import net.openblazar.bfp.data.fix.FixField;
-import net.openblazar.bfp.data.fix.field.MsgType;
-import net.openblazar.bfp.data.fix.field.OrdStatus;
+import net.openblazar.bfp.fix.data.FixField;
+import net.openblazar.bfp.fix.data.field.MsgType;
+import net.openblazar.bfp.fix.data.field.OrdStatus;
 
 /**
  * @author Wojciech Zankowski
