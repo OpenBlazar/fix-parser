@@ -3,7 +3,7 @@ package net.openblazar.bfp.web.bean.user;
 import net.openblazar.bfp.web.bean.AbstractBean;
 import net.openblazar.bfp.web.util.BlazarURL;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.*;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +12,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import java.io.IOException;
 
 /**
  * @author Wojciech Zankowski
@@ -41,18 +40,8 @@ public class LoginBean extends AbstractBean {
 
                 FacesContext.getCurrentInstance().getExternalContext().redirect(BlazarURL.HOME_URL);
             }
-        } catch (UnknownAccountException e) {
-            facesError("Unknown account.", e);
-        } catch (IncorrectCredentialsException e) {
-            facesError("Wrong password.", e);
-        } catch (LockedAccountException e) {
-            facesError("Locked account.", e);
-        } catch (AuthenticationException e) {
-            facesError("Unknown error.", e);
-        } catch (IOException e) {
-            facesError("Failed to load page.", e);
         } catch (Exception e) {
-            facesError("Whatever", e);
+            facesError("Please check the information you entered and try again.", e);
         } finally {
             token.clear();
         }

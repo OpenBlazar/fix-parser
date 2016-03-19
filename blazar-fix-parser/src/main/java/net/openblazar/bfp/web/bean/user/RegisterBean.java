@@ -93,7 +93,6 @@ public class RegisterBean extends AbstractBean {
 
     protected void facesError(String message, Exception exception) {
         super.facesError(message, exception);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, exception.getMessage(), null));
         LOGGER.error(message, exception);
     }
 
