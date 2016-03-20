@@ -1,6 +1,7 @@
 package net.openblazar.bfp.web.bean.user;
 
 import net.openblazar.bfp.web.bean.AbstractBean;
+import net.openblazar.bfp.web.util.BlazarURL;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
@@ -17,8 +18,6 @@ import javax.faces.context.FacesContext;
 @RequestScoped
 public class LogoutBean extends AbstractBean {
 
-    public static final String HOME_URL = "/";
-
     private final static Logger LOGGER = LoggerFactory.getLogger(LogoutBean.class);
 
     public void doLogout() {
@@ -27,7 +26,7 @@ public class LogoutBean extends AbstractBean {
             if(currentUser.isAuthenticated()) {
                 currentUser.logout();
 
-                FacesContext.getCurrentInstance().getExternalContext().redirect(HOME_URL);
+                FacesContext.getCurrentInstance().getExternalContext().redirect(BlazarURL.HOME_URL);
             }
         } catch (Exception e) {
             LOGGER.warn("Failed to logout user. {}", e);
