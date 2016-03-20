@@ -18,7 +18,8 @@
                 <p:commandButton value="Submit" id="submit" action="#{parserBean.doParse(parserBean.input)}"
                                  update=":output:messagesTable :comparator:accordion:firstMessage
                                    :comparator:accordion:secondMessage"
-                                 styleClass="btn btn-primary btn-blazar-menu" style="margin-top: 5px; margin-bottom: 10px;"/>
+                                 styleClass="btn btn-primary btn-blazar-menu"
+                                 style="margin-top: 5px; margin-bottom: 10px;"/>
             </div>
         </h:form>
         <h:form id="output">
@@ -46,12 +47,15 @@
                         </p:column>
 
                         <p:column headerText="MsgType">
-                            <h:outputText value="#{message.messageType}" styleClass="#{styleBean.getStyleForMsgType(message.messageType)}" style="font-size: 12px;"/>
+                            <h:outputText value="#{message.messageType}"
+                                          styleClass="#{styleBean.getStyleForMsgType(message.messageType)}"
+                                          style="font-size: 12px;"/>
                         </p:column>
 
                         <p:column headerText="Summary" width="190">
                             <h:outputText value="#{fixBean.getOrdStatusDescription(message)}"
-                                          styleClass="#{styleBean.getStyleForOrdStatus(message)}" style="font-size: 10px;"/>
+                                          styleClass="#{styleBean.getStyleForOrdStatus(message)}"
+                                          style="font-size: 10px;"/>
                         </p:column>
                     </p:dataTable>
                 </div>
@@ -65,7 +69,8 @@
                         </p:column>
 
                         <p:column headerText="Name" width="130">
-                            <h:outputText value="#{entry.key}" styleClass="#{styleBean.getStyleForField(entry.key)}" style="font-size: 12px;"/>
+                            <h:outputText value="#{entry.key}" styleClass="#{styleBean.getStyleForField(entry.key)}"
+                                          style="font-size: 12px;"/>
                         </p:column>
 
                         <p:column headerText="Value" width="32%">
@@ -83,31 +88,31 @@
         <h:form id="comparator">
             <p:accordionPanel id="accordion" style="margin-top: 10px;" activeIndex="null">
                 <p:tab title="Comparator" closable="true">
+                    <h:panelGrid columns="5" style="margin-bottom:10px" cellpadding="1">
+                        <p:outputLabel for="firstMessage" value="First message: " style="padding-right: 5px;"/>
+                        <p:selectOneMenu id="firstMessage" value="#{comparatorBean.selectedMessage_1}"
+                                         converter="fixMessageConverter"
+                                         styleClass=".ui-selectonemenu-panel" update=":firstTable :secondTable"
+                                         style="width:200px; padding-right: 0px; margin-right: 10px;">
+                            <f:selectItem itemLabel="-- Select FIX Message --"/>
+                            <f:selectItems value="#{parserBean.messages}" var="messageVar"
+                                           itemLabel="#{messageVar.messageID}" itemValue="#{messageVar}"/>
+                        </p:selectOneMenu>
 
-                    <p:outputLabel for="firstMessage" value="First message: " style="padding-right: 5px;"/>
-                    <p:selectOneMenu id="firstMessage" value="#{comparatorBean.selectedMessage_1}"
-                                     converter="fixMessageConverter"
-                                     styleClass=".ui-selectonemenu-panel" update=":firstTable :secondTable"
-                                     style="width:200px; padding-right: 0px; margin-right: 10px;">
-                        <f:selectItem itemLabel="-- Select FIX Message --"/>
-                        <f:selectItems value="#{parserBean.messages}" var="messageVar"
-                                       itemLabel="#{messageVar.messageID}" itemValue="#{messageVar}"/>
-                    </p:selectOneMenu>
+                        <p:outputLabel for="secondMessage" value="Second message: "
+                                       style="padding-right: 5px;"/>
+                        <p:selectOneMenu id="secondMessage" value="#{comparatorBean.selectedMessage_2}"
+                                         converter="fixMessageConverter"
+                                         styleClass=".ui-selectonemenu-panel" update=":firstTable :secondTable"
+                                         style="width:200px; padding-right: 0px; padding-left: 0px; margin-right: 10px;">
+                            <f:selectItem itemLabel="-- Select FIX Message --"/>
+                            <f:selectItems value="#{parserBean.messages}" var="messageVar"
+                                           itemLabel="#{messageVar.messageID}" itemValue="#{messageVar}"/>
+                        </p:selectOneMenu>
 
-                    <p:outputLabel for="secondMessage" value="Second message: "
-                                   style="padding-right: 5px;"/>
-                    <p:selectOneMenu id="secondMessage" value="#{comparatorBean.selectedMessage_2}"
-                                     converter="fixMessageConverter"
-                                     styleClass=".ui-selectonemenu-panel" update=":firstTable :secondTable"
-                                     style="width:200px; padding-right: 0px; padding-left: 0px; margin-right: 10px;">
-                        <f:selectItem itemLabel="-- Select FIX Message --"/>
-                        <f:selectItems value="#{parserBean.messages}" var="messageVar"
-                                       itemLabel="#{messageVar.messageID}" itemValue="#{messageVar}"/>
-                    </p:selectOneMenu>
-
-                    <p:commandButton value="Compare" id="compare"
-                                     update="singleTable1 singleTable2"/>
-
+                        <p:commandButton value="Compare" id="compare"
+                                         update="singleTable1 singleTable2"/>
+                    </h:panelGrid>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="panel panel-default" style="margin-top: 10px;">
@@ -122,7 +127,9 @@
                                         </p:column>
 
                                         <p:column headerText="Name" width="130">
-                                            <h:outputText value="#{entry.key}" styleClass="#{styleBean.getStyleForField(entry.key)}" style="font-size: 12px;"/>
+                                            <h:outputText value="#{entry.key}"
+                                                          styleClass="#{styleBean.getStyleForField(entry.key)}"
+                                                          style="font-size: 12px;"/>
                                         </p:column>
 
                                         <p:column headerText="Value" width="32%">
@@ -150,7 +157,9 @@
                                         </p:column>
 
                                         <p:column headerText="Name" width="130">
-                                            <h:outputText value="#{entry.key}" styleClass="#{styleBean.getStyleForField(entry.key)}" style="font-size: 12px;"/>
+                                            <h:outputText value="#{entry.key}"
+                                                          styleClass="#{styleBean.getStyleForField(entry.key)}"
+                                                          style="font-size: 12px;"/>
                                         </p:column>
 
                                         <p:column headerText="Value" width="32%">
