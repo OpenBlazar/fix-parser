@@ -43,7 +43,7 @@ public class SecurityModule extends ShiroWebModule {
         addFilterChain(BlazarURL.HOME_URL, ANON);
         addFilterChain(BlazarURL.PARSER_URL, ANON);
         addFilterChain(BlazarURL.FILEPARSER_URL, ANON);
-        addFilterChain(BlazarURL.HELP_URL, ANON);
+        addFilterChain(BlazarURL.FAQ_URL, ANON);
         addFilterChain(BlazarURL.SIGNUP_URL, ANON);
         addFilterChain(BlazarURL.SIGNIN_URL, ANON);
 
