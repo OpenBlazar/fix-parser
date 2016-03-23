@@ -45,7 +45,7 @@
     </servlet-mapping>
     
     <listener>
-        <listener-class>net.openblazar.bfp.BlazarFixParser</listener-class>
+        <listener-class>com.blazarquant.bfp.BlazarFixParser</listener-class>
     </listener>
 
     <listener>
