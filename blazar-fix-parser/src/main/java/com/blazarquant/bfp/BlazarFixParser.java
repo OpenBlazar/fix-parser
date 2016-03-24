@@ -8,8 +8,6 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.servlet.GuiceServletContextListener;
 import org.apache.shiro.guice.aop.ShiroAopModule;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -18,8 +16,6 @@ import javax.servlet.ServletContextEvent;
  * @author Wojciech Zankowski
  */
 public class BlazarFixParser extends GuiceServletContextListener {
-
-	private final static Logger LOGGER = LoggerFactory.getLogger(BlazarFixParser.class);
 
 	private ServletContext servletContext;
 

@@ -27,7 +27,7 @@ public interface UserDAO {
 	String CHECK_IF_USER_EXISTS = "SELECT count(1) FROM " + Tables.USERS_TABLE + " WHERE user_login = #{userName}";
 	String INSERT_USER_REGISTER = "INSERT INTO " + Tables.USERS_TABLE + " (user_login, " +
 			"user_pass, user_email, user_status, user_registerdate, user_lastlogin) VALUES " +
-			"(#{userName}, #{hashedPassword}, #{userMail}, #{isActive, typeHandler=ActiveUserTypeHandler}, #{registrationDate}, " +
+			"(#{userName}, #{hashedPassword}, #{userMail}, #{isActive, typeHandler=com.blazarquant.bfp.database.typehandlers.user.ActiveUserTypeHandler}, #{registrationDate}, " +
 			"#{lastLogin})";
 
 	@Select(SELECT_ALL)

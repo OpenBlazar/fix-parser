@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>net.openblazar</groupId>
+    <groupId>com.blazarquant</groupId>
     <artifactId>blazar-fix-parser-all</artifactId>
     <packaging>pom</packaging>
     <version>0.1</version>
@@ -88,13 +88,13 @@
             <!-- projects -->
 
             <dependency>
-                <groupId>net.openblazar</groupId>
+                <groupId>com.blazarquant</groupId>
                 <artifactId>blazar-fix-parser</artifactId>
                 <version>${bfp.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>net.openblazar</groupId>
+                <groupId>com.blazarquant</groupId>
                 <artifactId>blazar-fix-parser-fix</artifactId>
                 <version>${bfp.version}</version>
             </dependency>

@@ -17,12 +17,12 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><p:link value="Parser" outcome="/pages/public/parser" style="margin-right: 10px;"/></li>
-                <li><p:link value="File Parser" outcome="/pages/public/fileparser" style="margin-right: 10px;"/></li>
-                <li><p:link value="History" outcome="/pages/user/history" style="margin-right: 10px;"/></li>
-                <li><p:link value="FAQ" outcome="/pages/public/faq" style="margin-right: 10px;"/></li>
-                <li><p:link value="Sign In" outcome="/pages/public/login" style="margin-right: 10px;" rendered="#{!currentUser.authenticated}"/></li>
-                <li><p:button value="Sign Up" outcome="/pages/public/register" styleClass="btn btn-primary" rendered="#{!currentUser.authenticated}"/></li>
+                <li><p:link value="#{msg['com.blazarquant.bfp.menu.parser']}" outcome="/pages/public/parser" style="margin-right: 10px;"/></li>
+                <li><p:link value="#{msg['com.blazarquant.bfp.menu.fileparser']}" outcome="/pages/public/fileparser" style="margin-right: 10px;"/></li>
+                <li><p:link value="#{msg['com.blazarquant.bfp.menu.history']}" outcome="/pages/user/history" style="margin-right: 10px;"/></li>
+                <li><p:link value="#{msg['com.blazarquant.bfp.menu.faq']}" outcome="/pages/public/faq" style="margin-right: 10px;"/></li>
+                <li><p:link value="#{msg['com.blazarquant.bfp.menu.signin']}" outcome="/pages/public/login" style="margin-right: 10px;" rendered="#{!currentUser.authenticated}"/></li>
+                <li><p:button value="#{msg['com.blazarquant.bfp.menu.signup']}" outcome="/pages/public/register" styleClass="btn btn-primary" rendered="#{!currentUser.authenticated}"/></li>
                 <li><p:commandButton value="Sign Out" action="#{logoutBean.doLogout}" styleClass="btn btn-primary"
                                      rendered="#{currentUser.authenticated}"/></li>
             </ul>

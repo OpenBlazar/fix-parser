@@ -16,7 +16,7 @@ public interface MessageDAO {
 
     String SELECT_MESSAGES_BY_USER_ID = "SELECT message FROM " + Tables.MESSAGES + " WHERE user_id = #{userId.id} LIMIT #{lowerlimit}, #{upperlimit}";
     String SELECT_NUMBER_OF_MSG_FROM_USER_ID = "SELECT count(*) FROM " + Tables.MESSAGES + " WHERE user_id = #{userId.id}";
-    String INSERT_MESSAGE = "INSERT INTO " + Tables.MESSAGES + "(user_id, message) VALUES (#{userId.id}, #{message, typeHandler=FixMessageTypeHandler})";
+    String INSERT_MESSAGE = "INSERT INTO " + Tables.MESSAGES + "(user_id, message) VALUES (#{userId.id}, #{message, typeHandler=com.blazarquant.bfp.database.typehandlers.fix.FixMessageTypeHandler})";
 
     @Select(SELECT_NUMBER_OF_MSG_FROM_USER_ID)
     int countUserMessages(
