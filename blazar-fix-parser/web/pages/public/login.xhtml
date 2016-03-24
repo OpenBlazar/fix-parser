@@ -13,18 +13,18 @@
 </h:head>
 <h:body>
     <h:form id="loginForm" styleClass="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
+        <h2 class="form-signin-heading">#{msg['com.blazarquant.bfp.pages.public.login.header']}</h2>
 
-        <p:inputText id="username" styleClass="form-control" required="true" placeholder="Email address" value="#{loginBean.username}"/>
-        <p:password id="password" styleClass="form-control" required="true" placeholder="Password" value="#{loginBean.password}"/>
+        <p:inputText id="username" styleClass="form-control" required="true" placeholder="#{msg['com.blazarquant.bfp.pages.public.login.username']}" value="#{loginBean.username}"/>
+        <p:password id="password" styleClass="form-control" required="true" placeholder="#{msg['com.blazarquant.bfp.pages.public.login.password']}" value="#{loginBean.password}"/>
 
         <div class="checkbox">
             <p:selectBooleanCheckbox id="rememberMe" value="#{loginBean.rememberMe}"/>
-            <h:outputText style="margin-left: 5px;" value="Remember me"/>
+            <h:outputText style="margin-left: 5px;" value="#{msg['com.blazarquant.bfp.pages.public.login.rememberme']}"/>
         </div>
 
-        <p:commandButton value="Sign In" styleClass="btn btn-lg btn-primary btn-block btn-blazar" action="#{loginBean.doLogin}"/>
-        <h:link value="No account? Sign Up!" outcome="/pages/public/register.xhtml"/>
+        <p:commandButton value="#{msg['com.blazarquant.bfp.pages.public.login.signin']}" styleClass="btn btn-lg btn-primary btn-block btn-blazar" action="#{loginBean.doLogin}"/>
+        <h:link value="#{msg['com.blazarquant.bfp.pages.public.login.noaccount']}" outcome="/pages/public/register.xhtml"/>
 
         <p:messages id="messages" autoUpdate="true" closable="true"/>
     </h:form>
