@@ -14,6 +14,9 @@
                                   dragDropSupport="true" multiple="false" sizeLimit="1000000"
                                   update=":output:messagesTable :comparator:accordion:firstMessage
                                    :comparator:accordion:secondMessage"
+                                  uploadLabel="#{msg['com.blazarquant.bfp.pages.public.fileparser.upload']}"
+                                  cancelLabel="#{msg['com.blazarquant.bfp.pages.public.fileparser.cancel']}"
+                                  label="#{msg['com.blazarquant.bfp.pages.public.fileparser.choose']}"
                                   allowTypes="/(\.|\/)(txt|log)$/"
                                   style="margin-bottom: 10px;"/>
                 </h:form>
@@ -27,32 +30,33 @@
                                      resizableColumns="true"
                                      selectionMode="single" selection="#{fileParserBean.selectedMessage}"
                                      rowKey="#{message.messageID}"
+                                     emptyMessage="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.empty']}"
                                      tableStyle="width:auto">
                             <p:ajax event="rowSelect" update=":output:singleTable"/>
 
-                            <p:column headerText="Id" width="40">
+                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.id']}" width="40">
                                 <h:outputText value="#{message.messageID}" style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="Sender" width="90">
+                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.sender']}" width="90">
                                 <h:outputText value="#{fixBean.getSender(message)}" style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="Receiver" width="90">
+                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.receiver']}" width="90">
                                 <h:outputText value="#{fixBean.getReceiver(message)}" style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="Sending time" width="120">
+                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.sendingtime']}" width="120">
                                 <h:outputText value="#{fixBean.getSendingTime(message)}" style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="MsgType">
+                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.msgtype']}">
                                 <h:outputText value="#{message.messageType}"
                                               styleClass="#{styleBean.getStyleForMsgType(message.messageType)}"
                                               style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="Summary" width="190">
+                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.summary']}" width="190">
                                 <h:outputText value="#{fixBean.getOrdStatusDescription(message)}"
                                               styleClass="#{styleBean.getStyleForOrdStatus(message)}"
                                               style="font-size: 10px;"/>
@@ -63,21 +67,22 @@
                     <div class="col-md-5">
                         <p:dataTable id="singleTable" var="entry" resizableColumns="true"
                                      value="#{fileParserBean.selectedMessage.messageFields.entrySet().toArray()}"
+                                     emptyMessage="#{msg['com.blazarquant.bfp.pages.public.fileparser.helpTable.empty']}"
                                      tableStyle="width:auto">
-                            <p:column headerText="Tag" width="50">
+                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.helpTable.tag']}" width="50">
                                 <h:outputText value="#{entry.key.tag}" style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="Name" width="130">
+                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.helpTable.name']}" width="130">
                                 <h:outputText value="#{entry.key}" styleClass="#{styleBean.getStyleForField(entry.key)}"
                                               style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="Value" width="32%">
+                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.helpTable.value']}" width="32%">
                                 <h:outputText value="#{entry.value.value}" style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="Description" width="200">
+                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.helpTable.description']}" width="200">
                                 <h:outputText value="#{entry.value.description}" style="font-size: 12px;"/>
                             </p:column>
                         </p:dataTable>
@@ -88,30 +93,30 @@
 
         <h:form id="comparator">
             <p:accordionPanel id="accordion" style="margin-top: 10px;" activeIndex="null">
-                <p:tab title="Comparator" closable="true">
+                <p:tab title="#{msg['com.blazarquant.bfp.pages.public.fileparser.comparator.header']}" closable="true">
                     <h:panelGrid columns="5" style="margin-bottom:10px" cellpadding="1">
-                        <p:outputLabel for="firstMessage" value="First message: " style="padding-right: 5px;"/>
+                        <p:outputLabel for="firstMessage" value="#{msg['com.blazarquant.bfp.pages.public.fileparser.comparator.firstmessage']}" style="padding-right: 5px;"/>
                         <p:selectOneMenu id="firstMessage" value="#{comparatorBean.selectedMessage_1}"
                                          converter="fixMessageConverter"
                                          styleClass=".ui-selectonemenu-panel" update=":firstTable :secondTable"
                                          style="width:200px; padding-right: 0px; margin-right: 10px;">
-                            <f:selectItem itemLabel="-- Select FIX Message --"/>
+                            <f:selectItem itemLabel="#{msg['com.blazarquant.bfp.pages.public.fileparser.comparator.selectmsg']}"/>
                             <f:selectItems value="#{fileParserBean.messages}" var="messageVar"
                                            itemLabel="#{messageVar.messageID}" itemValue="#{messageVar}"/>
                         </p:selectOneMenu>
 
-                        <p:outputLabel for="secondMessage" value="Second message: "
+                        <p:outputLabel for="secondMessage" value="#{msg['com.blazarquant.bfp.pages.public.fileparser.comparator.secondmessage']}"
                                        style="padding-right: 5px;"/>
                         <p:selectOneMenu id="secondMessage" value="#{comparatorBean.selectedMessage_2}"
                                          converter="fixMessageConverter"
                                          styleClass=".ui-selectonemenu-panel" update=":firstTable :secondTable"
                                          style="width:200px; padding-right: 0px; padding-left: 0px; margin-right: 10px;">
-                            <f:selectItem itemLabel="-- Select FIX Message --"/>
+                            <f:selectItem itemLabel="#{msg['com.blazarquant.bfp.pages.public.fileparser.comparator.selectmsg']}"/>
                             <f:selectItems value="#{fileParserBean.messages}" var="messageVar"
                                            itemLabel="#{messageVar.messageID}" itemValue="#{messageVar}"/>
                         </p:selectOneMenu>
 
-                        <p:commandButton value="Compare" id="compare"
+                        <p:commandButton value="#{msg['com.blazarquant.bfp.pages.public.fileparser.comparator.compare']}" id="compare"
                                          update="singleTable1 singleTable2"/>
                     </h:panelGrid>
                     <ui:include src="../../components/comparator.xhtml" />
