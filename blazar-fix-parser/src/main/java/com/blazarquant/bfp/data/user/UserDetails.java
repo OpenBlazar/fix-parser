@@ -19,13 +19,13 @@ public class UserDetails implements Serializable {
 
 	public UserDetails(UserID userID, String userName, String userMail, String password, UserState isActive,
 	                   Instant registrationDate, Instant lastLogin) {
-		Objects.nonNull(userID);
-		Objects.nonNull(userName);
-		Objects.nonNull(userMail);
-		Objects.nonNull(password);
-		Objects.nonNull(isActive);
-		Objects.nonNull(registrationDate);
-		Objects.nonNull(lastLogin);
+		Objects.requireNonNull(userID);
+		Objects.requireNonNull(userName);
+		Objects.requireNonNull(userMail);
+		Objects.requireNonNull(password);
+		Objects.requireNonNull(isActive);
+		Objects.requireNonNull(registrationDate);
+		Objects.requireNonNull(lastLogin);
 
 		this.userID = userID;
 		this.userName = userName;

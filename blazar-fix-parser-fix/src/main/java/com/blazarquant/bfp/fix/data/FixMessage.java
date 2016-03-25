@@ -18,10 +18,10 @@ public class FixMessage {
     private final Map<FixField, FixValue> messageFields;
 
     public FixMessage(Long messageID, FixVersion version, MsgType messageType, Map<FixField, FixValue> messageFields) {
-        Objects.nonNull(messageID);
-        Objects.nonNull(version);
-        Objects.nonNull(messageType);
-        Objects.nonNull(messageFields);
+        Objects.requireNonNull(messageID);
+        Objects.requireNonNull(version);
+        Objects.requireNonNull(messageType);
+        Objects.requireNonNull(messageFields);
 
         this.messageID = messageID;
         this.version = version;

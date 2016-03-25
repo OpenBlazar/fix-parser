@@ -4,6 +4,7 @@ import org.primefaces.event.FileUploadEvent;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import java.nio.charset.Charset;
 
 /**
  * @author Wojciech Zankowski
@@ -13,7 +14,7 @@ import javax.faces.bean.ViewScoped;
 public class FileParserBean extends ParserBean {
 
     public void handleFileUpload(FileUploadEvent event) {
-        String input = new String(event.getFile().getContents());
+        String input = new String(event.getFile().getContents(), Charset.defaultCharset());
         messages = parserService.parseInput(input);
         doSaveMessages(messages);
     }
