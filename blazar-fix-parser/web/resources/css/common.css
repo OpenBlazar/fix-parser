@@ -130,3 +130,27 @@ table .formColumn2 .ui-datepicker-trigger {
     border-color: #6f2727;
 }
 
+.fieldcolumn-orange {
+    color:#fff;
+    background-color: #E59400;
+    border-color: #CC8400;
+}
+
+.fieldcolumn-purple-light {
+    color:#fff;
+    background-color: #730073;
+    border-color: #670067;
+}
+
+.fieldcolumn-purple-hard {
+    color:#fff;
+    background-color: #2e002e;
+    border-color: #220022;
+}
+
+.fieldcolumn-dust {
+    color:#fff;
+    background-color: #a39457;
+    border-color: #8e814c;
+}
+

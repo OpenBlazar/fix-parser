@@ -12,8 +12,10 @@ public class StyleUtilities {
     public static String getStyleForMsgType(MsgType msgType) {
         switch (msgType) {
             case OrderCancelReject:
-            case OrderCancelReplaceRequest:
                 return "fieldcolumn fieldcolumn-red";
+            case OrderCancelReplaceRequest:
+            case OrderCancelRequest:
+                return "fieldcolumn fieldcolumn-orange";
             case ExecutionReport:
                 return "fieldcolumn fieldcolumn-blue";
             case NewOrderSingle:
@@ -52,8 +54,15 @@ public class StyleUtilities {
         switch (ordStatus) {
             case New:
                 return "fieldcolumn fieldcolumn-green";
+            case Partially_Filled:
+                return "fieldcolumn fieldcolumn-purple-light";
+            case Filled:
+                return "fieldcolumn fieldcolumn-purple-hard";
             case Rejected:
+            case Canceled:
                 return "fieldcolumn fieldcolumn-red";
+            case Replaced:
+                return "fieldcolumn fieldcolumn-dust";
             default:
                 return "fieldcolumn fieldcolumn-grey";
         }
