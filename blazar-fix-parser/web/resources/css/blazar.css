@@ -4,8 +4,16 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+    text-shadow: none;
 }
 
 .btn-blazar-menu {
-    margin-top: 5px;
+    text-shadow: none;
+}
+
+.blazar-faqstyle {
+    background-color: #386dc1 !important;
+    color: #ffffff !important;
+    text-shadow: none !important;
+    font-size: 18px !important;
 }
