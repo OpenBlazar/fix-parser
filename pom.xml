@@ -59,7 +59,7 @@
 
         <mybatis>3.3.0</mybatis>
         <mybati.guice>3.8.0-SNAPSHOT</mybati.guice>
-        <mariadb.java.client>1.3.7</mariadb.java.client>
+        <mariadb.java.client>1.4.1</mariadb.java.client>
         <commons.dbcp>1.4</commons.dbcp>
 
         <guice>4.0</guice>
