@@ -27,7 +27,8 @@
                 <div class="col-md-7">
                     <p:dataTable id="messagesTable" var="message" value="#{parserBean.messages}" resizableColumns="true"
                                  selectionMode="single" selection="#{parserBean.selectedMessage}"
-                                 rowKey="#{message.messageID}" tableStyle="width:auto"
+                                 rowKey="#{message.messageID}" tableStyle="width:auto;"
+                                 scrollable="true" scrollHeight="650"
                                  emptyMessage="#{msg['com.blazarquant.bfp.pages.public.parser.mainTable.empty']}">
                         <p:ajax event="rowSelect" update=":output:singleTable"/>
 
@@ -47,13 +48,13 @@
                             <h:outputText value="#{fixBean.getSendingTime(message)}" style="font-size: 12px;"/>
                         </p:column>
 
-                        <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.parser.mainTable.msgtype']}">
+                        <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.parser.mainTable.msgtype']}" width="150">
                             <h:outputText value="#{message.messageType}"
                                           styleClass="#{styleBean.getStyleForMsgType(message.messageType)}"
                                           style="font-size: 12px;"/>
                         </p:column>
 
-                        <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.parser.mainTable.summary']}" width="190">
+                        <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.parser.mainTable.summary']}" width="150">
                             <h:outputText value="#{fixBean.getOrdStatusDescription(message)}"
                                           styleClass="#{styleBean.getStyleForOrdStatus(message)}"
                                           style="font-size: 10px;"/>

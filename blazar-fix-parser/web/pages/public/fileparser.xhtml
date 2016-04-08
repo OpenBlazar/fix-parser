@@ -31,7 +31,7 @@
                                      selectionMode="single" selection="#{fileParserBean.selectedMessage}"
                                      rowKey="#{message.messageID}"
                                      emptyMessage="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.empty']}"
-                                     tableStyle="width:auto">
+                                     tableStyle="width:auto" scrollable="true" scrollHeight="650">
                             <p:ajax event="rowSelect" update=":output:singleTable"/>
 
                             <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.id']}" width="40">
@@ -50,13 +50,13 @@
                                 <h:outputText value="#{fixBean.getSendingTime(message)}" style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.msgtype']}">
+                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.msgtype']}" width="150">
                                 <h:outputText value="#{message.messageType}"
                                               styleClass="#{styleBean.getStyleForMsgType(message.messageType)}"
                                               style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.summary']}" width="190">
+                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.summary']}" width="150">
                                 <h:outputText value="#{fixBean.getOrdStatusDescription(message)}"
                                               styleClass="#{styleBean.getStyleForOrdStatus(message)}"
                                               style="font-size: 10px;"/>
