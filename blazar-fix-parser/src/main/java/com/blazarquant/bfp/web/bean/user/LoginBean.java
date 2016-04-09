@@ -38,7 +38,7 @@ public class LoginBean extends AbstractBean {
             if (!currentUser.isAuthenticated()) {
                 currentUser.login(token);
 
-                FacesContext.getCurrentInstance().getExternalContext().redirect(BlazarURL.HOME_URL);
+                FacesContext.getCurrentInstance().getExternalContext().redirect(BlazarURL.PARSER_URL);
             }
         } catch (Exception e) {
             facesError("Please check the information you entered and try again.", e);

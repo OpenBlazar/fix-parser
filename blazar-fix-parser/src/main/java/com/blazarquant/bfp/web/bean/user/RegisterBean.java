@@ -2,6 +2,7 @@ package com.blazarquant.bfp.web.bean.user;
 
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
+import com.blazarquant.bfp.web.util.BlazarURL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -86,6 +87,7 @@ public class RegisterBean extends AbstractBean {
             userService.registerUser(getUsername(), "", getPassword().toCharArray());
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Congratulations, registration has been successful", ""));
+            FacesContext.getCurrentInstance().getExternalContext().redirect(BlazarURL.PARSER_URL);
         } catch (Exception e) {
             facesError("Failed to register user.", e);
         }

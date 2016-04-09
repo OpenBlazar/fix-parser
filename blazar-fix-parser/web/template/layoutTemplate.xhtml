@@ -3,6 +3,7 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
 >
 <h:head>
     <title>Blazar Fix Parser</title>
@@ -23,6 +24,15 @@
 
         <ui:include src="../components/footer.xhtml" />
     </div>
+
+    <p:ajaxExceptionHandler type="javax.faces.application.ViewExpiredException"
+                            update="exceptionDialog"
+                            onexception="PF('exceptionDialog').show();" />
+
+    <p:dialog id="exceptionDialog" header="Session expired" widgetVar="exceptionDialog"
+              height="200px">
+        Session expired. Please refresh the page and try again.
+    </p:dialog>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </h:body>
