@@ -8,6 +8,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -69,6 +70,13 @@ public class FixParserTest {
     public void testWholeLegalFixInput() {
         List<FixMessage> expectedMessages = messageFactory.prepareFixMessagesForLegalFixLong();
         List<FixMessage> actualMessages = parser.parseInput(FixTestConstants.LEGAL_FIX_MANY);
+        assertEquals(expectedMessages, actualMessages);
+    }
+
+    @Test
+    public void testEmptyInput() {
+        List<FixMessage> expectedMessages = new ArrayList<>();
+        List<FixMessage> actualMessages = parser.parseInput("");
         assertEquals(expectedMessages, actualMessages);
     }
 
