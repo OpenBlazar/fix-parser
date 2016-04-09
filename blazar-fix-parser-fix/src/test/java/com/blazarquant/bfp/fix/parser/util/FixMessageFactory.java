@@ -89,4 +89,10 @@ public class FixMessageFactory {
         return new FixMessage(0L, FixVersion.FIX_50, MsgType.ExecutionReport, message);
     }
 
+    public FixMessage createFixMessage(String sendingTime, String sender, String target, FixPair fixPair) {
+        FixMessage message = createFixMessage(sendingTime, sender, target);
+        message.getMessageFields().add(fixPair);
+        return message;
+    }
+
 }

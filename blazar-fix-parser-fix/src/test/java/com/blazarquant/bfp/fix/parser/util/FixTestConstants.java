@@ -25,4 +25,8 @@ public class FixTestConstants {
     public static final String LEGAL_FIX_LONG_3 = "8=FIX.4.2#9=198#35=8#6=41.21#11=3840019#14=102#10=024";
     public static final String LEGAL_FIX_MANY = "TEST " + LEGAL_FIX_LONG_1 + "#" + LEGAL_FIX_LONG_2 + "#" + LEGAL_FIX_LONG_3 + "# TEST";
 
+    private FixTestConstants() {
+        // constants class
+    }
+
 }

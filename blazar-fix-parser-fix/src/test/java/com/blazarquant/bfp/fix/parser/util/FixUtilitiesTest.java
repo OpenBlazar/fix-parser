@@ -1,6 +1,9 @@
 package com.blazarquant.bfp.fix.parser.util;
 
+import com.blazarquant.bfp.fix.data.FixField;
 import com.blazarquant.bfp.fix.data.FixMessage;
+import com.blazarquant.bfp.fix.data.FixPair;
+import com.blazarquant.bfp.fix.data.FixValue;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
@@ -41,6 +44,19 @@ public class FixUtilitiesTest {
 
         assertEquals(TARGET, FixUtilities.getReceiver(actualMessage_1));
         assertEquals("Unknown", FixUtilities.getReceiver(actualMessage_2));
+    }
+
+    @Test
+    public void testOrdStatusUtilitites() {
+        FixMessage actualMessage_1 = messageFactory.createFixMessage(
+                SENDING_TIME, SENDER, TARGET, new FixPair(FixField.OrdStatus, new FixValue("4", "Canceled")));
+        FixMessage actualMessage_2 = new FixMessage.Builder().build();
+
+        assertEquals("4", FixUtilities.getOrdStatus(actualMessage_1));
+        assertEquals("Canceled", FixUtilities.getOrdStatusDescription(actualMessage_1));
+
+        assertEquals("", FixUtilities.getOrdStatus(actualMessage_2));
+        assertEquals("", FixUtilities.getOrdStatusDescription(actualMessage_2));
     }
 
 }

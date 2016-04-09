@@ -12,6 +12,10 @@ import java.util.List;
  */
 public class FixUtilities {
 
+    private FixUtilities() {
+        // Utilities class with static classes
+    }
+
     public static String getSender(FixMessage message) {
         List<FixValue> sender = message.getField(FixField.SenderCompID);
         return sender.isEmpty() ? "Unknown" : sender.get(0).getValue();
