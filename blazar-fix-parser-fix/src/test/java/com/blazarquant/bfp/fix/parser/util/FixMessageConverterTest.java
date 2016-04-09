@@ -35,4 +35,39 @@ public class FixMessageConverterTest {
         assertEquals(expectedMessages, actualMessages);
     }
 
+    @Test
+    public void testEmptyFieldValue() {
+        String delimiter = "#";
+        List<String> textMessages = new ArrayList<>();
+        textMessages.add(FixTestConstants.LEGAL_FIX_6);
+
+        List<FixMessage> expectedMessages = new ArrayList<>();
+        expectedMessages.add(messageFactory.legalFixMessage6());
+        List<FixMessage> actualMessages = messageConverter.convertToFixMessages(textMessages, delimiter);
+        assertEquals(expectedMessages, actualMessages);
+    }
+
+    @Test
+    public void testEmptyVersionValue() {
+        String delimiter = "#";
+        List<String> textMessages = new ArrayList<>();
+        textMessages.add(FixTestConstants.LEGAL_FIX_7);
+
+        List<FixMessage> expectedMessages = new ArrayList<>();
+        expectedMessages.add(messageFactory.legalFixMessage7());
+        List<FixMessage> actualMessages = messageConverter.convertToFixMessages(textMessages, delimiter);
+        assertEquals(expectedMessages, actualMessages);
+    }
+
+    @Test
+    public void testConvertToString() {
+        // Default Entry delimiter
+        String convertedMessage = messageConverter.convertToString(messageFactory.legalFixMessage4());
+        assertEquals(FixTestConstants.LEGAL_FIX_4, convertedMessage);
+
+        // Custom Entry delimiter
+        convertedMessage = messageConverter.convertToString(messageFactory.legalFixMessageLong1(), '#');
+        assertEquals(FixTestConstants.LEGAL_FIX_LONG_1, convertedMessage);
+    }
+
 }
