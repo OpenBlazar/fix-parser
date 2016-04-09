@@ -1,15 +1,10 @@
 package com.blazarquant.bfp.fix.parser.util;
 
-import com.blazarquant.bfp.fix.data.FixField;
-import com.blazarquant.bfp.fix.data.FixMessage;
-import com.blazarquant.bfp.fix.data.FixValue;
-import com.blazarquant.bfp.fix.data.FixVersion;
+import com.blazarquant.bfp.fix.data.*;
 import com.blazarquant.bfp.fix.data.field.MsgType;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Wojciech Zankowski
@@ -17,31 +12,31 @@ import java.util.Map;
 public class FixMessageFactory {
 
     public List<FixMessage> prepareFixMessagesForLegalFixLong() {
-        Map<FixField, FixValue> firstMsgFields = new HashMap<>();
-        firstMsgFields.put(FixField.BeginString, new FixValue("FIX.4.2"));
-        firstMsgFields.put(FixField.BodyLength, new FixValue("198"));
-        firstMsgFields.put(FixField.MsgType, new FixValue("8", "ExecutionReport"));
-        firstMsgFields.put(FixField.AvgPx, new FixValue("41.21"));
-        firstMsgFields.put(FixField.CheckSum, new FixValue("024"));
+        List<FixPair> firstMsgFields = new ArrayList<>();
+        firstMsgFields.add(new FixPair(FixField.BeginString, new FixValue("FIX.4.2")));
+        firstMsgFields.add(new FixPair(FixField.BodyLength, new FixValue("198")));
+        firstMsgFields.add(new FixPair(FixField.MsgType, new FixValue("8", "ExecutionReport")));
+        firstMsgFields.add(new FixPair(FixField.AvgPx, new FixValue("41.21")));
+        firstMsgFields.add(new FixPair(FixField.CheckSum, new FixValue("024")));
         FixMessage firstMessage = new FixMessage(0L, FixVersion.FIX_42, MsgType.ExecutionReport, firstMsgFields);
 
-        Map<FixField, FixValue> secondMsgFields = new HashMap<>();
-        secondMsgFields.put(FixField.BeginString, new FixValue("FIX.4.2"));
-        secondMsgFields.put(FixField.BodyLength, new FixValue("204"));
-        secondMsgFields.put(FixField.MsgType, new FixValue("8", "ExecutionReport"));
-        secondMsgFields.put(FixField.AvgPx, new FixValue("102.75"));
-        secondMsgFields.put(FixField.ClOrdID, new FixValue("38400195"));
-        secondMsgFields.put(FixField.CheckSum, new FixValue("152"));
+        List<FixPair> secondMsgFields = new ArrayList<>();
+        secondMsgFields.add(new FixPair(FixField.BeginString, new FixValue("FIX.4.2")));
+        secondMsgFields.add(new FixPair(FixField.BodyLength, new FixValue("204")));
+        secondMsgFields.add(new FixPair(FixField.MsgType, new FixValue("8", "ExecutionReport")));
+        secondMsgFields.add(new FixPair(FixField.AvgPx, new FixValue("102.75")));
+        secondMsgFields.add(new FixPair(FixField.ClOrdID, new FixValue("38400195")));
+        secondMsgFields.add(new FixPair(FixField.CheckSum, new FixValue("152")));
         FixMessage secondMessage = new FixMessage(1L, FixVersion.FIX_42, MsgType.ExecutionReport, secondMsgFields);
 
-        Map<FixField, FixValue> thirdMsgFields = new HashMap<>();
-        thirdMsgFields.put(FixField.BeginString,  new FixValue("FIX.4.2"));
-        thirdMsgFields.put(FixField.BodyLength,  new FixValue("198"));
-        thirdMsgFields.put(FixField.MsgType,  new FixValue("8", "ExecutionReport"));
-        thirdMsgFields.put(FixField.AvgPx,  new FixValue("41.21"));
-        thirdMsgFields.put(FixField.ClOrdID,  new FixValue("3840019"));
-        thirdMsgFields.put(FixField.CheckSum,  new FixValue("024"));
-        thirdMsgFields.put(FixField.CumQty,  new FixValue("102"));
+        List<FixPair> thirdMsgFields = new ArrayList<>();
+        thirdMsgFields.add(new FixPair(FixField.BeginString,  new FixValue("FIX.4.2")));
+        thirdMsgFields.add(new FixPair(FixField.BodyLength,  new FixValue("198")));
+        thirdMsgFields.add(new FixPair(FixField.MsgType,  new FixValue("8", "ExecutionReport")));
+        thirdMsgFields.add(new FixPair(FixField.AvgPx,  new FixValue("41.21")));
+        thirdMsgFields.add(new FixPair(FixField.ClOrdID,  new FixValue("3840019")));
+        thirdMsgFields.add(new FixPair(FixField.CumQty,  new FixValue("102")));
+        thirdMsgFields.add(new FixPair(FixField.CheckSum,  new FixValue("024")));
         FixMessage thirdMessage = new FixMessage(2L, FixVersion.FIX_42, MsgType.ExecutionReport, thirdMsgFields);
 
         List<FixMessage> messages = new ArrayList<>();
@@ -52,10 +47,10 @@ public class FixMessageFactory {
     }
 
     public FixMessage createFixMessage(String sendingTime, String sender, String target) {
-        Map<FixField, FixValue> msgFields = new HashMap<>();
-        msgFields.put(FixField.SendingTime, new FixValue(sendingTime));
-        msgFields.put(FixField.SenderCompID, new FixValue(sender));
-        msgFields.put(FixField.TargetCompID, new FixValue(target));
+       List<FixPair> msgFields = new ArrayList<>();
+        msgFields.add(new FixPair(FixField.SendingTime, new FixValue(sendingTime)));
+        msgFields.add(new FixPair(FixField.SenderCompID, new FixValue(sender)));
+        msgFields.add(new FixPair(FixField.TargetCompID, new FixValue(target)));
         return new FixMessage(0L, FixVersion.FIX_50, MsgType.ExecutionReport, msgFields);
     }
 

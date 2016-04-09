@@ -1,15 +1,11 @@
 package com.blazarquant.bfp.fix.parser.util;
 
-import com.blazarquant.bfp.fix.data.FixField;
-import com.blazarquant.bfp.fix.data.FixMessage;
-import com.blazarquant.bfp.fix.data.FixValue;
-import com.blazarquant.bfp.fix.data.FixVersion;
+import com.blazarquant.bfp.fix.data.*;
 import com.blazarquant.bfp.fix.data.field.MsgType;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author Wojciech Zankowski
@@ -32,7 +28,7 @@ public class FixMessageConverter {
 
     public FixMessage convertToFixMessage(String textMessage, String delimiter, long counter) {
         String[] fields = textMessage.split(delimiter);
-        Map<FixField, FixValue> messageFields = new LinkedHashMap<>();
+        List<FixPair> messageFields = new ArrayList<>();
 
         for (String field : fields) {
             String[] values = field.split(FIELD_DELIMITER);
@@ -41,7 +37,7 @@ public class FixMessageConverter {
             }
             FixField fieldKey = FixField.getFieldFromTag(Integer.parseInt(values[FIX_KEY]));
             FixValue fieldValue = toFixValue(values[FIX_VALUE], fieldKey);
-            messageFields.put(fieldKey, fieldValue);
+            messageFields.add(new FixPair(fieldKey, fieldValue));
         }
         return toFixMessage(messageFields, counter);
     }
@@ -50,13 +46,13 @@ public class FixMessageConverter {
         return new FixValue(value, field.getValueDescription(value));
     }
 
-    protected FixMessage toFixMessage(Map<FixField, FixValue> messageFields, long counter) {
+    protected FixMessage toFixMessage(List<FixPair> messageFields, long counter) {
         FixMessage.Builder messageBuilder = new FixMessage.Builder();
-        FixValue version = messageFields.get(FixField.BeginString);
+        FixValue version = getField(messageFields, FixField.BeginString);
         if (version != null) {
             messageBuilder.version(FixVersion.getFixVersionFromCode(version.getValue()));
         }
-        FixValue messageType = messageFields.get(FixField.MsgType);
+        FixValue messageType = getField(messageFields, FixField.MsgType);
         if (messageType != null) {
             messageBuilder.messageType(MsgType.getMsgTypeFromValue(messageType.getValue()));
         }
@@ -65,16 +61,28 @@ public class FixMessageConverter {
         return messageBuilder.build();
     }
 
+    private FixValue getField(List<FixPair> fixPairs, FixField fixField) {
+        List<FixValue> fixValues = fixPairs.stream()
+                .filter(pair -> pair.getFixField() == fixField)
+                .map(pair -> pair.getFixValue())
+                .collect(Collectors.toList());
+        if (fixValues.isEmpty()) {
+            return null;
+        } else {
+            return fixValues.get(0);
+        }
+    }
+
     public String convertToString(FixMessage fixMessage) {
         return convertToString(fixMessage, ENTRY_DELIMITER);
     }
 
     public String convertToString(FixMessage fixMessage, char entryDelimiter) {
         StringBuilder builder = new StringBuilder();
-        fixMessage.getMessageFields().entrySet().stream().forEach((entry) -> {
-            builder.append(entry.getKey().getTag());
+        fixMessage.getMessageFields().stream().forEach((pair) -> {
+            builder.append(pair.getFixField().getTag());
             builder.append(FIELD_DELIMITER);
-            builder.append(entry.getValue().getValue());
+            builder.append(pair.getFixValue().getValue());
             builder.append(entryDelimiter);
         });
         return builder.toString();

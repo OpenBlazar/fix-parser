@@ -2,10 +2,8 @@ package com.blazarquant.bfp.fix.data;
 
 import com.blazarquant.bfp.fix.data.field.MsgType;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Wojciech Zankowski
@@ -15,9 +13,9 @@ public class FixMessage {
     private final Long messageID;
     private final FixVersion version;
     private final MsgType messageType;
-    private final Map<FixField, FixValue> messageFields;
+    private final List<FixPair> messageFields;
 
-    public FixMessage(Long messageID, FixVersion version, MsgType messageType, Map<FixField, FixValue> messageFields) {
+    public FixMessage(Long messageID, FixVersion version, MsgType messageType, List<FixPair> messageFields) {
         Objects.requireNonNull(messageID);
         Objects.requireNonNull(version);
         Objects.requireNonNull(messageType);
@@ -41,12 +39,15 @@ public class FixMessage {
         return version;
     }
 
-    public Map<FixField, FixValue> getMessageFields() {
+    public List<FixPair> getMessageFields() {
         return messageFields;
     }
 
-    public Optional<FixValue> getField(FixField field) {
-        return Optional.ofNullable(messageFields.get(field));
+    public List<FixValue> getField(FixField field) {
+        return messageFields.stream()
+                .filter(pair -> pair.getFixField().equals(field))
+                .map(pair -> pair.getFixValue())
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -87,7 +88,7 @@ public class FixMessage {
         private Long messageID = -1L;
         private FixVersion version = FixVersion.UNKNOWN;
         private MsgType messageType = MsgType.Unknown;
-        private Map<FixField, FixValue> messageFields = new HashMap<>();
+        private List<FixPair> messageFields = new ArrayList<>();
 
         public Builder() {}
 
@@ -106,7 +107,7 @@ public class FixMessage {
             return this;
         }
 
-        public Builder messageFields(Map<FixField, FixValue> messageFields) {
+        public Builder messageFields(List<FixPair> messageFields) {
             this.messageFields = messageFields;
             return this;
         }

@@ -42,23 +42,23 @@
 
                     <div class="col-md-5">
                         <p:dataTable id="singleTable" var="entry" resizableColumns="true"
-                                     value="#{historyBean.selectedMessage.messageFields.entrySet().toArray()}"
+                                     value="#{historyBean.selectedMessage.messageFields.toArray()}"
                                      emptyMessage="#{msg['com.blazarquant.bfp.pages.user.history.helpTable.empty']}"
                                      tableStyle="width:auto">
                             <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.history.helpTable.tag']}" width="50">
-                                <h:outputText value="#{entry.key.tag}" style="font-size: 12px;"/>
+                                <h:outputText value="#{entry.fixField.tag}" style="font-size: 12px;"/>
                             </p:column>
 
                             <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.history.helpTable.name']}" width="130">
-                                <h:outputText value="#{entry.key}" styleClass="#{styleBean.getStyleForField(entry.key)}" style="font-size: 12px;"/>
+                                <h:outputText value="#{entry.fixField}" styleClass="#{styleBean.getStyleForField(entry.fixField)}" style="font-size: 12px;"/>
                             </p:column>
 
                             <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.history.helpTable.value']}" width="32%">
-                                <h:outputText value="#{entry.value.value}" style="font-size: 12px;"/>
+                                <h:outputText value="#{entry.fixValue.value}" style="font-size: 12px;"/>
                             </p:column>
 
                             <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.history.helpTable.description']}" width="200">
-                                <h:outputText value="#{entry.value.description}" style="font-size: 12px;"/>
+                                <h:outputText value="#{entry.fixValue.description}" style="font-size: 12px;"/>
                             </p:column>
                         </p:dataTable>
                     </div>
