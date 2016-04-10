@@ -49,7 +49,7 @@ public class FixUtilitiesTest {
     @Test
     public void testOrdStatusUtilitites() {
         FixMessage actualMessage_1 = messageFactory.createFixMessage(
-                SENDING_TIME, SENDER, TARGET, new FixPair(FixField.OrdStatus, new FixValue("4", "Canceled")));
+                SENDING_TIME, SENDER, TARGET, new FixPair(39, FixField.OrdStatus, new FixValue("4", "Canceled")));
         FixMessage actualMessage_2 = new FixMessage.Builder().build();
 
         assertEquals("4", FixUtilities.getOrdStatus(actualMessage_1));

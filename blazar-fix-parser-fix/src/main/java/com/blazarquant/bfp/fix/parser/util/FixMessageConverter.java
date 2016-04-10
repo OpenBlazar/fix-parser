@@ -35,9 +35,10 @@ public class FixMessageConverter {
             if (values.length != 2) {
                 continue;
             }
-            FixField fieldKey = FixField.getFieldFromTag(Integer.parseInt(values[FIX_KEY]));
+            int fixFieldTag = Integer.parseInt(values[FIX_KEY]);
+            FixField fieldKey = FixField.getFieldFromTag(fixFieldTag);
             FixValue fieldValue = toFixValue(values[FIX_VALUE], fieldKey);
-            messageFields.add(new FixPair(fieldKey, fieldValue));
+            messageFields.add(new FixPair(fixFieldTag, fieldKey, fieldValue));
         }
         return toFixMessage(messageFields, counter);
     }
@@ -80,7 +81,7 @@ public class FixMessageConverter {
     public String convertToString(FixMessage fixMessage, char entryDelimiter) {
         StringBuilder builder = new StringBuilder();
         fixMessage.getMessageFields().stream().forEach((pair) -> {
-            builder.append(pair.getFixField().getTag());
+            builder.append(pair.getFixFieldTag());
             builder.append(FIELD_DELIMITER);
             builder.append(pair.getFixValue().getValue());
             builder.append(entryDelimiter);
