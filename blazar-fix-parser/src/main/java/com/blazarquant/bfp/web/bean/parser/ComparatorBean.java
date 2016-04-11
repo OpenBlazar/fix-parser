@@ -1,16 +1,16 @@
 package com.blazarquant.bfp.web.bean.parser;
 
-import com.blazarquant.bfp.web.bean.AbstractBean;
 import com.blazarquant.bfp.fix.data.FixMessage;
+import com.blazarquant.bfp.web.bean.AbstractBean;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
 
 /**
  * @author Wojciech Zankowski
  */
 @ManagedBean(name = "comparatorBean")
-@ViewScoped
+@RequestScoped
 public class ComparatorBean extends AbstractBean {
 
     private FixMessage selectedMessage_1;
