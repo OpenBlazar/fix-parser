@@ -9,15 +9,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 /**
  * @author Wojciech Zankowski
  */
 @ManagedBean(name = "loginBean")
-@ApplicationScoped
+@RequestScoped
 public class LoginBean extends AbstractBean {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(LoginBean.class);
