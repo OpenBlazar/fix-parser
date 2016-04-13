@@ -1,7 +1,9 @@
 package com.blazarquant.bfp.web.bean.user;
 
+import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
 import com.blazarquant.bfp.web.util.BlazarURL;
+import com.google.inject.Inject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -9,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -22,9 +25,16 @@ public class LoginBean extends AbstractBean {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(LoginBean.class);
 
+    private UserService userService;
+
     private String username;
     private String password;
     private Boolean rememberMe;
+
+    @Inject
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 
     @PostConstruct
     public void init() {
@@ -34,6 +44,12 @@ public class LoginBean extends AbstractBean {
     public void doLogin() {
         UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), getPassword(), getRememberMe());
         try {
+            if (!userService.isUserActive(getUsername())) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                        "Your account is not active. Please confirm your registration.", null));
+                return;
+            }
+
             Subject currentUser = SecurityUtils.getSubject();
             if (!currentUser.isAuthenticated()) {
                 currentUser.login(token);

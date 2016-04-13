@@ -1,5 +1,6 @@
 package com.blazarquant.bfp.services.user;
 
+import com.blazarquant.bfp.core.security.exception.DecodingException;
 import com.blazarquant.bfp.data.user.Role;
 import com.blazarquant.bfp.data.user.UserDetails;
 import com.blazarquant.bfp.data.user.UserID;
@@ -20,7 +21,11 @@ public interface UserService {
 
 	boolean isUserExists(String userName);
 
+	boolean isUserActive(String userName);
+
 	boolean registerUser(String userName, String userMail, char[] password);
+
+	boolean confirmUser(String confirmationKey) throws DecodingException;
 
 	Subject getCurrentUser();
 

@@ -16,7 +16,6 @@ public class DatabasePropertiesLoader {
     private static final String CONFIG_PATH = System.getProperty("jboss.server.base.dir")+"/config/settings.properties";
     private static final Logger LOGGER = LoggerFactory.getLogger(DatabasePropertiesLoader.class);
 
-
     public static Properties loadProperties() {
         Properties properties = new Properties();
         try (FileInputStream inputStream = new FileInputStream(new File(CONFIG_PATH))) {

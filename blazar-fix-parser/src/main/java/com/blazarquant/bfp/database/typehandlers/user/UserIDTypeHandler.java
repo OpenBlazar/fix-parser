@@ -16,7 +16,7 @@ public class UserIDTypeHandler implements TypeHandler<UserID> {
 
 	@Override
 	public void setParameter(PreparedStatement ps, int i, UserID parameter, JdbcType jdbcType) throws SQLException {
-		// ignore for now
+		ps.setLong(i, parameter.getId());
 	}
 
 	@Override

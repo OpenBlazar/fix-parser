@@ -246,6 +246,14 @@
                 <version>1.3.1</version>
             </dependency>
 
+            <!-- Mail -->
+
+            <dependency>
+                <groupId>com.sun.mail</groupId>
+                <artifactId>javax.mail</artifactId>
+                <version>1.5.5</version>
+            </dependency>
+
             <!-- Logging -->
 
             <dependency>

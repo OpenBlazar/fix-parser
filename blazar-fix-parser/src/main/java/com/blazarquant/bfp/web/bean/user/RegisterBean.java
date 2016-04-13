@@ -83,9 +83,9 @@ public class RegisterBean extends AbstractBean {
                         new FacesMessage(FacesMessage.SEVERITY_WARN, "User with given name " + getUsername() + " already exists.", ""));
                 return;
             }
-            userService.registerUser(getUsername(), "", getPassword().toCharArray());
+            userService.registerUser(getUsername(), getEmail(), getPassword().toCharArray());
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Congratulations, registration has been successful", ""));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Congratulations, registration has been successful. Please check your email to confirm registration.", ""));
         } catch (Exception e) {
             facesError("Failed to register user.", e);
         }
