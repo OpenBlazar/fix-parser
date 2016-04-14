@@ -15,4 +15,6 @@ public interface SecurityUtil {
 
 	long decodeConfirmationKey(String confirmationKey) throws DecodingException;
 
+	String generateShareKey();
+
 }

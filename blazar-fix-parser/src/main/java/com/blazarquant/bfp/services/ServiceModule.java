@@ -9,6 +9,8 @@ import com.blazarquant.bfp.services.mail.MailService;
 import com.blazarquant.bfp.services.mail.MailServiceImpl;
 import com.blazarquant.bfp.services.parser.ParserService;
 import com.blazarquant.bfp.services.parser.ParserServiceImpl;
+import com.blazarquant.bfp.services.share.ShareService;
+import com.blazarquant.bfp.services.share.ShareServiceImpl;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.services.user.UserServiceImpl;
 import com.google.inject.AbstractModule;
@@ -46,6 +48,8 @@ public class ServiceModule extends AbstractModule {
         bind(MailConnection.class).to(MailConnectionImpl.class);
         bind(MailEngine.class);
         bind(MailService.class).to(MailServiceImpl.class).in(Singleton.class);
+
+        bind(ShareService.class).to(ShareServiceImpl.class).in(Singleton.class);
     }
 
 }

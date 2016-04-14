@@ -4,6 +4,8 @@ import com.blazarquant.bfp.core.security.exception.DecodingException;
 import org.apache.shiro.codec.Base64;
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.util.UUID;
+
 /**
  * @author Wojciech Zankowski
  */
@@ -41,4 +43,8 @@ public class SecurityUtilImpl implements SecurityUtil {
         return Long.parseLong(elements[0]);
     }
 
+    @Override
+    public String generateShareKey() {
+        return UUID.randomUUID().toString();
+    }
 }
