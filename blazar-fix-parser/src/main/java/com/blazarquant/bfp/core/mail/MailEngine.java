@@ -24,6 +24,8 @@ import java.util.concurrent.ThreadFactory;
  */
 public class MailEngine {
 
+    public static final String SENDER_MAIL = "no-reply@blazarquant.com";
+
     private final static Logger LOGGER = LoggerFactory.getLogger(MailEngine.class);
 
     private final LinkedBlockingQueue<MailMessage> mailMessageQueue = new LinkedBlockingQueue<>();
@@ -73,12 +75,12 @@ public class MailEngine {
             Transport transport = null;
             try {
                 MimeMessage mimeMessage = new MimeMessage(mailSession);
-                mimeMessage.setFrom(new InternetAddress("wojciech@zankowski.pl"));
+                mimeMessage.setFrom(new InternetAddress(SENDER_MAIL));
                 mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(userMail));
                 mimeMessage.setSubject(subject);
 
                 MimeBodyPart bodyPart = new MimeBodyPart();
-                bodyPart.setText(message);
+                bodyPart.setContent(message, "text/html");
 
                 Multipart multipart = new MimeMultipart();
                 multipart.addBodyPart(bodyPart);
