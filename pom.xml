@@ -51,7 +51,6 @@
         <javax.el>3.0.0</javax.el>
         <javax.servlet.api>3.1.0</javax.servlet.api>
         <jstl>1.2</jstl>
-        <myfaces.impl>2.2.9</myfaces.impl>
         <primefaces>5.3</primefaces>
         <primefaces.bootstrap>1.0.10</primefaces.bootstrap>
         <version.picketlink.javaee.bom>2.7.1.Final</version.picketlink.javaee.bom>

@@ -154,3 +154,7 @@ table .formColumn2 .ui-datepicker-trigger {
     border-color: #8e814c;
 }
 
+.ui-dialog-titlebar {
+    background-color: #f8f8f8;
+}
+

@@ -1,5 +1,6 @@
 package com.blazarquant.bfp.database;
 
+import com.blazarquant.bfp.database.dao.ShareDAO;
 import com.blazarquant.bfp.database.dao.UserDAO;
 import com.blazarquant.bfp.database.utils.DatabasePropertiesLoader;
 import com.google.inject.name.Names;
@@ -25,6 +26,7 @@ public class DatabaseModule extends MyBatisModule {
 
 		addMapperClass(UserDAO.class);
 		addMapperClass(MessageDAO.class);
+		addMapperClass(ShareDAO.class);
 	}
 
 }

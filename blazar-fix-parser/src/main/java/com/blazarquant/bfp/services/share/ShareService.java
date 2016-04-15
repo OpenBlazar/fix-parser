@@ -1,16 +1,14 @@
 package com.blazarquant.bfp.services.share;
 
-import com.blazarquant.bfp.fix.data.FixMessage;
+import com.blazarquant.bfp.core.share.exception.ShareException;
 
 /**
  * @author Wojciech Zankowski
  */
 public interface ShareService {
 
-    String generateKey(FixMessage message);
+    String shareMessage(String message) throws ShareException;
 
-    FixMessage getMessageFromKey(String key);
-
-    void removeKey(String shareKey);
+    String getMessageFromKey(String key);
 
 }
