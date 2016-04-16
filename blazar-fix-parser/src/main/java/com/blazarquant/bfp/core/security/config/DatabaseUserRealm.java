@@ -1,10 +1,9 @@
 package com.blazarquant.bfp.core.security.config;
 
-import com.google.inject.Inject;
 import com.blazarquant.bfp.data.user.Role;
 import com.blazarquant.bfp.data.user.UserDetails;
-import com.blazarquant.bfp.data.user.UserID;
 import com.blazarquant.bfp.database.dao.UserDAO;
+import com.google.inject.Inject;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -41,10 +40,9 @@ public class DatabaseUserRealm extends AuthorizingRealm {
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        UserID userId = new UserID((Long) principals.fromRealm(getName()).iterator().next());
-        UserDetails userDetails = userDAO.findUserById(userId);
+        UserDetails userDetails = (UserDetails) principals.fromRealm(getName()).iterator().next();
         if (userDetails != null) {
-            List<Role> userRoles = userDAO.findUserRoles(userId);
+            List<Role> userRoles = userDAO.findUserRoles(userDetails.getUserID());
             SimpleAuthorizationInfo authInfo = new SimpleAuthorizationInfo();
             for (Role role : userRoles) {
                 authInfo.addRole(role.getName());
