@@ -3,20 +3,17 @@ package com.blazarquant.bfp.database.typehandlers;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandler;
 
-import java.sql.CallableStatement;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.Instant;
 
 /**
  * @author Wojciech Zankowski
  */
-public class LocalDateTimeTypeHandler implements TypeHandler<Instant> {
+public class InstantTypeHandler implements TypeHandler<Instant> {
 
 	@Override
 	public void setParameter(PreparedStatement ps, int i, Instant parameter, JdbcType jdbcType) throws SQLException {
-		// ignore for now
+		ps.setTimestamp(i, new Timestamp(parameter.toEpochMilli()));
 	}
 
 	@Override

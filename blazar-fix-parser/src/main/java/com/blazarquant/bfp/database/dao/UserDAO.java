@@ -4,7 +4,7 @@ import com.blazarquant.bfp.data.user.Role;
 import com.blazarquant.bfp.data.user.UserDetails;
 import com.blazarquant.bfp.data.user.UserID;
 import com.blazarquant.bfp.data.user.UserState;
-import com.blazarquant.bfp.database.typehandlers.LocalDateTimeTypeHandler;
+import com.blazarquant.bfp.database.typehandlers.InstantTypeHandler;
 import com.blazarquant.bfp.database.typehandlers.user.ActiveUserTypeHandler;
 import com.blazarquant.bfp.database.typehandlers.user.UserIDTypeHandler;
 import com.blazarquant.bfp.database.utils.Tables;
@@ -41,8 +41,8 @@ public interface UserDAO {
             @Arg(column = "user_email", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_pass", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_status", javaType = UserState.class, jdbcType = JdbcType.INTEGER, typeHandler = ActiveUserTypeHandler.class),
-            @Arg(column = "user_registerdate", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = LocalDateTimeTypeHandler.class),
-            @Arg(column = "user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = LocalDateTimeTypeHandler.class)
+            @Arg(column = "user_registerdate", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class),
+            @Arg(column = "user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class)
     })
     List<UserDetails> findAllUsers();
 
@@ -53,8 +53,8 @@ public interface UserDAO {
             @Arg(column = "user_email", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_pass", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_status", javaType = UserState.class, jdbcType = JdbcType.INTEGER, typeHandler = ActiveUserTypeHandler.class),
-            @Arg(column = "user_registerdate", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = LocalDateTimeTypeHandler.class),
-            @Arg(column = "user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = LocalDateTimeTypeHandler.class)
+            @Arg(column = "user_registerdate", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class),
+            @Arg(column = "user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class)
     })
     UserDetails findUserByLogin(String userName);
 
@@ -71,8 +71,8 @@ public interface UserDAO {
             @Arg(column = "user_email", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_pass", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_status", javaType = UserState.class, jdbcType = JdbcType.INTEGER, typeHandler = ActiveUserTypeHandler.class),
-            @Arg(column = "user_registerdate", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = LocalDateTimeTypeHandler.class),
-            @Arg(column = "user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = LocalDateTimeTypeHandler.class)
+            @Arg(column = "user_registerdate", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class),
+            @Arg(column = "user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class)
     })
     UserDetails findUserById(UserID userID);
 

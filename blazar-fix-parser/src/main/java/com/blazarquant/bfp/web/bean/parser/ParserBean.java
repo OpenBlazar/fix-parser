@@ -5,6 +5,7 @@ import com.blazarquant.bfp.fix.data.FixMessage;
 import com.blazarquant.bfp.fix.parser.util.FixParserConstants;
 import com.blazarquant.bfp.services.parser.ParserService;
 import com.blazarquant.bfp.services.share.ShareService;
+import com.blazarquant.bfp.services.tracker.TrackerService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -32,11 +33,13 @@ public class ParserBean extends AbstractBean {
     private final static Logger LOGGER = LoggerFactory.getLogger(ParserBean.class);
 
     protected ParserService parserService;
-    protected ShareService shareService;
+    protected TrackerService trackerService;
+    private ShareService shareService;
+
     protected List<FixMessage> messages = new ArrayList<>();
-    protected FixMessage selectedMessage;
-    protected String shareKey;
-    protected String input;
+    private FixMessage selectedMessage;
+    private String shareKey;
+    private String input;
 
     @Inject
     public void setParserService(ParserService parserService) {
@@ -46,6 +49,11 @@ public class ParserBean extends AbstractBean {
     @Inject
     public void setShareService(ShareService shareService) {
         this.shareService = shareService;
+    }
+
+    @Inject
+    public void setTrackerService(TrackerService trackerService) {
+        this.trackerService = trackerService;
     }
 
     @PostConstruct
@@ -71,6 +79,7 @@ public class ParserBean extends AbstractBean {
 
     public void doParse(String input) {
         messages = new ArrayList<>(parserService.parseInput(input));
+        trackerService.inputParsed(messages.size());
         doSaveMessages(messages);
     }
 

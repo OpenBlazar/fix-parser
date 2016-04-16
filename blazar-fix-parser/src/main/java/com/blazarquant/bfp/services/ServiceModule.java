@@ -11,6 +11,8 @@ import com.blazarquant.bfp.services.parser.ParserService;
 import com.blazarquant.bfp.services.parser.ParserServiceImpl;
 import com.blazarquant.bfp.services.share.ShareService;
 import com.blazarquant.bfp.services.share.ShareServiceImpl;
+import com.blazarquant.bfp.services.tracker.TrackerService;
+import com.blazarquant.bfp.services.tracker.TrackerServiceImpl;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.services.user.UserServiceImpl;
 import com.google.inject.AbstractModule;
@@ -27,7 +29,7 @@ import java.util.Properties;
  */
 public class ServiceModule extends AbstractModule {
 
-    private static final String MAIL_CONFIG_PATH = System.getProperty("jboss.server.base.dir")+"/config/mail.properties";
+    private static final String MAIL_CONFIG_PATH = System.getProperty("jboss.server.base.dir") + "/config/mail.properties";
 
     @Override
     protected void configure() {
@@ -50,6 +52,8 @@ public class ServiceModule extends AbstractModule {
         bind(MailService.class).to(MailServiceImpl.class).in(Singleton.class);
 
         bind(ShareService.class).to(ShareServiceImpl.class).in(Singleton.class);
+
+        bind(TrackerService.class).to(TrackerServiceImpl.class).in(Singleton.class);
     }
 
 }
