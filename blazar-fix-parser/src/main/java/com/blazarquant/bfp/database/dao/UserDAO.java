@@ -25,6 +25,7 @@ public interface UserDAO {
     String SELECT_USER_ROLES = "SELECT role_name FROM " + Tables.USER_ROLES_TABLE + " JOIN " + Tables.ROLES_TABLE + " ON "
             + Tables.USER_ROLES_TABLE + ".role_id = " + Tables.ROLES_TABLE + ".ID WHERE user_id = #{id}";
     String CHECK_IF_USER_EXISTS = "SELECT count(1) FROM " + Tables.USERS_TABLE + " WHERE user_login = #{userName}";
+    String CHECK_IF_USERMAIL_EXISTS = "SELECT count(1) FROM " + Tables.USERS_TABLE + " WHERE user_email = #{userMail}";
     String CHECK_IF_USER_ACTIVE = "SELECT user_status FROM " + Tables.USERS_TABLE + " WHERE user_login = #{userName}";
     String SELECT_USER_CONFIRMATION_KEY = "Select user_confirmationkey FROM " + Tables.USERS_TABLE + " WHERE ID = #{userID}";
     String INSERT_USER_REGISTER = "INSERT INTO " + Tables.USERS_TABLE + " (user_login, " +
@@ -83,7 +84,10 @@ public interface UserDAO {
     List<Role> findUserRoles(UserID userID);
 
     @Select(CHECK_IF_USER_EXISTS)
-    Integer isUserExists(String userName);
+    Integer isUserNameExists(String userName);
+
+    @Select(CHECK_IF_USERMAIL_EXISTS)
+    Integer isUserMailExists(String userMail);
 
     @Select(CHECK_IF_USER_ACTIVE)
     int isUserActive(String userName);

@@ -19,7 +19,9 @@ public interface UserService {
 
 	List<Role> getUserRoles(UserID userID);
 
-	boolean isUserExists(String userName);
+	boolean isUserNameExists(String userName);
+
+	boolean isUserMailExists(String userMail);
 
 	boolean isUserActive(String userName);
 

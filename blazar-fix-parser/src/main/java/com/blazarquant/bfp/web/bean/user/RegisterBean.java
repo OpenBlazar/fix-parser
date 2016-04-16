@@ -78,9 +78,14 @@ public class RegisterBean extends AbstractBean {
         }
 
         try {
-            if (userService.isUserExists(getUsername())) {
+            if (userService.isUserNameExists(getUsername())) {
                 FacesContext.getCurrentInstance().addMessage(null,
                         new FacesMessage(FacesMessage.SEVERITY_WARN, "User with given name " + getUsername() + " already exists.", ""));
+                return;
+            }
+            if (userService.isUserMailExists(getEmail())) {
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_WARN, "User with given mail " + getEmail() + " already exists.", ""));
                 return;
             }
             userService.registerUser(getUsername(), getEmail(), getPassword().toCharArray());
