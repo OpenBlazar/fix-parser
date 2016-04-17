@@ -18,6 +18,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.time.Instant;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Wojciech Zankowski
@@ -42,7 +43,9 @@ public class AdminBean extends AbstractBean {
             Subject subject = SecurityUtils.getSubject();
             if (subject.hasRole(UserRole.ADMIN.getRole())) {
                 userDetails = userService.getUsers();
-                trackerData = trackerService.getDailyDataAgg().entrySet();
+                trackerData = trackerService.getDailyDataAgg().entrySet().stream()
+                        .sorted((e1, e2) -> e1.getKey().compareTo(e2.getKey()))
+                        .collect(Collectors.toSet());
             } else {
                 // TODO FIXME move to shiro rules
                 FacesContext.getCurrentInstance().getExternalContext().redirect(BlazarURL.PARSER_URL);
