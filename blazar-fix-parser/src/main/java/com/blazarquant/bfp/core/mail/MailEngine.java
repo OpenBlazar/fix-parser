@@ -2,12 +2,16 @@ package com.blazarquant.bfp.core.mail;
 
 import com.blazarquant.bfp.core.mail.connection.MailConnection;
 import com.blazarquant.bfp.core.mail.connection.MailConnectionCredentials;
+import com.blazarquant.bfp.core.mail.connection.MailSession;
 import com.blazarquant.bfp.core.mail.data.MailMessage;
 import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.mail.*;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
@@ -43,8 +47,7 @@ public class MailEngine {
     private MailConnection mailConnection;
     private MailConnectionCredentials mailConnectionCredentials;
     private MailSynchronizationThread mailSynchronizationThread;
-
-    private Session mailSession;
+    private MailSession mailSession;
 
     @Inject
     public MailEngine(MailConnection mailConnection, MailConnectionCredentials mailConnectionCredentials) {
@@ -74,7 +77,7 @@ public class MailEngine {
         mailEngineService.submit(() -> {
             Transport transport = null;
             try {
-                MimeMessage mimeMessage = new MimeMessage(mailSession);
+                MimeMessage mimeMessage = new MimeMessage(mailSession.getSession());
                 mimeMessage.setFrom(new InternetAddress(SENDER_MAIL));
                 mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(userMail));
                 mimeMessage.setSubject(subject);

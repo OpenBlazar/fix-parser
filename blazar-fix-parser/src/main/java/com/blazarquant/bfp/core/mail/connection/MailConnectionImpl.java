@@ -7,10 +7,10 @@ import javax.mail.*;
  */
 public class MailConnectionImpl implements MailConnection {
 
-    public Session connect(String host, int port, String username, String password) throws MessagingException {
+    public MailSession connect(String host, int port, String username, String password) throws MessagingException {
         Session session = Session.getDefaultInstance(System.getProperties(), null);
         session.getTransport().connect(host, port, username, password);
-        return session;
+        return new MailSessionImpl(session);
     }
 
 }
