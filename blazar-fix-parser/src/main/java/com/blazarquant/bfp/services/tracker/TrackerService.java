@@ -1,6 +1,8 @@
 package com.blazarquant.bfp.services.tracker;
 
-import java.time.Instant;
+import com.blazarquant.bfp.data.tracker.TrackerData;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -9,9 +11,9 @@ import java.util.Map;
  */
 public interface TrackerService {
 
-    Map<Instant, List<Integer>> getDailyData();
+    List<TrackerData> getTrackerData();
 
-    Map<Instant, Integer> getDailyDataAgg();
+    Map<LocalDate, Integer> getTrackerDailyDataAgg();
 
     void inputParsed(int messagesNumber);
 
