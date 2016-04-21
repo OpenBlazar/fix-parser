@@ -18,6 +18,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.time.Instant;
 import java.util.*;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 /**
@@ -43,9 +44,15 @@ public class AdminBean extends AbstractBean {
             Subject subject = SecurityUtils.getSubject();
             if (subject.hasRole(UserRole.ADMIN.getRole())) {
                 userDetails = userService.getUsers();
+
+                Comparator<Map.Entry<Instant, Integer>> byTimestamp =
+                        Comparator.comparing(Map.Entry::getKey);
+
+                Supplier<TreeSet<Map.Entry<Instant, Integer>>> supplier =
+                        () -> new TreeSet<>(byTimestamp);
+
                 trackerData = trackerService.getDailyDataAgg().entrySet().stream()
-                        .sorted((e1, e2) -> e1.getKey().compareTo(e2.getKey()))
-                        .collect(Collectors.toSet());
+                        .collect(Collectors.toCollection(supplier));
             } else {
                 // TODO FIXME move to shiro rules
                 FacesContext.getCurrentInstance().getExternalContext().redirect(BlazarURL.PARSER_URL);
