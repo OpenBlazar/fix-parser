@@ -101,4 +101,13 @@
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
 
+    <filter>
+        <filter-name>Character Filter</filter-name>
+        <filter-class>com.blazarquant.bfp.web.filter.CharacterFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Character Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
 </web-app>

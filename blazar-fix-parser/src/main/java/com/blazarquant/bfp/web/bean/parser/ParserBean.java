@@ -70,6 +70,8 @@ public class ParserBean extends AbstractBean {
         }
         try {
             input = shareService.getMessageFromKey(shareKey);
+            // TODO hack, inputTextArea eats \u0001, why? // FIXME: 21.04.2016 
+            input = input.replaceAll("\u0001", "#");
             messages = new ArrayList<>(parserService.parseInput(input));
         } catch (Exception e) {
             // TODO Handle
