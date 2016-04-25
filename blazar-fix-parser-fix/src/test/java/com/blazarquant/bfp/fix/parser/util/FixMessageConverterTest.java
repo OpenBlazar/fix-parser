@@ -60,6 +60,22 @@ public class FixMessageConverterTest {
     }
 
     @Test
+    public void testEdgeCases() {
+        String delimiter = "#";
+        String[] messages = new String[] {FixTestConstants.EDGE_CASE_FIX_2, FixTestConstants.EDGE_CASE_FIX_3, FixTestConstants.EDGE_CASE_FIX_4};
+
+        for (String message : messages) {
+            List<String> textMessages = new ArrayList<>();
+            textMessages.add(message);
+
+            List<FixMessage> expectedMessages = new ArrayList<>();
+            expectedMessages.add(messageFactory.legalFixMessage7());
+            List<FixMessage> actualMessages = messageConverter.convertToFixMessages(textMessages, delimiter);
+            assertEquals(expectedMessages, actualMessages);
+        }
+    }
+
+    @Test
     public void testConvertToString() {
         // Default Entry delimiter
         String convertedMessage = messageConverter.convertToString(messageFactory.legalFixMessage4());

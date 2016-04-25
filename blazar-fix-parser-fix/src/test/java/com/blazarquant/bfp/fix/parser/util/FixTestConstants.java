@@ -19,6 +19,9 @@ public class FixTestConstants {
     public static final String ILLEGAL_FIX_5 = "8=FIX.4.2#9=197#135=8#6=0.0#11=373009#14=0#17=373009";
 
     public static final String EDGE_CASE_FIX = "Edge Case9=32 8=FIX.4.4|9=12|35=A|34=1|49=EXEC";
+    public static final String EDGE_CASE_FIX_2 = "(8=#9=198#35=#6=41.21#10=024";
+    public static final String EDGE_CASE_FIX_3 = "[8=#9=198#35=#6=41.21#10=024";
+    public static final String EDGE_CASE_FIX_4 = "{8=#9=198#35=#6=41.21#10=024";
 
     public static final String LEGAL_FIX_LONG_1 = "8=FIX.4.2#9=198#35=8#6=41.21#10=024#";
     public static final String LEGAL_FIX_LONG_2 = "8=FIX.4.2#9=204#35=8#6=102.75#11=38400195#10=152";
