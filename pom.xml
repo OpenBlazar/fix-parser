@@ -7,7 +7,7 @@
     <groupId>com.blazarquant</groupId>
     <artifactId>blazar-fix-parser-all</artifactId>
     <packaging>pom</packaging>
-    <version>0.1</version>
+    <version>1.0</version>
 
     <name>blazar-fix-parser-all</name>
     <description>Blazar Fix Parser parent POM.</description>

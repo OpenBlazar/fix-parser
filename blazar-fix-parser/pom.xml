@@ -5,7 +5,7 @@
     <parent>
         <artifactId>blazar-fix-parser-all</artifactId>
         <groupId>com.blazarquant</groupId>
-        <version>0.1</version>
+        <version>1.0</version>
     </parent>
 
     <artifactId>blazar-fix-parser</artifactId>
