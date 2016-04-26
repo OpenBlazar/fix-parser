@@ -10,8 +10,7 @@ import com.blazarquant.bfp.web.util.BlazarURL;
 import com.google.inject.Inject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
-import org.primefaces.model.chart.ChartSeries;
-import org.primefaces.model.chart.LineChartModel;
+import org.primefaces.model.chart.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,14 +57,18 @@ public class AdminBean extends AbstractBean {
                         .collect(Collectors.toCollection(
                                 () -> new TreeSet<>(Comparator.comparing(Map.Entry::getKey))));
 
-                ChartSeries chartSeries = new ChartSeries();
+                LineChartSeries chartSeries = new LineChartSeries();
                 chartSeries.setLabel("Message number");
-                trackerDailyData.forEach(data -> chartSeries.set(data.getKey().toString(), data.getValue()));
+                trackerDailyData.forEach(data -> chartSeries.set(data.getKey(), data.getValue()));
 
                 trackerChartModel.addSeries(chartSeries);
                 trackerChartModel.setTitle("Tracker Data");
                 trackerChartModel.setLegendPosition("e");
                 trackerChartModel.setShowPointLabels(true);
+                trackerChartModel.getAxes().put(AxisType.X, new CategoryAxis("Day"));
+                Axis yAxis = trackerChartModel.getAxis(AxisType.Y);
+                yAxis.setLabel("Number");
+                yAxis.setMin(0);
             } else {
                 // TODO FIXME move to shiro rules
                 FacesContext.getCurrentInstance().getExternalContext().redirect(BlazarURL.PARSER_URL);
