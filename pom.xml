@@ -46,7 +46,7 @@
     </scm>
 
     <properties>
-        <bfp.version>0.1</bfp.version>
+        <bfp.version>1.0</bfp.version>
 
         <javax.el>3.0.0</javax.el>
         <javax.servlet.api>3.1.0</javax.servlet.api>
