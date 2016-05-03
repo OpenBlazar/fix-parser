@@ -13,17 +13,33 @@ import java.util.Properties;
  */
 public class DatabasePropertiesLoader {
 
-    private static final String CONFIG_PATH = System.getProperty("jboss.server.base.dir")+"/config/settings.properties";
+    public static final String JDBC_HOST = "JDBC.host";
+    public static final String JDBC_PORT = "JDBC.port";
+    public static final String JDBC_SCHEMA = "JDBC.schema";
+
+    private static final String CONFIG_PATH = System.getProperty("jboss.server.base.dir") + "/config/settings.properties";
     private static final Logger LOGGER = LoggerFactory.getLogger(DatabasePropertiesLoader.class);
 
-    public static Properties loadProperties() {
-        Properties properties = new Properties();
-        try (FileInputStream inputStream = new FileInputStream(new File(CONFIG_PATH))) {
-            properties.load(inputStream);
-        } catch (IOException e) {
-            LOGGER.error("Failed to load database properties. {}", e);
+    private static Properties properties;
+
+    public static Properties getProperties() {
+        if (properties == null) {
+            try (FileInputStream inputStream = new FileInputStream(new File(CONFIG_PATH))) {
+                properties = new Properties();
+                properties.load(inputStream);
+            } catch (IOException e) {
+                LOGGER.error("Failed to load database properties. {}", e);
+            }
         }
         return properties;
+    }
+
+    public static String getProperty(String propertyName) {
+        String property = properties.getProperty(propertyName);
+        if (property == null) {
+            throw new IllegalArgumentException("Illegal property name. Property " + propertyName + " does not seem to exists.");
+        }
+        return property;
     }
 
 }

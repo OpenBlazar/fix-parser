@@ -19,6 +19,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -30,6 +31,7 @@ import java.util.stream.Collectors;
 public class AdminBean extends AbstractBean {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(AdminBean.class);
+    private final DateTimeFormatter dateChartFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     private UserService userService;
     private TrackerService trackerService;
@@ -59,13 +61,18 @@ public class AdminBean extends AbstractBean {
 
                 LineChartSeries chartSeries = new LineChartSeries();
                 chartSeries.setLabel("Message number");
-                trackerDailyData.forEach(data -> chartSeries.set(data.getKey(), data.getValue()));
+                trackerDailyData.forEach(data -> chartSeries.set(dateChartFormatter.format(data.getKey()), data.getValue()));
 
                 trackerChartModel.addSeries(chartSeries);
                 trackerChartModel.setTitle("Tracker Data");
                 trackerChartModel.setLegendPosition("e");
                 trackerChartModel.setShowPointLabels(true);
-                trackerChartModel.getAxes().put(AxisType.X, new CategoryAxis("Day"));
+                trackerChartModel.setZoom(true);
+
+                DateAxis dateAxis = new DateAxis("Dates");
+                dateAxis.setTickFormat("%b %#d, %y");
+                trackerChartModel.getAxes().put(AxisType.X, dateAxis);
+
                 Axis yAxis = trackerChartModel.getAxis(AxisType.Y);
                 yAxis.setLabel("Number");
                 yAxis.setMin(0);

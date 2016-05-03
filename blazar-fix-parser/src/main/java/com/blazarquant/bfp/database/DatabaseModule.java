@@ -23,7 +23,7 @@ public class DatabaseModule extends MyBatisModule {
 
 		bindDataSourceProviderType(BasicDataSourceProvider.class);
 		bindTransactionFactoryType(JdbcTransactionFactory.class);
-		Names.bindProperties(binder(), DatabasePropertiesLoader.loadProperties());
+		Names.bindProperties(binder(), DatabasePropertiesLoader.getProperties());
 
 		addMapperClass(UserDAO.class);
 		addMapperClass(MessageDAO.class);
