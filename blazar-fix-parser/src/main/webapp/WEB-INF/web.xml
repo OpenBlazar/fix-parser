@@ -32,7 +32,7 @@
     </context-param>
 
     <welcome-file-list>
-        <welcome-file>/parser</welcome-file>
+        <welcome-file>/pages/public/parser.xhtml</welcome-file>
     </welcome-file-list>
 
     <servlet>
