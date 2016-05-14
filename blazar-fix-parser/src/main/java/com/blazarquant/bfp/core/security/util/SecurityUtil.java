@@ -17,4 +17,8 @@ public interface SecurityUtil {
 
 	String generateShareKey();
 
+	String encodeMessage(String message);
+
+	String decodeMessage(String message);
+
 }

@@ -28,7 +28,7 @@ public abstract class AbstractBean implements Serializable {
     }
 
     protected void facesError(String message, Exception exception) {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, message, null));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, message));
     }
 
 }

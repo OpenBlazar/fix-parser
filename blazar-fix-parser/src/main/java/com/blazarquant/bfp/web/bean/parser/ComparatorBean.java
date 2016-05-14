@@ -1,6 +1,9 @@
 package com.blazarquant.bfp.web.bean.parser;
 
+import com.blazarquant.bfp.fix.data.FixField;
 import com.blazarquant.bfp.fix.data.FixMessage;
+import com.blazarquant.bfp.fix.data.FixPair;
+import com.blazarquant.bfp.fix.data.FixValue;
 import com.blazarquant.bfp.web.bean.AbstractBean;
 
 import javax.faces.bean.ManagedBean;
@@ -30,6 +33,14 @@ public class ComparatorBean extends AbstractBean {
 
     public void setSelectedMessage_2(FixMessage selectedMessage_2) {
         this.selectedMessage_2 = selectedMessage_2;
+    }
+
+    public String getRowStyleForSecondMessage(FixPair fixPair) {
+        if (selectedMessage_1.getMessageFields().contains(fixPair)) {
+            return "null";
+        } else {
+            return "blazar-comparator-row";
+        }
     }
 
 }

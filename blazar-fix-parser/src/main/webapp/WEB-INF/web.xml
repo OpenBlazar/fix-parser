@@ -23,7 +23,7 @@
 
     <context-param>
         <param-name>primefaces.THEME</param-name>
-        <param-value>bootstrap</param-value>
+        <param-value>omega</param-value>
     </context-param>
 
     <context-param>
@@ -32,7 +32,7 @@
     </context-param>
 
     <welcome-file-list>
-        <welcome-file>/pages/public/parser.xhtml</welcome-file>
+        <welcome-file>/parser</welcome-file>
     </welcome-file-list>
 
     <servlet>

@@ -1,5 +1,7 @@
 package com.blazarquant.bfp.services.parser;
 
+import com.blazarquant.bfp.core.security.util.SecurityUtil;
+import com.blazarquant.bfp.core.security.util.SecurityUtilImpl;
 import com.blazarquant.bfp.data.user.UserDetails;
 import com.blazarquant.bfp.fix.data.FixMessage;
 import com.google.inject.Inject;
@@ -8,6 +10,7 @@ import com.blazarquant.bfp.fix.parser.FixParser;
 import com.blazarquant.bfp.fix.parser.util.FixMessageConverter;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Wojciech Zankowski
@@ -16,6 +19,7 @@ public class ParserServiceImpl implements ParserService {
 
     private final FixParser fixParser;
     private final FixMessageConverter messageConverter;
+    private final SecurityUtil securityUtil = new SecurityUtilImpl();
     private MessageDAO messageDAO;
 
     @Inject
@@ -27,8 +31,12 @@ public class ParserServiceImpl implements ParserService {
 
     @Override
     public List<FixMessage> findMessagesByUser(UserDetails userDetails, int lowerLimit, int upperLimit) {
+        List<String> messages = messageDAO.findMessageByUserID(userDetails.getUserID(), lowerLimit, upperLimit)
+                .stream()
+                .map(s -> securityUtil.decodeMessage(s))
+                .collect(Collectors.toList());
         return messageConverter.convertToFixMessages(
-                messageDAO.findMessageByUserID(userDetails.getUserID(), lowerLimit, upperLimit),
+                messages,
                 String.valueOf(FixMessageConverter.ENTRY_DELIMITER));
     }
 

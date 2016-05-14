@@ -1,26 +1,37 @@
-<!DOCTYPE html>
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
->
-
-<p:dialog id="dlg" header="Share Message" styleClass="ui-dialog-titlebar" widgetVar="dlg" resizable="false" minHeight="80" minWidth="500" height="80"
-          width="500" style="background-color: #f8f8f8" >
-    <div class="row">
-        <div class="col-md-1">
-            <h:outputLabel for="shareLink" value="Link:" style="padding-top: 5px;"/>
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
+    <p:dialog id="dlg"
+              header="#{msg['xhtml.components.sharedialog']}"
+              styleClass="ui-dialog-titlebar"
+              widgetVar="dlg"
+              resizable="false"
+              minHeight="10"
+              minWidth="500"
+              height="100"
+              width="500">
+        <div class="row">
+            <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+            <div class="col-md-1">
+                <h:outputLabel for="shareLink"
+                               value="Link:"
+                               style="padding-top: 5px;"/>
+            </div>
+            <div class="col-md-11">
+                <p:inputText id="shareLink"
+                             value="#{parserBean.shareLink}"
+                             label="shareLink"
+                             readonly="true"
+                             style="width: 100%;"/>
+            </div>
         </div>
-        <div class="col-md-11">
-            <p:inputText id="shareLink" value="#{parserBean.shareLink}" label="shareLink" readonly="true"
-                         style="width: 100%;"/>
+        <div class="pull-right" style="padding-top: 10px;">
+            <p:commandButton value="Generate link"
+                             update="shareLink"
+                             styleClass="btn-blazar btn-blazar-blue btn-blazar-blue-hover"
+                             actionListener="#{parserBean.doShare}"/>
         </div>
-    </div>
-    <div class="pull-right" style="padding-top: 10px;">
-        <p:commandButton value="Generate link" update="shareLink" actionListener="#{parserBean.doShare}"/>
-    </div>
-</p:dialog>
-
-</html>
+    </p:dialog>
+</ui:composition>

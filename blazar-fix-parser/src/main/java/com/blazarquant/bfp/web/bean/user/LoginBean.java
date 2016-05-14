@@ -15,6 +15,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import java.io.IOException;
 
 /**
  * @author Wojciech Zankowski
@@ -39,6 +40,14 @@ public class LoginBean extends AbstractBean {
     @PostConstruct
     public void init() {
         super.init();
+        Subject currentUser = SecurityUtils.getSubject();
+        if (currentUser.isAuthenticated()) {
+            try {
+                redirectToPreviousPage();
+            } catch (IOException e) {
+                facesError("Failed to redirect to home page.", e);
+            }
+        }
     }
 
     public void doLogin() {
@@ -54,12 +63,23 @@ public class LoginBean extends AbstractBean {
             if (!currentUser.isAuthenticated()) {
                 currentUser.login(token);
 
-                FacesContext.getCurrentInstance().getExternalContext().redirect(BlazarURL.PARSER_URL);
+                redirectToPreviousPage();
+            } else {
+                redirectToPreviousPage();
             }
         } catch (Exception e) {
             facesError("Please check the information you entered and try again.", e);
         } finally {
             token.clear();
+        }
+    }
+
+    private void redirectToPreviousPage() throws IOException {
+        if(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().containsKey("originalURL")) {
+            FacesContext.getCurrentInstance().getExternalContext().redirect(
+                    (String)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("originalURL"));
+        } else {
+            FacesContext.getCurrentInstance().getExternalContext().redirect(BlazarURL.PARSER_URL);
         }
     }
 

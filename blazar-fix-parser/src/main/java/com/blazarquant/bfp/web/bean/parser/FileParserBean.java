@@ -15,6 +15,7 @@ public class FileParserBean extends ParserBean {
 
     public void handleFileUpload(FileUploadEvent event) {
         String input = new String(event.getFile().getContents(), Charset.defaultCharset());
+        selectedMessage = null;
         messages = parserService.parseInput(input);
         trackerService.inputParsed(messages.size());
         doSaveMessages(messages);

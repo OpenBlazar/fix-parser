@@ -50,4 +50,14 @@ public class SecurityUtilImpl implements SecurityUtil {
     public String generateShareKey() {
         return UUID.randomUUID().toString();
     }
+
+    @Override
+    public String encodeMessage(String message) {
+        return Base64.encodeToString(message.getBytes());
+    }
+
+    @Override
+    public String decodeMessage(String message) {
+        return Base64.decodeToString(message);
+    }
 }

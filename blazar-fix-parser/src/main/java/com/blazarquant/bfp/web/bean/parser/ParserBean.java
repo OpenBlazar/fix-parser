@@ -1,5 +1,6 @@
 package com.blazarquant.bfp.web.bean.parser;
 
+import com.blazarquant.bfp.core.share.exception.ShareException;
 import com.blazarquant.bfp.data.user.UserDetails;
 import com.blazarquant.bfp.fix.data.FixMessage;
 import com.blazarquant.bfp.fix.parser.util.FixParserConstants;
@@ -19,6 +20,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @author Wojciech Zankowski
@@ -37,7 +40,8 @@ public class ParserBean extends AbstractBean {
     private ShareService shareService;
 
     protected List<FixMessage> messages = new ArrayList<>();
-    private FixMessage selectedMessage;
+    protected FixMessage selectedMessage;
+    private ExecutorService executorService = Executors.newSingleThreadExecutor();
     private String shareKey;
     private String input;
 
@@ -69,10 +73,12 @@ public class ParserBean extends AbstractBean {
             return;
         }
         try {
-            input = shareService.getMessageFromKey(shareKey);
-            // TODO hack, inputTextArea eats \u0001, why? // FIXME: 21.04.2016 
-            input = input.replaceAll("\u0001", "#");
-            messages = new ArrayList<>(parserService.parseInput(input));
+            synchronized (messages) {
+                input = shareService.getMessageFromKey(shareKey);
+                // TODO hack, inputTextArea eats \u0001, why? // FIXME: 21.04.2016
+                input = input.replaceAll("\u0001", "#");
+                messages = new ArrayList<>(parserService.parseInput(input));
+            }
         } catch (Exception e) {
             // TODO Handle
             LOGGER.error("Failed to load shared message.", e);
@@ -80,9 +86,12 @@ public class ParserBean extends AbstractBean {
     }
 
     public void doParse(String input) {
-        messages = new ArrayList<>(parserService.parseInput(input));
-        trackerService.inputParsed(messages.size());
-        doSaveMessages(messages);
+        synchronized (messages) {
+            selectedMessage = null;
+            messages = new ArrayList<>(parserService.parseInput(input));
+            trackerService.inputParsed(messages.size());
+            doSaveMessages(messages);
+        }
     }
 
     protected void doSaveMessages(List<FixMessage> messages) {
@@ -90,7 +99,9 @@ public class ParserBean extends AbstractBean {
         if (currentUser.isAuthenticated()) {
             UserDetails userDetails = (UserDetails) currentUser.getPrincipal();
             if (userDetails != null) {
-                parserService.saveMessages(userDetails, messages);
+                executorService.submit(() -> {
+                    parserService.saveMessages(userDetails, messages);
+                });
             }
         }
     }
@@ -102,8 +113,11 @@ public class ParserBean extends AbstractBean {
     public void doShare() {
         try {
             shareKey = shareService.shareMessage(input);
+        } catch (ShareException e) {
+            facesError(e.getMessage(), e);
+            LOGGER.error("Failed to share message.", e);
         } catch (Exception e) {
-            // TODO Handle
+            facesError("Failed to save message.", e);
             LOGGER.error("Failed to share message.", e);
         }
     }
