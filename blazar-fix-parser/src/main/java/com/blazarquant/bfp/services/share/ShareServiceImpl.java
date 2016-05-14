@@ -30,13 +30,14 @@ public class ShareServiceImpl implements ShareService {
             throw new ShareException("Message too long. Message limit is " + CHARACTER_LIMIT + " characters.");
         }
         String shareKey = securityUtil.generateShareKey();
-        shareDAO.saveSharedMessage(shareKey, message);
+        String shareMessage = securityUtil.encodeMessage(message);
+        shareDAO.saveSharedMessage(shareKey, shareMessage);
         return shareKey;
     }
 
     @Override
     public String getMessageFromKey(String shareKey) {
-        return shareDAO.findMessageByKey(shareKey);
+        return securityUtil.decodeMessage(shareDAO.findMessageByKey(shareKey));
     }
 
 }
