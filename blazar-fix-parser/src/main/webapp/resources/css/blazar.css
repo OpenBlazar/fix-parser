@@ -148,6 +148,12 @@ html {
     border-color: #3a9649;
 }
 
+.fieldcolumn-dict {
+    color: #fff;
+    background-color: #7fbf7f;
+    border-color: #3a9649;
+}
+
 .fieldcolumn-red {
     color: #fff;
     background-color: #BA4141;

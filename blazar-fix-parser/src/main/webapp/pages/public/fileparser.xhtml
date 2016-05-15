@@ -30,56 +30,64 @@
             <h:form id="messageOutputPanel">
                 <div class="row">
                     <div class="col-md-7">
-                        <p:dataTable id="messagesTable"
-                                     var="message"
-                                     value="#{fileParserBean.messages}"
-                                     resizableColumns="true"
-                                     selectionMode="single"
-                                     selection="#{fileParserBean.selectedMessage}"
-                                     rowKey="#{message.messageID}"
-                                     emptyMessage="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.empty']}"
-                                     tableStyle="width:auto"
-                                     scrollable="true"
-                                     scrollHeight="540">
-                            <p:ajax event="rowSelect" update=":messageOutputPanel:singleTable"/>
+                        <p:scrollPanel mode="native" style="height:690px; width: 100%; border: 0px;">
+                            <p:dataTable id="messagesTable"
+                                         var="message"
+                                         value="#{fileParserBean.messages}"
+                                         resizableColumns="true"
+                                         selectionMode="single"
+                                         selection="#{fileParserBean.selectedMessage}"
+                                         rowKey="#{message.messageID}"
+                                         emptyMessage="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.empty']}"
+                                         scrollWidth="100%"
+                                         tableStyle="width:auto;">
+                                <p:ajax event="rowSelect" update=":messageOutputPanel:singleTable"/>
 
-                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.id']}"
-                                      width="40">
-                                <h:outputText value="#{message.messageID}"
-                                              styleClass="blazar-columnStyle"/>
-                            </p:column>
+                                <p:column
+                                        headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.id']}"
+                                        width="40">
+                                    <h:outputText value="#{message.messageID}"
+                                                  styleClass="blazar-columnStyle"/>
+                                </p:column>
 
-                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.sender']}"
-                                      width="90">
-                                <h:outputText value="#{fixBean.getSender(message)}"
-                                              styleClass="blazar-columnStyle"/>
-                            </p:column>
+                                <p:column
+                                        headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.sender']}"
+                                        width="90">
+                                    <h:outputText value="#{fixBean.getSender(message)}"
+                                                  styleClass="blazar-columnStyle"/>
+                                </p:column>
 
-                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.receiver']}"
-                                      width="90">
-                                <h:outputText value="#{fixBean.getReceiver(message)}"
-                                              styleClass="blazar-columnStyle"/>
-                            </p:column>
+                                <p:column
+                                        headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.receiver']}"
+                                        width="90">
+                                    <h:outputText value="#{fixBean.getReceiver(message)}"
+                                                  styleClass="blazar-columnStyle"/>
+                                </p:column>
 
-                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.sendingtime']}"
-                                      width="120">
-                                <h:outputText value="#{fixBean.getSendingTime(message)}"
-                                              styleClass="blazar-columnStyle"/>
-                            </p:column>
+                                <p:column
+                                        headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.sendingtime']}"
+                                        width="120">
+                                    <h:outputText value="#{fixBean.getSendingTime(message)}"
+                                                  styleClass="blazar-columnStyle"/>
+                                </p:column>
 
-                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.msgtype']}"
-                                      width="150">
-                                <h:outputText value="#{message.messageType}"
-                                              styleClass="blazar-columnStyle #{styleBean.getStyleForMsgType(message.messageType)}"/>
-                            </p:column>
+                                <p:column
+                                        headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.msgtype']}"
+                                        width="150">
+                                    <h:outputText value="#{message.messageType}"
+                                                  styleClass="#{styleBean.getStyleForMsgType(message.messageType)}"
+                                                  style="font-size: 10px;"/>
+                                </p:column>
 
-                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.summary']}"
-                                      width="150">
-                                <h:outputText value="#{fixBean.getOrdStatusDescription(message)}"
-                                              styleClass="#{styleBean.getStyleForOrdStatus(message)}"
-                                              style="font-size: 10px;"/>
-                            </p:column>
-                        </p:dataTable>
+                                <p:column
+                                        headerText="#{msg['com.blazarquant.bfp.pages.public.fileparser.mainTable.summary']}"
+                                        width="150">
+                                    <h:outputText value="#{fixBean.getOrdStatusDescription(message)}"
+                                                  styleClass="#{styleBean.getStyleForOrdStatus(message)}"
+                                                  style="font-size: 10px;"/>
+                                </p:column>
+                            </p:dataTable>
+                        </p:scrollPanel>
                     </div>
 
                     <div class="col-md-5">

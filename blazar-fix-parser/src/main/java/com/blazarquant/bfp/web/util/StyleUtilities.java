@@ -39,7 +39,7 @@ public class StyleUtilities {
             case CxlRejReason:
             case OrdRejReason:
             case ExecType:
-                return "fieldcolumn fieldcolumn-blue";
+                return "fieldcolumn fieldcolumn-dict";
             default:
                 return "fieldcolumn fieldcolumn-grey";
         }
