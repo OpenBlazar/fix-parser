@@ -35,6 +35,11 @@
         <welcome-file>/pages/public/parser.xhtml</welcome-file>
     </welcome-file-list>
 
+    <session-config>
+        <!-- 4 hours - default is 30 minutes -->
+        <session-timeout>240</session-timeout>
+    </session-config>
+
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>

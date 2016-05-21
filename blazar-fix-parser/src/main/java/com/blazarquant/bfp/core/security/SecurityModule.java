@@ -40,7 +40,6 @@ public class SecurityModule extends ShiroWebModule {
         bindRealm().to(DatabaseUserRealm.class).asEagerSingleton();
 
         bindConstant().annotatedWith(Names.named("shiro.sessionMode")).to("http");
-        bindConstant().annotatedWith(Names.named("shiro.globalSessionTimeout")).to(1800000L);
         bindConstant().annotatedWith(Names.named("shiro.loginUrl")).to("/signin");
 
         bindInterceptor(Matchers.any(), Matchers.annotatedWith(RequiresAuthentication.class),
