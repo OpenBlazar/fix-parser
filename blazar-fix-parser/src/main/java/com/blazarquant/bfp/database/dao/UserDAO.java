@@ -1,12 +1,10 @@
 package com.blazarquant.bfp.database.dao;
 
-import com.blazarquant.bfp.data.user.Role;
-import com.blazarquant.bfp.data.user.UserDetails;
-import com.blazarquant.bfp.data.user.UserID;
-import com.blazarquant.bfp.data.user.UserState;
+import com.blazarquant.bfp.data.user.*;
 import com.blazarquant.bfp.database.typehandlers.InstantTypeHandler;
 import com.blazarquant.bfp.database.typehandlers.user.ActiveUserTypeHandler;
 import com.blazarquant.bfp.database.typehandlers.user.UserIDTypeHandler;
+import com.blazarquant.bfp.database.typehandlers.user.UserSettingTypeHandler;
 import com.blazarquant.bfp.database.utils.Tables;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
@@ -34,6 +32,11 @@ public interface UserDAO {
             "#{lastLogin})";
     String UPDATE_USER_CONFIRMATION_KEY = "UPDATE " + Tables.USERS_TABLE + " SET user_confirmationkey=#{confirmationKey} WHERE ID = #{userID}";
     String UPDATE_USER_STATUS = "UPDATE " + Tables.USERS_TABLE + " SET user_status=#{userStatus, typeHandler=com.blazarquant.bfp.database.typehandlers.user.ActiveUserTypeHandler} WHERE ID = #{userID}";
+
+    String SELECT_PARAMETERS = "SELECT user_setting, setting_value FROM " + Tables.USER_PARAMETERS + " WHERE user_id = #{userID.id}";
+    String INSERT_PARAMETERS = "INSERT INTO " + Tables.USER_PARAMETERS + " (user_id, user_setting, setting_value) VALUES " +
+            "(#{userID.id}, #{userSetting, typeHandler=com.blazarquant.bfp.database.typehandlers.user.UserSettingTypeHandler}, #{value}) " +
+            "ON DUPLICATE KEY UPDATE user_id=VALUES(user_id), user_setting=VALUES(user_setting), setting_value=VALUES(setting_value)";
 
     @Select(SELECT_ALL)
     @ConstructorArgs(value = {
@@ -117,5 +120,21 @@ public interface UserDAO {
     void updateUserStatus(
             @Param("userID") long userID,
             @Param("userStatus") UserState userState
+    );
+
+    @Select(SELECT_PARAMETERS)
+    @ConstructorArgs(value = {
+            @Arg(column = "user_setting", jdbcType = JdbcType.VARCHAR, javaType = UserSetting.class, typeHandler = UserSettingTypeHandler.class),
+            @Arg(column = "setting_value", jdbcType = JdbcType.VARCHAR, javaType = String.class)
+    })
+    List<UserSettingHolder> findParameters(
+            @Param("userID") UserID userID
+    );
+
+    @Insert(INSERT_PARAMETERS)
+    void saveParameter(
+            @Param("userID") UserID userID,
+            @Param("userSetting") UserSetting userSetting,
+            @Param("value") String value
     );
 }

@@ -57,11 +57,6 @@
             <artifactId>primefaces</artifactId>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>org.primefaces.themes</groupId>-->
-            <!--<artifactId>bootstrap</artifactId>-->
-        <!--</dependency>-->
-
         <dependency>
             <groupId>org.ocpsoft.rewrite</groupId>
             <artifactId>rewrite-servlet</artifactId>

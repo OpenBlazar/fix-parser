@@ -1,6 +1,7 @@
 package com.blazarquant.bfp.services.user;
 
 import com.blazarquant.bfp.core.security.exception.DecodingException;
+import com.blazarquant.bfp.core.user.UserSettingsCache;
 import com.blazarquant.bfp.data.user.Role;
 import com.blazarquant.bfp.data.user.UserDetails;
 import com.blazarquant.bfp.data.user.UserID;
@@ -30,5 +31,7 @@ public interface UserService {
 	boolean confirmUser(String confirmationKey) throws DecodingException;
 
 	Subject getCurrentUser();
+
+	UserSettingsCache getUserSettingsCache();
 
 }

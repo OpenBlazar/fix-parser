@@ -2,10 +2,8 @@ package com.blazarquant.bfp.services.user;
 
 import com.blazarquant.bfp.core.security.exception.DecodingException;
 import com.blazarquant.bfp.core.security.util.SecurityUtil;
-import com.blazarquant.bfp.data.user.Role;
-import com.blazarquant.bfp.data.user.UserDetails;
-import com.blazarquant.bfp.data.user.UserID;
-import com.blazarquant.bfp.data.user.UserState;
+import com.blazarquant.bfp.core.user.UserSettingsCache;
+import com.blazarquant.bfp.data.user.*;
 import com.blazarquant.bfp.database.dao.UserDAO;
 import com.blazarquant.bfp.services.mail.MailService;
 import com.google.inject.Inject;
@@ -31,10 +29,12 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
     private SecurityUtil securityUtil;
     private MailService mailService;
+    private UserSettingsCache userSettingsCache;
 
     @Inject
-    public void setUserDAO(UserDAO userDAO) {
+    public UserServiceImpl(UserDAO userDAO) {
         this.userDAO = userDAO;
+        userSettingsCache = new UserSettingsCache(userDAO);
     }
 
     @Inject
@@ -110,6 +110,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public Subject getCurrentUser() {
         return SecurityUtils.getSubject();
+    }
+
+    @Override
+    public UserSettingsCache getUserSettingsCache() {
+        return userSettingsCache;
     }
 
 }

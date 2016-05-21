@@ -47,13 +47,13 @@ public class FixUtilitiesTest {
     }
 
     @Test
-    public void testOrdStatusUtilitites() {
+    public void testOrdStatusUtilities() {
         FixMessage actualMessage_1 = messageFactory.createFixMessage(
-                SENDING_TIME, SENDER, TARGET, new FixPair(39, FixField.OrdStatus, new FixValue("4", "Canceled")));
+                SENDING_TIME, SENDER, TARGET, new FixPair(39, new FixField(39, "OrdStatus"), new FixValue("4", "CANCELED")));
         FixMessage actualMessage_2 = new FixMessage.Builder().build();
 
         assertEquals("4", FixUtilities.getOrdStatus(actualMessage_1));
-        assertEquals("Canceled", FixUtilities.getOrdStatusDescription(actualMessage_1));
+        assertEquals("CANCELED", FixUtilities.getOrdStatusDescription(actualMessage_1));
 
         assertEquals("", FixUtilities.getOrdStatus(actualMessage_2));
         assertEquals("", FixUtilities.getOrdStatusDescription(actualMessage_2));

@@ -5,6 +5,8 @@ package com.blazarquant.bfp.fix.data;
  */
 public class FixPair {
 
+    public static final FixPair UNKNOWN = new FixPair(0, new FixField(0, "Unknown"), new FixValue("", "Unknown"));
+
     private final int fixFieldTag;
     private final FixField fixField;
     private final FixValue fixValue;
@@ -34,17 +36,17 @@ public class FixPair {
 
         FixPair fixPair = (FixPair) o;
 
-        if (getFixFieldTag() != fixPair.getFixFieldTag()) return false;
-        if (getFixField() != fixPair.getFixField()) return false;
-        return getFixValue() != null ? getFixValue().equals(fixPair.getFixValue()) : fixPair.getFixValue() == null;
+        if (fixFieldTag != fixPair.fixFieldTag) return false;
+        if (fixField != null ? !fixField.equals(fixPair.fixField) : fixPair.fixField != null) return false;
+        return fixValue != null ? fixValue.equals(fixPair.fixValue) : fixPair.fixValue == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = getFixFieldTag();
-        result = 31 * result + (getFixField() != null ? getFixField().hashCode() : 0);
-        result = 31 * result + (getFixValue() != null ? getFixValue().hashCode() : 0);
+        int result = fixFieldTag;
+        result = 31 * result + (fixField != null ? fixField.hashCode() : 0);
+        result = 31 * result + (fixValue != null ? fixValue.hashCode() : 0);
         return result;
     }
 
@@ -56,5 +58,4 @@ public class FixPair {
                 ", fixValue=" + fixValue +
                 '}';
     }
-
 }

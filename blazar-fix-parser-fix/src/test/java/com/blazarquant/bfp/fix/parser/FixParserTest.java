@@ -1,6 +1,9 @@
 package com.blazarquant.bfp.fix.parser;
 
 import com.blazarquant.bfp.fix.data.FixMessage;
+import com.blazarquant.bfp.fix.parser.definition.CustomFixDefinitionProvider;
+import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;
+import com.blazarquant.bfp.fix.parser.definition.loader.QuickFixXMLLoader;
 import com.blazarquant.bfp.fix.parser.util.FixTestConstants;
 import com.blazarquant.bfp.fix.parser.util.FixMessageFactory;
 import org.junit.Before;
@@ -24,10 +27,15 @@ public class FixParserTest {
 
     private final FixMessageFactory messageFactory = new FixMessageFactory();
     private FixParser parser;
+    private FixDefinitionProvider definitionProvider;
 
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
         parser = new FixParser();
+
+        QuickFixXMLLoader fixXMLLoader = new QuickFixXMLLoader();
+        definitionProvider = new CustomFixDefinitionProvider(
+                fixXMLLoader.parseDocument(getClass().getClassLoader().getResourceAsStream("FIX50SP2.xml")));
     }
 
     @Test
@@ -69,14 +77,14 @@ public class FixParserTest {
     @Test
     public void testWholeLegalFixInput() {
         List<FixMessage> expectedMessages = messageFactory.prepareFixMessagesForLegalFixLong();
-        List<FixMessage> actualMessages = parser.parseInput(FixTestConstants.LEGAL_FIX_MANY);
+        List<FixMessage> actualMessages = parser.parseInput(FixTestConstants.LEGAL_FIX_MANY, definitionProvider);
         assertEquals(expectedMessages, actualMessages);
     }
 
     @Test
     public void testEmptyInput() {
         List<FixMessage> expectedMessages = new ArrayList<>();
-        List<FixMessage> actualMessages = parser.parseInput("");
+        List<FixMessage> actualMessages = parser.parseInput("", definitionProvider);
         assertEquals(expectedMessages, actualMessages);
     }
 

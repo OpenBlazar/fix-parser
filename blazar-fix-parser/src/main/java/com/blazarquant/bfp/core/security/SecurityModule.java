@@ -57,6 +57,7 @@ public class SecurityModule extends ShiroWebModule {
         addFilterChain(BlazarURL.SIGNIN_URL, ANON);
 
         addFilterChain(BlazarURL.HISTORY_URL, AUTHC);
+        addFilterChain(BlazarURL.PROFILE_URL, AUTHC);
 
         addFilterChain(BlazarURL.ADMIN_URL, AUTHC, new RolesAuthorizationConfigKey(UserRole.ADMIN.getRole()));
     }

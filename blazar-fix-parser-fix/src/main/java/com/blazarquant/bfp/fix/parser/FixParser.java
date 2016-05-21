@@ -1,6 +1,7 @@
 package com.blazarquant.bfp.fix.parser;
 
 import com.blazarquant.bfp.fix.data.FixMessage;
+import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.util.FixDelimiterResolver;
 import com.blazarquant.bfp.fix.parser.util.FixMessageConverter;
 
@@ -20,14 +21,14 @@ public class FixParser {
     private final FixDelimiterResolver delimiterResolver =  new FixDelimiterResolver();
     private final FixMessageConverter messageConverter = new FixMessageConverter();
 
-    public List<FixMessage> parseInput(String input) {
+    public List<FixMessage> parseInput(String input, FixDefinitionProvider definitionProvider) {
         List<String> textMessages = extractFixMessages(input);
         if(textMessages.isEmpty()) {
             return Collections.emptyList();
         }
 
         String delimiter = resolveMessageDelimiter(textMessages.get(0));
-        return messageConverter.convertToFixMessages(textMessages, delimiter);
+        return messageConverter.convertToFixMessages(textMessages, delimiter, definitionProvider);
     }
 
     protected List<String> extractFixMessages(String input) {

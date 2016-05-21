@@ -1,8 +1,11 @@
 package com.blazarquant.bfp.web.bean.parser;
 
 import com.blazarquant.bfp.data.user.UserDetails;
+import com.blazarquant.bfp.data.user.UserSetting;
 import com.blazarquant.bfp.fix.data.FixMessage;
+import com.blazarquant.bfp.fix.parser.definition.data.ProviderDescriptor;
 import com.blazarquant.bfp.services.parser.ParserService;
+import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
 import com.blazarquant.bfp.web.model.FixMessageLazyDataModel;
 import com.google.inject.Inject;
@@ -24,22 +27,24 @@ import java.util.List;
 @ViewScoped
 public class HistoryBean extends AbstractBean {
 
-    private List<FixMessage> messages = new ArrayList<>();
     private FixMessage selectedMessage;
     private ParserService parserService;
+    private UserService userService;
     private LazyDataModel<FixMessage> messagesModel;
+    private int messageCount;
 
     @PostConstruct
     @Override
     public void init() {
         super.init();
         Subject currentUser = SecurityUtils.getSubject();
-        if(currentUser.isAuthenticated()) {
+        if (currentUser.isAuthenticated()) {
             UserDetails userDetails = (UserDetails) currentUser.getPrincipal();
             if (userDetails != null) {
-                messagesModel = new FixMessageLazyDataModel(parserService, userDetails);
-                messagesModel.setRowCount(parserService.countUserMessages(userDetails));
-                messages = parserService.findMessagesByUser(userDetails, 0, 100);
+                ProviderDescriptor providerDescriptor = (ProviderDescriptor) userService.getUserSettingsCache().getObject(userDetails.getUserID(), UserSetting.DEFAULT_PROVIDER);
+                messageCount = parserService.countUserMessages(userDetails);
+                messagesModel = new FixMessageLazyDataModel(parserService, providerDescriptor, userDetails);
+                messagesModel.setRowCount(messageCount);
             }
         }
     }
@@ -49,9 +54,9 @@ public class HistoryBean extends AbstractBean {
         this.parserService = parserService;
     }
 
-    @RequiresAuthentication
-    public List<FixMessage> getMessages() {
-        return messages;
+    @Inject
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     public FixMessage getSelectedMessage() {
@@ -66,4 +71,7 @@ public class HistoryBean extends AbstractBean {
         this.selectedMessage = selectedMessage;
     }
 
+    public int getMessageCount() {
+        return messageCount;
+    }
 }

@@ -12,10 +12,10 @@ public class FixMessage {
 
     private final Long messageID;
     private final FixVersion version;
-    private final MsgType messageType;
+    private final FixPair messageType;
     private final List<FixPair> messageFields;
 
-    public FixMessage(Long messageID, FixVersion version, MsgType messageType, List<FixPair> messageFields) {
+    public FixMessage(Long messageID, FixVersion version, FixPair messageType, List<FixPair> messageFields) {
         Objects.requireNonNull(messageID);
         Objects.requireNonNull(version);
         Objects.requireNonNull(messageType);
@@ -31,7 +31,7 @@ public class FixMessage {
         return messageID;
     }
 
-    public MsgType getMessageType() {
+    public FixPair getMessageType() {
         return messageType;
     }
 
@@ -43,9 +43,9 @@ public class FixMessage {
         return messageFields;
     }
 
-    public List<FixValue> getField(FixField field) {
+    public List<FixValue> getField(int tag) {
         return messageFields.stream()
-                .filter(pair -> pair.getFixField().equals(field))
+                .filter(pair -> pair.getFixField().getTag() == tag)
                 .map(pair -> pair.getFixValue())
                 .collect(Collectors.toList());
     }
@@ -57,19 +57,19 @@ public class FixMessage {
 
         FixMessage that = (FixMessage) o;
 
-        if (getMessageID() != null ? !getMessageID().equals(that.getMessageID()) : that.getMessageID() != null)
-            return false;
-        if (getVersion() != that.getVersion()) return false;
-        if (getMessageType() != that.getMessageType()) return false;
-        return getMessageFields() != null ? getMessageFields().equals(that.getMessageFields()) : that.getMessageFields() == null;
+        if (messageID != null ? !messageID.equals(that.messageID) : that.messageID != null) return false;
+        if (version != that.version) return false;
+        if (messageType != null ? !messageType.equals(that.messageType) : that.messageType != null) return false;
+        return messageFields != null ? messageFields.equals(that.messageFields) : that.messageFields == null;
+
     }
 
     @Override
     public int hashCode() {
-        int result = getMessageID() != null ? getMessageID().hashCode() : 0;
-        result = 31 * result + (getVersion() != null ? getVersion().hashCode() : 0);
-        result = 31 * result + (getMessageType() != null ? getMessageType().hashCode() : 0);
-        result = 31 * result + (getMessageFields() != null ? getMessageFields().hashCode() : 0);
+        int result = messageID != null ? messageID.hashCode() : 0;
+        result = 31 * result + (version != null ? version.hashCode() : 0);
+        result = 31 * result + (messageType != null ? messageType.hashCode() : 0);
+        result = 31 * result + (messageFields != null ? messageFields.hashCode() : 0);
         return result;
     }
 
@@ -87,10 +87,11 @@ public class FixMessage {
 
         private Long messageID = -1L;
         private FixVersion version = FixVersion.UNKNOWN;
-        private MsgType messageType = MsgType.Unknown;
+        private FixPair messageType = FixPair.UNKNOWN;
         private List<FixPair> messageFields = new ArrayList<>();
 
-        public Builder() {}
+        public Builder() {
+        }
 
         public Builder messageID(Long messageID) {
             this.messageID = messageID;
@@ -102,7 +103,7 @@ public class FixMessage {
             return this;
         }
 
-        public Builder messageType(MsgType messageType) {
+        public Builder messageType(FixPair messageType) {
             this.messageType = messageType;
             return this;
         }

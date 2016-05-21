@@ -25,7 +25,8 @@ public class BlazarConfigurationProvider extends HttpConfigurationProvider {
                 .addRule(Join.path(BlazarURL.HISTORY_URL).to(BlazarURL.HISTORY_FULL_URL))
                 .addRule(Join.path(BlazarURL.FAQ_URL).to(BlazarURL.FAQ_FULL_URL))
                 .addRule(Join.path(BlazarURL.CONFIRMATION_URL).to(BlazarURL.CONFIRMATION_FULL_URL))
-                .addRule(Join.path(BlazarURL.ADMIN_URL).to(BlazarURL.ADMIN_FULL_URL));
+                .addRule(Join.path(BlazarURL.ADMIN_URL).to(BlazarURL.ADMIN_FULL_URL))
+                .addRule(Join.path(BlazarURL.PROFILE_URL).to(BlazarURL.PROFILE_FULL_URL));
     }
 
     @Override

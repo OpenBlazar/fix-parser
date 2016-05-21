@@ -7,35 +7,56 @@
     <ui:define name="content">
         <div class="ui-grid-row">
             <h:form id="output">
+                <div class="container">
+                    <p><h:outputText value="Messages: #{historyBean.messageCount}"
+                                     style="font-size: 28px; font-weight: bold;"/></p>
+                    <br/>
+                </div>
                 <div class="row">
                     <div class="col-md-7">
-                        <p:dataTable id="messagesTable" var="message" value="#{historyBean.messagesModel}" resizableColumns="true"
-                                     lazy="true" paginator="true" rows="20"
+                        <p:dataTable id="messagesTable"
+                                     var="message"
+                                     value="#{historyBean.messagesModel}"
+                                     resizableColumns="true"
+                                     lazy="true"
+                                     paginator="true"
+                                     rows="20"
                                      paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                                     selectionMode="single" selection="#{historyBean.selectedMessage}" rowKey="#{message.messageID}"
+                                     selectionMode="single"
+                                     selection="#{historyBean.selectedMessage}"
+                                     rowKey="#{message.messageID}"
                                      emptyMessage="#{msg['com.blazarquant.bfp.pages.user.history.mainTable.empty']}"
                                      tableStyle="width:auto">
                             <p:ajax event="rowSelect" update=":output:singleTable"/>
 
-                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.history.mainTable.sender']}" width="90">
+                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.history.mainTable.sender']}"
+                                      width="90">
                                 <h:outputText value="#{fixBean.getSender(message)}" style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.history.mainTable.receiver']}" width="90">
+                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.history.mainTable.receiver']}"
+                                      width="90">
                                 <h:outputText value="#{fixBean.getReceiver(message)}" style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.history.mainTable.sendingtime']}" width="120">
+                            <p:column
+                                    headerText="#{msg['com.blazarquant.bfp.pages.user.history.mainTable.sendingtime']}"
+                                    width="120">
                                 <h:outputText value="#{fixBean.getSendingTime(message)}" style="font-size: 12px;"/>
                             </p:column>
 
                             <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.history.mainTable.msgtype']}">
-                                <h:outputText value="#{message.messageType}" styleClass="#{styleBean.getStyleForMsgType(message.messageType)}" style="font-size: 12px;"/>
+                                <h:outputText
+                                        value="#{empty message.messageType.fixValue.description ? 'Unknown' : message.messageType.fixValue.description}"
+                                        styleClass="#{styleBean.getStyleForMsgType(message.messageType)}"
+                                        style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.history.mainTable.summary']}" width="190">
+                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.history.mainTable.summary']}"
+                                      width="190">
                                 <h:outputText value="#{fixBean.getOrdStatusDescription(message)}"
-                                              styleClass="#{styleBean.getStyleForOrdStatus(message)}" style="font-size: 10px;"/>
+                                              styleClass="#{styleBean.getStyleForOrdStatus(message)}"
+                                              style="font-size: 10px;"/>
                             </p:column>
                         </p:dataTable>
                     </div>
@@ -45,19 +66,26 @@
                                      value="#{historyBean.selectedMessage.messageFields.toArray()}"
                                      emptyMessage="#{msg['com.blazarquant.bfp.pages.user.history.helpTable.empty']}"
                                      tableStyle="width:auto">
-                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.history.helpTable.tag']}" width="50">
+                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.history.helpTable.tag']}"
+                                      width="50">
                                 <h:outputText value="#{entry.fixFieldTag}" style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.history.helpTable.name']}" width="130">
-                                <h:outputText value="#{entry.fixField}" styleClass="#{styleBean.getStyleForField(entry.fixField)}" style="font-size: 12px;"/>
+                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.history.helpTable.name']}"
+                                      width="130">
+                                <h:outputText value="#{entry.fixField.name}"
+                                              styleClass="#{styleBean.getStyleForField(entry.fixField.tag)}"
+                                              style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.history.helpTable.value']}" width="32%">
+                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.history.helpTable.value']}"
+                                      width="32%">
                                 <h:outputText value="#{entry.fixValue.value}" style="font-size: 12px;"/>
                             </p:column>
 
-                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.history.helpTable.description']}" width="200">
+                            <p:column
+                                    headerText="#{msg['com.blazarquant.bfp.pages.user.history.helpTable.description']}"
+                                    width="200">
                                 <h:outputText value="#{entry.fixValue.description}" style="font-size: 12px;"/>
                             </p:column>
                         </p:dataTable>

@@ -1,6 +1,7 @@
 package com.blazarquant.bfp.web.util;
 
-import com.blazarquant.bfp.fix.data.FixField;
+import com.blazarquant.bfp.fix.data.FixEnum;
+import com.blazarquant.bfp.fix.data.FixPair;
 import com.blazarquant.bfp.fix.data.field.OrdStatus;
 import com.blazarquant.bfp.fix.data.field.MsgType;
 
@@ -9,7 +10,8 @@ import com.blazarquant.bfp.fix.data.field.MsgType;
  */
 public class StyleUtilities {
 
-    public static String getStyleForMsgType(MsgType msgType) {
+    public static String getStyleForMsgType(FixPair fixPair) {
+        MsgType msgType = MsgType.getMsgTypeFromValue(fixPair.getFixValue().getValue());
         switch (msgType) {
             case OrderCancelReject:
                 return "fieldcolumn fieldcolumn-red";
@@ -25,7 +27,8 @@ public class StyleUtilities {
         }
     }
 
-    public static String getStyleForField(FixField fixField) {
+    public static String getStyleForField(int tag) {
+        FixEnum fixField = FixEnum.getFieldFromTag(tag);
         switch (fixField) {
             case AdvSide:
             case AdvTransType:

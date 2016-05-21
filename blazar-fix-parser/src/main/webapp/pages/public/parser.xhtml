@@ -15,6 +15,7 @@
                                  autoResize="false"/>
             </div>
             <div id="buttonsDiv" class="content">
+
                 <p:commandButton id="shareButton"
                                  value="#{msg['com.blazarquant.bfp.pages.public.parser.share']}"
                                  onclick="PF('dlg').show();"
@@ -31,6 +32,22 @@
                                    :comparator:accordion:firstMessage :comparator:accordion:secondMessage
                                    :comparator:accordion:singleTable1 :comparator:accordion:singleTable2"
                                  styleClass="btn-blazar btn-blazar-blue btn-blazar-blue-hover"/>
+                <div class="pull-right">
+                    <h:panelGrid columns="2">
+                        <p:outputLabel for="dictionaries"
+                                       value="#{msg['com.blazarquant.bfp.pages.public.parser.dictionary']}"
+                                       style="padding-right: 5px; font-weight: normal; font-size: 40px;"/>
+                        <p:selectOneMenu id="dictionaries"
+                                         value="#{parserBean.selectedProvider}"
+                                         converter="providerDescriptorConverter"
+                                         style="width: 200px; padding-right: 0px;">
+                            <f:selectItems value="#{parserBean.providers}"
+                                           var="messageVar"
+                                           itemLabel="#{messageVar.providerName}"
+                                           itemValue="#{messageVar}"/>
+                        </p:selectOneMenu>
+                    </h:panelGrid>
+                </div>
             </div>
             <ui:include src="../../components/sharedialog.xhtml"/>
         </h:form>
@@ -77,9 +94,10 @@
 
                             <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.parser.mainTable.msgtype']}"
                                       width="150">
-                                <h:outputText value="#{message.messageType}"
-                                              styleClass="#{styleBean.getStyleForMsgType(message.messageType)}"
-                                              style="font-size: 10px;"/>
+                                <h:outputText
+                                        value="#{empty message.messageType.fixValue.description ? 'Unknown' : message.messageType.fixValue.description}"
+                                        styleClass="#{styleBean.getStyleForMsgType(message.messageType)}"
+                                        style="font-size: 10px;"/>
                             </p:column>
 
                             <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.parser.mainTable.summary']}"
@@ -107,8 +125,8 @@
 
                         <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.parser.helpTable.name']}"
                                   width="130">
-                            <h:outputText value="#{entry.fixField}"
-                                          styleClass="blazar-columnStyle #{styleBean.getStyleForField(entry.fixField)}"/>
+                            <h:outputText value="#{entry.fixField.name}"
+                                          styleClass="blazar-columnStyle #{styleBean.getStyleForField(entry.fixField.tag)}"/>
                         </p:column>
 
                         <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.parser.helpTable.value']}"

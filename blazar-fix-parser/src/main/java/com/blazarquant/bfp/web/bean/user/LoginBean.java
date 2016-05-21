@@ -1,5 +1,8 @@
 package com.blazarquant.bfp.web.bean.user;
 
+import com.blazarquant.bfp.data.user.UserDetails;
+import com.blazarquant.bfp.data.user.UserID;
+import com.blazarquant.bfp.services.parser.ParserService;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
 import com.blazarquant.bfp.web.util.BlazarURL;
@@ -27,6 +30,7 @@ public class LoginBean extends AbstractBean {
     private final static Logger LOGGER = LoggerFactory.getLogger(LoginBean.class);
 
     private UserService userService;
+    private ParserService parserService;
 
     private String username;
     private String password;
@@ -35,6 +39,11 @@ public class LoginBean extends AbstractBean {
     @Inject
     public void setUserService(UserService userService) {
         this.userService = userService;
+    }
+
+    @Inject
+    public void setParserService(ParserService parserService) {
+        this.parserService = parserService;
     }
 
     @PostConstruct
@@ -62,6 +71,10 @@ public class LoginBean extends AbstractBean {
             Subject currentUser = SecurityUtils.getSubject();
             if (!currentUser.isAuthenticated()) {
                 currentUser.login(token);
+
+                UserID userID = ((UserDetails) currentUser.getPrincipal()).getUserID();
+                parserService.loadProvidersForUser(userID);
+                userService.getUserSettingsCache().loadParameters(userID);
 
                 redirectToPreviousPage();
             } else {

@@ -1,9 +1,7 @@
 package com.blazarquant.bfp.web.bean.parser;
 
-import com.blazarquant.bfp.fix.data.FixField;
 import com.blazarquant.bfp.fix.data.FixMessage;
 import com.blazarquant.bfp.fix.data.FixPair;
-import com.blazarquant.bfp.fix.data.FixValue;
 import com.blazarquant.bfp.web.bean.AbstractBean;
 
 import javax.faces.bean.ManagedBean;

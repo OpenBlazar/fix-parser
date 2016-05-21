@@ -46,6 +46,11 @@
                                     outcome="/pages/public/faq"/>
                         </li>
                         <li>
+                            <p:link value="#{msg['com.blazarquant.bfp.menu.profile']}"
+                                    outcome="/pages/user/profile"
+                                    rendered="#{currentUser.authenticated}"/>
+                        </li>
+                        <li>
                             <p:link value="#{msg['com.blazarquant.bfp.menu.signin']}"
                                     outcome="/pages/public/login"
                                     rendered="#{!currentUser.authenticated}"/>

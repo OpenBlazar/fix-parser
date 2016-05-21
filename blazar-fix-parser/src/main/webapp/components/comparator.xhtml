@@ -21,8 +21,8 @@
 
                         <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.parser.helpTable.name']}"
                                   width="130">
-                            <h:outputText value="#{entry.fixField}"
-                                          styleClass="#{styleBean.getStyleForField(entry.fixField)}"
+                            <h:outputText value="#{entry.fixField.name}"
+                                          styleClass="#{styleBean.getStyleForField(entry.fixField.tag)}"
                                           style="font-size: 12px;"/>
                         </p:column>
 
@@ -59,8 +59,8 @@
 
                         <p:column headerText="#{msg['com.blazarquant.bfp.pages.public.parser.helpTable.name']}"
                                   width="130">
-                            <h:outputText value="#{entry.fixField}"
-                                          styleClass="#{styleBean.getStyleForField(entry.fixField)}"
+                            <h:outputText value="#{entry.fixField.name}"
+                                          styleClass="#{styleBean.getStyleForField(entry.fixField.tag)}"
                                           style="font-size: 12px;"/>
                         </p:column>
 

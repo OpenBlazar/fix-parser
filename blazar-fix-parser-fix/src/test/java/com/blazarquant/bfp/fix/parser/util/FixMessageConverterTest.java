@@ -1,6 +1,10 @@
 package com.blazarquant.bfp.fix.parser.util;
 
 import com.blazarquant.bfp.fix.data.FixMessage;
+import com.blazarquant.bfp.fix.parser.definition.CustomFixDefinitionProvider;
+import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;
+import com.blazarquant.bfp.fix.parser.definition.loader.QuickFixXMLLoader;
+import com.sun.xml.internal.bind.v2.model.annotation.Quick;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,10 +20,15 @@ public class FixMessageConverterTest {
 
     private final FixMessageFactory messageFactory = new FixMessageFactory();
     private FixMessageConverter messageConverter;
+    private FixDefinitionProvider definitionProvider;
 
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
         messageConverter = new FixMessageConverter();
+
+        QuickFixXMLLoader fixXMLLoader = new QuickFixXMLLoader();
+        definitionProvider = new CustomFixDefinitionProvider(
+                fixXMLLoader.parseDocument(getClass().getClassLoader().getResourceAsStream("FIX50SP2.xml")));
     }
 
     @Test
@@ -31,7 +40,7 @@ public class FixMessageConverterTest {
         textMessages.add(FixTestConstants.LEGAL_FIX_LONG_3);
 
         List<FixMessage> expectedMessages = messageFactory.prepareFixMessagesForLegalFixLong();
-        List<FixMessage> actualMessages = messageConverter.convertToFixMessages(textMessages, delimiter);
+        List<FixMessage> actualMessages = messageConverter.convertToFixMessages(textMessages, delimiter, definitionProvider);
         assertEquals(expectedMessages, actualMessages);
     }
 
@@ -43,7 +52,7 @@ public class FixMessageConverterTest {
 
         List<FixMessage> expectedMessages = new ArrayList<>();
         expectedMessages.add(messageFactory.legalFixMessage6());
-        List<FixMessage> actualMessages = messageConverter.convertToFixMessages(textMessages, delimiter);
+        List<FixMessage> actualMessages = messageConverter.convertToFixMessages(textMessages, delimiter, definitionProvider);
         assertEquals(expectedMessages, actualMessages);
     }
 
@@ -55,7 +64,7 @@ public class FixMessageConverterTest {
 
         List<FixMessage> expectedMessages = new ArrayList<>();
         expectedMessages.add(messageFactory.legalFixMessage7());
-        List<FixMessage> actualMessages = messageConverter.convertToFixMessages(textMessages, delimiter);
+        List<FixMessage> actualMessages = messageConverter.convertToFixMessages(textMessages, delimiter, definitionProvider);
         assertEquals(expectedMessages, actualMessages);
     }
 
@@ -70,7 +79,7 @@ public class FixMessageConverterTest {
 
             List<FixMessage> expectedMessages = new ArrayList<>();
             expectedMessages.add(messageFactory.legalFixMessage7());
-            List<FixMessage> actualMessages = messageConverter.convertToFixMessages(textMessages, delimiter);
+            List<FixMessage> actualMessages = messageConverter.convertToFixMessages(textMessages, delimiter, definitionProvider);
             assertEquals(expectedMessages, actualMessages);
         }
     }

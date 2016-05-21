@@ -2,14 +2,20 @@ package com.blazarquant.bfp.web.bean.parser;
 
 import com.blazarquant.bfp.core.share.exception.ShareException;
 import com.blazarquant.bfp.data.user.UserDetails;
+import com.blazarquant.bfp.data.user.UserID;
+import com.blazarquant.bfp.data.user.UserSetting;
 import com.blazarquant.bfp.fix.data.FixMessage;
+import com.blazarquant.bfp.fix.parser.definition.DefaultFixDefinitionProvider;
+import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;
+import com.blazarquant.bfp.fix.parser.definition.data.ProviderDescriptor;
 import com.blazarquant.bfp.fix.parser.util.FixParserConstants;
 import com.blazarquant.bfp.services.parser.ParserService;
 import com.blazarquant.bfp.services.share.ShareService;
 import com.blazarquant.bfp.services.tracker.TrackerService;
+import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
+import com.blazarquant.bfp.web.util.FacesUtilities;
+import com.blazarquant.bfp.web.util.ShiroUtilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,6 +25,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -35,19 +42,42 @@ public class ParserBean extends AbstractBean {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(ParserBean.class);
 
-    protected ParserService parserService;
-    protected TrackerService trackerService;
-    private ShareService shareService;
+    private ShiroUtilities shiroUtilities;
+    private FacesUtilities facesUtilities;
 
-    protected List<FixMessage> messages = new ArrayList<>();
-    protected FixMessage selectedMessage;
+    private ParserService parserService;
+    private TrackerService trackerService;
+    private ShareService shareService;
+    private UserService userService;
+
+    private List<FixMessage> messages = new ArrayList<>();
+    private List<ProviderDescriptor> providers = Arrays.asList(DefaultFixDefinitionProvider.DESCRIPTOR);
+
     private ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+    protected ProviderDescriptor selectedProvider = DefaultFixDefinitionProvider.DESCRIPTOR;
+    private FixMessage selectedMessage;
     private String shareKey;
     private String input;
 
     @Inject
+    public void setShiroUtilities(ShiroUtilities shiroUtilities) {
+        this.shiroUtilities = shiroUtilities;
+    }
+
+    @Inject
+    public void setFacesUtilities(FacesUtilities facesUtilities) {
+        this.facesUtilities = facesUtilities;
+    }
+
+    @Inject
     public void setParserService(ParserService parserService) {
         this.parserService = parserService;
+    }
+
+    @Inject
+    public void setTrackerService(TrackerService trackerService) {
+        this.trackerService = trackerService;
     }
 
     @Inject
@@ -56,8 +86,8 @@ public class ParserBean extends AbstractBean {
     }
 
     @Inject
-    public void setTrackerService(TrackerService trackerService) {
-        this.trackerService = trackerService;
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     @PostConstruct
@@ -65,9 +95,21 @@ public class ParserBean extends AbstractBean {
     public void init() {
         super.init();
         doLoadShared();
+        doLoadProviders();
+        doLoadDefaultProvider();
+        setProviderToContext(selectedProvider);
     }
 
-    public void doLoadShared() {
+    private void doLoadProviders() {
+        if (shiroUtilities.isUserAuthenticated()) {
+            UserID userID = shiroUtilities.getCurrentUserID();
+            providers = new ArrayList<>();
+            providers.addAll(Arrays.asList(DefaultFixDefinitionProvider.DESCRIPTOR));
+            providers.addAll(parserService.getProviders(userID));
+        }
+    }
+
+    private void doLoadShared() {
         String shareKey = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get(SHARE_PARAM);
         if (shareKey == null) {
             return;
@@ -85,19 +127,31 @@ public class ParserBean extends AbstractBean {
         }
     }
 
+    private void doLoadDefaultProvider() {
+        if (shiroUtilities.isUserAuthenticated()) {
+            ProviderDescriptor savedProvider = (ProviderDescriptor) userService.getUserSettingsCache().getObject(shiroUtilities.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER);
+            if (savedProvider != null) {
+                selectedProvider = savedProvider;
+            }
+        }
+    }
+
     public void doParse(String input) {
         synchronized (messages) {
             selectedMessage = null;
-            messages = new ArrayList<>(parserService.parseInput(input));
+            if (shiroUtilities.isUserAuthenticated()) {
+                messages = new ArrayList<>(parserService.parseInput(selectedProvider, shiroUtilities.getCurrentUserID(), input));
+            } else {
+                messages = new ArrayList<>(parserService.parseInput(input));
+            }
             trackerService.inputParsed(messages.size());
             doSaveMessages(messages);
         }
     }
 
     protected void doSaveMessages(List<FixMessage> messages) {
-        Subject currentUser = SecurityUtils.getSubject();
-        if (currentUser.isAuthenticated()) {
-            UserDetails userDetails = (UserDetails) currentUser.getPrincipal();
+        if (shiroUtilities.isUserAuthenticated()) {
+            UserDetails userDetails = shiroUtilities.getCurrentUserDetails();
             if (userDetails != null) {
                 executorService.submit(() -> {
                     parserService.saveMessages(userDetails, messages);
@@ -119,6 +173,14 @@ public class ParserBean extends AbstractBean {
         } catch (Exception e) {
             facesError("Failed to save message.", e);
             LOGGER.error("Failed to share message.", e);
+        }
+    }
+
+    private void setProviderToContext(ProviderDescriptor selectedProvider) {
+        if (shiroUtilities.isUserAuthenticated()) {
+            facesUtilities.setContextAttribute(
+                    shiroUtilities.getCurrentUserID().getId() + FixDefinitionProvider.class.getSimpleName(),
+                    selectedProvider);
         }
     }
 
@@ -146,4 +208,20 @@ public class ParserBean extends AbstractBean {
         this.input = input;
     }
 
+    public ProviderDescriptor getSelectedProvider() {
+        return selectedProvider;
+    }
+
+    public void setSelectedProvider(ProviderDescriptor selectedProvider) {
+        this.selectedProvider = selectedProvider;
+        setProviderToContext(selectedProvider);
+    }
+
+    public List<ProviderDescriptor> getProviders() {
+        return providers;
+    }
+
+    public void setProviders(List<ProviderDescriptor> providers) {
+        this.providers = providers;
+    }
 }
