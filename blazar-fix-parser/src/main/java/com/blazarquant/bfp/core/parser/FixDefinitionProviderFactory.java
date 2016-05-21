@@ -5,9 +5,7 @@ import com.blazarquant.bfp.fix.parser.definition.DefaultFixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.data.ProviderDescriptor;
 
-import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author Wojciech Zankowski

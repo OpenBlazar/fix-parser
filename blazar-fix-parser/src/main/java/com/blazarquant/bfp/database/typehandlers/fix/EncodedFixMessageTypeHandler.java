@@ -4,7 +4,6 @@ import com.blazarquant.bfp.core.security.util.SecurityUtil;
 import com.blazarquant.bfp.core.security.util.SecurityUtilImpl;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.StringTypeHandler;
-import org.apache.ibatis.type.TypeHandler;
 
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;

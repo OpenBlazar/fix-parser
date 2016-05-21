@@ -17,22 +17,22 @@ import javax.servlet.ServletContextEvent;
  */
 public class BlazarFixParser extends GuiceServletContextListener {
 
-	private ServletContext servletContext;
+    private ServletContext servletContext;
 
-	@Override
-	public void contextInitialized(ServletContextEvent servletContextEvent) {
-		this.servletContext = servletContextEvent.getServletContext();
-		super.contextInitialized(servletContextEvent);
-	}
+    @Override
+    public void contextInitialized(ServletContextEvent servletContextEvent) {
+        this.servletContext = servletContextEvent.getServletContext();
+        super.contextInitialized(servletContextEvent);
+    }
 
-	@Override
-	protected Injector getInjector() {
-		return Guice.createInjector(
-				new DatabaseModule(),
-				new ServiceModule(),
-				new SecurityModule(servletContext),
-				new ShiroAopModule(),
-				new WebModule());
-	}
+    @Override
+    protected Injector getInjector() {
+        return Guice.createInjector(
+                new DatabaseModule(),
+                new ServiceModule(),
+                new SecurityModule(servletContext),
+                new ShiroAopModule(),
+                new WebModule());
+    }
 
 }

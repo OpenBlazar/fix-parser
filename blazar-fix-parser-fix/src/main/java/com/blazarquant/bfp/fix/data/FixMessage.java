@@ -1,8 +1,8 @@
 package com.blazarquant.bfp.fix.data;
 
-import com.blazarquant.bfp.fix.data.field.MsgType;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**

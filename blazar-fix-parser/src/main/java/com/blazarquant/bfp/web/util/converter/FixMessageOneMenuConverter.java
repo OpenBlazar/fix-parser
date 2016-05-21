@@ -1,7 +1,5 @@
 package com.blazarquant.bfp.web.util.converter;
 
-import com.blazarquant.bfp.data.user.UserDetails;
-import com.blazarquant.bfp.data.user.UserID;
 import com.blazarquant.bfp.fix.data.FixMessage;
 import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.data.ProviderDescriptor;
@@ -11,8 +9,6 @@ import com.blazarquant.bfp.web.util.FacesUtilities;
 import com.blazarquant.bfp.web.util.ShiroUtilities;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;

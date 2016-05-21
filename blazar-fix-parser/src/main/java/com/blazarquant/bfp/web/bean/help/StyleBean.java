@@ -2,7 +2,6 @@ package com.blazarquant.bfp.web.bean.help;
 
 import com.blazarquant.bfp.fix.data.FixMessage;
 import com.blazarquant.bfp.fix.data.FixPair;
-import com.blazarquant.bfp.fix.data.field.MsgType;
 import com.blazarquant.bfp.fix.parser.util.FixUtilities;
 import com.blazarquant.bfp.web.util.StyleUtilities;
 

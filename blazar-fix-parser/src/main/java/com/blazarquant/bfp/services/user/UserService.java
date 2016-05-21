@@ -14,24 +14,24 @@ import java.util.List;
  */
 public interface UserService {
 
-	UserDetails getUserDetails(String userName);
+    UserDetails getUserDetails(String userName);
 
-	List<UserDetails> getUsers();
+    List<UserDetails> getUsers();
 
-	List<Role> getUserRoles(UserID userID);
+    List<Role> getUserRoles(UserID userID);
 
-	boolean isUserNameExists(String userName);
+    boolean isUserNameExists(String userName);
 
-	boolean isUserMailExists(String userMail);
+    boolean isUserMailExists(String userMail);
 
-	boolean isUserActive(String userName);
+    boolean isUserActive(String userName);
 
-	boolean registerUser(String userName, String userMail, char[] password);
+    boolean registerUser(String userName, String userMail, char[] password);
 
-	boolean confirmUser(String confirmationKey) throws DecodingException;
+    boolean confirmUser(String confirmationKey) throws DecodingException;
 
-	Subject getCurrentUser();
+    Subject getCurrentUser();
 
-	UserSettingsCache getUserSettingsCache();
+    UserSettingsCache getUserSettingsCache();
 
 }

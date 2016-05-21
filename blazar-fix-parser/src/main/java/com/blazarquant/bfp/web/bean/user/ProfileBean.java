@@ -5,7 +5,6 @@ import com.blazarquant.bfp.data.user.UserSetting;
 import com.blazarquant.bfp.fix.parser.definition.DefaultFixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.data.ProviderDescriptor;
 import com.blazarquant.bfp.fix.parser.definition.data.XMLLoaderType;
-import com.blazarquant.bfp.fix.parser.definition.loader.XMLLoader;
 import com.blazarquant.bfp.services.parser.ParserService;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
@@ -13,7 +12,6 @@ import com.blazarquant.bfp.web.util.ShiroUtilities;
 import com.google.inject.Inject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
-import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
 import javax.annotation.PostConstruct;
@@ -21,9 +19,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import java.io.IOException;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -107,7 +103,7 @@ public class ProfileBean extends AbstractBean {
 
                 defaultProvider = DefaultFixDefinitionProvider.DESCRIPTOR;
             } else {
-                FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error","Failed to remove " + providerDescriptor + ".");
+                FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error", "Failed to remove " + providerDescriptor + ".");
                 FacesContext.getCurrentInstance().addMessage(null, message);
             }
         }

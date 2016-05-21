@@ -2,7 +2,6 @@ package com.blazarquant.bfp.fix.data;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Function;
 
 /**
  * @author Wojciech Zankowski

@@ -1,7 +1,6 @@
 package com.blazarquant.bfp.fix.parser.util;
 
 import com.blazarquant.bfp.fix.data.*;
-import com.blazarquant.bfp.fix.data.field.MsgType;
 import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;
 
 import java.util.ArrayList;

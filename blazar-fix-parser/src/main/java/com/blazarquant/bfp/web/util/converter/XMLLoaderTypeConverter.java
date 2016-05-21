@@ -1,7 +1,6 @@
 package com.blazarquant.bfp.web.util.converter;
 
 import com.blazarquant.bfp.fix.parser.definition.data.XMLLoaderType;
-import org.ocpsoft.rewrite.annotation.Convert;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;

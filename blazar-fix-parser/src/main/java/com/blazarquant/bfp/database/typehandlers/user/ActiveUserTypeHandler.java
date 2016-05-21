@@ -14,24 +14,24 @@ import java.sql.SQLException;
  */
 public class ActiveUserTypeHandler implements TypeHandler<UserState> {
 
-	@Override
-	public void setParameter(PreparedStatement ps, int i, UserState parameter, JdbcType jdbcType) throws SQLException {
-		ps.setInt(i, parameter.getState());
-	}
+    @Override
+    public void setParameter(PreparedStatement ps, int i, UserState parameter, JdbcType jdbcType) throws SQLException {
+        ps.setInt(i, parameter.getState());
+    }
 
-	@Override
-	public UserState getResult(ResultSet rs, String columnName) throws SQLException {
-		return UserState.getUserStateFromCode(rs.getInt(columnName));
-	}
+    @Override
+    public UserState getResult(ResultSet rs, String columnName) throws SQLException {
+        return UserState.getUserStateFromCode(rs.getInt(columnName));
+    }
 
-	@Override
-	public UserState getResult(ResultSet rs, int columnIndex) throws SQLException {
-		return UserState.getUserStateFromCode(rs.getInt(columnIndex));
-	}
+    @Override
+    public UserState getResult(ResultSet rs, int columnIndex) throws SQLException {
+        return UserState.getUserStateFromCode(rs.getInt(columnIndex));
+    }
 
-	@Override
-	public UserState getResult(CallableStatement cs, int columnIndex) throws SQLException {
-		return UserState.getUserStateFromCode(cs.getInt(columnIndex));
-	}
+    @Override
+    public UserState getResult(CallableStatement cs, int columnIndex) throws SQLException {
+        return UserState.getUserStateFromCode(cs.getInt(columnIndex));
+    }
 
 }

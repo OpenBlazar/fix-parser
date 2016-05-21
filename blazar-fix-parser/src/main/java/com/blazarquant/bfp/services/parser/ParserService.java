@@ -6,8 +6,6 @@ import com.blazarquant.bfp.fix.data.FixMessage;
 import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.data.ProviderDescriptor;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 

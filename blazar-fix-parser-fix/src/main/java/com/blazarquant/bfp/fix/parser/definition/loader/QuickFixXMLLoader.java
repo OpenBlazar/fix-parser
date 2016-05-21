@@ -1,14 +1,10 @@
 package com.blazarquant.bfp.fix.parser.definition.loader;
 
 import com.blazarquant.bfp.fix.data.definition.FixDictionary;
-import com.blazarquant.bfp.fix.parser.definition.DefaultFixDefinitionProvider;
-import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;

@@ -1,7 +1,5 @@
 package com.blazarquant.bfp.fix.data.definition;
 
-import com.blazarquant.bfp.fix.parser.definition.loader.QuickFixXMLLoader;
-
 import java.util.HashMap;
 import java.util.Map;
 

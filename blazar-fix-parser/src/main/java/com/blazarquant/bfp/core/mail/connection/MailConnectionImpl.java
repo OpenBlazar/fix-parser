@@ -1,6 +1,7 @@
 package com.blazarquant.bfp.core.mail.connection;
 
-import javax.mail.*;
+import javax.mail.MessagingException;
+import javax.mail.Session;
 
 /**
  * @author Wojciech Zankowski

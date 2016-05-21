@@ -3,7 +3,9 @@ package com.blazarquant.bfp.database.dao;
 import com.blazarquant.bfp.data.user.UserID;
 import com.blazarquant.bfp.database.utils.Tables;
 import com.blazarquant.bfp.fix.data.FixMessage;
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 

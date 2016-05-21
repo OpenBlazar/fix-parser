@@ -88,9 +88,9 @@ public class LoginBean extends AbstractBean {
     }
 
     private void redirectToPreviousPage() throws IOException {
-        if(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().containsKey("originalURL")) {
+        if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().containsKey("originalURL")) {
             FacesContext.getCurrentInstance().getExternalContext().redirect(
-                    (String)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("originalURL"));
+                    (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("originalURL"));
         } else {
             FacesContext.getCurrentInstance().getExternalContext().redirect(BlazarURL.PARSER_URL);
         }

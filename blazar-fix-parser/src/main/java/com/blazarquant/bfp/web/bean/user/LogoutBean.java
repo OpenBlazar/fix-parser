@@ -23,7 +23,7 @@ public class LogoutBean extends AbstractBean {
     public void doLogout() {
         Subject currentUser = SecurityUtils.getSubject();
         try {
-            if(currentUser.isAuthenticated()) {
+            if (currentUser.isAuthenticated()) {
                 currentUser.logout();
 
                 FacesContext.getCurrentInstance().getExternalContext().redirect(BlazarURL.HOME_URL);

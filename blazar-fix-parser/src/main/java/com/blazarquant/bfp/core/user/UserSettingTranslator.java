@@ -2,7 +2,6 @@ package com.blazarquant.bfp.core.user;
 
 import com.blazarquant.bfp.core.parser.FixDefinitionProvidersFileUtility;
 import com.blazarquant.bfp.data.user.UserSetting;
-import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.data.ProviderDescriptor;
 
 /**

@@ -1,7 +1,7 @@
 package com.blazarquant.bfp.web.bean.user;
 
-import com.blazarquant.bfp.web.bean.AbstractBean;
 import com.blazarquant.bfp.services.user.UserService;
+import com.blazarquant.bfp.web.bean.AbstractBean;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 

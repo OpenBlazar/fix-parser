@@ -18,12 +18,12 @@ public class FixParser {
 
     private static final Pattern fixPattern = Pattern.compile("[^0-9a-zA-Z!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?\\s]*8=FIX(.*?)[^0-9]10=\\d{3}.?");
 
-    private final FixDelimiterResolver delimiterResolver =  new FixDelimiterResolver();
+    private final FixDelimiterResolver delimiterResolver = new FixDelimiterResolver();
     private final FixMessageConverter messageConverter = new FixMessageConverter();
 
     public List<FixMessage> parseInput(String input, FixDefinitionProvider definitionProvider) {
         List<String> textMessages = extractFixMessages(input);
-        if(textMessages.isEmpty()) {
+        if (textMessages.isEmpty()) {
             return Collections.emptyList();
         }
 

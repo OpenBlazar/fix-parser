@@ -2,8 +2,8 @@ package com.blazarquant.bfp.web.util;
 
 import com.blazarquant.bfp.fix.data.FixEnum;
 import com.blazarquant.bfp.fix.data.FixPair;
-import com.blazarquant.bfp.fix.data.field.OrdStatus;
 import com.blazarquant.bfp.fix.data.field.MsgType;
+import com.blazarquant.bfp.fix.data.field.OrdStatus;
 
 /**
  * @author Wojciech Zankowski

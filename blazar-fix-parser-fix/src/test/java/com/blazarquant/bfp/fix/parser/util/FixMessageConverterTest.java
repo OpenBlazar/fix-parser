@@ -4,7 +4,6 @@ import com.blazarquant.bfp.fix.data.FixMessage;
 import com.blazarquant.bfp.fix.parser.definition.CustomFixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.loader.QuickFixXMLLoader;
-import com.sun.xml.internal.bind.v2.model.annotation.Quick;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -71,7 +70,7 @@ public class FixMessageConverterTest {
     @Test
     public void testEdgeCases() {
         String delimiter = "#";
-        String[] messages = new String[] {FixTestConstants.EDGE_CASE_FIX_2, FixTestConstants.EDGE_CASE_FIX_3, FixTestConstants.EDGE_CASE_FIX_4};
+        String[] messages = new String[]{FixTestConstants.EDGE_CASE_FIX_2, FixTestConstants.EDGE_CASE_FIX_3, FixTestConstants.EDGE_CASE_FIX_4};
 
         for (String message : messages) {
             List<String> textMessages = new ArrayList<>();

@@ -7,37 +7,37 @@ import java.io.Serializable;
  */
 public class UserID implements Serializable {
 
-	private final long id;
+    private final long id;
 
-	public UserID(long id) {
-		this.id = id;
-	}
+    public UserID(long id) {
+        this.id = id;
+    }
 
-	public long getId() {
-		return id;
-	}
+    public long getId() {
+        return id;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-		UserID userID = (UserID) o;
+        UserID userID = (UserID) o;
 
-		return id == userID.id;
+        return id == userID.id;
 
-	}
+    }
 
-	@Override
-	public int hashCode() {
-		return (int) (id ^ (id >>> 32));
-	}
+    @Override
+    public int hashCode() {
+        return (int) (id ^ (id >>> 32));
+    }
 
-	@Override
-	public String toString() {
-		return "UserID{" +
-				"id=" + id +
-				'}';
-	}
+    @Override
+    public String toString() {
+        return "UserID{" +
+                "id=" + id +
+                '}';
+    }
 
 }
