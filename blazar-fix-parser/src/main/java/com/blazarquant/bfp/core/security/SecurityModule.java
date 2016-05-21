@@ -40,7 +40,7 @@ public class SecurityModule extends ShiroWebModule {
         bindRealm().to(DatabaseUserRealm.class).asEagerSingleton();
 
         bindConstant().annotatedWith(Names.named("shiro.sessionMode")).to("http");
-        bindConstant().annotatedWith(Names.named("shiro.loginUrl")).to("/signin");
+        bindConstant().annotatedWith(Names.named("shiro.loginUrl")).to(BlazarURL.SIGNIN_URL);
 
         bindInterceptor(Matchers.any(), Matchers.annotatedWith(RequiresAuthentication.class),
                 new ShiroMethodInterceptor());

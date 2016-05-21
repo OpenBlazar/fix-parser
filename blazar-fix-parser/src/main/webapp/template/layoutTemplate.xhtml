@@ -46,6 +46,13 @@
                                     outcome="/pages/public/faq"/>
                         </li>
                         <li>
+                            <p:button
+                                    value="#{msg['com.blazarquant.bfp.menu.hello']} #{currentUser.userName}, #{msg['com.blazarquant.bfp.menu.signin']}"
+                                    outcome="/pages/user/profile"
+                                    styleClass="btn-blazar-menu btn-blazar-blue btn-blazar-blue-hover"
+                                    rendered="#{!currentUser.authenticated and currentUser.remembered}"/>
+                        </li>
+                        <li>
                             <p:link value="#{msg['com.blazarquant.bfp.menu.profile']}"
                                     outcome="/pages/user/profile"
                                     rendered="#{currentUser.authenticated}"/>
@@ -53,13 +60,13 @@
                         <li>
                             <p:link value="#{msg['com.blazarquant.bfp.menu.signin']}"
                                     outcome="/pages/public/login"
-                                    rendered="#{!currentUser.authenticated}"/>
+                                    rendered="#{!currentUser.authenticated and !currentUser.remembered}"/>
                         </li>
                         <li>
                             <p:button value="#{msg['com.blazarquant.bfp.menu.signup']}"
                                       outcome="/pages/public/register"
                                       styleClass="btn-blazar-menu btn-blazar-blue btn-blazar-blue-hover"
-                                      rendered="#{!currentUser.authenticated}"/>
+                                      rendered="#{!currentUser.authenticated and !currentUser.remembered}"/>
                         </li>
                         <li>
                             <p:commandButton value="Sign Out"

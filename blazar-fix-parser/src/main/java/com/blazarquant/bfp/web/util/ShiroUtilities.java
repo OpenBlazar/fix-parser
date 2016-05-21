@@ -25,4 +25,8 @@ public class ShiroUtilities {
         return SecurityUtils.getSubject().isAuthenticated();
     }
 
+    public boolean isUserRemembered() {
+        return SecurityUtils.getSubject().isRemembered();
+    }
+
 }

@@ -34,7 +34,7 @@ public class LoginBean extends AbstractBean {
 
     private String username;
     private String password;
-    private Boolean rememberMe;
+    private Boolean rememberMe = Boolean.TRUE;
 
     @Inject
     public void setUserService(UserService userService) {
