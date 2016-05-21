@@ -17,12 +17,12 @@ public class QuickFixXMLLoader implements XMLLoader {
     private static final String FIELDS_TAG = "fields";
 
     private static final String FIELD_TAG = "field";
-    private static final int FIELD_NUMBER = 0;
-    private static final int FIELD_NAME = 1;
+    private static final String FIELD_NUMBER_LOCAL = "number";
+    private static final String FIELD_NAME_LOCAL = "name";
 
     private static final String VALUE_TAG = "value";
-    private static final int VALUE_ENUM = 0;
-    private static final int VALUE_DESCRIPTION = 1;
+    private static final String VALUE_ENUM_LOCAL = "enum";
+    private static final String VALUE_DESCRIPTION_LOCAL = "description";
 
     @Override
     public Map<Integer, FixDictionary> parseDocument(InputStream documentFile) throws Exception {
@@ -46,16 +46,16 @@ public class QuickFixXMLLoader implements XMLLoader {
 
             if (insideField) {
                 if (XMLStreamConstants.START_ELEMENT == event && VALUE_TAG.equals(streamReader.getLocalName())) {
-                    String name = streamReader.getAttributeValue(VALUE_ENUM);
-                    String description = streamReader.getAttributeValue(VALUE_DESCRIPTION);
+                    String name = streamReader.getAttributeValue(null, VALUE_ENUM_LOCAL);
+                    String description = streamReader.getAttributeValue(null, VALUE_DESCRIPTION_LOCAL);
                     builder.value(name, description);
                 }
             }
 
             if (insideFields) {
                 if (XMLStreamConstants.START_ELEMENT == event && FIELD_TAG.equals(streamReader.getLocalName())) {
-                    int tag = Integer.parseInt(streamReader.getAttributeValue(FIELD_NUMBER));
-                    String name = streamReader.getAttributeValue(FIELD_NAME);
+                    int tag = Integer.parseInt(streamReader.getAttributeValue(null, FIELD_NUMBER_LOCAL));
+                    String name = streamReader.getAttributeValue(null, FIELD_NAME_LOCAL);
                     builder = new FixDictionary.Builder()
                             .tag(tag)
                             .name(name);

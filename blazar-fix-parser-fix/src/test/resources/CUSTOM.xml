@@ -1,0 +1,26 @@
+<fix major='5' type='FIX' servicepack='2' minor='0'>
+    <header/>
+    <messages>
+    </messages>
+    <trailer/>
+    <components>
+    </components>
+    <fields>
+        <field name='AdvSide' number='4' type='CHAR'>
+            <value description='BUY' enum='B'/>
+            <value enum='S' description='SELL'/>
+            <value enum='T' description='TRADE'/>
+            <value enum='X' description='CROSS'/>
+        </field>
+        <field number='5' name='AdvTransType' type='STRING'>
+            <value description='CANCEL' enum='C'/>
+            <value description='NEW' enum='N'/>
+            <value description='REPLACE' enum='R'/>
+        </field>
+        <field type='STRING' name='AdvTransType2' number='6'>
+            <value enum='C' description='CANCEL'/>
+            <value enum='N' description='NEW'/>
+            <value enum='R' description='REPLACE'/>
+        </field>
+    </fields>
+</fix>
