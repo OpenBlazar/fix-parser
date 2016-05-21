@@ -4,6 +4,7 @@ import com.blazarquant.bfp.data.user.UserID;
 import com.blazarquant.bfp.data.user.UserSetting;
 import com.blazarquant.bfp.data.user.UserSettingHolder;
 import com.blazarquant.bfp.database.dao.UserDAO;
+import com.blazarquant.bfp.fix.parser.definition.DefaultFixDefinitionProvider;
 
 import java.util.HashMap;
 import java.util.List;
@@ -36,6 +37,11 @@ public class UserSettingsCache {
             );
         }
         defaultSettings.put(userID, userSettingsActual);
+    }
+
+    public void createDefaultParameters(UserID userID) {
+        userDAO.saveParameter(userID, UserSetting.DEFAULT_PROVIDER, userSettingTranslator.translateSetting(UserSetting.DEFAULT_PROVIDER, DefaultFixDefinitionProvider.DESCRIPTOR));
+        userDAO.saveParameter(userID, UserSetting.STORE_MESSAGES, userSettingTranslator.translateSetting(UserSetting.STORE_MESSAGES, Boolean.TRUE));
     }
 
     public void setParameter(UserID userID, UserSetting userSetting, Object value) {

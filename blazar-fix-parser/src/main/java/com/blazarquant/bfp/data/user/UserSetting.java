@@ -5,6 +5,7 @@ package com.blazarquant.bfp.data.user;
  */
 public enum UserSetting {
 
-    DEFAULT_PROVIDER;
+    DEFAULT_PROVIDER,
+    STORE_MESSAGES;
 
 }

@@ -1,8 +1,11 @@
 package com.blazarquant.bfp.web.bean.user;
 
 import com.blazarquant.bfp.core.security.exception.DecodingException;
+import com.blazarquant.bfp.core.security.util.SecurityUtil;
+import com.blazarquant.bfp.data.user.UserID;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
+import com.blazarquant.bfp.web.util.ShiroUtilities;
 import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,11 +26,17 @@ public class ConfirmationBean extends AbstractBean {
     private final static Logger LOGGER = LoggerFactory.getLogger(ConfirmationBean.class);
 
     private UserService userService;
+    private SecurityUtil securityUtil;
     private String confirmationKey;
 
     @Inject
     public void setUserService(UserService userService) {
         this.userService = userService;
+    }
+
+    @Inject
+    public void setSecurityUtil(SecurityUtil securityUtil) {
+        this.securityUtil = securityUtil;
     }
 
     @PostConstruct
@@ -50,6 +59,9 @@ public class ConfirmationBean extends AbstractBean {
             if (confirmed) {
                 FacesContext.getCurrentInstance().addMessage(null,
                         new FacesMessage(FacesMessage.SEVERITY_INFO, "Congratulations, registration has been successful. Your account is active right now. Please sign in.", ""));
+
+                UserID userID = new UserID(securityUtil.decodeConfirmationKey(confirmationKey));
+                userService.getUserSettingsCache().createDefaultParameters(userID);
             } else {
                 FacesContext.getCurrentInstance().addMessage(null,
                         new FacesMessage(FacesMessage.SEVERITY_WARN, "Failed to confirm registration. Invalid confirmation key.", ""));

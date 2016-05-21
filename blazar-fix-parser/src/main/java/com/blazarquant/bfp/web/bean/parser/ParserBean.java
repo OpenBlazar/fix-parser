@@ -152,7 +152,8 @@ public class ParserBean extends AbstractBean {
     protected void doSaveMessages(List<FixMessage> messages) {
         if (shiroUtilities.isUserAuthenticated()) {
             UserDetails userDetails = shiroUtilities.getCurrentUserDetails();
-            if (userDetails != null) {
+            Boolean storeMessages = userService.getUserSettingsCache().getBoolean(userDetails.getUserID(), UserSetting.STORE_MESSAGES);
+            if (userDetails != null && storeMessages) {
                 executorService.submit(() -> {
                     parserService.saveMessages(userDetails, messages);
                 });

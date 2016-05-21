@@ -38,23 +38,19 @@ public class ProfileBean extends AbstractBean {
     private XMLLoaderType[] loaderTypes = XMLLoaderType.values();
 
     private String providerName;
-    private XMLLoaderType providerLoader;
+    private XMLLoaderType providerLoader = XMLLoaderType.QUICKFIX_LOADER;
     private UploadedFile uploadedFile;
 
     private ProviderDescriptor defaultProvider;
+    private Boolean storeMessages;
 
     @PostConstruct
     @Override
     public void init() {
         super.init();
         if (shiroUtilities.isUserAuthenticated()) {
-            providerDescriptors.add(DefaultFixDefinitionProvider.DESCRIPTOR);
-            providerDescriptors.addAll(parserService.getProviders(shiroUtilities.getCurrentUserID()));
-
-            ProviderDescriptor savedProvider = (ProviderDescriptor) userService.getUserSettingsCache().getObject(shiroUtilities.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER);
-            if (savedProvider != null) {
-                defaultProvider = savedProvider;
-            }
+            doReloadProviders();
+            doLoadDefaultParameters();
         }
     }
 
@@ -73,6 +69,24 @@ public class ProfileBean extends AbstractBean {
         this.shiroUtilities = shiroUtilities;
     }
 
+    private void doLoadDefaultParameters() {
+        ProviderDescriptor savedProvider = (ProviderDescriptor) userService.getUserSettingsCache().getObject(shiroUtilities.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER);
+        if (savedProvider != null) {
+            defaultProvider = savedProvider;
+        }
+
+        Boolean storeMessages = userService.getUserSettingsCache().getBoolean(shiroUtilities.getCurrentUserID(), UserSetting.STORE_MESSAGES);
+        if (storeMessages != null) {
+            this.storeMessages = storeMessages;
+        }
+    }
+
+    private void doReloadProviders() {
+        providerDescriptors = new HashSet<>();
+        providerDescriptors.add(DefaultFixDefinitionProvider.DESCRIPTOR);
+        providerDescriptors.addAll(parserService.getProviders(shiroUtilities.getCurrentUserID()));
+    }
+
     public void handleFileUpload() throws Exception {
         Subject subject = SecurityUtils.getSubject();
         if (!subject.isAuthenticated()) {
@@ -85,11 +99,13 @@ public class ProfileBean extends AbstractBean {
                 providerName = uploadedFile.getFileName();
             }
 
-            ProviderDescriptor providerDescriptor = new ProviderDescriptor(providerName, XMLLoaderType.QUICKFIX_LOADER);
+            ProviderDescriptor providerDescriptor = new ProviderDescriptor(providerName, providerLoader);
 
             parserService.saveProviderFile(userDetails.getUserID(), providerDescriptor, uploadedFile.getContents());
 
-            FacesMessage message = new FacesMessage("Succesful", providerName + " is uploaded.");
+            doReloadProviders();
+
+            FacesMessage message = new FacesMessage("Successful", providerName + " is uploaded.");
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
     }
@@ -157,6 +173,21 @@ public class ProfileBean extends AbstractBean {
     private void saveParameter(ProviderDescriptor defaultProvider) {
         if (shiroUtilities.isUserAuthenticated()) {
             this.userService.getUserSettingsCache().setParameter(shiroUtilities.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER, defaultProvider);
+        }
+    }
+
+    public Boolean getStoreMessages() {
+        return storeMessages;
+    }
+
+    public void setStoreMessages(Boolean storeMessages) {
+        this.storeMessages = storeMessages;
+        saveParameter(storeMessages);
+    }
+
+    private void saveParameter(Boolean storeMessages) {
+        if (shiroUtilities.isUserAuthenticated()) {
+            this.userService.getUserSettingsCache().setParameter(shiroUtilities.getCurrentUserID(), UserSetting.STORE_MESSAGES, storeMessages);
         }
     }
 }
