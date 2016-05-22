@@ -17,6 +17,7 @@ public class BlazarURL {
     public static final String PROFILE_FULL_URL = "/pages/user/profile.xhtml";
 
     public static final String HOME_URL = "/";
+    public static final String INDEX_URL = "/home";
     public static final String PARSER_URL = "/parser";
     public static final String FILEPARSER_URL = "/fileparser";
     public static final String HISTORY_URL = "/history";

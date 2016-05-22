@@ -1,9 +1,13 @@
+@import url('http://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+
 /* FOOTER CSS
 -------------------------------------------------- */
 
 html {
     position: relative !important;
     min-height: 100% !important;
+    font-family: 'Open Sans', Helvetica;
 }
 
 .footer {
@@ -69,7 +73,7 @@ html {
 }
 
 .btn-blazar-menu.ui-button.ui-state-default {
-    margin-top: 12px;
+    margin-top: 10px;
     display: block;
 }
 
@@ -212,6 +216,7 @@ select,
 .ui-widget-header .ui-widget-header,
 .ui-widget-content .ui-widget-content {
     font-size: 14px !important;
+    font-family: 'Open Sans', Helvetica !important;
 }
 
 .ui-dialog-titlebar {
@@ -221,4 +226,121 @@ select,
 
 .disable-scroll .ui-dialog-content {
     overflow: hidden !important;
+}
+
+/* INDEX PAGE
+-------------------------------------------------- */
+
+.blazar-jumbotron.jumbotron {
+    background: #386dc1;
+    height: 550px;
+    color: #ffffff;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: -20px;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    font-family: 'Open Sans', Helvetica;
+}
+
+.navbar-default .navbar-nav > li > a {
+    font-family: 'Open Sans', Helvetica;
+}
+
+/* PRICING TABLE
+-------------------------------------------------- */
+
+#pricing{
+    width: 989px;
+    margin: 35px auto;
+
+    font-family: 'Open Sans', Helvetica;
+}
+
+.price_card{
+    width: 300px;
+    background: rgb(255, 255, 255);
+    display: inline-table;
+    top: 0;
+}
+.price_card:not(:last-child){
+    margin-right: 40px;
+}
+.header{
+    color: rgb(255, 255, 255);
+}
+.alpha .header{
+    background: #386dc1;
+}
+.bravo .header{
+    background: #BA4141;
+}
+.charlie .header{
+    background: #3a9649;
+}
+
+.price{
+    width: 100%;
+    font-size: 60px;
+    font-weight: 300;
+    display: block;
+    text-align: center;
+    padding: 30px 0 10px;
+}
+.name{
+    width: 100%;
+    font-size: 15px;
+    font-weight: 700;
+    display: block;
+    text-align: center;
+    padding: 0 0 30px;
+}
+.features{
+    list-style: none;
+    text-align: center;
+    color: rgb(138, 138, 138);
+    margin: 0;
+    padding: 0;
+}
+.features li{
+    margin: 0 35px;
+    padding: 20px 15px;
+    width: 200px;
+}
+.features li:not(:last-child){
+    border: 1px solid rgb(242, 242, 242);
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+
+.blazar-price-button.ui-button.ui-state-default {
+    color: rgb(255, 255, 255);
+    border: 0;
+    border-radius: 5px;
+    height: 40px;
+    width: 200px;
+    display: block;
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin: 20px auto 35px;
+}
+
+.alpha.blazar-price-button.ui-button.ui-state-default {
+    background: #386dc1;
+}
+.bravo.blazar-price-button.ui-button.ui-state-default {
+    background: #BA4141;
+}
+.charlie.blazar-price-button.ui-button.ui-state-default {
+    background: #3a9649;
+}
+
+.tip{
+    font-family: 'Indie Flower';
+    color: rgb(117, 117, 117);
+    margin: 5px 5px;
 }

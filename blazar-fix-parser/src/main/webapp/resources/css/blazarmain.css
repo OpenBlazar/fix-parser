@@ -1,0 +1,9 @@
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #999;
+    font-family: 'Open Sans', Helvetica;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+    font-family: 'Open Sans', Helvetica;
+}
