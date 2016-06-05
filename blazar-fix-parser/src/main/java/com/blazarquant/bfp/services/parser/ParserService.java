@@ -14,24 +14,28 @@ import java.util.Set;
  */
 public interface ParserService {
 
-    List<FixMessage> findMessagesByUser(UserDetails userDetails, ProviderDescriptor providerDescriptor, int lowerLimit, int upperLimit);
+    List<FixMessage> findMessagesByUser(UserDetails userDetails, ProviderDescriptor providerDescriptor, boolean isPermitted, int lowerLimit, int upperLimit);
 
     int countUserMessages(UserDetails userDetails);
 
     List<FixMessage> parseInput(String input);
 
-    List<FixMessage> parseInput(ProviderDescriptor providerDescriptor, UserID userID, String input);
+    List<FixMessage> parseInput(ProviderDescriptor providerDescriptor, UserID userID, String input, boolean isPermitted);
 
     void saveMessages(UserDetails userDetails, List<FixMessage> messages);
 
+    void clearHistory(UserID userID);
+
     void saveProviderFile(UserID userID, ProviderDescriptor providerDescriptor, byte[] content) throws Exception;
 
-    FixDefinitionProvider getDefinitionProvider(ProviderDescriptor providerDescriptor, UserID userID);
+    FixDefinitionProvider getDefinitionProvider(ProviderDescriptor providerDescriptor, UserID userID, boolean isPermitted);
 
-    Set<ProviderDescriptor> getProviders(UserID userID);
+    Set<ProviderDescriptor> getProviders(UserID userID, boolean isPermitted);
 
     void loadProvidersForUser(UserID userID);
 
     boolean removeProvider(UserID userID, ProviderDescriptor providerDescriptor);
+
+    boolean isProProvider(ProviderDescriptor providerDescriptor);
 
 }

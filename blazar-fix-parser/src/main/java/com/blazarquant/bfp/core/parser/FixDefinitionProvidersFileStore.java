@@ -30,6 +30,15 @@ public class FixDefinitionProvidersFileStore {
         this.providerLoaderFactory = new FixDefinitionProvidersLoaderFactory();
     }
 
+    public Map<ProviderDescriptor, FixDefinitionProvider> loadProProviders() {
+        File file = new File(FixDefinitionProvidersFileUtility.getProProvidersDir());
+        Map<ProviderDescriptor, FixDefinitionProvider> definitionProviderMap = new HashMap<>();
+        if (file.exists()) {
+            loadProviders(definitionProviderMap, file);
+        }
+        return definitionProviderMap;
+    }
+
     public Map<ProviderDescriptor, FixDefinitionProvider> loadUserProviders(UserID userID) {
         File file = new File(FixDefinitionProvidersFileUtility.getUserProvidersDir(userID));
         Map<ProviderDescriptor, FixDefinitionProvider> definitionProviderMap = new HashMap<>();

@@ -15,6 +15,8 @@ public class BlazarURL {
     public static final String CONFIRMATION_FULL_URL = "/pages/public/confirmation.xhtml";
     public static final String ADMIN_FULL_URL = "/pages/admin/admin.xhtml";
     public static final String PROFILE_FULL_URL = "/pages/user/profile.xhtml";
+    public static final String SUBSCRIPTION_FULL_URL = "/pages/user/subscribe.xhtml";
+    public static final String PAYMENT_FULL_URL = "/pages/user/payments.xhtml";
 
     public static final String HOME_URL = "/";
     public static final String INDEX_URL = "/home";
@@ -27,5 +29,7 @@ public class BlazarURL {
     public static final String CONFIRMATION_URL = "/confirmation";
     public static final String ADMIN_URL = "/admin";
     public static final String PROFILE_URL = "/profile";
+    public static final String SUBSCRIPTION_URL = "/subscription";
+    public static final String PAYMENT_URL = "/payments";
 
 }

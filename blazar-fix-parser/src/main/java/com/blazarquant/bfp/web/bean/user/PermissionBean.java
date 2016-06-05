@@ -1,5 +1,6 @@
 package com.blazarquant.bfp.web.bean.user;
 
+import com.blazarquant.bfp.data.user.Permission;
 import com.blazarquant.bfp.data.user.UserDetails;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
@@ -38,6 +39,10 @@ public class PermissionBean extends AbstractBean {
 
     public boolean isRemembered() {
         return shiroUtilities.isUserRemembered();
+    }
+
+    public boolean isProOrEnterprise() {
+        return shiroUtilities.isPermitted(Permission.PRO.name()) || shiroUtilities.isPermitted(Permission.ENTERPRISE.name());
     }
 
     public String getUserName() {

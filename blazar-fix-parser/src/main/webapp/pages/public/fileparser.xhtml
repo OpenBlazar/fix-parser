@@ -24,6 +24,9 @@
                                   allowTypes="/(\.|\/)(txt|log)$/"
                                   style="margin-bottom: 10px;"/>
                 </h:form>
+                <h:panelGroup rendered="#{!currentUser.proOrEnterprise}">
+                    <a href="/home" class="stickyupgrade">Upgrade to PRO</a>
+                </h:panelGroup>
                 <h:form id="dictionary">
                     <div class="pull-right">
                         <h:panelGrid columns="2">

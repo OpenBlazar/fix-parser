@@ -1,0 +1,16 @@
+<ui:composition template="/template/layoutTemplate.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+>
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="token" value="#{paymentBean.paymentToken}" />
+            <f:viewAction action="#{paymentBean.doConfirmPayment}" />
+        </f:metadata>
+
+        <p:messages id="messages" autoUpdate="true" closable="true"/>
+    </ui:define>
+</ui:composition>

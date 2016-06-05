@@ -1,12 +1,10 @@
 package com.blazarquant.bfp.services.user;
 
+import com.blazarquant.bfp.core.security.config.DatabaseUserRealm;
 import com.blazarquant.bfp.core.security.exception.DecodingException;
 import com.blazarquant.bfp.core.security.util.SecurityUtil;
 import com.blazarquant.bfp.core.user.UserSettingsCache;
-import com.blazarquant.bfp.data.user.Role;
-import com.blazarquant.bfp.data.user.UserDetails;
-import com.blazarquant.bfp.data.user.UserID;
-import com.blazarquant.bfp.data.user.UserState;
+import com.blazarquant.bfp.data.user.*;
 import com.blazarquant.bfp.database.dao.UserDAO;
 import com.blazarquant.bfp.services.mail.MailService;
 import com.google.inject.Inject;
@@ -15,6 +13,7 @@ import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.xml.crypto.Data;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -26,8 +25,6 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
-            .withZone(ZoneId.systemDefault());
 
     private UserDAO userDAO;
     private SecurityUtil securityUtil;
@@ -56,6 +53,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDetails getUserDetailsByMail(String userMail) {
+        return userDAO.findUserByMail(userMail);
+    }
+
+    @Override
     public List<UserDetails> getUsers() {
         return userDAO.findAllUsers();
     }
@@ -81,12 +83,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void addUserPermission(UserID userID, Permission permission) {
+        userDAO.saveUserPermission(userID, permission.name());
+    }
+
+    @Override
     public boolean registerUser(String userName, String userMail, char[] password) {
         // Save user
-        String currentTime = formatter.format(Instant.now());
+        Instant currentTime = Instant.now();
         userDAO.saveUser(userName, userMail, securityUtil.hashPassword(password),
                 UserState.INACTIVE, currentTime, currentTime);
         Long userID = userDAO.findUserIDByLogin(userName);
+        UserID userIDObject = new UserID(userID);
+        userDAO.saveUserRole(userIDObject, Role.USER_ROLE);
+        userDAO.saveUserPermission(userIDObject, Permission.BASIC.name());
 
         // Generate confirmation key
         String confirmationKey = securityUtil.generateConfirmationKey(userID, userName, userMail);

@@ -3,7 +3,7 @@ package com.blazarquant.bfp.fix.parser.definition.data;
 /**
  * @author Wojciech Zankowski
  */
-public class ProviderDescriptor {
+public class ProviderDescriptor implements Comparable<ProviderDescriptor> {
 
     private final String providerName;
     private final XMLLoaderType loaderType;
@@ -19,6 +19,11 @@ public class ProviderDescriptor {
 
     public XMLLoaderType getLoaderType() {
         return loaderType;
+    }
+
+    @Override
+    public int compareTo(ProviderDescriptor providerDescriptor) {
+        return this.getProviderName().compareTo(providerDescriptor.getProviderName());
     }
 
     @Override

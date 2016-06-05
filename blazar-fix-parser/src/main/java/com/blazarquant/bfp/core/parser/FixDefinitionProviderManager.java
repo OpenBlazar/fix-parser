@@ -4,11 +4,9 @@ import com.blazarquant.bfp.data.user.UserID;
 import com.blazarquant.bfp.fix.parser.definition.DefaultFixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.data.ProviderDescriptor;
+import com.blazarquant.bfp.fix.parser.definition.data.XMLLoaderType;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -19,9 +17,11 @@ public class FixDefinitionProviderManager {
     private final FixDefinitionProvider defaultDefinitionProvider;
 
     private final Map<UserID, Map<ProviderDescriptor, FixDefinitionProvider>> customDefinitionProviders;
+    private final Map<ProviderDescriptor, FixDefinitionProvider> proDefinitionProviders;
 
     public FixDefinitionProviderManager() throws Exception {
         this.customDefinitionProviders = new ConcurrentHashMap<>();
+        this.proDefinitionProviders = new ConcurrentHashMap<>();
         this.defaultDefinitionProvider = new DefaultFixDefinitionProvider();
     }
 
@@ -43,8 +43,16 @@ public class FixDefinitionProviderManager {
         customDefinitionProviders.put(userID, providers);
     }
 
+    public void addProDefinitionProviders(Map<ProviderDescriptor, FixDefinitionProvider> definitionProviderMap) {
+        proDefinitionProviders.putAll(definitionProviderMap);
+    }
+
     public FixDefinitionProvider getDefaultDefinitionProvider() {
         return defaultDefinitionProvider;
+    }
+
+    public Map<ProviderDescriptor, FixDefinitionProvider> getProDefinitionProviders() {
+        return proDefinitionProviders;
     }
 
     public Map<ProviderDescriptor, FixDefinitionProvider> getDefinitionProviders(UserID userID) {

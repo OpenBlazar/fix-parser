@@ -22,6 +22,14 @@ public class FixDefinitionProviderFactory {
         return definitionProviderManager.getDefaultDefinitionProvider();
     }
 
+    public FixDefinitionProvider getProDefinitionProvider(ProviderDescriptor providerDescriptor) {
+        FixDefinitionProvider definitionProvider = definitionProviderManager.getProDefinitionProviders().get(providerDescriptor);
+        if (definitionProvider == null) {
+            return definitionProviderManager.getDefaultDefinitionProvider();
+        }
+        return definitionProvider;
+    }
+
     public FixDefinitionProvider getDefinitionProvider(UserID userID, ProviderDescriptor providerDescriptor) {
         if (userID == null || providerDescriptor == null || providerDescriptor.getProviderName().isEmpty()) {
             return definitionProviderManager.getDefaultDefinitionProvider();

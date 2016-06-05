@@ -17,6 +17,8 @@ public class FixDefinitionProvidersFileUtility {
     private static final int PROVIDER_LOADER_TYPE = 0;
     private static final int PROVIDER_NAME = 1;
 
+    private static final String PRO = "pro";
+
     public static String createProviderFileName(ProviderDescriptor providerDescriptor) {
         return createProviderFileName(providerDescriptor.getLoaderType(), providerDescriptor.getProviderName());
     }
@@ -27,6 +29,10 @@ public class FixDefinitionProvidersFileUtility {
 
     public static String getMainProvidersDir() {
         return MAIN_DIR;
+    }
+
+    public static String getProProvidersDir() {
+        return MAIN_DIR + File.separator + PRO;
     }
 
     public static String getUserProvidersDir(UserID userID) {

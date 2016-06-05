@@ -5,6 +5,9 @@ package com.blazarquant.bfp.data.user;
  */
 public class Role {
 
+    public static final Role USER_ROLE = new Role("User");
+    public static final Role ADMIN_ROLE = new Role("Admin");
+
     private final String name;
 
     public Role(String name) {

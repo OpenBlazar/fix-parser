@@ -2,6 +2,7 @@ package com.blazarquant.bfp.services.user;
 
 import com.blazarquant.bfp.core.security.exception.DecodingException;
 import com.blazarquant.bfp.core.user.UserSettingsCache;
+import com.blazarquant.bfp.data.user.Permission;
 import com.blazarquant.bfp.data.user.Role;
 import com.blazarquant.bfp.data.user.UserDetails;
 import com.blazarquant.bfp.data.user.UserID;
@@ -16,9 +17,13 @@ public interface UserService {
 
     UserDetails getUserDetails(String userName);
 
+    UserDetails getUserDetailsByMail(String userMail);
+
     List<UserDetails> getUsers();
 
     List<Role> getUserRoles(UserID userID);
+
+    void addUserPermission(UserID userID, Permission permission);
 
     boolean isUserNameExists(String userName);
 

@@ -344,3 +344,35 @@ select,
     color: rgb(117, 117, 117);
     margin: 5px 5px;
 }
+
+/* STICKY UPGRADE
+-------------------------------------------------- */
+
+a.stickyupgrade {
+    background: #386dc1;
+    font-family: "Myriad Pro";
+    font-size: 17px;
+    color: white;
+    text-transform: uppercase;
+    padding: 0 10px;
+    outline: none;
+    margin: 0 0px;
+    text-decoration: none;
+    position: fixed;
+    top: 109px;
+    right: 0;
+    /*width: 136px;*/
+    height: 40px;
+    line-height: 45px;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+
+    -webkit-transform-origin:100% 100%;
+    -moz-transform-origin:100% 100%;
+    transform-origin:100% 100%;
+}
+
+a.stickyupgrade:hover {
+    color: #eee;
+}

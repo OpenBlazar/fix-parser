@@ -9,6 +9,8 @@ import com.blazarquant.bfp.services.mail.MailService;
 import com.blazarquant.bfp.services.mail.MailServiceImpl;
 import com.blazarquant.bfp.services.parser.ParserService;
 import com.blazarquant.bfp.services.parser.ParserServiceImpl;
+import com.blazarquant.bfp.services.payment.PaymentService;
+import com.blazarquant.bfp.services.payment.PaymentServiceImpl;
 import com.blazarquant.bfp.services.share.ShareService;
 import com.blazarquant.bfp.services.share.ShareServiceImpl;
 import com.blazarquant.bfp.services.tracker.TrackerService;
@@ -54,6 +56,8 @@ public class ServiceModule extends AbstractModule {
         bind(ShareService.class).to(ShareServiceImpl.class).in(Singleton.class);
 
         bind(TrackerService.class).to(TrackerServiceImpl.class).in(Singleton.class);
+
+        bind(PaymentService.class).to(PaymentServiceImpl.class).in(Singleton.class);
     }
 
 }

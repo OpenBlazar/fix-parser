@@ -11,6 +11,7 @@
     <h:outputStylesheet name="css/bootstrap.min.css"/>
     <h:outputStylesheet name="css/blazar.css"/>
     <h:outputStylesheet name="css/blazarmain.css"/>
+    <h:outputStylesheet name="css/landing-page.css"/>
 </h:head>
 
 <h:body style="margin:0px; padding:0px; margin-bottom: 230px;">
@@ -27,9 +28,10 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" style="padding-top:10px;" href="/"><img src="../resources/img/BlazarQuantWhite.png"
-                                     alt="BlazarQuant"
-                                     height="33"/></a>
+                    <a class="navbar-brand" style="padding-top:10px;" href="/"><img
+                            src="../resources/img/BlazarQuantWhite.png"
+                            alt="BlazarQuant"
+                            height="33"/></a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse" style="background: #386dc1; color: #fff;">
                     <ul class="nav navbar-nav blazar-navbar navbar-right" style="color: #fff;">
@@ -124,7 +126,7 @@
                         <li>#{msg['com.blazarquant.bfp.index.oneLicense']}</li>
                     </ul>
                     <p:button value="#{msg['com.blazarquant.bfp.index.buy']}"
-                              outcome="/pages/public/register.xhtml"
+                              outcome="/pages/user/subscribe.xhtml?type=PRO"
                               class="blazar-price-button bravo"></p:button>
                     <span class="tip">#{msg['com.blazarquant.bfp.index.mostpopular']}</span>
                 </div>
@@ -142,11 +144,83 @@
                         <li><b>#{msg['com.blazarquant.bfp.index.unlimitedLicenses']}</b></li>
                     </ul>
                     <p:button value="#{msg['com.blazarquant.bfp.index.buy']}"
-                              outcome="/pages/public/register.xhtml"
+                              outcome="/pages/user/subscribe.xhtml?type=ENTERPRISE"
                               class="blazar-price-button charlie"></p:button>
                 </div>
             </div>
         </div>
+
+        <div class="content-section-a">
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-5 col-sm-6">
+                        <hr class="section-heading-spacer"/>
+                        <div class="clearfix"></div>
+                        <h2 class="section-heading">Custom dictionaries</h2>
+                        <p class="lead">
+                            Upload your custom FIX dictionaries and make your daily work much easier with better field definition!
+                        </p>
+                    </div>
+                    <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                        <img class="img-responsive" src="/resources/img/dictionary.png" width="500" height="250" alt=""/>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container -->
+
+        </div>
+        <!-- /.content-section-b -->
+
+        <div class="content-section-b">
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                        <hr class="section-heading-spacer"/>
+                        <div class="clearfix"></div>
+                        <h2 class="section-heading">Comparator</h2>
+                        <p class="lead">
+                            Compare FIX messages to find differences in field's values. Specially useful tool for FIX testers!
+                        </p>
+                    </div>
+                    <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                        <img class="img-responsive" src="/resources/img/compare.png" alt=""/>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container -->
+
+        </div>
+        <!-- /.content-section-a -->
+
+        <div class="content-section-a">
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-5 col-sm-6">
+                        <hr class="section-heading-spacer"/>
+                        <div class="clearfix"></div>
+                        <h2 class="section-heading">History</h2>
+                        <p class="lead">
+                            Remember and browse messages parsed in the past.
+                        </p>
+                    </div>
+                    <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                        <img class="img-responsive" src="/resources/img/history.png" alt=""/>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container -->
+
+        </div>
+        <!-- /.content-section-b -->
 
         <footer class="footer" style="background-color: #222222;">
             <div class="container">

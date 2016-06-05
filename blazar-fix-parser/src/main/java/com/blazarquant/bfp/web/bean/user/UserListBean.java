@@ -3,13 +3,13 @@ package com.blazarquant.bfp.web.bean.user;
 import com.blazarquant.bfp.data.user.UserDetails;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
+import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.inject.Inject;
 import java.util.List;
 
 /**

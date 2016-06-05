@@ -52,7 +52,7 @@ public class UserDetails implements Serializable {
         return password;
     }
 
-    public UserState isActive() {
+    public UserState getUserState() {
         return userState;
     }
 

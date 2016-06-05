@@ -1,5 +1,6 @@
 package com.blazarquant.bfp.web.util.converter;
 
+import com.blazarquant.bfp.data.user.Permission;
 import com.blazarquant.bfp.fix.data.FixMessage;
 import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.data.ProviderDescriptor;
@@ -66,7 +67,11 @@ public class FixMessageOneMenuConverter implements Converter {
                 value.substring(index + 1),
                 String.valueOf(ENTRY_DELIMITER),
                 Integer.parseInt(value.substring(0, index)),
-                parserService.getDefinitionProvider(providerDescriptor, shiroUtilities.getCurrentUserID()));
+                parserService.getDefinitionProvider(
+                        providerDescriptor,
+                        shiroUtilities.getCurrentUserID(),
+                        shiroUtilities.isPermitted(Permission.PRO.name()) || shiroUtilities.isPermitted(Permission.ENTERPRISE.name())
+                ));
     }
 
     @Override

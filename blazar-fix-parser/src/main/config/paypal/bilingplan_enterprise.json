@@ -1,0 +1,29 @@
+{
+  "name": "BlazarQuant ENTERPRISE Plan",
+  "description": "Monthly ENTERPRISE plan for BlazarQuant services.",
+  "type": "fixed",
+  "payment_definitions": [
+    {
+      "name": "ENTERPRISE",
+      "type": "REGULAR",
+      "frequency_interval": "1",
+      "frequency": "MONTH",
+      "cycles": "1",
+      "amount": {
+        "currency": "USD",
+        "value": "30"
+      }
+    }
+  ],
+  "merchant_preferences": {
+    "setup_fee": {
+      "currency": "USD",
+      "value": "0"
+    },
+    "cancel_url": "http://www.blazarquant.com/payments",
+    "return_url": "http://www.blazarquant.com/payments",
+    "max_fail_attempts": "0",
+    "auto_bill_amount": "YES",
+    "initial_fail_amount_action": "CONTINUE"
+  }
+}

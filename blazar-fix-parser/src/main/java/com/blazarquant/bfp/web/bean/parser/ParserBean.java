@@ -1,6 +1,7 @@
 package com.blazarquant.bfp.web.bean.parser;
 
 import com.blazarquant.bfp.core.share.exception.ShareException;
+import com.blazarquant.bfp.data.user.Permission;
 import com.blazarquant.bfp.data.user.UserDetails;
 import com.blazarquant.bfp.data.user.UserID;
 import com.blazarquant.bfp.data.user.UserSetting;
@@ -10,12 +11,14 @@ import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.data.ProviderDescriptor;
 import com.blazarquant.bfp.fix.parser.util.FixParserConstants;
 import com.blazarquant.bfp.services.parser.ParserService;
+import com.blazarquant.bfp.services.payment.PaymentService;
 import com.blazarquant.bfp.services.share.ShareService;
 import com.blazarquant.bfp.services.tracker.TrackerService;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
 import com.blazarquant.bfp.web.util.FacesUtilities;
 import com.blazarquant.bfp.web.util.ShiroUtilities;
+import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +26,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -49,6 +51,7 @@ public class ParserBean extends AbstractBean {
     private TrackerService trackerService;
     private ShareService shareService;
     private UserService userService;
+    private PaymentService paymentService;
 
     private List<FixMessage> messages = new ArrayList<>();
     private List<ProviderDescriptor> providers = Arrays.asList(DefaultFixDefinitionProvider.DESCRIPTOR);
@@ -90,6 +93,11 @@ public class ParserBean extends AbstractBean {
         this.userService = userService;
     }
 
+    @Inject
+    public void setPaymentService(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+
     @PostConstruct
     @Override
     public void init() {
@@ -104,8 +112,10 @@ public class ParserBean extends AbstractBean {
         if (shiroUtilities.isUserAuthenticated()) {
             UserID userID = shiroUtilities.getCurrentUserID();
             providers = new ArrayList<>();
-            providers.addAll(Arrays.asList(DefaultFixDefinitionProvider.DESCRIPTOR));
-            providers.addAll(parserService.getProviders(userID));
+            providers.addAll(parserService.getProviders(
+                    userID,
+                    shiroUtilities.isPermitted(Permission.PRO.name()) || shiroUtilities.isPermitted(Permission.ENTERPRISE.name())
+            ));
         }
     }
 
@@ -140,7 +150,12 @@ public class ParserBean extends AbstractBean {
         synchronized (messages) {
             selectedMessage = null;
             if (shiroUtilities.isUserAuthenticated()) {
-                messages = new ArrayList<>(parserService.parseInput(selectedProvider, shiroUtilities.getCurrentUserID(), input));
+                messages = new ArrayList<>(parserService.parseInput(
+                        selectedProvider,
+                        shiroUtilities.getCurrentUserID(),
+                        input,
+                        shiroUtilities.isPermitted(Permission.PRO.name()) || shiroUtilities.isPermitted(Permission.ENTERPRISE.name())
+                ));
             } else {
                 messages = new ArrayList<>(parserService.parseInput(input));
             }

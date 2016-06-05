@@ -29,4 +29,8 @@ public class ShiroUtilities {
         return SecurityUtils.getSubject().isRemembered();
     }
 
+    public boolean isPermitted(String permission) {
+        return SecurityUtils.getSubject().isPermitted(permission);
+    }
+
 }

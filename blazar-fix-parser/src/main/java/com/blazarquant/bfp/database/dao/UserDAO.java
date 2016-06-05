@@ -19,17 +19,23 @@ public interface UserDAO {
 
     String SELECT_ALL = "SELECT * FROM " + Tables.USERS_TABLE;
     String SELECT_USER_BY_LOGIN = "SELECT * FROM " + Tables.USERS_TABLE + " WHERE user_login = #{userName}";
-    String SELECT_USER_BY_ID = "SELECT * FROM " + Tables.USERS_TABLE + " WHERE ID = #{userId}";
+    String SELECT_USER_BY_EMAIL = "SELECT * FROM " + Tables.USERS_TABLE + " WHERE user_email = #{userMail}";
+    String SELECT_USER_BY_ID = "SELECT * FROM " + Tables.USERS_TABLE + " WHERE ID = #{userId.id}";
     String SELECT_USER_ROLES = "SELECT role_name FROM " + Tables.USER_ROLES_TABLE + " JOIN " + Tables.ROLES_TABLE + " ON "
-            + Tables.USER_ROLES_TABLE + ".role_id = " + Tables.ROLES_TABLE + ".ID WHERE user_id = #{id}";
+            + Tables.USER_ROLES_TABLE + ".role_id = " + Tables.ROLES_TABLE + ".ID WHERE user_id = #{userId.id}";
+    String INSERT_USER_ROLE = "INSERT INTO " + Tables.USER_ROLES_TABLE + " (user_id, role_id) SELECT #{userId.id}, ID FROM " + Tables.ROLES_TABLE + " WHERE role_name  = #{role.name}";
+    String SELECT_USER_PERMISSIONS = "SELECT permission_name FROM " + Tables.USER_PERMISSIONS_TABLE + " JOIN " + Tables.PERMISSIONS_TABLE + " ON "
+            + Tables.USER_PERMISSIONS_TABLE + ".permission_id = " + Tables.PERMISSIONS_TABLE + ".id WHERE user_id = #{userId.id}";
+    String INSERT_USER_PERMISSION = "INSERT INTO " + Tables.USER_PERMISSIONS_TABLE + " (permission_id, user_id) SELECT id, #{userId.id} FROM "
+            + Tables.PERMISSIONS_TABLE + " WHERE permission_name = #{permission}";
     String CHECK_IF_USER_EXISTS = "SELECT count(1) FROM " + Tables.USERS_TABLE + " WHERE user_login = #{userName}";
     String CHECK_IF_USERMAIL_EXISTS = "SELECT count(1) FROM " + Tables.USERS_TABLE + " WHERE user_email = #{userMail}";
     String CHECK_IF_USER_ACTIVE = "SELECT user_status FROM " + Tables.USERS_TABLE + " WHERE user_login = #{userName}";
     String SELECT_USER_CONFIRMATION_KEY = "Select user_confirmationkey FROM " + Tables.USERS_TABLE + " WHERE ID = #{userID}";
     String INSERT_USER_REGISTER = "INSERT INTO " + Tables.USERS_TABLE + " (user_login, " +
             "user_pass, user_email, user_status, user_registerdate, user_lastlogin) VALUES " +
-            "(#{userName}, #{hashedPassword}, #{userMail}, #{isActive, typeHandler=com.blazarquant.bfp.database.typehandlers.user.ActiveUserTypeHandler}, #{registrationDate}, " +
-            "#{lastLogin})";
+            "(#{userName}, #{hashedPassword}, #{userMail}, #{isActive, typeHandler=com.blazarquant.bfp.database.typehandlers.user.ActiveUserTypeHandler}, #{registrationDate, typeHandler=com.blazarquant.bfp.database.typehandlers.InstantTypeHandler}, " +
+            "#{lastLogin, typeHandler=com.blazarquant.bfp.database.typehandlers.InstantTypeHandler})";
     String UPDATE_USER_CONFIRMATION_KEY = "UPDATE " + Tables.USERS_TABLE + " SET user_confirmationkey=#{confirmationKey} WHERE ID = #{userID}";
     String UPDATE_USER_STATUS = "UPDATE " + Tables.USERS_TABLE + " SET user_status=#{userStatus, typeHandler=com.blazarquant.bfp.database.typehandlers.user.ActiveUserTypeHandler} WHERE ID = #{userID}";
 
@@ -60,13 +66,31 @@ public interface UserDAO {
             @Arg(column = "user_registerdate", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class),
             @Arg(column = "user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class)
     })
-    UserDetails findUserByLogin(String userName);
+    UserDetails findUserByLogin(
+            @Param("userName") String userName
+    );
+
+    @Select(SELECT_USER_BY_EMAIL)
+    @ConstructorArgs(value = {
+            @Arg(column = "id", javaType = UserID.class, jdbcType = JdbcType.BIGINT, typeHandler = UserIDTypeHandler.class),
+            @Arg(column = "user_login", javaType = String.class, jdbcType = JdbcType.VARCHAR),
+            @Arg(column = "user_email", javaType = String.class, jdbcType = JdbcType.VARCHAR),
+            @Arg(column = "user_pass", javaType = String.class, jdbcType = JdbcType.VARCHAR),
+            @Arg(column = "user_status", javaType = UserState.class, jdbcType = JdbcType.INTEGER, typeHandler = ActiveUserTypeHandler.class),
+            @Arg(column = "user_registerdate", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class),
+            @Arg(column = "user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class)
+    })
+    UserDetails findUserByMail(
+            @Param("userMail") String userMail
+    );
 
     @Select(SELECT_USER_BY_LOGIN)
     @ConstructorArgs(value = {
             @Arg(column = "id", javaType = Long.class, jdbcType = JdbcType.BIGINT),
     })
-    Long findUserIDByLogin(String userName);
+    Long findUserIDByLogin(
+            @Param("userName") String userName
+    );
 
     @Select(SELECT_USER_BY_ID)
     @ConstructorArgs(value = {
@@ -78,22 +102,49 @@ public interface UserDAO {
             @Arg(column = "user_registerdate", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class),
             @Arg(column = "user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class)
     })
-    UserDetails findUserById(UserID userID);
+    UserDetails findUserById(
+            @Param("userId") UserID userID
+    );
 
     @Select(SELECT_USER_ROLES)
     @ConstructorArgs(value = {
             @Arg(column = "role_name", javaType = String.class, jdbcType = JdbcType.VARCHAR)
     })
-    List<Role> findUserRoles(UserID userID);
+    List<Role> findUserRoles(
+            @Param("userId") UserID userID
+    );
+
+    @Insert(INSERT_USER_ROLE)
+    void saveUserRole(
+            @Param("userId") UserID userID,
+            @Param("role") Role role
+    );
+
+    @Select(SELECT_USER_PERMISSIONS)
+    List<String> findUserPermissions(
+            @Param("userId") UserID userID
+    );
+
+    @Insert(INSERT_USER_PERMISSION)
+    void saveUserPermission(
+            @Param("userId") UserID userID,
+            @Param("permission") String permission
+    );
 
     @Select(CHECK_IF_USER_EXISTS)
-    Integer isUserNameExists(String userName);
+    Integer isUserNameExists(
+            @Param("userName") String userName
+    );
 
     @Select(CHECK_IF_USERMAIL_EXISTS)
-    Integer isUserMailExists(String userMail);
+    Integer isUserMailExists(
+            @Param("userMail") String userMail
+    );
 
     @Select(CHECK_IF_USER_ACTIVE)
-    int isUserActive(String userName);
+    int isUserActive(
+            @Param("userName") String userName
+    );
 
     @Select(SELECT_USER_CONFIRMATION_KEY)
     String findConfirmationKeyFromUser(
@@ -106,8 +157,8 @@ public interface UserDAO {
             @Param("userMail") String userMail,
             @Param("hashedPassword") String hashedPassword,
             @Param("isActive") UserState userState,
-            @Param("registrationDate") String registrationDate,
-            @Param("lastLogin") String lastLogin
+            @Param("registrationDate") Instant registrationDate,
+            @Param("lastLogin") Instant lastLogin
     );
 
     @Update(UPDATE_USER_CONFIRMATION_KEY)

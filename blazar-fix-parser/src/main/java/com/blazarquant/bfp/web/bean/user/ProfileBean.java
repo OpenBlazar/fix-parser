@@ -1,5 +1,7 @@
 package com.blazarquant.bfp.web.bean.user;
 
+import com.blazarquant.bfp.core.parser.FixDefinitionProviderManager;
+import com.blazarquant.bfp.data.user.Permission;
 import com.blazarquant.bfp.data.user.UserDetails;
 import com.blazarquant.bfp.data.user.UserSetting;
 import com.blazarquant.bfp.fix.parser.definition.DefaultFixDefinitionProvider;
@@ -11,6 +13,7 @@ import com.blazarquant.bfp.web.bean.AbstractBean;
 import com.blazarquant.bfp.web.util.ShiroUtilities;
 import com.google.inject.Inject;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.Subject;
 import org.primefaces.model.UploadedFile;
 
@@ -19,8 +22,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 
 /**
  * @author Wojciech Zankowski
@@ -34,6 +42,8 @@ public class ProfileBean extends AbstractBean {
 
     private ShiroUtilities shiroUtilities;
 
+    private ExecutorService threadService = Executors.newSingleThreadExecutor();
+
     private Set<ProviderDescriptor> providerDescriptors = new HashSet<>();
     private XMLLoaderType[] loaderTypes = XMLLoaderType.values();
 
@@ -43,6 +53,9 @@ public class ProfileBean extends AbstractBean {
 
     private ProviderDescriptor defaultProvider;
     private Boolean storeMessages;
+    private String permissions;
+
+    private String userMail;
 
     @PostConstruct
     @Override
@@ -51,6 +64,7 @@ public class ProfileBean extends AbstractBean {
         if (shiroUtilities.isUserAuthenticated()) {
             doReloadProviders();
             doLoadDefaultParameters();
+            doLoadPermissions();
         }
     }
 
@@ -82,14 +96,45 @@ public class ProfileBean extends AbstractBean {
     }
 
     private void doReloadProviders() {
-        providerDescriptors = new HashSet<>();
-        providerDescriptors.add(DefaultFixDefinitionProvider.DESCRIPTOR);
-        providerDescriptors.addAll(parserService.getProviders(shiroUtilities.getCurrentUserID()));
+        providerDescriptors = parserService.getProviders(
+                shiroUtilities.getCurrentUserID(),
+                shiroUtilities.isPermitted(Permission.PRO.name()) || shiroUtilities.isPermitted(Permission.ENTERPRISE.name())
+        );
+    }
+
+    private void doLoadPermissions() {
+        permissions = Arrays.stream(Permission.values())
+                .filter(permission -> shiroUtilities.isPermitted(permission.name()))
+                .map(Permission::name)
+                .collect(Collectors.joining(", "));
+    }
+
+    public void doAssignPermission() {
+        if (shiroUtilities.isPermitted(Permission.ENTERPRISE.name())) {
+            UserDetails userDetails = userService.getUserDetailsByMail(userMail);
+            if (userDetails != null) {
+                userService.addUserPermission(userDetails.getUserID(), Permission.PRO);
+            } else {
+                // TODO message
+            }
+        }
+    }
+
+    public void doClearHistory() {
+        if (shiroUtilities.isUserAuthenticated()) {
+            threadService.submit(() -> parserService.clearHistory(shiroUtilities.getCurrentUserID()));
+        }
     }
 
     public void handleFileUpload() throws Exception {
         Subject subject = SecurityUtils.getSubject();
         if (!subject.isAuthenticated()) {
+            return;
+        }
+
+        if (!(shiroUtilities.isPermitted(Permission.PRO.name()) || shiroUtilities.isPermitted(Permission.ENTERPRISE.name()))
+                && providerDescriptors.size() >= 2) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Info", "Custom dictionaries are limited to 1 for BASIC users."));
             return;
         }
 
@@ -126,7 +171,7 @@ public class ProfileBean extends AbstractBean {
     }
 
     public boolean isDefaultProvider(ProviderDescriptor providerDescriptor) {
-        return !DefaultFixDefinitionProvider.DESCRIPTOR.equals(providerDescriptor);
+        return !DefaultFixDefinitionProvider.DESCRIPTOR.equals(providerDescriptor) && !parserService.isProProvider(providerDescriptor);
     }
 
     public Set<ProviderDescriptor> getProviderDescriptors() {
@@ -185,9 +230,29 @@ public class ProfileBean extends AbstractBean {
         saveParameter(storeMessages);
     }
 
+    public String getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(String permissions) {
+        this.permissions = permissions;
+    }
+
     private void saveParameter(Boolean storeMessages) {
         if (shiroUtilities.isUserAuthenticated()) {
             this.userService.getUserSettingsCache().setParameter(shiroUtilities.getCurrentUserID(), UserSetting.STORE_MESSAGES, storeMessages);
         }
+    }
+
+    public String getUserMail() {
+        return userMail;
+    }
+
+    public void setUserMail(String userMail) {
+        this.userMail = userMail;
+    }
+
+    public boolean isEnterprise() {
+        return shiroUtilities.isPermitted(Permission.ENTERPRISE.name());
     }
 }

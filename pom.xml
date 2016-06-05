@@ -127,6 +127,12 @@
             </dependency>
 
             <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>7.0</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.apache.taglibs</groupId>
                 <artifactId>taglibs-standard-impl</artifactId>
                 <version>${taglibs.standard}</version>
@@ -259,6 +265,14 @@
                 <version>1.5.5</version>
             </dependency>
 
+            <!-- PayPal -->
+
+            <dependency>
+                <groupId>com.paypal.sdk</groupId>
+                <artifactId>rest-api-sdk</artifactId>
+                <version>1.6.0</version>
+            </dependency>
+
             <!-- Logging -->
 
             <dependency>
@@ -288,6 +302,14 @@
                 <version>2.0.2-beta</version>
                 <scope>test</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.hsqldb</groupId>
+                <artifactId>hsqldb</artifactId>
+                <version>2.3.4</version>
+                <scope>test</scope>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>

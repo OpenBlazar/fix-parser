@@ -1,5 +1,6 @@
 package com.blazarquant.bfp.core.security.config;
 
+import com.blazarquant.bfp.data.user.Permission;
 import com.blazarquant.bfp.data.user.Role;
 import com.blazarquant.bfp.data.user.UserDetails;
 import com.blazarquant.bfp.database.dao.UserDAO;
@@ -44,12 +45,16 @@ public class DatabaseUserRealm extends AuthorizingRealm {
         if (userDetails != null) {
             List<Role> userRoles = userDAO.findUserRoles(userDetails.getUserID());
             SimpleAuthorizationInfo authInfo = new SimpleAuthorizationInfo();
-            for (Role role : userRoles) {
-                authInfo.addRole(role.getName());
-            }
+            userRoles.forEach(r -> authInfo.addRole(r.getName()));
+            List<String> userPermissions = userDAO.findUserPermissions(userDetails.getUserID());
+            userPermissions.forEach(p -> authInfo.addStringPermission(p));
             return authInfo;
         }
         return null;
     }
 
+    @Override
+    public void clearCachedAuthorizationInfo(PrincipalCollection principals) {
+        super.clearCachedAuthorizationInfo(principals);
+    }
 }

@@ -10,6 +10,7 @@ import com.blazarquant.bfp.data.user.UserID;
 import com.blazarquant.bfp.database.dao.MessageDAO;
 import com.blazarquant.bfp.fix.data.FixMessage;
 import com.blazarquant.bfp.fix.parser.FixParser;
+import com.blazarquant.bfp.fix.parser.definition.DefaultFixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.data.ProviderDescriptor;
 import com.blazarquant.bfp.fix.parser.util.FixMessageConverter;
@@ -18,6 +19,7 @@ import com.google.inject.Inject;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 /**
@@ -44,10 +46,11 @@ public class ParserServiceImpl implements ParserService {
         this.definitionProviderManager = new FixDefinitionProviderManager();
         this.definitionProviderFactory = new FixDefinitionProviderFactory(definitionProviderManager);
         this.definitionProvidersFileStore = new FixDefinitionProvidersFileStore(definitionProviderFactory);
+        this.definitionProviderManager.addProDefinitionProviders(this.definitionProvidersFileStore.loadProProviders());
     }
 
     @Override
-    public List<FixMessage> findMessagesByUser(UserDetails userDetails, ProviderDescriptor providerDescriptor, int lowerLimit, int upperLimit) {
+    public List<FixMessage> findMessagesByUser(UserDetails userDetails, ProviderDescriptor providerDescriptor, boolean isPermitted, int lowerLimit, int upperLimit) {
         List<String> messages = messageDAO.findMessageByUserID(userDetails.getUserID(), lowerLimit, upperLimit)
                 .stream()
                 .map(s -> securityUtil.decodeMessage(s))
@@ -55,7 +58,7 @@ public class ParserServiceImpl implements ParserService {
         return messageConverter.convertToFixMessages(
                 messages,
                 String.valueOf(FixMessageConverter.ENTRY_DELIMITER),
-                definitionProviderFactory.getDefinitionProvider(userDetails.getUserID(), providerDescriptor));
+                getDefinitionProvider(providerDescriptor, userDetails.getUserID(), isPermitted));
     }
 
     @Override
@@ -69,10 +72,10 @@ public class ParserServiceImpl implements ParserService {
     }
 
     @Override
-    public List<FixMessage> parseInput(ProviderDescriptor providerDescriptor, UserID userID, String input) {
+    public List<FixMessage> parseInput(ProviderDescriptor providerDescriptor, UserID userID, String input, boolean isPermitted) {
         return fixParser.parseInput(
                 input,
-                definitionProviderFactory.getDefinitionProvider(userID, providerDescriptor)
+                getDefinitionProvider(providerDescriptor, userID, isPermitted)
         );
     }
 
@@ -84,6 +87,11 @@ public class ParserServiceImpl implements ParserService {
     }
 
     @Override
+    public void clearHistory(UserID userID) {
+        messageDAO.clearHistory(userID);
+    }
+
+    @Override
     public void saveProviderFile(UserID userID, ProviderDescriptor providerDescriptor, byte[] content) throws Exception {
         definitionProvidersFileStore.saveProviderFile(userID, providerDescriptor, content);
         FixDefinitionProvider definitionProvider = definitionProvidersFileStore.loadCustomProvider(userID, providerDescriptor);
@@ -91,13 +99,23 @@ public class ParserServiceImpl implements ParserService {
     }
 
     @Override
-    public FixDefinitionProvider getDefinitionProvider(ProviderDescriptor providerDescriptor, UserID userID) {
-        return definitionProviderFactory.getDefinitionProvider(userID, providerDescriptor);
+    public FixDefinitionProvider getDefinitionProvider(ProviderDescriptor providerDescriptor, UserID userID, boolean isPermitted) {
+        if (isPermitted && definitionProviderManager.getProDefinitionProviders().keySet().contains(providerDescriptor)) {
+            return definitionProviderFactory.getProDefinitionProvider(providerDescriptor);
+        } else {
+            return definitionProviderFactory.getDefinitionProvider(userID, providerDescriptor);
+        }
     }
 
     @Override
-    public Set<ProviderDescriptor> getProviders(UserID userID) {
-        return definitionProviderManager.getProviderDescriptors(userID);
+    public Set<ProviderDescriptor> getProviders(UserID userID, boolean isPermitted) {
+        Set<ProviderDescriptor> providerDescriptors = new TreeSet<>();
+        providerDescriptors.add(DefaultFixDefinitionProvider.DESCRIPTOR);
+        providerDescriptors.addAll(definitionProviderManager.getProviderDescriptors(userID));
+        if (isPermitted) {
+            providerDescriptors.addAll(definitionProviderManager.getProDefinitionProviders().keySet());
+        }
+        return providerDescriptors;
     }
 
     @Override
@@ -113,5 +131,10 @@ public class ParserServiceImpl implements ParserService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean isProProvider(ProviderDescriptor providerDescriptor) {
+        return definitionProviderManager.getProDefinitionProviders().keySet().contains(providerDescriptor);
     }
 }

@@ -27,7 +27,7 @@ public class FixMessageConverter {
     }
 
     public FixMessage convertToFixMessage(String textMessage, String delimiter, long counter, FixDefinitionProvider definitionProvider) {
-        String[] fields = textMessage.split(delimiter);
+        String[] fields = textMessage.split("\\"+delimiter);
         List<FixPair> messageFields = new ArrayList<>();
 
         for (String field : fields) {

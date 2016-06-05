@@ -8,89 +8,135 @@
     <ui:define name="content">
         <div class="ui-grid-row">
             <div class="content">
-                    <p:messages id="messages" showDetail="true" closable="true"/>
+                <p:tabView>
+                    <p:tab title="Dictionaries">
+                        <h2>#{msg['com.blazarquant.bfp.pages.user.profile.addDictionary']}</h2>
 
-                    <h2>#{msg['com.blazarquant.bfp.pages.user.profile.history']}</h2>
-                    <h:form id="historySettings">
-                        <p:panelGrid columns="2" cellpadding="20" style="border-width: 0px;">
-                            <h:outputText value="#{msg['com.blazarquant.bfp.pages.user.profile.storeMessages']}"/>
-                            <p:selectBooleanCheckbox value="#{profileBean.storeMessages}">
-                                <p:ajax/>
-                            </p:selectBooleanCheckbox>
-                        </p:panelGrid>
-                    </h:form>
+                        <h:form id="form" enctype="multipart/form-data">
+                            <p:panelGrid columns="2" cellpadding="20">
+                                <h:outputText value="Name: "/>
+                                <p:inputText id="dictionaryName"
+                                             value="#{profileBean.providerName}"
+                                             style="width:250px"/>
 
-                    <h2>#{msg['com.blazarquant.bfp.pages.user.profile.addDictionary']}</h2>
+                                <h:outputText value="Loader: "/>
+                                <p:selectOneMenu id="dictionaryFormat"
+                                                 value="#{profileBean.providerLoader}"
+                                                 converter="xmlLoaderTypeConverter"
+                                                 style="width:250px; padding-right: 0px;">
+                                    <p:ajax/>
+                                    <f:selectItems value="#{profileBean.loaderTypes}"
+                                                   var="loader"
+                                                   itemLabel="#{loader}"
+                                                   itemValue="#{loader}"/>
+                                </p:selectOneMenu>
 
-                    <h:form id="form" enctype="multipart/form-data">
-                        <p:panelGrid columns="2" cellpadding="20">
-                            <h:outputText value="Name: "/>
-                            <p:inputText id="dictionaryName"
-                                         value="#{profileBean.providerName}"
-                                         style="width:250px"/>
+                                <h:outputText value="File: "/>
+                                <p:fileUpload value="#{profileBean.uploadedFile}"
+                                              mode="simple"
+                                              skinSimple="true"/>
 
-                            <h:outputText value="Loader: "/>
-                            <p:selectOneMenu id="dictionaryFormat"
-                                             value="#{profileBean.providerLoader}"
-                                             converter="xmlLoaderTypeConverter"
-                                             style="width:250px; padding-right: 0px;">
-                                <p:ajax/>
-                                <f:selectItems value="#{profileBean.loaderTypes}"
-                                               var="loader"
-                                               itemLabel="#{loader}"
-                                               itemValue="#{loader}"/>
-                            </p:selectOneMenu>
+                                <p:commandButton value="#{msg['com.blazarquant.bfp.pages.user.profile.add']}"
+                                                 icon="ui-icon-check"
+                                                 ajax="false"
+                                                 actionListener="#{profileBean.handleFileUpload}"
+                                                 update=":dictionariesForm:dictionariesTable"
+                                                 styleClass="btn-blazar btn-blazar-blue btn-blazar-blue-hover"/>
+                            </p:panelGrid>
+                        </h:form>
 
-                            <h:outputText value="File: "/>
-                            <p:fileUpload value="#{profileBean.uploadedFile}"
-                                          mode="simple"
-                                          skinSimple="true"/>
+                        <h2>#{msg['com.blazarquant.bfp.pages.user.profile.myDictionaries']}</h2>
 
-                            <p:commandButton value="#{msg['com.blazarquant.bfp.pages.user.profile.add']}"
-                                             icon="ui-icon-check"
-                                             ajax="false"
-                                             actionListener="#{profileBean.handleFileUpload}"
-                                             update=":dictionariesForm:dictionariesTable"
-                                             styleClass="btn-blazar btn-blazar-blue btn-blazar-blue-hover"/>
-                        </p:panelGrid>
-                    </h:form>
+                        <h:form id="dictionariesForm">
+                            <p:dataTable id="dictionariesTable"
+                                         var="provider"
+                                         value="#{profileBean.providerDescriptors}"
+                                         resizableColumns="true"
+                                         emptyMessage="#{msg['com.blazarquant.bfp.pages.user.profile.emptyDictionaries']}"
+                                         tableStyle="width:100%"
+                                         selection="#{profileBean.defaultProvider}"
+                                         rowKey="#{provider.hashCode()}"
+                                         rowIndexVar="rowIndex">
+                                <p:ajax event="rowSelectRadio"/>
+                                <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.profile.default']}"
+                                          selectionMode="single"
+                                          style="width:100px; text-align:center;"/>
 
-                    <h2>#{msg['com.blazarquant.bfp.pages.user.profile.myDictionaries']}</h2>
+                                <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.profile.dictionaryName']}">
+                                    <h:outputText value="#{provider.providerName}" style="font-size: 12px;"/>
+                                </p:column>
 
-                    <h:form id="dictionariesForm">
-                        <p:dataTable id="dictionariesTable"
-                                     var="provider"
-                                     value="#{profileBean.providerDescriptors}"
-                                     resizableColumns="true"
-                                     emptyMessage="#{msg['com.blazarquant.bfp.pages.user.profile.emptyDictionaries']}"
-                                     tableStyle="width:100%"
-                                     selection="#{profileBean.defaultProvider}"
-                                     rowKey="#{provider.hashCode()}"
-                                     rowIndexVar="rowIndex">
-                            <p:ajax event="rowSelectRadio"/>
-                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.profile.default']}"
-                                      selectionMode="single"
-                                      style="width:100px; text-align:center;"/>
+                                <p:column
+                                        headerText="#{msg['com.blazarquant.bfp.pages.user.profile.dictionaryFormat']}">
+                                    <h:outputText value="#{provider.loaderType}" style="font-size: 12px;"/>
+                                </p:column>
 
-                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.profile.dictionaryName']}">
-                                <h:outputText value="#{provider.providerName}" style="font-size: 12px;"/>
-                            </p:column>
+                                <p:column style="text-align:center;">
+                                    <p:commandButton icon="ui-icon-trash"
+                                                     value="#{msg['com.blazarquant.bfp.pages.user.profile.delete']}"
+                                                     action="#{profileBean.doRemoveProvider(provider)}"
+                                                     update="@form" process="@this"
+                                                     styleClass="btn-blazar-blue btn-blazar-blue-hover"
+                                                     rendered="#{profileBean.isDefaultProvider(provider)}"
+                                    />
+                                </p:column>
+                            </p:dataTable>
+                        </h:form>
+                    </p:tab>
+                    <p:tab title="Permission">
+                        <p:messages id="messages" showDetail="true" closable="true"/>
+                        <h2>#{msg['com.blazarquant.bfp.pages.user.profile.permissions']}</h2>
+                        <h:outputText value="#{profileBean.permissions}" style="font-size: 18px;"/>
 
-                            <p:column headerText="#{msg['com.blazarquant.bfp.pages.user.profile.dictionaryFormat']}">
-                                <h:outputText value="#{provider.loaderType}" style="font-size: 12px;"/>
-                            </p:column>
+                        <h:panelGroup rendered="#{profileBean.enterprise}">
+                            <h2>Enterprise privilege</h2>
+                            <p>Grant your employees' accounts with PRO permission.</p>
+                            <h:form id="enterpriseForm">
+                                <p:panelGrid columns="2" cellpadding="20" style="border-width: 0px;">
+                                    <h:outputText value="User email:"/>
+                                    <p:inputText id="usermail"
+                                                 value="#{profileBean.userMail}"
+                                                 style="width:250px"/>
+                                    <p:commandButton value="#{msg['com.blazarquant.bfp.pages.user.profile.add']}"
+                                                     icon="ui-icon-check"
+                                                     ajax="false"
+                                                     actionListener="#{profileBean.doAssignPermission}"
+                                                     styleClass="btn-blazar btn-blazar-blue btn-blazar-blue-hover"/>
+                                </p:panelGrid>
+                            </h:form>
+                        </h:panelGroup>
+                    </p:tab>
+                    <p:tab title="General">
 
-                            <p:column style="text-align:center;">
-                                <p:commandButton icon="ui-icon-trash"
-                                                 value="#{msg['com.blazarquant.bfp.pages.user.profile.delete']}"
-                                                 action="#{profileBean.doRemoveProvider(provider)}"
-                                                 update="@form" process="@this"
-                                                 styleClass="btn-blazar-blue btn-blazar-blue-hover"
-                                                 rendered="#{profileBean.isDefaultProvider(provider)}"
-                                />
-                            </p:column>
-                        </p:dataTable>
-                    </h:form>
+                        <h2>#{msg['com.blazarquant.bfp.pages.user.profile.history']}</h2>
+                        <h:form id="historySettings">
+                            <p:panelGrid columns="2" cellpadding="20" style="border-width: 0px;">
+                                <h:outputText value="#{msg['com.blazarquant.bfp.pages.user.profile.storeMessages']}"/>
+                                <p:selectBooleanCheckbox value="#{profileBean.storeMessages}">
+                                    <p:ajax/>
+                                </p:selectBooleanCheckbox>
+                            </p:panelGrid>
+                        </h:form>
+
+                        <h2>Clear history</h2>
+                        <h:form id="clearHistory">
+                            <p:commandButton icon="ui-icon-trash"
+                                             value="Clear"
+                                             action="#{profileBean.doClearHistory}"
+                                             styleClass="btn-blazar-blue btn-blazar-blue-hover"
+                            >
+                                <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert"/>
+                            </p:commandButton>
+
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes"
+                                                 icon="ui-icon-check"/>
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no"
+                                                 icon="ui-icon-close"/>
+                            </p:confirmDialog>
+                        </h:form>
+                    </p:tab>
+                </p:tabView>
             </div>
         </div>
     </ui:define>

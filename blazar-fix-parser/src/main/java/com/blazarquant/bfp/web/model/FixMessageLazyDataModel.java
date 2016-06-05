@@ -18,16 +18,18 @@ public class FixMessageLazyDataModel extends LazyDataModel<FixMessage> {
     private final ParserService parserService;
     private final UserDetails userDetails;
     private final ProviderDescriptor providerDescriptor;
+    private final boolean isPermitted;
 
-    public FixMessageLazyDataModel(ParserService parserService, ProviderDescriptor providerDescriptor, UserDetails userDetails) {
+    public FixMessageLazyDataModel(ParserService parserService, ProviderDescriptor providerDescriptor, UserDetails userDetails, boolean isPermitted) {
         this.parserService = parserService;
         this.userDetails = userDetails;
         this.providerDescriptor = providerDescriptor;
+        this.isPermitted = isPermitted;
     }
 
     @Override
     public List<FixMessage> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filters) {
-        return parserService.findMessagesByUser(userDetails, providerDescriptor, first, first + pageSize);
+        return parserService.findMessagesByUser(userDetails, providerDescriptor, isPermitted, first, first + pageSize);
     }
 
     @Override

@@ -8,6 +8,7 @@ import com.blazarquant.bfp.database.utils.DatabasePropertiesLoader;
 import com.google.inject.name.Names;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.mybatis.guice.MyBatisModule;
+import org.mybatis.guice.datasource.builtin.PooledDataSourceProvider;
 import org.mybatis.guice.datasource.dbcp.BasicDataSourceProvider;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
 
@@ -21,7 +22,7 @@ public class DatabaseModule extends MyBatisModule {
         install(JdbcHelper.MariaDB);
         environmentId("development");
 
-        bindDataSourceProviderType(BasicDataSourceProvider.class);
+        bindDataSourceProviderType(PooledDataSourceProvider.class);
         bindTransactionFactoryType(JdbcTransactionFactory.class);
         Names.bindProperties(binder(), DatabasePropertiesLoader.getProperties());
 
