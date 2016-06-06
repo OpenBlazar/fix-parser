@@ -22,7 +22,7 @@ public class DatabaseModule extends MyBatisModule {
         install(JdbcHelper.MariaDB);
         environmentId("development");
 
-        bindDataSourceProviderType(PooledDataSourceProvider.class);
+        bindDataSourceProviderType(BasicDataSourceProvider.class);
         bindTransactionFactoryType(JdbcTransactionFactory.class);
         Names.bindProperties(binder(), DatabasePropertiesLoader.getProperties());
 

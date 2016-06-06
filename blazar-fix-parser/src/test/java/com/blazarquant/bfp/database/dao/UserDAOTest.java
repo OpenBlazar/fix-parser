@@ -20,9 +20,9 @@ public class UserDAOTest extends DatabaseTestBase {
     public void testSelectAll() {
         List<UserDetails> users = userDAO.findAllUsers();
 
-        assertEquals(1, users.size());
+        assertEquals(2, users.size());
 
-        UserDetails userDetails = users.get(0);
+        UserDetails userDetails = users.get(1);
         assertZanoUser(userDetails);
     }
 
@@ -123,13 +123,13 @@ public class UserDAOTest extends DatabaseTestBase {
     @Test
     public void testInsertUserRegister() {
         List<UserDetails> userDetails = userDAO.findAllUsers();
-        assertEquals(1, userDetails.size());
+        assertEquals(2, userDetails.size());
 
         userDAO.saveUser("testName", "testMail", "testPass", UserState.ACTIVE, Instant.parse("2016-04-16T21:12:38Z"), Instant.parse("2016-04-16T21:12:39Z"));
         userDetails = userDAO.findAllUsers();
-        assertEquals(2, userDetails.size());
+        assertEquals(3, userDetails.size());
 
-        UserDetails testUser = userDetails.get(1);
+        UserDetails testUser = userDetails.get(2);
         assertEquals(new UserID(10), testUser.getUserID());
         assertEquals("testName", testUser.getUserName());
         assertEquals("testPass", testUser.getPassword());
