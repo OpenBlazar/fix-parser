@@ -1,6 +1,7 @@
 package com.blazarquant.bfp.data.tracker;
 
 import java.time.Instant;
+import java.util.Objects;
 
 /**
  * @author Wojciech Zankowski
@@ -11,6 +12,8 @@ public class TrackerData {
     private final int messageNumber;
 
     public TrackerData(Instant parseDate, int messageNumber) {
+        Objects.requireNonNull(parseDate);
+
         this.parseDate = parseDate;
         this.messageNumber = messageNumber;
     }
