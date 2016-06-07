@@ -1,5 +1,7 @@
 package com.blazarquant.bfp.data.user;
 
+import java.util.Objects;
+
 /**
  * @author Wojciech Zankowski
  */
@@ -9,6 +11,9 @@ public class UserSettingHolder {
     private final String settingValue;
 
     public UserSettingHolder(UserSetting userSetting, String settingValue) {
+        Objects.requireNonNull(userSetting);
+        Objects.requireNonNull(settingValue);
+
         this.userSetting = userSetting;
         this.settingValue = settingValue;
     }

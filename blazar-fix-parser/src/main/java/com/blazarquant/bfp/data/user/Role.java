@@ -1,5 +1,7 @@
 package com.blazarquant.bfp.data.user;
 
+import java.util.Objects;
+
 /**
  * @author Wojciech Zankowski
  */
@@ -11,6 +13,7 @@ public class Role {
     private final String name;
 
     public Role(String name) {
+        Objects.requireNonNull(name);
         this.name = name;
     }
 

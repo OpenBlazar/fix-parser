@@ -1,5 +1,7 @@
 package com.blazarquant.bfp.data.user;
 
+import java.util.Objects;
+
 /**
  * @author Wojciech Zankowski
  */
@@ -12,6 +14,12 @@ public class UserAddress {
     private final String countryCode;
 
     public UserAddress(String address, String city, String state, String postalCode, String countryCode) {
+        Objects.requireNonNull(address);
+        Objects.requireNonNull(city);
+        Objects.requireNonNull(state);
+        Objects.requireNonNull(postalCode);
+        Objects.requireNonNull(countryCode);
+
         this.address = address;
         this.city = city;
         this.state = state;
