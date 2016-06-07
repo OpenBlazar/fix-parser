@@ -17,8 +17,6 @@ import java.sql.SQLException;
  */
 public class FixMessageTypeHandler implements TypeHandler<FixMessage> {
 
-    private static final String ID_COLUMN = "ID";
-
     private final FixMessageConverter messageConverter = new FixMessageConverter();
     private final SecurityUtil securityUtil = new SecurityUtilImpl();
 
@@ -29,32 +27,17 @@ public class FixMessageTypeHandler implements TypeHandler<FixMessage> {
 
     @Override
     public FixMessage getResult(ResultSet rs, String columnName) throws SQLException {
-        Long messageID = rs.getLong(ID_COLUMN);
-//        return messageConverter.convertToFixMessage(
-//                securityUtil.decodeMessage(rs.getString(columnName)),
-//                FixMessageConverter.FIELD_DELIMITER,
-//                messageID);
-        return null;
+        throw new UnsupportedOperationException("Getters for FixMessageTypeHandler not supported.");
     }
 
     @Override
     public FixMessage getResult(ResultSet rs, int columnIndex) throws SQLException {
-        Long messageID = rs.getLong(ID_COLUMN);
-//        return messageConverter.convertToFixMessage(
-//                securityUtil.decodeMessage(rs.getString(columnIndex)),
-//                FixMessageConverter.FIELD_DELIMITER,
-//                messageID);
-        return null;
+        throw new UnsupportedOperationException("Getters for FixMessageTypeHandler not supported.");
     }
 
     @Override
     public FixMessage getResult(CallableStatement cs, int columnIndex) throws SQLException {
-        Long messageID = cs.getLong(ID_COLUMN);
-//        return messageConverter.convertToFixMessage(
-//                securityUtil.decodeMessage(cs.getString(columnIndex)),
-//                FixMessageConverter.FIELD_DELIMITER,
-//                messageID);
-        return null;
+        throw new UnsupportedOperationException("Getters for FixMessageTypeHandler not supported.");
     }
 
 }

@@ -13,10 +13,6 @@ import java.util.Properties;
  */
 public class DatabasePropertiesLoader {
 
-    public static final String JDBC_HOST = "JDBC.host";
-    public static final String JDBC_PORT = "JDBC.port";
-    public static final String JDBC_SCHEMA = "JDBC.schema";
-
     private static final String CONFIG_PATH = System.getProperty("jboss.server.base.dir") + "/config/settings.properties";
     private static final Logger LOGGER = LoggerFactory.getLogger(DatabasePropertiesLoader.class);
 

@@ -61,7 +61,7 @@ public class InstantTypeHandlerTest {
         PreparedStatement preparedStatement = mock(PreparedStatement.class);
 
         typeHandler.setParameter(preparedStatement, columnIndex, Instant.ofEpochMilli(0), JdbcType.TIMESTAMP);
-        
+
         verify(preparedStatement).setTimestamp(eq(columnIndex), timestampCaptor.capture());
         assertEquals(new Timestamp(0), timestampCaptor.getValue());
     }
