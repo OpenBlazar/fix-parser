@@ -1,7 +1,7 @@
 package com.blazarquant.bfp.web.bean.admin;
 
-import com.blazarquant.bfp.core.security.enums.UserRole;
 import com.blazarquant.bfp.data.tracker.TrackerData;
+import com.blazarquant.bfp.data.user.Role;
 import com.blazarquant.bfp.data.user.UserDetails;
 import com.blazarquant.bfp.services.tracker.TrackerService;
 import com.blazarquant.bfp.services.user.UserService;
@@ -47,7 +47,7 @@ public class AdminBean extends AbstractBean {
         super.init();
         try {
             Subject subject = SecurityUtils.getSubject();
-            if (subject.hasRole(UserRole.ADMIN.getRole())) {
+            if (subject.hasRole(Role.ADMIN_ROLE.getName())) {
                 userDetails = userService.getUsers();
 
                 trackerData = trackerService.getTrackerData().stream()

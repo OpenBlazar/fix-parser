@@ -4,7 +4,7 @@ import com.blazarquant.bfp.core.security.config.BcryptCredentialsMatcher;
 import com.blazarquant.bfp.core.security.config.DatabaseUserRealm;
 import com.blazarquant.bfp.core.security.config.FixedCookieRememberMeManager;
 import com.blazarquant.bfp.core.security.config.ShiroMethodInterceptor;
-import com.blazarquant.bfp.core.security.enums.UserRole;
+import com.blazarquant.bfp.data.user.Role;
 import com.blazarquant.bfp.web.util.BlazarURL;
 import com.google.inject.Key;
 import com.google.inject.Singleton;
@@ -60,7 +60,7 @@ public class SecurityModule extends ShiroWebModule {
         addFilterChain(BlazarURL.SUBSCRIPTION_URL, AUTHC);
         addFilterChain(BlazarURL.PAYMENT_URL, AUTHC);
 
-        addFilterChain(BlazarURL.ADMIN_URL, AUTHC, new RolesAuthorizationConfigKey(UserRole.ADMIN.getRole()));
+        addFilterChain(BlazarURL.ADMIN_URL, AUTHC, new RolesAuthorizationConfigKey(Role.ADMIN_ROLE.getName()));
     }
 
     @Override
