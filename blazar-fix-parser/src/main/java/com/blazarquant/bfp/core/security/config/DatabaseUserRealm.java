@@ -1,6 +1,5 @@
 package com.blazarquant.bfp.core.security.config;
 
-import com.blazarquant.bfp.data.user.Permission;
 import com.blazarquant.bfp.data.user.Role;
 import com.blazarquant.bfp.data.user.UserDetails;
 import com.blazarquant.bfp.database.dao.UserDAO;
@@ -19,11 +18,13 @@ import java.util.List;
  */
 public class DatabaseUserRealm extends AuthorizingRealm {
 
+    public static final String REALM_NAME = "User Realm";
+
     private final UserDAO userDAO;
 
     @Inject
     public DatabaseUserRealm(UserDAO userDAO, CredentialsMatcher credentialsMatcher) {
-        setName("User Realm");
+        setName(REALM_NAME);
         setCredentialsMatcher(credentialsMatcher);
         this.userDAO = userDAO;
     }
