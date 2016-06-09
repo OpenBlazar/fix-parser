@@ -4,9 +4,11 @@ import com.blazarquant.bfp.data.user.UserID;
 import com.blazarquant.bfp.fix.parser.definition.DefaultFixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.data.ProviderDescriptor;
-import com.blazarquant.bfp.fix.parser.definition.data.XMLLoaderType;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -60,7 +62,7 @@ public class FixDefinitionProviderManager {
         if (providers == null) {
             return Collections.emptyMap();
         }
-        return providers;
+        return Collections.unmodifiableMap(providers);
     }
 
     public Set<ProviderDescriptor> getProviderDescriptors(UserID userID) {
@@ -68,7 +70,7 @@ public class FixDefinitionProviderManager {
         if (providers == null) {
             return Collections.emptySet();
         }
-        return providers.keySet();
+        return Collections.unmodifiableSet(providers.keySet());
     }
 
     public void removeDefinitionProvider(UserID userID, ProviderDescriptor providerDescriptor) {
@@ -76,7 +78,7 @@ public class FixDefinitionProviderManager {
         if (definitionProviderMap != null) {
             definitionProviderMap.remove(providerDescriptor);
             if (definitionProviderMap.isEmpty()) {
-                definitionProviderMap.remove(userID);
+                customDefinitionProviders.remove(userID);
             }
         }
     }

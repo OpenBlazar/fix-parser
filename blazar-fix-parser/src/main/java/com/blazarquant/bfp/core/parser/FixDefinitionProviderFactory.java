@@ -23,6 +23,9 @@ public class FixDefinitionProviderFactory {
     }
 
     public FixDefinitionProvider getProDefinitionProvider(ProviderDescriptor providerDescriptor) {
+        if (providerDescriptor == null) {
+            return definitionProviderManager.getDefaultDefinitionProvider();
+        }
         FixDefinitionProvider definitionProvider = definitionProviderManager.getProDefinitionProviders().get(providerDescriptor);
         if (definitionProvider == null) {
             return definitionProviderManager.getDefaultDefinitionProvider();
