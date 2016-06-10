@@ -14,7 +14,6 @@ public abstract class AbstractFixDefinitionProvider implements FixDefinitionProv
     private final Map<Integer, FixDictionary> dictionaryMap;
 
     public AbstractFixDefinitionProvider(Map<Integer, FixDictionary> dictionaryMap) {
-        System.out.println(dictionaryMap);
         this.dictionaryMap = dictionaryMap;
     }
 

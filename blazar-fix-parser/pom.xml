@@ -10,7 +10,6 @@
 
     <artifactId>blazar-fix-parser</artifactId>
     <modelVersion>4.0.0</modelVersion>
-    <packaging>pom</packaging>
 
     <dependencies>
         <!-- projects -->
@@ -23,8 +22,6 @@
         <dependency>
             <groupId>com.blazarquant</groupId>
             <artifactId>blazar-fix-parser-common</artifactId>
-            <type>test-jar</type>
-            <scope>test</scope>
         </dependency>
 
         <!-- libraries -->
@@ -196,10 +193,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                </configuration>
             </plugin>
 
             <plugin>

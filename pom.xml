@@ -308,21 +308,18 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit}</version>
-                <scope>test</scope>
             </dependency>
 
             <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-all</artifactId>
                 <version>2.0.2-beta</version>
-                <scope>test</scope>
             </dependency>
 
             <dependency>
                 <groupId>org.hsqldb</groupId>
                 <artifactId>hsqldb</artifactId>
                 <version>2.3.4</version>
-                <scope>test</scope>
             </dependency>
 
 
@@ -383,11 +380,11 @@
                     <artifactId>maven-war-plugin</artifactId>
                     <version>2.6</version>
                 </plugin>
-
+                
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.7.6.201602180812</version>
+                    <version>0.7.7.201606060606</version>
                     <executions>
                         <execution>
                             <goals>
