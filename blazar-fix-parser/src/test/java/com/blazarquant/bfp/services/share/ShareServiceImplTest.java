@@ -2,14 +2,15 @@ package com.blazarquant.bfp.services.share;
 
 import com.blazarquant.bfp.common.MockitoUtils;
 import com.blazarquant.bfp.core.security.util.SecurityUtil;
+import com.blazarquant.bfp.core.share.exception.ShareException;
 import com.blazarquant.bfp.database.dao.ShareDAO;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * @author Wojciech Zankowski
@@ -39,6 +40,40 @@ public class ShareServiceImplTest {
         assertEquals(message, actualMessage);
     }
 
+    @Test
+    public void testShareMessageExceptions() {
+        try {
+            shareService.shareMessage("");
+            fail();
+        } catch (ShareException e) {
+            assertEquals("Failed to share message. Message cannot be empty.", e.getMessage());
+        }
+        try {
+            shareService.shareMessage(new String(new char[8193]).replace('\0', ' '));
+            fail();
+        } catch (ShareException e) {
+            assertTrue(e.getMessage().contains("Message too long."));
+        }
+    }
+
+    @Test
+    public void testShareMessages() throws ShareException {
+        final String shareKey = "key";
+        final String message = new String(new char[8192]).replace('\0', ' ');
+
+        when(securityUtil.generateShareKey()).thenReturn(shareKey);
+        when(securityUtil.encodeMessage(any())).thenAnswer(MockitoUtils.getCallbackAnswer());
+
+        String actualKey = shareService.shareMessage(message);
+        assertEquals(shareKey, actualKey);
+
+        final ArgumentCaptor<String> shareKeyCaptor = ArgumentCaptor.forClass(String.class);
+        final ArgumentCaptor<String> messageCaptor = ArgumentCaptor.forClass(String.class);
+
+        verify(shareDAO, times(1)).saveSharedMessage(shareKeyCaptor.capture(), messageCaptor.capture());
+        assertEquals(shareKey, shareKeyCaptor.getValue());
+        assertEquals(message, messageCaptor.getValue());
+    }
 
 
 }
