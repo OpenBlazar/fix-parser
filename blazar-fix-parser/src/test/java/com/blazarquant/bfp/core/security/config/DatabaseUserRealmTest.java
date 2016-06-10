@@ -26,13 +26,13 @@ import static org.mockito.Mockito.when;
 public class DatabaseUserRealmTest {
 
     private UserDAO userDAO;
-    private BCryptCredentialsMatcher credentialsMatcher;
+    private BcryptCredentialsMatcher credentialsMatcher;
     private DatabaseUserRealm databaseUserRealm;
 
     @Before
     public void setUp() {
         userDAO = mock(UserDAO.class);
-        credentialsMatcher = new BCryptCredentialsMatcher();
+        credentialsMatcher = new BcryptCredentialsMatcher();
         databaseUserRealm = new DatabaseUserRealm(userDAO, credentialsMatcher);
     }
 

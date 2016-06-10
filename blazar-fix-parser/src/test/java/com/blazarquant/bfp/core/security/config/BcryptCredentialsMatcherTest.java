@@ -14,13 +14,13 @@ import static org.mockito.Mockito.when;
 /**
  * @author Wojciech Zankowski
  */
-public class BCryptCredentialsMatcherTest {
+public class BcryptCredentialsMatcherTest {
 
-    private BCryptCredentialsMatcher credentialsMatcher;
+    private BcryptCredentialsMatcher credentialsMatcher;
 
     @Before
     public void setUp() {
-        credentialsMatcher = new BCryptCredentialsMatcher();
+        credentialsMatcher = new BcryptCredentialsMatcher();
     }
 
     @Test

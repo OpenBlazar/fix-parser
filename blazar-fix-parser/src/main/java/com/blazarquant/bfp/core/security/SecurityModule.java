@@ -1,6 +1,6 @@
 package com.blazarquant.bfp.core.security;
 
-import com.blazarquant.bfp.core.security.config.BCryptCredentialsMatcher;
+import com.blazarquant.bfp.core.security.config.BcryptCredentialsMatcher;
 import com.blazarquant.bfp.core.security.config.DatabaseUserRealm;
 import com.blazarquant.bfp.core.security.config.FixedCookieRememberMeManager;
 import com.blazarquant.bfp.core.security.config.ShiroMethodInterceptor;
@@ -36,7 +36,7 @@ public class SecurityModule extends ShiroWebModule {
 
     @Override
     protected void configureShiroWeb() {
-        bind(CredentialsMatcher.class).to(BCryptCredentialsMatcher.class);
+        bind(CredentialsMatcher.class).to(BcryptCredentialsMatcher.class);
         bindRealm().to(DatabaseUserRealm.class).asEagerSingleton();
 
         bindConstant().annotatedWith(Names.named("shiro.sessionMode")).to("http");

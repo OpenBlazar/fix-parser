@@ -9,7 +9,7 @@ import org.mindrot.jbcrypt.BCrypt;
 /**
  * @author Wojciech Zankowski
  */
-public class BCryptCredentialsMatcher extends SimpleCredentialsMatcher {
+public class BcryptCredentialsMatcher extends SimpleCredentialsMatcher {
 
     @Override
     public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) {
