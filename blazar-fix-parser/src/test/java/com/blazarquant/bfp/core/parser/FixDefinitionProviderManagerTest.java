@@ -1,6 +1,5 @@
-package com.blazarquant.bfp.parser;
+package com.blazarquant.bfp.core.parser;
 
-import com.blazarquant.bfp.core.parser.FixDefinitionProviderManager;
 import com.blazarquant.bfp.data.user.UserID;
 import com.blazarquant.bfp.fix.parser.definition.DefaultFixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;

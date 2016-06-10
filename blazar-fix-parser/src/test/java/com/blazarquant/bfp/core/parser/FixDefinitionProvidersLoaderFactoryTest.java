@@ -1,6 +1,5 @@
-package com.blazarquant.bfp.parser;
+package com.blazarquant.bfp.core.parser;
 
-import com.blazarquant.bfp.core.parser.FixDefinitionProvidersLoaderFactory;
 import com.blazarquant.bfp.fix.parser.definition.data.ProviderDescriptor;
 import com.blazarquant.bfp.fix.parser.definition.data.XMLLoaderType;
 import com.blazarquant.bfp.fix.parser.definition.loader.QuickFixXMLLoader;

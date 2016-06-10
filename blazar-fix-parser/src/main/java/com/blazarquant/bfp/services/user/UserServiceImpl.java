@@ -1,6 +1,5 @@
 package com.blazarquant.bfp.services.user;
 
-import com.blazarquant.bfp.core.security.config.DatabaseUserRealm;
 import com.blazarquant.bfp.core.security.exception.DecodingException;
 import com.blazarquant.bfp.core.security.util.SecurityUtil;
 import com.blazarquant.bfp.core.user.UserSettingsCache;
@@ -13,10 +12,7 @@ import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.xml.crypto.Data;
 import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -24,27 +20,17 @@ import java.util.List;
  */
 public class UserServiceImpl implements UserService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
-
     private UserDAO userDAO;
     private SecurityUtil securityUtil;
     private MailService mailService;
     private UserSettingsCache userSettingsCache;
 
     @Inject
-    public UserServiceImpl(UserDAO userDAO) {
+    public UserServiceImpl(UserDAO userDAO, SecurityUtil securityUtil, MailService mailService) {
         this.userDAO = userDAO;
-        userSettingsCache = new UserSettingsCache(userDAO);
-    }
-
-    @Inject
-    public void setSecurityUtil(SecurityUtil securityUtil) {
         this.securityUtil = securityUtil;
-    }
-
-    @Inject
-    public void setMailService(MailService mailService) {
         this.mailService = mailService;
+        this.userSettingsCache = new UserSettingsCache(userDAO);
     }
 
     @Override
@@ -87,6 +73,7 @@ public class UserServiceImpl implements UserService {
         userDAO.saveUserPermission(userID, permission.name());
     }
 
+    // TODO use UserID
     @Override
     public boolean registerUser(String userName, String userMail, char[] password) {
         // Save user
@@ -107,6 +94,7 @@ public class UserServiceImpl implements UserService {
         return true;
     }
 
+    // TODO use UserID
     @Override
     public boolean confirmUser(String confirmationKey) throws DecodingException {
         long userID = securityUtil.decodeConfirmationKey(confirmationKey);
@@ -118,11 +106,6 @@ public class UserServiceImpl implements UserService {
         } else {
             return false;
         }
-    }
-
-    @Override
-    public Subject getCurrentUser() {
-        return SecurityUtils.getSubject();
     }
 
     @Override

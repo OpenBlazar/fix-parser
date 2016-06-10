@@ -79,6 +79,7 @@
     <modules>
         <module>blazar-fix-parser</module>
         <module>blazar-fix-parser-fix</module>
+        <module>blazar-fix-parser-common</module>
     </modules>
 
     <dependencyManagement>
@@ -96,6 +97,20 @@
                 <groupId>com.blazarquant</groupId>
                 <artifactId>blazar-fix-parser-fix</artifactId>
                 <version>${bfp.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.blazarquant</groupId>
+                <artifactId>blazar-fix-parser-common</artifactId>
+                <version>${bfp.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.blazarquant</groupId>
+                <artifactId>blazar-fix-parser-common</artifactId>
+                <version>${bfp.version}</version>
+                <type>test-jar</type>
+                <scope>test</scope>
             </dependency>
 
             <!-- libraries -->

@@ -35,8 +35,6 @@ public interface UserService {
 
     boolean confirmUser(String confirmationKey) throws DecodingException;
 
-    Subject getCurrentUser();
-
     UserSettingsCache getUserSettingsCache();
 
 }

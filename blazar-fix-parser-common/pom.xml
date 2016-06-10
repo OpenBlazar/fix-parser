@@ -9,15 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>blazar-fix-parser-fix</artifactId>
+    <artifactId>blazar-fix-parser-common</artifactId>
 
     <dependencies>
 
-        <!-- test libraries -->
-
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
             <scope>test</scope>
         </dependency>
 
