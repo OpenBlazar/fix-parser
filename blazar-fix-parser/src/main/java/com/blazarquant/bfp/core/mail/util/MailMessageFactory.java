@@ -5,6 +5,8 @@ package com.blazarquant.bfp.core.mail.util;
  */
 public class MailMessageFactory {
 
+    public static final String CONFIRMATION_MESSAGE_SUBJECT = "BlazarQuant - Register confirmation!";
+
     public static String confirmationMessage(String confirmationKey) {
         return "<!DOCTYPE html>\n" +
                 "<html>\n" +

@@ -3,6 +3,7 @@ package com.blazarquant.bfp.fix.parser.util;
 import com.blazarquant.bfp.fix.data.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -12,6 +13,16 @@ public class FixMessageFactory {
 
     public static final FixPair EXECUTION_REPORT = new FixPair(35, new FixField(35, "MsgType"), new FixValue("8", "EXECUTIONREPORT"));
 
+    public static FixMessage createFix42Message(long id, String value, String description) {
+        FixPair msgType = new FixPair(35, new FixField(35, "MsgType"), new FixValue(value, description));
+        List<FixPair> fixPairList = Arrays.asList(
+                new FixPair(8, new FixField(8, "BeginString"), new FixValue("FIX.4.2")),
+                new FixPair(9, new FixField(9, "BodyLength"), new FixValue("14")),
+                msgType,
+                new FixPair(10, new FixField(10, "CheckSum"), new FixValue("213"))
+        );
+        return new FixMessage(id, FixVersion.FIX_42, msgType, fixPairList);
+    }
 
     public List<FixMessage> prepareFixMessagesForLegalFixLong() {
         List<FixMessage> messages = new ArrayList<>();

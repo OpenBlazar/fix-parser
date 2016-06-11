@@ -25,7 +25,7 @@ public class MailServiceImpl implements MailService {
 
     @Override
     public void sendConfirmationLink(String confirmationKey, String userMail) {
-        sendMessage(MailMessageFactory.confirmationMessage(confirmationKey), "BlazarQuant - Register confirmation!", userMail);
+        sendMessage(MailMessageFactory.confirmationMessage(confirmationKey), MailMessageFactory.CONFIRMATION_MESSAGE_SUBJECT, userMail);
     }
 
     @Override

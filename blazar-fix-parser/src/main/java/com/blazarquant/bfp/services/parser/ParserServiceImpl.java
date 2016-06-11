@@ -29,7 +29,7 @@ public class ParserServiceImpl implements ParserService {
 
     private final FixParser fixParser;
     private final FixMessageConverter messageConverter;
-    private final SecurityUtil securityUtil = new SecurityUtilImpl();
+    private final SecurityUtil securityUtil;
 
     private final FixDefinitionProviderManager definitionProviderManager;
     private final FixDefinitionProviderFactory definitionProviderFactory;
@@ -38,8 +38,9 @@ public class ParserServiceImpl implements ParserService {
     private MessageDAO messageDAO;
 
     @Inject
-    public ParserServiceImpl(MessageDAO messageDAO) throws Exception {
+    public ParserServiceImpl(MessageDAO messageDAO, SecurityUtil securityUtil) throws Exception {
         this.messageDAO = messageDAO;
+        this.securityUtil = securityUtil;
         this.fixParser = new FixParser();
         this.messageConverter = new FixMessageConverter();
 
