@@ -31,6 +31,13 @@
             <artifactId>blazar-fix-parser-common</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.blazarquant</groupId>
+            <artifactId>blazar-fix-parser-common</artifactId>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+
         <!-- libraries -->
 
         <dependency>
