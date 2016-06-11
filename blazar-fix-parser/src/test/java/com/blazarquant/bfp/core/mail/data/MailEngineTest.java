@@ -66,7 +66,7 @@ public class MailEngineTest {
         mailEngine.sendMessage(TEXT, SUBJECT, RECIPIENT);
 
         final ArgumentCaptor<MimeMessage> captor = ArgumentCaptor.forClass(MimeMessage.class);
-        verify(transport).sendMessage(captor.capture(), eq(InternetAddress.parse(RECIPIENT)));
+        verify(transport, timeout(5000)).sendMessage(captor.capture(), eq(InternetAddress.parse(RECIPIENT)));
         final MimeMessage mailMessage = captor.getValue();
 
         assertEquals(message.getSubject(), mailMessage.getSubject());
