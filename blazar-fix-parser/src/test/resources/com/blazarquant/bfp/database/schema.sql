@@ -4,8 +4,8 @@ user_login varchar(60) NOT NULL,
 user_pass varchar(64) NOT NULL,
 user_email varchar(100) NOT NULL,
 user_status int NOT NULL,
-user_registerdate datetime NOT NULL,
-user_lastlogin datetime NOT NULL,
+user_registerdate bigint NOT NULL,
+user_lastlogin bigint NOT NULL,
 user_confirmationkey varchar(256) DEFAULT NULL,
 PRIMARY KEY (ID)
 );
@@ -42,7 +42,7 @@ PRIMARY KEY (ID)
 
 CREATE TABLE bfp_tracker (
 ID bigint NOT NULL IDENTITY,
-tracker_date datetime NOT NULL,
+tracker_date bigint NOT NULL,
 tracker_number int NOT NULL,
 PRIMARY KEY (ID)
 );

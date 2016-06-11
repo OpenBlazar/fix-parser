@@ -24,8 +24,8 @@ public interface UserDAO {
             @Arg(column = "user_email", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_pass", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_status", javaType = UserState.class, jdbcType = JdbcType.INTEGER, typeHandler = ActiveUserTypeHandler.class),
-            @Arg(column = "user_registerdate", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class),
-            @Arg(column = "user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class)
+            @Arg(column = "user_registerdate", javaType = Instant.class, jdbcType = JdbcType.BIGINT, typeHandler = InstantTypeHandler.class),
+            @Arg(column = "user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.BIGINT, typeHandler = InstantTypeHandler.class)
     })
     List<UserDetails> findAllUsers();
 
@@ -36,8 +36,8 @@ public interface UserDAO {
             @Arg(column = "user_email", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_pass", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_status", javaType = UserState.class, jdbcType = JdbcType.INTEGER, typeHandler = ActiveUserTypeHandler.class),
-            @Arg(column = "user_registerdate", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class),
-            @Arg(column = "user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class)
+            @Arg(column = "user_registerdate", javaType = Instant.class, jdbcType = JdbcType.BIGINT, typeHandler = InstantTypeHandler.class),
+            @Arg(column = "user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.BIGINT, typeHandler = InstantTypeHandler.class)
     })
     UserDetails findUserByLogin(
             @Param("userName") String userName
@@ -50,8 +50,8 @@ public interface UserDAO {
             @Arg(column = "user_email", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_pass", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_status", javaType = UserState.class, jdbcType = JdbcType.INTEGER, typeHandler = ActiveUserTypeHandler.class),
-            @Arg(column = "user_registerdate", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class),
-            @Arg(column = "user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class)
+            @Arg(column = "user_registerdate", javaType = Instant.class, jdbcType = JdbcType.BIGINT, typeHandler = InstantTypeHandler.class),
+            @Arg(column = "user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.BIGINT, typeHandler = InstantTypeHandler.class)
     })
     UserDetails findUserByMail(
             @Param("userMail") String userMail
@@ -72,8 +72,8 @@ public interface UserDAO {
             @Arg(column = "user_email", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_pass", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_status", javaType = UserState.class, jdbcType = JdbcType.INTEGER, typeHandler = ActiveUserTypeHandler.class),
-            @Arg(column = "user_registerdate", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class),
-            @Arg(column = "user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.DATE, typeHandler = InstantTypeHandler.class)
+            @Arg(column = "user_registerdate", javaType = Instant.class, jdbcType = JdbcType.BIGINT, typeHandler = InstantTypeHandler.class),
+            @Arg(column = "user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.BIGINT, typeHandler = InstantTypeHandler.class)
     })
     UserDetails findUserById(
             @Param("userId") UserID userID

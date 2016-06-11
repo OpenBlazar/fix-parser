@@ -32,38 +32,41 @@ public class InstantTypeHandlerTest {
     public void testResultSetGetters() throws SQLException {
         int columnIndex = 5;
         String columnName = "time";
+        final long timestamp = 12345;
         ResultSet resultSet = mock(ResultSet.class);
-        when(resultSet.getTimestamp(columnIndex)).thenReturn(new Timestamp(0));
-        when(resultSet.getTimestamp(columnName)).thenReturn(new Timestamp(0));
+        when(resultSet.getLong(columnIndex)).thenReturn(timestamp);
+        when(resultSet.getLong(columnName)).thenReturn(timestamp);
 
         Instant result = typeHandler.getResult(resultSet, columnIndex);
-        assertEquals(0, result.toEpochMilli());
+        assertEquals(timestamp, result.toEpochMilli());
 
         result = typeHandler.getResult(resultSet, columnName);
-        assertEquals(0, result.toEpochMilli());
+        assertEquals(timestamp, result.toEpochMilli());
     }
 
     @Test
     public void testCallableStatementGetter() throws SQLException {
         int columnIndex = 5;
+        final long timestamp = 12345;
         CallableStatement callableStatement = mock(CallableStatement.class);
-        when(callableStatement.getTimestamp(columnIndex)).thenReturn(new Timestamp(0));
+        when(callableStatement.getLong(columnIndex)).thenReturn(timestamp);
 
         Instant result = typeHandler.getResult(callableStatement, columnIndex);
-        assertEquals(0, result.toEpochMilli());
+        assertEquals(timestamp, result.toEpochMilli());
     }
 
     @Test
     public void testPreparedStatementSetter() throws SQLException {
         int columnIndex = 1;
+        final long timestamp = 12345;
 
-        final ArgumentCaptor<Timestamp> timestampCaptor = ArgumentCaptor.forClass(Timestamp.class);
+        final ArgumentCaptor<Long> timestampCaptor = ArgumentCaptor.forClass(Long.class);
         PreparedStatement preparedStatement = mock(PreparedStatement.class);
 
-        typeHandler.setParameter(preparedStatement, columnIndex, Instant.ofEpochMilli(0), JdbcType.TIMESTAMP);
+        typeHandler.setParameter(preparedStatement, columnIndex, Instant.ofEpochMilli(timestamp), JdbcType.TIMESTAMP);
 
-        verify(preparedStatement).setTimestamp(eq(columnIndex), timestampCaptor.capture());
-        assertEquals(new Timestamp(0), timestampCaptor.getValue());
+        verify(preparedStatement).setLong(eq(columnIndex), timestampCaptor.capture());
+        assertEquals(Long.valueOf(timestamp), timestampCaptor.getValue());
     }
 
 

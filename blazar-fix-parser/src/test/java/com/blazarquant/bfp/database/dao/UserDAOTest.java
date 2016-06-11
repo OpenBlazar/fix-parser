@@ -125,7 +125,8 @@ public class UserDAOTest extends DatabaseTestBase {
         List<UserDetails> userDetails = userDAO.findAllUsers();
         assertEquals(2, userDetails.size());
 
-        userDAO.saveUser("testName", "testMail", "testPass", UserState.ACTIVE, Instant.parse("2016-04-16T21:12:38Z"), Instant.parse("2016-04-16T21:12:39Z"));
+        userDAO.saveUser("testName", "testMail", "testPass", UserState.ACTIVE,
+                Instant.ofEpochMilli(1460841158000L), Instant.ofEpochMilli(1460841158001L));
         userDetails = userDAO.findAllUsers();
         assertEquals(3, userDetails.size());
 
@@ -135,8 +136,8 @@ public class UserDAOTest extends DatabaseTestBase {
         assertEquals("testPass", testUser.getPassword());
         assertEquals("testMail", testUser.getUserMail());
         assertEquals(UserState.ACTIVE, testUser.getUserState());
-        assertEquals(Instant.parse("2016-04-16T21:12:38Z"), testUser.getRegistrationDate());
-        assertEquals(Instant.parse("2016-04-16T21:12:39Z"), testUser.getLastLogin());
+        assertEquals(Instant.ofEpochMilli(1460841158000L), testUser.getRegistrationDate());
+        assertEquals(Instant.ofEpochMilli(1460841158001L), testUser.getLastLogin());
     }
 
     @Test
@@ -176,8 +177,8 @@ public class UserDAOTest extends DatabaseTestBase {
         assertEquals("$2a$12$b9AGT0nw80sLSj/pk3gYkuLczCmuvZu1ZE9IBOuMJy14IjCIItziy", userDetails.getPassword());
         assertEquals("wojciech@zankowski.pl", userDetails.getUserMail());
         assertEquals(UserState.ACTIVE, userDetails.getUserState());
-        assertEquals(Instant.parse("2016-04-16T21:12:38Z"), userDetails.getRegistrationDate());
-        assertEquals(Instant.parse("2016-04-16T21:12:38Z"), userDetails.getLastLogin());
+        assertEquals(Instant.ofEpochMilli(1460848358000L), userDetails.getRegistrationDate());
+        assertEquals(Instant.ofEpochMilli(1460848358001L), userDetails.getLastLogin());
     }
 
 }

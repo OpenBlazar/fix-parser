@@ -21,7 +21,7 @@ public class TrackerDAOTest extends DatabaseTestBase {
 
         TrackerData trackerData = trackerDataList.get(0);
         assertEquals(14, trackerData.getMessageNumber());
-        assertEquals(Instant.parse("2016-04-16T21:12:38Z"), trackerData.getParseDate());
+        assertEquals(Instant.ofEpochMilli(1460841158000L), trackerData.getParseDate());
     }
 
     @Test
@@ -29,7 +29,7 @@ public class TrackerDAOTest extends DatabaseTestBase {
         List<TrackerData> trackerDataList = trackerDAO.findTrackerData();
         assertEquals(1, trackerDataList.size());
 
-        Instant time = Instant.parse("2016-06-06T16:16:16Z");
+        Instant time = Instant.ofEpochMilli(1460841158000L);
         int messageNumber = 15;
         trackerDAO.saveInputParse(time, messageNumber);
 
