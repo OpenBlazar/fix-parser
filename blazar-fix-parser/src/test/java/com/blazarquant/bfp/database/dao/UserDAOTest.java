@@ -42,9 +42,9 @@ public class UserDAOTest extends DatabaseTestBase {
 
     @Test
     public void testSelectUserIDByLogin() {
-        Long userID = userDAO.findUserIDByLogin("Zano");
+        UserID userID = userDAO.findUserIDByLogin("Zano");
         assertNotNull(userID);
-        assertEquals(Long.valueOf(9L), userID);
+        assertEquals(9L, userID.getId());
     }
 
     @Test
@@ -116,7 +116,8 @@ public class UserDAOTest extends DatabaseTestBase {
 
     @Test
     public void testSelectUserConfirmationKey() {
-        String confirmationKey = userDAO.findConfirmationKeyFromUser(9);
+        final UserID userID = new UserID(9);
+        String confirmationKey = userDAO.findConfirmationKeyFromUser(userID);
         assertEquals("OTtaYW5vO3dvamNpZWNoQHphbmtvd3NraS5wbA==", confirmationKey);
     }
 
@@ -142,21 +143,25 @@ public class UserDAOTest extends DatabaseTestBase {
 
     @Test
     public void testUpdateUserConfirmationKey() {
-        String confirmationKey = userDAO.findConfirmationKeyFromUser(9);
+        final UserID userID = new UserID(9);
+
+        String confirmationKey = userDAO.findConfirmationKeyFromUser(userID);
         assertEquals("OTtaYW5vO3dvamNpZWNoQHphbmtvd3NraS5wbA==", confirmationKey);
 
         String newConfirmationKey = "updateTest";
-        userDAO.updateConfirmationKey(9, newConfirmationKey);
-        confirmationKey = userDAO.findConfirmationKeyFromUser(9);
+        userDAO.updateConfirmationKey(userID, newConfirmationKey);
+        confirmationKey = userDAO.findConfirmationKeyFromUser(userID);
         assertEquals(newConfirmationKey, confirmationKey);
     }
 
     @Test
     public void testUpdateUserStatus() {
+        final UserID userID = new UserID(9);
+
         int active = userDAO.isUserActive("Zano");
         assertEquals(UserState.ACTIVE.getState(), active);
 
-        userDAO.updateUserStatus(9, UserState.INACTIVE);
+        userDAO.updateUserStatus(userID, UserState.INACTIVE);
         active = userDAO.isUserActive("Zano");
         assertEquals(UserState.INACTIVE.getState(), active);
     }

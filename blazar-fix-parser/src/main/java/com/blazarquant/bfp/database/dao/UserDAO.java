@@ -59,9 +59,9 @@ public interface UserDAO {
 
     @SelectProvider(type = UserSQLProvider.class, method = "buildFindUserIDByLogin")
     @ConstructorArgs(value = {
-            @Arg(column = "ID", javaType = Long.class, jdbcType = JdbcType.BIGINT),
+            @Arg(column = "ID", javaType = long.class, jdbcType = JdbcType.BIGINT),
     })
-    Long findUserIDByLogin(
+    UserID findUserIDByLogin(
             @Param("userName") String userName
     );
 
@@ -121,7 +121,7 @@ public interface UserDAO {
 
     @SelectProvider(type = UserSQLProvider.class, method = "buildFindConfirmationKeyFromUser")
     String findConfirmationKeyFromUser(
-            @Param("userID") long userID
+            @Param("userId") UserID userID
     );
 
     @InsertProvider(type = UserSQLProvider.class, method = "buildSaveUser")
@@ -136,13 +136,13 @@ public interface UserDAO {
 
     @UpdateProvider(type = UserSQLProvider.class, method = "buildUpdateConfirmationKey")
     void updateConfirmationKey(
-            @Param("userID") long userID,
+            @Param("userId") UserID userID,
             @Param("confirmationKey") String confirmationKey
     );
 
     @UpdateProvider(type = UserSQLProvider.class, method = "buildUpdateUserStatus")
     void updateUserStatus(
-            @Param("userID") long userID,
+            @Param("userId") UserID userID,
             @Param("userStatus") UserState userState
     );
 
@@ -152,12 +152,12 @@ public interface UserDAO {
             @Arg(column = "setting_value", jdbcType = JdbcType.VARCHAR, javaType = String.class)
     })
     List<UserSettingHolder> findParameters(
-            @Param("userID") UserID userID
+            @Param("userId") UserID userID
     );
 
     @InsertProvider(type = UserSQLProvider.class, method = "buildSaveParameter")
     void saveParameter(
-            @Param("userID") UserID userID,
+            @Param("userId") UserID userID,
             @Param("userSetting") UserSetting userSetting,
             @Param("value") String value
     );

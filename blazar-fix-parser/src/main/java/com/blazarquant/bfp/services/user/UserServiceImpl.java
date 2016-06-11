@@ -73,20 +73,18 @@ public class UserServiceImpl implements UserService {
         userDAO.saveUserPermission(userID, permission.name());
     }
 
-    // TODO use UserID
     @Override
     public boolean registerUser(String userName, String userMail, char[] password) {
         // Save user
         Instant currentTime = Instant.now();
         userDAO.saveUser(userName, userMail, securityUtil.hashPassword(password),
                 UserState.INACTIVE, currentTime, currentTime);
-        Long userID = userDAO.findUserIDByLogin(userName);
-        UserID userIDObject = new UserID(userID);
-        userDAO.saveUserRole(userIDObject, Role.USER_ROLE);
-        userDAO.saveUserPermission(userIDObject, Permission.BASIC.name());
+        UserID userID = userDAO.findUserIDByLogin(userName);
+        userDAO.saveUserRole(userID, Role.USER_ROLE);
+        userDAO.saveUserPermission(userID, Permission.BASIC.name());
 
         // Generate confirmation key
-        String confirmationKey = securityUtil.generateConfirmationKey(userID, userName, userMail);
+        String confirmationKey = securityUtil.generateConfirmationKey(userID.getId(), userName, userMail);
         userDAO.updateConfirmationKey(userID, confirmationKey);
 
         // Send to mail Service
@@ -94,10 +92,9 @@ public class UserServiceImpl implements UserService {
         return true;
     }
 
-    // TODO use UserID
     @Override
     public boolean confirmUser(String confirmationKey) throws DecodingException {
-        long userID = securityUtil.decodeConfirmationKey(confirmationKey);
+        UserID userID = new UserID(securityUtil.decodeConfirmationKey(confirmationKey));
 
         String storedKey = userDAO.findConfirmationKeyFromUser(userID);
         if (confirmationKey.equals(storedKey)) {

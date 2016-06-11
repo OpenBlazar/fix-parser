@@ -151,7 +151,7 @@ public class UserServiceImplTest {
 
         when(securityUtil.hashPassword(password)).thenReturn(pass);
         when(securityUtil.generateConfirmationKey(userID.getId(), userName, userMail)).thenReturn(confirmationKey);
-        when(userDAO.findUserIDByLogin(userName)).thenReturn(userID.getId());
+        when(userDAO.findUserIDByLogin(userName)).thenReturn(userID);
 
         assertTrue(userService.registerUser(userName, userMail, password));
 
@@ -184,11 +184,10 @@ public class UserServiceImplTest {
         assertEquals(userID, userIDCaptor.getValue());
         assertEquals(Permission.BASIC.name(), permissionCaptor.getValue());
 
-        final ArgumentCaptor<Long> longUserIDCaptor = ArgumentCaptor.forClass(Long.class);
         final ArgumentCaptor<String> keyCaptor = ArgumentCaptor.forClass(String.class);
 
-        verify(userDAO, times(1)).updateConfirmationKey(longUserIDCaptor.capture(), keyCaptor.capture());
-        assertEquals(Long.valueOf(userID.getId()), longUserIDCaptor.getValue());
+        verify(userDAO, times(1)).updateConfirmationKey(userIDCaptor.capture(), keyCaptor.capture());
+        assertEquals(userID, userIDCaptor.getValue());
         assertEquals(confirmationKey, keyCaptor.getValue());
 
         verify(mailService, times(1)).sendConfirmationLink(keyCaptor.capture(), userMailCaptor.capture());
@@ -201,16 +200,23 @@ public class UserServiceImplTest {
         final String confirmationKey = "key";
         final UserID userID = new UserID(0);
         when(securityUtil.decodeConfirmationKey(confirmationKey)).thenReturn(userID.getId());
-        when(userDAO.findConfirmationKeyFromUser(userID.getId())).thenReturn(confirmationKey);
+        when(userDAO.findConfirmationKeyFromUser(userID)).thenReturn(confirmationKey);
 
-        userService.confirmUser(confirmationKey);
+        // Valid key
+        assertTrue(userService.confirmUser(confirmationKey));
 
-        final ArgumentCaptor<Long> userIDCaptor = ArgumentCaptor.forClass(Long.class);
+        final ArgumentCaptor<UserID> userIDCaptor = ArgumentCaptor.forClass(UserID.class);
         final ArgumentCaptor<UserState> userStateCaptor = ArgumentCaptor.forClass(UserState.class);
         verify(userDAO).updateUserStatus(userIDCaptor.capture(), userStateCaptor.capture());
 
-        assertEquals(Long.valueOf(userID.getId()), userIDCaptor.getValue());
+        assertEquals(userID, userIDCaptor.getValue());
         assertEquals(UserState.ACTIVE, userStateCaptor.getValue());
+
+        // Invalid key
+        when(userDAO.findConfirmationKeyFromUser(userID)).thenReturn("wrongKey");
+
+        assertFalse(userService.confirmUser(confirmationKey));
+        verify(userDAO, times(1)).updateUserStatus(eq(userID), any());
     }
 
     @Test

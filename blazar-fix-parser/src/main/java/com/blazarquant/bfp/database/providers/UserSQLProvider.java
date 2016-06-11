@@ -95,7 +95,7 @@ public class UserSQLProvider {
         return new SQL() {{
             SELECT("user_confirmationkey");
             FROM(Tables.USERS_TABLE);
-            WHERE("ID = #{userID}");
+            WHERE("ID = #{userId.id}");
         }}.toString();
     }
 
@@ -115,7 +115,7 @@ public class UserSQLProvider {
         return new SQL() {{
             UPDATE(Tables.USERS_TABLE);
             SET("user_confirmationkey = #{confirmationKey}");
-            WHERE("ID = #{userID}");
+            WHERE("ID = #{userId.id}");
         }}.toString();
     }
 
@@ -123,7 +123,7 @@ public class UserSQLProvider {
         return new SQL() {{
             UPDATE(Tables.USERS_TABLE);
             SET("user_status=#{userStatus, typeHandler=com.blazarquant.bfp.database.typehandlers.user.ActiveUserTypeHandler}");
-            WHERE("ID = #{userID}");
+            WHERE("ID = #{userId.id}");
         }}.toString();
     }
 
@@ -131,7 +131,7 @@ public class UserSQLProvider {
         return new SQL() {{
             SELECT("user_setting, setting_value");
             FROM(Tables.USER_PARAMETERS);
-            WHERE("user_id = #{userID.id}");
+            WHERE("user_id = #{userId.id}");
         }}.toString();
     }
 
@@ -146,7 +146,7 @@ public class UserSQLProvider {
 
     public String buildSaveParameter() {
         return "INSERT INTO " + Tables.USER_PARAMETERS + " (user_id, user_setting, setting_value) VALUES " +
-                "(#{userID.id}, #{userSetting, typeHandler=com.blazarquant.bfp.database.typehandlers.user.UserSettingTypeHandler}, #{value}) " +
+                "(#{userId.id}, #{userSetting, typeHandler=com.blazarquant.bfp.database.typehandlers.user.UserSettingTypeHandler}, #{value}) " +
                 "ON DUPLICATE KEY UPDATE user_id=VALUES(user_id), user_setting=VALUES(user_setting), setting_value=VALUES(setting_value)";
     }
 
