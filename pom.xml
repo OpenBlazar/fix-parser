@@ -80,6 +80,7 @@
         <module>blazar-fix-parser</module>
         <module>blazar-fix-parser-fix</module>
         <module>blazar-fix-parser-common</module>
+        <module>blazar-fix-parser-it</module>
     </modules>
 
     <dependencyManagement>
@@ -293,7 +294,7 @@
             <dependency>
                 <groupId>com.paypal.sdk</groupId>
                 <artifactId>rest-api-sdk</artifactId>
-                <version>1.6.0</version>
+                <version>LATEST</version>
             </dependency>
 
             <!-- Logging -->
@@ -330,6 +331,19 @@
                 <version>2.3.4</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.jboss.arquillian</groupId>
+                <artifactId>arquillian-bom</artifactId>
+                <version>1.1.11.Final</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian.junit</groupId>
+                <artifactId>arquillian-junit-container</artifactId>
+                <version>1.1.11.Final</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
@@ -400,7 +414,13 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>2.19.1</version>
                 </plugin>
-                
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>2.10</version>
+                </plugin>
+
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
