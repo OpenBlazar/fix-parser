@@ -39,8 +39,8 @@ import java.util.concurrent.Executors;
 @ViewScoped
 public class ParserBean extends AbstractBean {
 
-    public static final String SHARE_PARAM = "share";
-    public static final String SHARE_URL = "http://www.blazarquant.com/parser?" + SHARE_PARAM + "=";
+    private static final String SHARE_PARAM = "share";
+    private static final String SHARE_URL = "http://www.blazarquant.com/parser?" + SHARE_PARAM + "=";
 
     private final static Logger LOGGER = LoggerFactory.getLogger(ParserBean.class);
 
@@ -51,7 +51,6 @@ public class ParserBean extends AbstractBean {
     private TrackerService trackerService;
     private ShareService shareService;
     private UserService userService;
-    private PaymentService paymentService;
 
     private List<FixMessage> messages = new ArrayList<>();
     private List<ProviderDescriptor> providers = Arrays.asList(DefaultFixDefinitionProvider.DESCRIPTOR);
@@ -91,11 +90,6 @@ public class ParserBean extends AbstractBean {
     @Inject
     public void setUserService(UserService userService) {
         this.userService = userService;
-    }
-
-    @Inject
-    public void setPaymentService(PaymentService paymentService) {
-        this.paymentService = paymentService;
     }
 
     @PostConstruct

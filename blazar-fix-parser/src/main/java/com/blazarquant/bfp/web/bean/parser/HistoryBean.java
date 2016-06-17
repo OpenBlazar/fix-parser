@@ -11,8 +11,6 @@ import com.blazarquant.bfp.web.bean.AbstractBean;
 import com.blazarquant.bfp.web.model.FixMessageLazyDataModel;
 import com.blazarquant.bfp.web.util.ShiroUtilities;
 import com.google.inject.Inject;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
 import org.primefaces.model.LazyDataModel;
 
 import javax.annotation.PostConstruct;
@@ -26,20 +24,20 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class HistoryBean extends AbstractBean {
 
-    private FixMessage selectedMessage;
     private ParserService parserService;
     private UserService userService;
     private ShiroUtilities shiroUtilities;
+
     private LazyDataModel<FixMessage> messagesModel;
+    private FixMessage selectedMessage;
     private int messageCount;
 
     @PostConstruct
     @Override
     public void init() {
         super.init();
-        Subject currentUser = SecurityUtils.getSubject();
-        if (currentUser.isAuthenticated()) {
-            UserDetails userDetails = (UserDetails) currentUser.getPrincipal();
+        if (shiroUtilities.isUserAuthenticated()) {
+            UserDetails userDetails = shiroUtilities.getCurrentUserDetails();
             if (userDetails != null) {
                 ProviderDescriptor providerDescriptor = (ProviderDescriptor) userService.getUserSettingsCache().getObject(userDetails.getUserID(), UserSetting.DEFAULT_PROVIDER);
                 messageCount = parserService.countUserMessages(userDetails);

@@ -7,9 +7,8 @@ import com.blazarquant.bfp.services.tracker.TrackerService;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
 import com.blazarquant.bfp.web.util.BlazarURL;
+import com.blazarquant.bfp.web.util.ShiroUtilities;
 import com.google.inject.Inject;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
 import org.primefaces.model.chart.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +34,7 @@ public class AdminBean extends AbstractBean {
 
     private UserService userService;
     private TrackerService trackerService;
+    private ShiroUtilities shiroUtilities;
 
     private Set<Map.Entry<LocalDate, Integer>> trackerDailyData = new HashSet<>();
     private LineChartModel trackerChartModel = new LineChartModel();
@@ -46,8 +46,7 @@ public class AdminBean extends AbstractBean {
     public void init() {
         super.init();
         try {
-            Subject subject = SecurityUtils.getSubject();
-            if (subject.hasRole(Role.ADMIN_ROLE.getName())) {
+            if (shiroUtilities.hasRole(Role.ADMIN_ROLE.getName())) {
                 userDetails = userService.getUsers();
 
                 trackerData = trackerService.getTrackerData().stream()
@@ -93,6 +92,11 @@ public class AdminBean extends AbstractBean {
     @Inject
     public void setUserService(UserService userService) {
         this.userService = userService;
+    }
+
+    @Inject
+    public void setShiroUtilities(ShiroUtilities shiroUtilities) {
+        this.shiroUtilities = shiroUtilities;
     }
 
     public List<UserDetails> getUserDetails() {

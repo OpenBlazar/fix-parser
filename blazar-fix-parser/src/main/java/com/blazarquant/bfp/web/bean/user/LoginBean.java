@@ -6,8 +6,8 @@ import com.blazarquant.bfp.services.parser.ParserService;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
 import com.blazarquant.bfp.web.util.BlazarURL;
+import com.blazarquant.bfp.web.util.ShiroUtilities;
 import com.google.inject.Inject;
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
@@ -31,10 +31,23 @@ public class LoginBean extends AbstractBean {
 
     private UserService userService;
     private ParserService parserService;
+    private ShiroUtilities shiroUtilities;
 
     private String username;
     private String password;
     private Boolean rememberMe = Boolean.TRUE;
+
+    @PostConstruct
+    public void init() {
+        super.init();
+        if (shiroUtilities.isUserAuthenticated()) {
+            try {
+                redirectToPreviousPage();
+            } catch (IOException e) {
+                facesError("Failed to redirect to home page.", e);
+            }
+        }
+    }
 
     @Inject
     public void setUserService(UserService userService) {
@@ -46,17 +59,9 @@ public class LoginBean extends AbstractBean {
         this.parserService = parserService;
     }
 
-    @PostConstruct
-    public void init() {
-        super.init();
-        Subject currentUser = SecurityUtils.getSubject();
-        if (currentUser.isAuthenticated()) {
-            try {
-                redirectToPreviousPage();
-            } catch (IOException e) {
-                facesError("Failed to redirect to home page.", e);
-            }
-        }
+    @Inject
+    public void setShiroUtilities(ShiroUtilities shiroUtilities) {
+        this.shiroUtilities = shiroUtilities;
     }
 
     public void doLogin() {
@@ -68,7 +73,7 @@ public class LoginBean extends AbstractBean {
                 return;
             }
 
-            Subject currentUser = SecurityUtils.getSubject();
+            Subject currentUser = shiroUtilities.getSubject();
             if (!currentUser.isAuthenticated()) {
                 currentUser.login(token);
 

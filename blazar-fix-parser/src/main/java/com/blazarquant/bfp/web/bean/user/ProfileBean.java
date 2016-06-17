@@ -1,6 +1,5 @@
 package com.blazarquant.bfp.web.bean.user;
 
-import com.blazarquant.bfp.core.parser.FixDefinitionProviderManager;
 import com.blazarquant.bfp.data.user.Permission;
 import com.blazarquant.bfp.data.user.UserDetails;
 import com.blazarquant.bfp.data.user.UserSetting;
@@ -12,8 +11,6 @@ import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
 import com.blazarquant.bfp.web.util.ShiroUtilities;
 import com.google.inject.Inject;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.Subject;
 import org.primefaces.model.UploadedFile;
 
@@ -25,7 +22,6 @@ import javax.faces.context.FacesContext;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
@@ -127,8 +123,8 @@ public class ProfileBean extends AbstractBean {
     }
 
     public void handleFileUpload() throws Exception {
-        Subject subject = SecurityUtils.getSubject();
-        if (!subject.isAuthenticated()) {
+        Subject currentUser = shiroUtilities.getSubject();
+        if (!currentUser.isAuthenticated()) {
             return;
         }
 
@@ -139,7 +135,7 @@ public class ProfileBean extends AbstractBean {
         }
 
         if (uploadedFile != null) {
-            UserDetails userDetails = ((UserDetails) subject.getPrincipal());
+            UserDetails userDetails = ((UserDetails) currentUser.getPrincipal());
             if (providerName.isEmpty()) {
                 providerName = uploadedFile.getFileName();
             }

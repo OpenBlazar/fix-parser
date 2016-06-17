@@ -9,8 +9,8 @@ import javax.faces.bean.ManagedBean;
 /**
  * @author Wojciech Zankowski
  */
-@ApplicationScoped
 @ManagedBean(name = "fixBean")
+@ApplicationScoped
 public class FixBean {
 
     public String getSender(FixMessage message) {

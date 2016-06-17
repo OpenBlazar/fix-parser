@@ -11,8 +11,8 @@ import javax.faces.bean.ManagedBean;
 /**
  * @author Wojciech Zankowski
  */
-@ApplicationScoped
 @ManagedBean(name = "styleBean")
+@ApplicationScoped
 public class StyleBean {
 
     public String getStyleForMsgType(FixPair msgType) {
