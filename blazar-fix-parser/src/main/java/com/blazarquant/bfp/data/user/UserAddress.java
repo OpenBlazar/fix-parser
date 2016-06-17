@@ -82,4 +82,46 @@ public class UserAddress {
                 ", countryCode='" + countryCode + '\'' +
                 '}';
     }
+
+    public static class Builder {
+
+        private String address = "";
+        private String city = "";
+        private String state = "";
+        private String postalCode = "";
+        private String countryCode = "";
+
+        public Builder address(String address) {
+            this.address = address;
+            return this;
+        }
+
+        public Builder city(String city) {
+            this.city = city;
+            return this;
+        }
+
+        public Builder state(String state) {
+            this.state = state;
+            return this;
+        }
+
+        public Builder postalCode(String postalCode) {
+            this.postalCode = postalCode;
+            return this;
+        }
+
+        public Builder countrycode(String countryCode) {
+            this.countryCode = countryCode;
+            return this;
+        }
+
+        public UserAddress build() {
+            return new UserAddress(
+                    address, city, state, postalCode, countryCode
+            );
+        }
+
+    }
+
 }

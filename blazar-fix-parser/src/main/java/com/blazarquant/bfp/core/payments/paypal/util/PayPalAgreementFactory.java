@@ -14,16 +14,21 @@ import java.time.format.DateTimeFormatter;
  */
 public class PayPalAgreementFactory {
 
+    public static final String AGREEMENT_NAME = "BlazarQuant Service Agreement";
+    public static final String AGREEMENT_DESCRIPTION = "Agreement BlazarQuant service subscription";
+    public static final String PAYMENT_METHOD = "paypal";
+
     public static final DateTimeFormatter START_DATE_FORMATTER = DateTimeFormatter.ISO_INSTANT;
 
     public Agreement createAgreement(String planId, UserAddress userAddress) {
         Agreement agreement = new Agreement();
         agreement = agreement
-                .setName("BlazarQuant Service Agreement")
-                .setDescription("Agreement BlazarQuant service subscription")
+                .setName(AGREEMENT_NAME)
+                .setDescription(AGREEMENT_DESCRIPTION)
                 .setStartDate(START_DATE_FORMATTER.format(Instant.now().plusSeconds(120)))
                 .setPlan(new Plan().setId(planId))
-                .setPayer(new Payer().setPaymentMethod("paypal")).setShippingAddress((Address) new Address()
+                .setPayer(new Payer().setPaymentMethod(PAYMENT_METHOD))
+                .setShippingAddress((Address) new Address()
                         .setLine1(userAddress.getAddress())
                         .setCity(userAddress.getCity())
                         .setState(userAddress.getState())
