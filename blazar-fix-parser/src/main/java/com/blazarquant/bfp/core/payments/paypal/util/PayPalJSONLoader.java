@@ -1,11 +1,9 @@
 package com.blazarquant.bfp.core.payments.paypal.util;
 
+import com.blazarquant.bfp.common.BlazarFixParserConstants;
 import com.paypal.base.rest.JSONFormatter;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * @author Wojciech Zankowski
@@ -15,7 +13,10 @@ public class PayPalJSONLoader {
     public <T> T load(String jsonFile, Class<T> clazz) throws IOException {
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader(new File(jsonFile)));
+            br = new BufferedReader(new InputStreamReader(
+                    new FileInputStream(new File(jsonFile)),
+                    BlazarFixParserConstants.DEFAULT_CHARSET
+            ));
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
 

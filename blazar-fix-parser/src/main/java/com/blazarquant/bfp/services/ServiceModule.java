@@ -1,5 +1,6 @@
 package com.blazarquant.bfp.services;
 
+import com.blazarquant.bfp.common.BlazarFixParserConstants;
 import com.blazarquant.bfp.core.mail.MailEngine;
 import com.blazarquant.bfp.core.mail.connection.MailConnection;
 import com.blazarquant.bfp.core.mail.connection.MailConnectionImpl;
@@ -21,9 +22,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
 import com.google.inject.name.Names;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 /**
@@ -41,8 +40,8 @@ public class ServiceModule extends AbstractModule {
         bind(ParserService.class).to(ParserServiceImpl.class).in(Singleton.class);
 
         Properties properties = new Properties();
-        try {
-            properties.load(new FileReader(MAIL_CONFIG_PATH));
+        try(Reader reader = new InputStreamReader(new FileInputStream(MAIL_CONFIG_PATH), BlazarFixParserConstants.DEFAULT_CHARSET)) {
+            properties.load(reader);
             Names.bindProperties(binder(), properties);
         } catch (FileNotFoundException e) {
             System.out.println("The configuration file Test.properties can not be found");

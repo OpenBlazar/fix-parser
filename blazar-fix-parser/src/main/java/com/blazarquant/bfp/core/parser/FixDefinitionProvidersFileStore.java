@@ -67,10 +67,13 @@ public class FixDefinitionProvidersFileStore {
     }
 
     public FixDefinitionProvider loadCustomProvider(File dictionaryFile, ProviderDescriptor providerDescriptor) throws Exception {
-        FixDefinitionProvider definitionProvider = new CustomFixDefinitionProvider(
-                providerLoaderFactory.getLoader(providerDescriptor).parseDocument(
-                        new FileInputStream(dictionaryFile)
-                ));
+        FixDefinitionProvider definitionProvider = null;
+        try (InputStream inputStream = new FileInputStream(dictionaryFile)) {
+            definitionProvider = new CustomFixDefinitionProvider(
+                    providerLoaderFactory.getLoader(providerDescriptor).parseDocument(
+                            inputStream
+                    ));
+        }
         return definitionProvider;
     }
 

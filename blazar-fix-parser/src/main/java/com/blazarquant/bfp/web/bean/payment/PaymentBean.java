@@ -56,8 +56,12 @@ public class PaymentBean extends AbstractBean {
             switch (permission) {
                 case ENTERPRISE:
                     userService.addUserPermission(userID, Permission.ENTERPRISE);
+                    userService.addUserPermission(userID, Permission.PRO);
+                    break;
                 case PRO:
                     userService.addUserPermission(userID, Permission.PRO);
+                    break;
+                default:
                     break;
             }
             shiroUtilities.clearCachedAuthorizationInfo();

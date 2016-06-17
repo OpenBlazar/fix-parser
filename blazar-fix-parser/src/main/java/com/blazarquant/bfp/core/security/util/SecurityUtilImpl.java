@@ -1,5 +1,6 @@
 package com.blazarquant.bfp.core.security.util;
 
+import com.blazarquant.bfp.common.BlazarFixParserConstants;
 import com.blazarquant.bfp.core.security.exception.DecodingException;
 import org.apache.shiro.codec.Base64;
 import org.mindrot.jbcrypt.BCrypt;
@@ -30,7 +31,7 @@ public class SecurityUtilImpl implements SecurityUtil {
             throw new IllegalArgumentException("Failed to generate confirmation key. Username or email is empty.");
         }
         return Base64.encodeToString(
-                buildKeyBase(id, username, email).getBytes());
+                buildKeyBase(id, username, email).getBytes(BlazarFixParserConstants.DEFAULT_CHARSET));
     }
 
     private String buildKeyBase(long id, String username, String email) {
@@ -53,7 +54,7 @@ public class SecurityUtilImpl implements SecurityUtil {
 
     @Override
     public String encodeMessage(String message) {
-        return Base64.encodeToString(message.getBytes());
+        return Base64.encodeToString(message.getBytes(BlazarFixParserConstants.DEFAULT_CHARSET));
     }
 
     @Override

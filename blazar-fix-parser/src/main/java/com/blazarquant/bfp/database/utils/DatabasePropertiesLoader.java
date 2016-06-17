@@ -20,18 +20,22 @@ public class DatabasePropertiesLoader {
 
     public static Properties getProperties() {
         if (properties == null) {
-            try (FileInputStream inputStream = new FileInputStream(new File(CONFIG_PATH))) {
-                properties = new Properties();
-                properties.load(inputStream);
-            } catch (IOException e) {
-                LOGGER.error("Failed to load database properties. {}", e);
+            synchronized (DatabasePropertiesLoader.class) {
+                if (properties == null) {
+                    try (FileInputStream inputStream = new FileInputStream(new File(CONFIG_PATH))) {
+                        properties = new Properties();
+                        properties.load(inputStream);
+                    } catch (IOException e) {
+                        LOGGER.error("Failed to load database properties. {}", e);
+                    }
+                }
             }
         }
         return properties;
     }
 
     public static String getProperty(String propertyName) {
-        String property = properties.getProperty(propertyName);
+        String property = getProperties().getProperty(propertyName);
         if (property == null) {
             throw new IllegalArgumentException("Illegal property name. Property " + propertyName + " does not seem to exists.");
         }

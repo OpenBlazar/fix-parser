@@ -183,7 +183,7 @@ public class ProfileBean extends AbstractBean {
     }
 
     public XMLLoaderType[] getLoaderTypes() {
-        return loaderTypes;
+        return Arrays.copyOf(loaderTypes, loaderTypes.length);
     }
 
     public String getProviderName() {

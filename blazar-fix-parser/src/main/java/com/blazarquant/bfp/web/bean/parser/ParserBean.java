@@ -120,7 +120,7 @@ public class ParserBean extends AbstractBean {
             return;
         }
         try {
-            synchronized (messages) {
+            synchronized (this) {
                 input = shareService.getMessageFromKey(shareKey);
                 // TODO hack, inputTextArea eats \u0001, why? // FIXME: 21.04.2016
                 input = input.replaceAll("\u0001", "#");
@@ -142,7 +142,7 @@ public class ParserBean extends AbstractBean {
     }
 
     public void doParse(String input) {
-        synchronized (messages) {
+        synchronized (this) {
             selectedMessage = null;
             if (shiroUtilities.isUserAuthenticated()) {
                 messages = new ArrayList<>(parserService.parseInput(
@@ -162,11 +162,13 @@ public class ParserBean extends AbstractBean {
     protected void doSaveMessages(List<FixMessage> messages) {
         if (shiroUtilities.isUserAuthenticated()) {
             UserDetails userDetails = shiroUtilities.getCurrentUserDetails();
-            Boolean storeMessages = userService.getUserSettingsCache().getBoolean(userDetails.getUserID(), UserSetting.STORE_MESSAGES);
-            if (userDetails != null && storeMessages) {
-                executorService.submit(() -> {
-                    parserService.saveMessages(userDetails, messages);
-                });
+            if (userDetails != null) {
+                Boolean storeMessages = userService.getUserSettingsCache().getBoolean(userDetails.getUserID(), UserSetting.STORE_MESSAGES);
+                if (storeMessages) {
+                    executorService.submit(() -> {
+                        parserService.saveMessages(userDetails, messages);
+                    });
+                }
             }
         }
     }

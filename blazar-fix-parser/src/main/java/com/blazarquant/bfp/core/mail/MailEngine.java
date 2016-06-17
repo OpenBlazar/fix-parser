@@ -103,13 +103,12 @@ public class MailEngine {
                 transport.sendMessage(mimeMessage, new InternetAddress[]{new InternetAddress(userMail)});
             } catch (MessagingException e) {
                 LOGGER.error("Failed to send mail message. Message saved to try again in the future.", e);
-                synchronized (mailMessageQueue) {
-                    mailMessageQueue.add(new MailMessage.Builder()
-                            .recipient(userMail)
-                            .subject(subject)
-                            .text(message)
-                            .build());
-                }
+                mailMessageQueue.add(new MailMessage.Builder()
+                        .recipient(userMail)
+                        .subject(subject)
+                        .text(message)
+                        .build());
+
             } finally {
                 if (transport != null) {
                     try {
@@ -152,9 +151,7 @@ public class MailEngine {
                     Thread.sleep(DELAY);
 
                     List<MailMessage> mailMessages = new ArrayList<>();
-                    synchronized (mailMessageQueue) {
-                        mailMessageQueue.drainTo(mailMessages);
-                    }
+                    mailMessageQueue.drainTo(mailMessages);
                     mailMessages.forEach((mailMessage -> {
                         MailEngine.this.sendMessage(
                                 mailMessage.getText(),
