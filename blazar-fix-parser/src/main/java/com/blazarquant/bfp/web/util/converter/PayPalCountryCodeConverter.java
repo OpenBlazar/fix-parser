@@ -20,6 +20,10 @@ public class PayPalCountryCodeConverter implements Converter {
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-        return ((PayPalCountryCodes) value).name();
+        if (value instanceof PayPalCountryCodes) {
+            return ((PayPalCountryCodes) value).name();
+        } else {
+            throw new IllegalArgumentException("Failed to convert PayPalCountryCode. Unexpected object type.");
+        }
     }
 }
