@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  */
 public class FixParser {
 
-    private static final Pattern fixPattern = Pattern.compile("[^0-9a-zA-Z!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?\\s]*8=FIX(.*?)[^0-9]10=\\d{3}.?");
+    private static final Pattern FIX_PATTERN = Pattern.compile("[^0-9a-zA-Z!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?\\s]*8=FIX(.*?)[^0-9]10=\\d{3}.?");
 
     private final FixDelimiterResolver delimiterResolver = new FixDelimiterResolver();
     private final FixMessageConverter messageConverter = new FixMessageConverter();
@@ -33,7 +33,7 @@ public class FixParser {
 
     protected List<String> extractFixMessages(String input) {
         List<String> messages = new ArrayList<>();
-        Matcher matcher = fixPattern.matcher(input);
+        Matcher matcher = FIX_PATTERN.matcher(input);
         while (matcher.find()) {
             messages.add(matcher.group());
         }
