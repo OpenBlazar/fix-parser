@@ -6,13 +6,13 @@ import com.blazarquant.bfp.data.payments.paypal.PayPalCountryCodes;
 import com.blazarquant.bfp.data.user.UserAddress;
 import com.blazarquant.bfp.services.payment.PaymentService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
+import com.blazarquant.bfp.web.util.FacesUtilities;
 import com.blazarquant.bfp.web.util.ShiroUtilities;
 import com.google.inject.Inject;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 import java.io.IOException;
 
 /**
@@ -24,6 +24,7 @@ public class SubscriptionBean extends AbstractBean {
 
     private PaymentService paymentService;
     private ShiroUtilities shiroUtilities;
+    private FacesUtilities facesUtilities;
 
     private String type;
     private SubscriptionPlan subscriptionPlan;
@@ -50,10 +51,15 @@ public class SubscriptionBean extends AbstractBean {
         this.shiroUtilities = shiroUtilities;
     }
 
+    @Inject
+    public void setFacesUtilities(FacesUtilities facesUtilities) {
+        this.facesUtilities = facesUtilities;
+    }
+
     public void doSubscribe() throws PaymentException, IOException {
         if (shiroUtilities.isUserAuthenticated()) {
             String acceptUrl = this.paymentService.subscribe(subscriptionPlan, new UserAddress(address, city, state, postalCode, countryCode.getCountryCode()));
-            FacesContext.getCurrentInstance().getExternalContext().redirect(acceptUrl);
+            facesUtilities.redirect(acceptUrl);
         }
     }
 

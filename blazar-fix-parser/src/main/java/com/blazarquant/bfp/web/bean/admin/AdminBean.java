@@ -7,6 +7,7 @@ import com.blazarquant.bfp.services.tracker.TrackerService;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
 import com.blazarquant.bfp.web.util.BlazarURL;
+import com.blazarquant.bfp.web.util.FacesUtilities;
 import com.blazarquant.bfp.web.util.ShiroUtilities;
 import com.google.inject.Inject;
 import org.primefaces.model.chart.*;
@@ -35,6 +36,7 @@ public class AdminBean extends AbstractBean {
     private UserService userService;
     private TrackerService trackerService;
     private ShiroUtilities shiroUtilities;
+    private FacesUtilities facesUtilities;
 
     private Set<Map.Entry<LocalDate, Integer>> trackerDailyData = new HashSet<>();
     private LineChartModel trackerChartModel = new LineChartModel();
@@ -77,7 +79,7 @@ public class AdminBean extends AbstractBean {
                 yAxis.setMin(0);
             } else {
                 // TODO FIXME move to shiro rules
-                FacesContext.getCurrentInstance().getExternalContext().redirect(BlazarURL.PARSER_URL);
+                facesUtilities.redirect(BlazarURL.PARSER_URL);
             }
         } catch (Exception e) {
             LOGGER.error("Failed to init admin page.", e);
@@ -97,6 +99,11 @@ public class AdminBean extends AbstractBean {
     @Inject
     public void setShiroUtilities(ShiroUtilities shiroUtilities) {
         this.shiroUtilities = shiroUtilities;
+    }
+
+    @Inject
+    public void setFacesUtilities(FacesUtilities facesUtilities) {
+        this.facesUtilities = facesUtilities;
     }
 
     public List<UserDetails> getUserDetails() {

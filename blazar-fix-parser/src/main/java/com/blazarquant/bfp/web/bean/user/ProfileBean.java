@@ -9,6 +9,7 @@ import com.blazarquant.bfp.fix.parser.definition.data.XMLLoaderType;
 import com.blazarquant.bfp.services.parser.ParserService;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
+import com.blazarquant.bfp.web.util.FacesUtilities;
 import com.blazarquant.bfp.web.util.ShiroUtilities;
 import com.google.inject.Inject;
 import org.apache.shiro.subject.Subject;
@@ -18,7 +19,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -33,10 +33,15 @@ import java.util.stream.Collectors;
 @ViewScoped
 public class ProfileBean extends AbstractBean {
 
+    public static final String DICTIONARIES_LIMIT = "Custom dictionaries are limited to 1 for BASIC users.";
+    public static final String PROVIDER_UPLOADED = "%s has been successfully uploaded";
+    public static final String FAILED_TO_REMOVE = "Failed to remove %s.";
+
     private ParserService parserService;
     private UserService userService;
 
     private ShiroUtilities shiroUtilities;
+    private FacesUtilities facesUtilities;
 
     private ExecutorService threadService = Executors.newSingleThreadExecutor();
 
@@ -77,6 +82,11 @@ public class ProfileBean extends AbstractBean {
     @Inject
     public void setShiroUtilities(ShiroUtilities shiroUtilities) {
         this.shiroUtilities = shiroUtilities;
+    }
+
+    @Inject
+    public void setFacesUtilities(FacesUtilities facesUtilities) {
+        this.facesUtilities = facesUtilities;
     }
 
     private void doLoadDefaultParameters() {
@@ -130,7 +140,7 @@ public class ProfileBean extends AbstractBean {
 
         if (!(shiroUtilities.isPermitted(Permission.PRO.name()) || shiroUtilities.isPermitted(Permission.ENTERPRISE.name()))
                 && providerDescriptors.size() >= 2) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Info", "Custom dictionaries are limited to 1 for BASIC users."));
+            facesUtilities.addMessage(FacesMessage.SEVERITY_INFO, DICTIONARIES_LIMIT);
             return;
         }
 
@@ -146,8 +156,7 @@ public class ProfileBean extends AbstractBean {
 
             doReloadProviders();
 
-            FacesMessage message = new FacesMessage("Successful", providerName + " is uploaded.");
-            FacesContext.getCurrentInstance().addMessage(null, message);
+            facesUtilities.addMessage(FacesMessage.SEVERITY_INFO, String.format(PROVIDER_UPLOADED, providerName));
         }
     }
 
@@ -160,8 +169,7 @@ public class ProfileBean extends AbstractBean {
 
                 defaultProvider = DefaultFixDefinitionProvider.DESCRIPTOR;
             } else {
-                FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error", "Failed to remove " + providerDescriptor + ".");
-                FacesContext.getCurrentInstance().addMessage(null, message);
+                facesUtilities.addMessage(FacesMessage.SEVERITY_WARN, String.format(FAILED_TO_REMOVE, providerDescriptor));
             }
         }
     }

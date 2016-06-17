@@ -11,7 +11,6 @@ import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.data.ProviderDescriptor;
 import com.blazarquant.bfp.fix.parser.util.FixParserConstants;
 import com.blazarquant.bfp.services.parser.ParserService;
-import com.blazarquant.bfp.services.payment.PaymentService;
 import com.blazarquant.bfp.services.share.ShareService;
 import com.blazarquant.bfp.services.tracker.TrackerService;
 import com.blazarquant.bfp.services.user.UserService;
@@ -23,9 +22,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -38,6 +37,8 @@ import java.util.concurrent.Executors;
 @ManagedBean(name = "parserBean")
 @ViewScoped
 public class ParserBean extends AbstractBean {
+
+    public static final String FAILED_TO_SHARE = "Failed to share message.";
 
     private static final String SHARE_PARAM = "share";
     private static final String SHARE_URL = "http://www.blazarquant.com/parser?" + SHARE_PARAM + "=";
@@ -114,7 +115,7 @@ public class ParserBean extends AbstractBean {
     }
 
     private void doLoadShared() {
-        String shareKey = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get(SHARE_PARAM);
+        String shareKey = facesUtilities.getRequestParameter(SHARE_PARAM);
         if (shareKey == null) {
             return;
         }
@@ -178,11 +179,11 @@ public class ParserBean extends AbstractBean {
         try {
             shareKey = shareService.shareMessage(input);
         } catch (ShareException e) {
-            facesError(e.getMessage(), e);
-            LOGGER.error("Failed to share message.", e);
+            facesUtilities.addMessage(FacesMessage.SEVERITY_ERROR, e.getMessage());
+            LOGGER.error(FAILED_TO_SHARE, e);
         } catch (Exception e) {
-            facesError("Failed to save message.", e);
-            LOGGER.error("Failed to share message.", e);
+            facesUtilities.addMessage(FacesMessage.SEVERITY_ERROR, FAILED_TO_SHARE);
+            LOGGER.error(FAILED_TO_SHARE, e);
         }
     }
 

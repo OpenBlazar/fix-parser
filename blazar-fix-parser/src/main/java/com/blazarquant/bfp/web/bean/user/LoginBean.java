@@ -6,6 +6,7 @@ import com.blazarquant.bfp.services.parser.ParserService;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
 import com.blazarquant.bfp.web.util.BlazarURL;
+import com.blazarquant.bfp.web.util.FacesUtilities;
 import com.blazarquant.bfp.web.util.ShiroUtilities;
 import com.google.inject.Inject;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -17,7 +18,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 import java.io.IOException;
 
 /**
@@ -27,11 +27,16 @@ import java.io.IOException;
 @RequestScoped
 public class LoginBean extends AbstractBean {
 
+    public static final String ACCOUNT_NOT_ACTIVE = "Your account is not active. Please confirm your registration.";
+    public static final String LOGIN_FAILED = "Please check the information you entered and try again.";
+    public static final String FAILED_TO_REDIRECT = "Failed to redirect to home page.";
+
     private final static Logger LOGGER = LoggerFactory.getLogger(LoginBean.class);
 
     private UserService userService;
     private ParserService parserService;
     private ShiroUtilities shiroUtilities;
+    private FacesUtilities facesUtilities;
 
     private String username;
     private String password;
@@ -44,7 +49,8 @@ public class LoginBean extends AbstractBean {
             try {
                 redirectToPreviousPage();
             } catch (IOException e) {
-                facesError("Failed to redirect to home page.", e);
+                facesUtilities.addMessage(FacesMessage.SEVERITY_ERROR, FAILED_TO_REDIRECT);
+                LOGGER.error(FAILED_TO_REDIRECT, e);
             }
         }
     }
@@ -64,12 +70,16 @@ public class LoginBean extends AbstractBean {
         this.shiroUtilities = shiroUtilities;
     }
 
+    @Inject
+    public void setFacesUtilities(FacesUtilities facesUtilities) {
+        this.facesUtilities = facesUtilities;
+    }
+
     public void doLogin() {
         UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), getPassword(), getRememberMe());
         try {
             if (!userService.isUserActive(getUsername())) {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                        "Your account is not active. Please confirm your registration.", null));
+                facesUtilities.addMessage(FacesMessage.SEVERITY_ERROR, ACCOUNT_NOT_ACTIVE);
                 return;
             }
 
@@ -86,24 +96,16 @@ public class LoginBean extends AbstractBean {
                 redirectToPreviousPage();
             }
         } catch (Exception e) {
-            facesError("Please check the information you entered and try again.", e);
+            facesUtilities.addMessage(FacesMessage.SEVERITY_ERROR, LOGIN_FAILED);
+            LOGGER.error(LOGIN_FAILED, e);
         } finally {
             token.clear();
         }
     }
 
     private void redirectToPreviousPage() throws IOException {
-        if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().containsKey("originalURL")) {
-            FacesContext.getCurrentInstance().getExternalContext().redirect(
-                    (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("originalURL"));
-        } else {
-            FacesContext.getCurrentInstance().getExternalContext().redirect(BlazarURL.PARSER_URL);
-        }
-    }
-
-    protected void facesError(String message, Exception exception) {
-        super.facesError(message, exception);
-        LOGGER.error(message, exception);
+        // TODO fix and move to filter?
+        facesUtilities.redirect(BlazarURL.PARSER_URL);
     }
 
     public String getUsername() {
