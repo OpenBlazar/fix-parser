@@ -30,8 +30,8 @@ import java.util.stream.Collectors;
 @ViewScoped
 public class AdminBean extends AbstractBean {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(AdminBean.class);
-    private final DateTimeFormatter dateChartFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private static final Logger LOGGER = LoggerFactory.getLogger(AdminBean.class);
+    private static final DateTimeFormatter DATE_CHART_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     private UserService userService;
     private TrackerService trackerService;
@@ -61,7 +61,7 @@ public class AdminBean extends AbstractBean {
 
                 LineChartSeries chartSeries = new LineChartSeries();
                 chartSeries.setLabel("Message number");
-                trackerDailyData.forEach(data -> chartSeries.set(dateChartFormatter.format(data.getKey()), data.getValue()));
+                trackerDailyData.forEach(data -> chartSeries.set(DATE_CHART_FORMATTER.format(data.getKey()), data.getValue()));
 
                 trackerChartModel.addSeries(chartSeries);
                 trackerChartModel.setTitle("Tracker Data");
@@ -97,10 +97,6 @@ public class AdminBean extends AbstractBean {
 
     public List<UserDetails> getUserDetails() {
         return userDetails;
-    }
-
-    public Set<Map.Entry<LocalDate, Integer>> getTrackerDailyData() {
-        return trackerDailyData;
     }
 
     public List<TrackerData> getTrackerData() {
