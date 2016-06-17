@@ -9,7 +9,7 @@ import com.blazarquant.bfp.services.parser.ParserService;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
 import com.blazarquant.bfp.web.model.FixMessageLazyDataModel;
-import com.blazarquant.bfp.web.util.ShiroUtilities;
+import com.blazarquant.bfp.web.util.ShiroUtils;
 import com.google.inject.Inject;
 import org.primefaces.model.LazyDataModel;
 
@@ -26,7 +26,7 @@ public class HistoryBean extends AbstractBean {
 
     private ParserService parserService;
     private UserService userService;
-    private ShiroUtilities shiroUtilities;
+    private ShiroUtils shiroUtils;
 
     private LazyDataModel<FixMessage> messagesModel;
     private FixMessage selectedMessage;
@@ -36,8 +36,8 @@ public class HistoryBean extends AbstractBean {
     @Override
     public void init() {
         super.init();
-        if (shiroUtilities.isUserAuthenticated()) {
-            UserDetails userDetails = shiroUtilities.getCurrentUserDetails();
+        if (shiroUtils.isUserAuthenticated()) {
+            UserDetails userDetails = shiroUtils.getCurrentUserDetails();
             if (userDetails != null) {
                 ProviderDescriptor providerDescriptor = (ProviderDescriptor) userService.getUserSettingsCache().getObject(userDetails.getUserID(), UserSetting.DEFAULT_PROVIDER);
                 messageCount = parserService.countUserMessages(userDetails);
@@ -45,7 +45,7 @@ public class HistoryBean extends AbstractBean {
                         parserService,
                         providerDescriptor,
                         userDetails,
-                        shiroUtilities.isPermitted(Permission.PRO.name()) || shiroUtilities.isPermitted(Permission.ENTERPRISE.name())
+                        shiroUtils.isPermitted(Permission.PRO.name()) || shiroUtils.isPermitted(Permission.ENTERPRISE.name())
                 );
                 messagesModel.setRowCount(messageCount);
             }
@@ -63,8 +63,8 @@ public class HistoryBean extends AbstractBean {
     }
 
     @Inject
-    public void setShiroUtilities(ShiroUtilities shiroUtilities) {
-        this.shiroUtilities = shiroUtilities;
+    public void setShiroUtils(ShiroUtils shiroUtils) {
+        this.shiroUtils = shiroUtils;
     }
 
     public FixMessage getSelectedMessage() {

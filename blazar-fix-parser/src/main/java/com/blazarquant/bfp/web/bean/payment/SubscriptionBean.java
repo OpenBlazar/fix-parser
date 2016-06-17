@@ -6,8 +6,8 @@ import com.blazarquant.bfp.data.payments.paypal.PayPalCountryCodes;
 import com.blazarquant.bfp.data.user.UserAddress;
 import com.blazarquant.bfp.services.payment.PaymentService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
-import com.blazarquant.bfp.web.util.FacesUtilities;
-import com.blazarquant.bfp.web.util.ShiroUtilities;
+import com.blazarquant.bfp.web.util.FacesUtils;
+import com.blazarquant.bfp.web.util.ShiroUtils;
 import com.google.inject.Inject;
 
 import javax.annotation.PostConstruct;
@@ -23,8 +23,8 @@ import java.io.IOException;
 public class SubscriptionBean extends AbstractBean {
 
     private PaymentService paymentService;
-    private ShiroUtilities shiroUtilities;
-    private FacesUtilities facesUtilities;
+    private ShiroUtils shiroUtils;
+    private FacesUtils facesUtils;
 
     private String type;
     private SubscriptionPlan subscriptionPlan;
@@ -47,19 +47,19 @@ public class SubscriptionBean extends AbstractBean {
     }
 
     @Inject
-    public void setShiroUtilities(ShiroUtilities shiroUtilities) {
-        this.shiroUtilities = shiroUtilities;
+    public void setShiroUtils(ShiroUtils shiroUtils) {
+        this.shiroUtils = shiroUtils;
     }
 
     @Inject
-    public void setFacesUtilities(FacesUtilities facesUtilities) {
-        this.facesUtilities = facesUtilities;
+    public void setFacesUtils(FacesUtils facesUtils) {
+        this.facesUtils = facesUtils;
     }
 
     public void doSubscribe() throws PaymentException, IOException {
-        if (shiroUtilities.isUserAuthenticated()) {
+        if (shiroUtils.isUserAuthenticated()) {
             String acceptUrl = this.paymentService.subscribe(subscriptionPlan, new UserAddress(address, city, state, postalCode, countryCode.getCountryCode()));
-            facesUtilities.redirect(acceptUrl);
+            facesUtils.redirect(acceptUrl);
         }
     }
 

@@ -6,8 +6,8 @@ import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.data.ProviderDescriptor;
 import com.blazarquant.bfp.fix.parser.util.FixMessageConverter;
 import com.blazarquant.bfp.services.parser.ParserService;
-import com.blazarquant.bfp.web.util.FacesUtilities;
-import com.blazarquant.bfp.web.util.ShiroUtilities;
+import com.blazarquant.bfp.web.util.FacesUtils;
+import com.blazarquant.bfp.web.util.ShiroUtils;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 
@@ -27,8 +27,8 @@ public class FixMessageOneMenuConverter implements Converter {
     private static final char ENTRY_DELIMITER = '#';
     private final FixMessageConverter messageConverter = new FixMessageConverter();
 
-    private FacesUtilities facesUtilities;
-    private ShiroUtilities shiroUtilities;
+    private FacesUtils facesUtils;
+    private ShiroUtils shiroUtils;
     private ParserService parserService;
 
     public FixMessageOneMenuConverter() {
@@ -39,13 +39,13 @@ public class FixMessageOneMenuConverter implements Converter {
     }
 
     @Inject
-    public void setFacesUtilities(FacesUtilities facesUtilities) {
-        this.facesUtilities = facesUtilities;
+    public void setFacesUtils(FacesUtils facesUtils) {
+        this.facesUtils = facesUtils;
     }
 
     @Inject
-    public void setShiroUtilities(ShiroUtilities shiroUtilities) {
-        this.shiroUtilities = shiroUtilities;
+    public void setShiroUtils(ShiroUtils shiroUtils) {
+        this.shiroUtils = shiroUtils;
     }
 
     @Inject
@@ -58,9 +58,9 @@ public class FixMessageOneMenuConverter implements Converter {
         int index = value.indexOf(DELIMITER);
 
         ProviderDescriptor providerDescriptor = null;
-        if (shiroUtilities.isUserAuthenticated()) {
-            providerDescriptor = (ProviderDescriptor) facesUtilities.getContextAttribute(
-                    shiroUtilities.getCurrentUserID().getId() + FixDefinitionProvider.class.getSimpleName());
+        if (shiroUtils.isUserAuthenticated()) {
+            providerDescriptor = (ProviderDescriptor) facesUtils.getContextAttribute(
+                    shiroUtils.getCurrentUserID().getId() + FixDefinitionProvider.class.getSimpleName());
         }
 
         return messageConverter.convertToFixMessage(
@@ -69,8 +69,8 @@ public class FixMessageOneMenuConverter implements Converter {
                 Integer.parseInt(value.substring(0, index)),
                 parserService.getDefinitionProvider(
                         providerDescriptor,
-                        shiroUtilities.getCurrentUserID(),
-                        shiroUtilities.isPermitted(Permission.PRO.name()) || shiroUtilities.isPermitted(Permission.ENTERPRISE.name())
+                        shiroUtils.getCurrentUserID(),
+                        shiroUtils.isPermitted(Permission.PRO.name()) || shiroUtils.isPermitted(Permission.ENTERPRISE.name())
                 ));
     }
 

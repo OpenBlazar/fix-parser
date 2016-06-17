@@ -7,8 +7,8 @@ import com.blazarquant.bfp.services.tracker.TrackerService;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
 import com.blazarquant.bfp.web.util.BlazarURL;
-import com.blazarquant.bfp.web.util.FacesUtilities;
-import com.blazarquant.bfp.web.util.ShiroUtilities;
+import com.blazarquant.bfp.web.util.FacesUtils;
+import com.blazarquant.bfp.web.util.ShiroUtils;
 import com.google.inject.Inject;
 import org.primefaces.model.chart.*;
 import org.slf4j.Logger;
@@ -17,7 +17,6 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -35,8 +34,8 @@ public class AdminBean extends AbstractBean {
 
     private UserService userService;
     private TrackerService trackerService;
-    private ShiroUtilities shiroUtilities;
-    private FacesUtilities facesUtilities;
+    private ShiroUtils shiroUtils;
+    private FacesUtils facesUtils;
 
     private Set<Map.Entry<LocalDate, Integer>> trackerDailyData = new HashSet<>();
     private LineChartModel trackerChartModel = new LineChartModel();
@@ -48,7 +47,7 @@ public class AdminBean extends AbstractBean {
     public void init() {
         super.init();
         try {
-            if (shiroUtilities.hasRole(Role.ADMIN_ROLE.getName())) {
+            if (shiroUtils.hasRole(Role.ADMIN_ROLE.getName())) {
                 userDetails = userService.getUsers();
 
                 trackerData = trackerService.getTrackerData().stream()
@@ -79,7 +78,7 @@ public class AdminBean extends AbstractBean {
                 yAxis.setMin(0);
             } else {
                 // TODO FIXME move to shiro rules
-                facesUtilities.redirect(BlazarURL.PARSER_URL);
+                facesUtils.redirect(BlazarURL.PARSER_URL);
             }
         } catch (Exception e) {
             LOGGER.error("Failed to init admin page.", e);
@@ -97,13 +96,13 @@ public class AdminBean extends AbstractBean {
     }
 
     @Inject
-    public void setShiroUtilities(ShiroUtilities shiroUtilities) {
-        this.shiroUtilities = shiroUtilities;
+    public void setShiroUtils(ShiroUtils shiroUtils) {
+        this.shiroUtils = shiroUtils;
     }
 
     @Inject
-    public void setFacesUtilities(FacesUtilities facesUtilities) {
-        this.facesUtilities = facesUtilities;
+    public void setFacesUtils(FacesUtils facesUtils) {
+        this.facesUtils = facesUtils;
     }
 
     public List<UserDetails> getUserDetails() {

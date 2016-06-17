@@ -6,8 +6,8 @@ import com.blazarquant.bfp.services.parser.ParserService;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
 import com.blazarquant.bfp.web.util.BlazarURL;
-import com.blazarquant.bfp.web.util.FacesUtilities;
-import com.blazarquant.bfp.web.util.ShiroUtilities;
+import com.blazarquant.bfp.web.util.FacesUtils;
+import com.blazarquant.bfp.web.util.ShiroUtils;
 import com.google.inject.Inject;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -35,8 +35,8 @@ public class LoginBean extends AbstractBean {
 
     private UserService userService;
     private ParserService parserService;
-    private ShiroUtilities shiroUtilities;
-    private FacesUtilities facesUtilities;
+    private ShiroUtils shiroUtils;
+    private FacesUtils facesUtils;
 
     private String username;
     private String password;
@@ -45,11 +45,11 @@ public class LoginBean extends AbstractBean {
     @PostConstruct
     public void init() {
         super.init();
-        if (shiroUtilities.isUserAuthenticated()) {
+        if (shiroUtils.isUserAuthenticated()) {
             try {
                 redirectToPreviousPage();
             } catch (IOException e) {
-                facesUtilities.addMessage(FacesMessage.SEVERITY_ERROR, FAILED_TO_REDIRECT);
+                facesUtils.addMessage(FacesMessage.SEVERITY_ERROR, FAILED_TO_REDIRECT);
                 LOGGER.error(FAILED_TO_REDIRECT, e);
             }
         }
@@ -66,24 +66,24 @@ public class LoginBean extends AbstractBean {
     }
 
     @Inject
-    public void setShiroUtilities(ShiroUtilities shiroUtilities) {
-        this.shiroUtilities = shiroUtilities;
+    public void setShiroUtils(ShiroUtils shiroUtils) {
+        this.shiroUtils = shiroUtils;
     }
 
     @Inject
-    public void setFacesUtilities(FacesUtilities facesUtilities) {
-        this.facesUtilities = facesUtilities;
+    public void setFacesUtils(FacesUtils facesUtils) {
+        this.facesUtils = facesUtils;
     }
 
     public void doLogin() {
         UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), getPassword(), getRememberMe());
         try {
             if (!userService.isUserActive(getUsername())) {
-                facesUtilities.addMessage(FacesMessage.SEVERITY_ERROR, ACCOUNT_NOT_ACTIVE);
+                facesUtils.addMessage(FacesMessage.SEVERITY_ERROR, ACCOUNT_NOT_ACTIVE);
                 return;
             }
 
-            Subject currentUser = shiroUtilities.getSubject();
+            Subject currentUser = shiroUtils.getSubject();
             if (!currentUser.isAuthenticated()) {
                 currentUser.login(token);
 
@@ -96,7 +96,7 @@ public class LoginBean extends AbstractBean {
                 redirectToPreviousPage();
             }
         } catch (Exception e) {
-            facesUtilities.addMessage(FacesMessage.SEVERITY_ERROR, LOGIN_FAILED);
+            facesUtils.addMessage(FacesMessage.SEVERITY_ERROR, LOGIN_FAILED);
             LOGGER.error(LOGIN_FAILED, e);
         } finally {
             token.clear();
@@ -105,7 +105,7 @@ public class LoginBean extends AbstractBean {
 
     private void redirectToPreviousPage() throws IOException {
         // TODO fix and move to filter?
-        facesUtilities.redirect(BlazarURL.PARSER_URL);
+        facesUtils.redirect(BlazarURL.PARSER_URL);
     }
 
     public String getUsername() {

@@ -15,8 +15,8 @@ import com.blazarquant.bfp.services.share.ShareService;
 import com.blazarquant.bfp.services.tracker.TrackerService;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
-import com.blazarquant.bfp.web.util.FacesUtilities;
-import com.blazarquant.bfp.web.util.ShiroUtilities;
+import com.blazarquant.bfp.web.util.FacesUtils;
+import com.blazarquant.bfp.web.util.ShiroUtils;
 import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,8 +45,8 @@ public class ParserBean extends AbstractBean {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(ParserBean.class);
 
-    private ShiroUtilities shiroUtilities;
-    private FacesUtilities facesUtilities;
+    private ShiroUtils shiroUtils;
+    private FacesUtils facesUtils;
 
     private ParserService parserService;
     private TrackerService trackerService;
@@ -64,13 +64,13 @@ public class ParserBean extends AbstractBean {
     private String input;
 
     @Inject
-    public void setShiroUtilities(ShiroUtilities shiroUtilities) {
-        this.shiroUtilities = shiroUtilities;
+    public void setShiroUtils(ShiroUtils shiroUtils) {
+        this.shiroUtils = shiroUtils;
     }
 
     @Inject
-    public void setFacesUtilities(FacesUtilities facesUtilities) {
-        this.facesUtilities = facesUtilities;
+    public void setFacesUtils(FacesUtils facesUtils) {
+        this.facesUtils = facesUtils;
     }
 
     @Inject
@@ -104,18 +104,18 @@ public class ParserBean extends AbstractBean {
     }
 
     private void doLoadProviders() {
-        if (shiroUtilities.isUserAuthenticated()) {
-            UserID userID = shiroUtilities.getCurrentUserID();
+        if (shiroUtils.isUserAuthenticated()) {
+            UserID userID = shiroUtils.getCurrentUserID();
             providers = new ArrayList<>();
             providers.addAll(parserService.getProviders(
                     userID,
-                    shiroUtilities.isPermitted(Permission.PRO.name()) || shiroUtilities.isPermitted(Permission.ENTERPRISE.name())
+                    shiroUtils.isPermitted(Permission.PRO.name()) || shiroUtils.isPermitted(Permission.ENTERPRISE.name())
             ));
         }
     }
 
     private void doLoadShared() {
-        String shareKey = facesUtilities.getRequestParameter(SHARE_PARAM);
+        String shareKey = facesUtils.getRequestParameter(SHARE_PARAM);
         if (shareKey == null) {
             return;
         }
@@ -133,8 +133,8 @@ public class ParserBean extends AbstractBean {
     }
 
     private void doLoadDefaultProvider() {
-        if (shiroUtilities.isUserAuthenticated()) {
-            ProviderDescriptor savedProvider = (ProviderDescriptor) userService.getUserSettingsCache().getObject(shiroUtilities.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER);
+        if (shiroUtils.isUserAuthenticated()) {
+            ProviderDescriptor savedProvider = (ProviderDescriptor) userService.getUserSettingsCache().getObject(shiroUtils.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER);
             if (savedProvider != null) {
                 selectedProvider = savedProvider;
             }
@@ -144,12 +144,12 @@ public class ParserBean extends AbstractBean {
     public void doParse(String input) {
         synchronized (this) {
             selectedMessage = null;
-            if (shiroUtilities.isUserAuthenticated()) {
+            if (shiroUtils.isUserAuthenticated()) {
                 messages = new ArrayList<>(parserService.parseInput(
                         selectedProvider,
-                        shiroUtilities.getCurrentUserID(),
+                        shiroUtils.getCurrentUserID(),
                         input,
-                        shiroUtilities.isPermitted(Permission.PRO.name()) || shiroUtilities.isPermitted(Permission.ENTERPRISE.name())
+                        shiroUtils.isPermitted(Permission.PRO.name()) || shiroUtils.isPermitted(Permission.ENTERPRISE.name())
                 ));
             } else {
                 messages = new ArrayList<>(parserService.parseInput(input));
@@ -160,8 +160,8 @@ public class ParserBean extends AbstractBean {
     }
 
     protected void doSaveMessages(List<FixMessage> messages) {
-        if (shiroUtilities.isUserAuthenticated()) {
-            UserDetails userDetails = shiroUtilities.getCurrentUserDetails();
+        if (shiroUtils.isUserAuthenticated()) {
+            UserDetails userDetails = shiroUtils.getCurrentUserDetails();
             if (userDetails != null) {
                 Boolean storeMessages = userService.getUserSettingsCache().getBoolean(userDetails.getUserID(), UserSetting.STORE_MESSAGES);
                 if (storeMessages) {
@@ -181,18 +181,18 @@ public class ParserBean extends AbstractBean {
         try {
             shareKey = shareService.shareMessage(input);
         } catch (ShareException e) {
-            facesUtilities.addMessage(FacesMessage.SEVERITY_ERROR, e.getMessage());
+            facesUtils.addMessage(FacesMessage.SEVERITY_ERROR, e.getMessage());
             LOGGER.error(FAILED_TO_SHARE, e);
         } catch (Exception e) {
-            facesUtilities.addMessage(FacesMessage.SEVERITY_ERROR, FAILED_TO_SHARE);
+            facesUtils.addMessage(FacesMessage.SEVERITY_ERROR, FAILED_TO_SHARE);
             LOGGER.error(FAILED_TO_SHARE, e);
         }
     }
 
     private void setProviderToContext(ProviderDescriptor selectedProvider) {
-        if (shiroUtilities.isUserAuthenticated()) {
-            facesUtilities.setContextAttribute(
-                    shiroUtilities.getCurrentUserID().getId() + FixDefinitionProvider.class.getSimpleName(),
+        if (shiroUtils.isUserAuthenticated()) {
+            facesUtils.setContextAttribute(
+                    shiroUtils.getCurrentUserID().getId() + FixDefinitionProvider.class.getSimpleName(),
                     selectedProvider);
         }
     }

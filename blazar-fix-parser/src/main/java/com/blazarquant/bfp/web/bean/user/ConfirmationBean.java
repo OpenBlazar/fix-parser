@@ -4,7 +4,7 @@ import com.blazarquant.bfp.core.security.util.SecurityUtil;
 import com.blazarquant.bfp.data.user.UserID;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
-import com.blazarquant.bfp.web.util.FacesUtilities;
+import com.blazarquant.bfp.web.util.FacesUtils;
 import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +28,7 @@ public class ConfirmationBean extends AbstractBean {
 
     private UserService userService;
     private SecurityUtil securityUtil;
-    private FacesUtilities facesUtilities;
+    private FacesUtils facesUtils;
 
     private String confirmationKey;
 
@@ -49,8 +49,8 @@ public class ConfirmationBean extends AbstractBean {
     }
 
     @Inject
-    public void setFacesUtilities(FacesUtilities facesUtilities) {
-        this.facesUtilities = facesUtilities;
+    public void setFacesUtils(FacesUtils facesUtils) {
+        this.facesUtils = facesUtils;
     }
 
     public String getConfirmationKey() {
@@ -65,15 +65,15 @@ public class ConfirmationBean extends AbstractBean {
         try {
             boolean confirmed = userService.confirmUser(confirmationKey);
             if (confirmed) {
-                facesUtilities.addMessage(FacesMessage.SEVERITY_INFO, CONFIRMATION_SUCCEDED);
+                facesUtils.addMessage(FacesMessage.SEVERITY_INFO, CONFIRMATION_SUCCEDED);
 
                 UserID userID = new UserID(securityUtil.decodeConfirmationKey(confirmationKey));
                 userService.getUserSettingsCache().createDefaultParameters(userID);
             } else {
-                facesUtilities.addMessage(FacesMessage.SEVERITY_WARN, FAILED_TO_CONFIRM);
+                facesUtils.addMessage(FacesMessage.SEVERITY_WARN, FAILED_TO_CONFIRM);
             }
         } catch (Exception e) {
-            facesUtilities.addMessage(FacesMessage.SEVERITY_WARN, FAILED_TO_CONFIRM);
+            facesUtils.addMessage(FacesMessage.SEVERITY_WARN, FAILED_TO_CONFIRM);
             LOGGER.error(FAILED_TO_CONFIRM, e);
         }
     }

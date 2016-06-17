@@ -2,7 +2,7 @@ package com.blazarquant.bfp.web.bean.user;
 
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
-import com.blazarquant.bfp.web.util.FacesUtilities;
+import com.blazarquant.bfp.web.util.FacesUtils;
 import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +28,7 @@ public class RegisterBean extends AbstractBean {
     private final static Logger LOGGER = LoggerFactory.getLogger(RegisterBean.class);
 
     private UserService userService;
-    private FacesUtilities facesUtilities;
+    private FacesUtils facesUtils;
 
     private String username;
     private String email;
@@ -41,8 +41,8 @@ public class RegisterBean extends AbstractBean {
     }
 
     @Inject
-    public void setFacesUtilities(FacesUtilities facesUtilities) {
-        this.facesUtilities = facesUtilities;
+    public void setFacesUtils(FacesUtils facesUtils) {
+        this.facesUtils = facesUtils;
     }
 
     @PostConstruct
@@ -85,23 +85,23 @@ public class RegisterBean extends AbstractBean {
 
     public void doRegister() {
         if (!getPassword().equals(getPasswordConfirm())) {
-            facesUtilities.addMessage(FacesMessage.SEVERITY_ERROR, PASSWORD_MISMATCH);
+            facesUtils.addMessage(FacesMessage.SEVERITY_ERROR, PASSWORD_MISMATCH);
             return;
         }
 
         try {
             if (userService.isUserNameExists(getUsername())) {
-                facesUtilities.addMessage(FacesMessage.SEVERITY_WARN, String.format(USERNAME_EXISTS, getUsername()));
+                facesUtils.addMessage(FacesMessage.SEVERITY_WARN, String.format(USERNAME_EXISTS, getUsername()));
                 return;
             }
             if (userService.isUserMailExists(getEmail())) {
-                facesUtilities.addMessage(FacesMessage.SEVERITY_WARN, String.format(USERMAIL_EXISTS, getEmail()));
+                facesUtils.addMessage(FacesMessage.SEVERITY_WARN, String.format(USERMAIL_EXISTS, getEmail()));
                 return;
             }
             userService.registerUser(getUsername(), getEmail(), getPassword().toCharArray());
-            facesUtilities.addMessage(FacesMessage.SEVERITY_INFO, REGISTER_SUCCESS);
+            facesUtils.addMessage(FacesMessage.SEVERITY_INFO, REGISTER_SUCCESS);
         } catch (Exception e) {
-            facesUtilities.addMessage(FacesMessage.SEVERITY_ERROR, FAILED_TO_REGISTER);
+            facesUtils.addMessage(FacesMessage.SEVERITY_ERROR, FAILED_TO_REGISTER);
             LOGGER.error(FAILED_TO_REGISTER, e);
         }
     }

@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * @author Wojciech Zankowski
  */
-public class FacesUtilities {
+public class FacesUtils {
 
     public void setContextAttribute(String attributeName, Object attribute) {
         ((ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext()).setAttribute(attributeName, attribute);

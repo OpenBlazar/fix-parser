@@ -13,7 +13,7 @@ import java.util.Collection;
 /**
  * @author Wojciech Zankowski
  */
-public class ShiroUtilities {
+public class ShiroUtils {
 
     public UserDetails getCurrentUserDetails() {
         return (UserDetails) SecurityUtils.getSubject().getPrincipal();

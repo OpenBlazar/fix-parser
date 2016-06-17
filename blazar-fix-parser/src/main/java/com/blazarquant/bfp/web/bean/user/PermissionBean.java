@@ -2,16 +2,12 @@ package com.blazarquant.bfp.web.bean.user;
 
 import com.blazarquant.bfp.data.user.Permission;
 import com.blazarquant.bfp.data.user.UserDetails;
-import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
-import com.blazarquant.bfp.web.util.ShiroUtilities;
+import com.blazarquant.bfp.web.util.ShiroUtils;
 import com.google.inject.Inject;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
 /**
@@ -21,7 +17,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class PermissionBean extends AbstractBean {
 
-    private ShiroUtilities shiroUtilities;
+    private ShiroUtils shiroUtils;
 
     @PostConstruct
     public void init() {
@@ -29,24 +25,24 @@ public class PermissionBean extends AbstractBean {
     }
 
     @Inject
-    public void setShiroUtilities(ShiroUtilities shiroUtilities) {
-        this.shiroUtilities = shiroUtilities;
+    public void setShiroUtils(ShiroUtils shiroUtils) {
+        this.shiroUtils = shiroUtils;
     }
 
     public boolean isAuthenticated() {
-        return shiroUtilities.isUserAuthenticated();
+        return shiroUtils.isUserAuthenticated();
     }
 
     public boolean isRemembered() {
-        return shiroUtilities.isUserRemembered();
+        return shiroUtils.isUserRemembered();
     }
 
     public boolean isProOrEnterprise() {
-        return shiroUtilities.isPermitted(Permission.PRO.name()) || shiroUtilities.isPermitted(Permission.ENTERPRISE.name());
+        return shiroUtils.isPermitted(Permission.PRO.name()) || shiroUtils.isPermitted(Permission.ENTERPRISE.name());
     }
 
     public String getUserName() {
-        UserDetails userDetails = shiroUtilities.getCurrentUserDetails();
+        UserDetails userDetails = shiroUtils.getCurrentUserDetails();
         if (userDetails != null) {
             return userDetails.getUserName();
         } else {

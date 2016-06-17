@@ -1,7 +1,7 @@
 package com.blazarquant.bfp.web;
 
-import com.blazarquant.bfp.web.util.FacesUtilities;
-import com.blazarquant.bfp.web.util.ShiroUtilities;
+import com.blazarquant.bfp.web.util.FacesUtils;
+import com.blazarquant.bfp.web.util.ShiroUtils;
 import com.google.inject.Singleton;
 import com.google.inject.servlet.ServletModule;
 import org.apache.shiro.guice.web.GuiceShiroFilter;
@@ -15,7 +15,7 @@ public class WebModule extends ServletModule {
     protected void configureServlets() {
         filter("/*").through(GuiceShiroFilter.class);
 
-        binder().bind(ShiroUtilities.class).in(Singleton.class);
-        binder().bind(FacesUtilities.class).in(Singleton.class);
+        binder().bind(ShiroUtils.class).in(Singleton.class);
+        binder().bind(FacesUtils.class).in(Singleton.class);
     }
 }

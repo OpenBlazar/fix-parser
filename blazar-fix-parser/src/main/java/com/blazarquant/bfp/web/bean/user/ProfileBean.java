@@ -9,8 +9,8 @@ import com.blazarquant.bfp.fix.parser.definition.data.XMLLoaderType;
 import com.blazarquant.bfp.services.parser.ParserService;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
-import com.blazarquant.bfp.web.util.FacesUtilities;
-import com.blazarquant.bfp.web.util.ShiroUtilities;
+import com.blazarquant.bfp.web.util.FacesUtils;
+import com.blazarquant.bfp.web.util.ShiroUtils;
 import com.google.inject.Inject;
 import org.apache.shiro.subject.Subject;
 import org.primefaces.model.UploadedFile;
@@ -40,8 +40,8 @@ public class ProfileBean extends AbstractBean {
     private ParserService parserService;
     private UserService userService;
 
-    private ShiroUtilities shiroUtilities;
-    private FacesUtilities facesUtilities;
+    private ShiroUtils shiroUtils;
+    private FacesUtils facesUtils;
 
     private ExecutorService threadService = Executors.newSingleThreadExecutor();
 
@@ -62,7 +62,7 @@ public class ProfileBean extends AbstractBean {
     @Override
     public void init() {
         super.init();
-        if (shiroUtilities.isUserAuthenticated()) {
+        if (shiroUtils.isUserAuthenticated()) {
             doReloadProviders();
             doLoadDefaultParameters();
             doLoadPermissions();
@@ -80,22 +80,22 @@ public class ProfileBean extends AbstractBean {
     }
 
     @Inject
-    public void setShiroUtilities(ShiroUtilities shiroUtilities) {
-        this.shiroUtilities = shiroUtilities;
+    public void setShiroUtils(ShiroUtils shiroUtils) {
+        this.shiroUtils = shiroUtils;
     }
 
     @Inject
-    public void setFacesUtilities(FacesUtilities facesUtilities) {
-        this.facesUtilities = facesUtilities;
+    public void setFacesUtils(FacesUtils facesUtils) {
+        this.facesUtils = facesUtils;
     }
 
     private void doLoadDefaultParameters() {
-        ProviderDescriptor savedProvider = (ProviderDescriptor) userService.getUserSettingsCache().getObject(shiroUtilities.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER);
+        ProviderDescriptor savedProvider = (ProviderDescriptor) userService.getUserSettingsCache().getObject(shiroUtils.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER);
         if (savedProvider != null) {
             defaultProvider = savedProvider;
         }
 
-        Boolean storeMessages = userService.getUserSettingsCache().getBoolean(shiroUtilities.getCurrentUserID(), UserSetting.STORE_MESSAGES);
+        Boolean storeMessages = userService.getUserSettingsCache().getBoolean(shiroUtils.getCurrentUserID(), UserSetting.STORE_MESSAGES);
         if (storeMessages != null) {
             this.storeMessages = storeMessages;
         }
@@ -103,20 +103,20 @@ public class ProfileBean extends AbstractBean {
 
     private void doReloadProviders() {
         providerDescriptors = parserService.getProviders(
-                shiroUtilities.getCurrentUserID(),
-                shiroUtilities.isPermitted(Permission.PRO.name()) || shiroUtilities.isPermitted(Permission.ENTERPRISE.name())
+                shiroUtils.getCurrentUserID(),
+                shiroUtils.isPermitted(Permission.PRO.name()) || shiroUtils.isPermitted(Permission.ENTERPRISE.name())
         );
     }
 
     private void doLoadPermissions() {
         permissions = Arrays.stream(Permission.values())
-                .filter(permission -> shiroUtilities.isPermitted(permission.name()))
+                .filter(permission -> shiroUtils.isPermitted(permission.name()))
                 .map(Permission::name)
                 .collect(Collectors.joining(", "));
     }
 
     public void doAssignPermission() {
-        if (shiroUtilities.isPermitted(Permission.ENTERPRISE.name())) {
+        if (shiroUtils.isPermitted(Permission.ENTERPRISE.name())) {
             UserDetails userDetails = userService.getUserDetailsByMail(userMail);
             if (userDetails != null) {
                 userService.addUserPermission(userDetails.getUserID(), Permission.PRO);
@@ -127,20 +127,20 @@ public class ProfileBean extends AbstractBean {
     }
 
     public void doClearHistory() {
-        if (shiroUtilities.isUserAuthenticated()) {
-            threadService.submit(() -> parserService.clearHistory(shiroUtilities.getCurrentUserID()));
+        if (shiroUtils.isUserAuthenticated()) {
+            threadService.submit(() -> parserService.clearHistory(shiroUtils.getCurrentUserID()));
         }
     }
 
     public void handleFileUpload() throws Exception {
-        Subject currentUser = shiroUtilities.getSubject();
+        Subject currentUser = shiroUtils.getSubject();
         if (!currentUser.isAuthenticated()) {
             return;
         }
 
-        if (!(shiroUtilities.isPermitted(Permission.PRO.name()) || shiroUtilities.isPermitted(Permission.ENTERPRISE.name()))
+        if (!(shiroUtils.isPermitted(Permission.PRO.name()) || shiroUtils.isPermitted(Permission.ENTERPRISE.name()))
                 && providerDescriptors.size() >= 2) {
-            facesUtilities.addMessage(FacesMessage.SEVERITY_INFO, DICTIONARIES_LIMIT);
+            facesUtils.addMessage(FacesMessage.SEVERITY_INFO, DICTIONARIES_LIMIT);
             return;
         }
 
@@ -156,20 +156,20 @@ public class ProfileBean extends AbstractBean {
 
             doReloadProviders();
 
-            facesUtilities.addMessage(FacesMessage.SEVERITY_INFO, String.format(PROVIDER_UPLOADED, providerName));
+            facesUtils.addMessage(FacesMessage.SEVERITY_INFO, String.format(PROVIDER_UPLOADED, providerName));
         }
     }
 
     public void doRemoveProvider(ProviderDescriptor providerDescriptor) {
-        if (shiroUtilities.isUserAuthenticated()) {
-            if (parserService.removeProvider(shiroUtilities.getCurrentUserID(), providerDescriptor)) {
+        if (shiroUtils.isUserAuthenticated()) {
+            if (parserService.removeProvider(shiroUtils.getCurrentUserID(), providerDescriptor)) {
                 if (providerDescriptor.equals(defaultProvider)) {
-                    userService.getUserSettingsCache().setParameter(shiroUtilities.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER, DefaultFixDefinitionProvider.DESCRIPTOR);
+                    userService.getUserSettingsCache().setParameter(shiroUtils.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER, DefaultFixDefinitionProvider.DESCRIPTOR);
                 }
 
                 defaultProvider = DefaultFixDefinitionProvider.DESCRIPTOR;
             } else {
-                facesUtilities.addMessage(FacesMessage.SEVERITY_WARN, String.format(FAILED_TO_REMOVE, providerDescriptor));
+                facesUtils.addMessage(FacesMessage.SEVERITY_WARN, String.format(FAILED_TO_REMOVE, providerDescriptor));
             }
         }
     }
@@ -220,8 +220,8 @@ public class ProfileBean extends AbstractBean {
     }
 
     private void saveParameter(ProviderDescriptor defaultProvider) {
-        if (shiroUtilities.isUserAuthenticated()) {
-            this.userService.getUserSettingsCache().setParameter(shiroUtilities.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER, defaultProvider);
+        if (shiroUtils.isUserAuthenticated()) {
+            this.userService.getUserSettingsCache().setParameter(shiroUtils.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER, defaultProvider);
         }
     }
 
@@ -243,8 +243,8 @@ public class ProfileBean extends AbstractBean {
     }
 
     private void saveParameter(Boolean storeMessages) {
-        if (shiroUtilities.isUserAuthenticated()) {
-            this.userService.getUserSettingsCache().setParameter(shiroUtilities.getCurrentUserID(), UserSetting.STORE_MESSAGES, storeMessages);
+        if (shiroUtils.isUserAuthenticated()) {
+            this.userService.getUserSettingsCache().setParameter(shiroUtils.getCurrentUserID(), UserSetting.STORE_MESSAGES, storeMessages);
         }
     }
 
@@ -257,6 +257,6 @@ public class ProfileBean extends AbstractBean {
     }
 
     public boolean isEnterprise() {
-        return shiroUtilities.isPermitted(Permission.ENTERPRISE.name());
+        return shiroUtils.isPermitted(Permission.ENTERPRISE.name());
     }
 }

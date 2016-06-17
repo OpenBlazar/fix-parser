@@ -7,7 +7,7 @@ import com.blazarquant.bfp.data.user.UserID;
 import com.blazarquant.bfp.services.payment.PaymentService;
 import com.blazarquant.bfp.services.user.UserService;
 import com.blazarquant.bfp.web.bean.AbstractBean;
-import com.blazarquant.bfp.web.util.ShiroUtilities;
+import com.blazarquant.bfp.web.util.ShiroUtils;
 import com.google.inject.Inject;
 
 import javax.annotation.PostConstruct;
@@ -23,7 +23,7 @@ public class PaymentBean extends AbstractBean {
 
     private PaymentService paymentService;
     private UserService userService;
-    private ShiroUtilities shiroUtilities;
+    private ShiroUtils shiroUtils;
 
     private String paymentToken;
 
@@ -44,14 +44,14 @@ public class PaymentBean extends AbstractBean {
     }
 
     @Inject
-    public void setShiroUtilities(ShiroUtilities shiroUtilities) {
-        this.shiroUtilities = shiroUtilities;
+    public void setShiroUtils(ShiroUtils shiroUtils) {
+        this.shiroUtils = shiroUtils;
     }
 
     public void doConfirmPayment() throws PaymentException {
         SubscriptionPlan subscriptionPlan = paymentService.confirmPayment(paymentToken);
-        if (subscriptionPlan != null && shiroUtilities.isUserAuthenticated()) {
-            UserID userID = shiroUtilities.getCurrentUserID();
+        if (subscriptionPlan != null && shiroUtils.isUserAuthenticated()) {
+            UserID userID = shiroUtils.getCurrentUserID();
             Permission permission = Permission.valueOf(subscriptionPlan.name());
             switch (permission) {
                 case ENTERPRISE:
@@ -64,7 +64,7 @@ public class PaymentBean extends AbstractBean {
                 default:
                     break;
             }
-            shiroUtilities.clearCachedAuthorizationInfo();
+            shiroUtils.clearCachedAuthorizationInfo();
         }
     }
 
