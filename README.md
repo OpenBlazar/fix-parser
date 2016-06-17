@@ -1,4 +1,4 @@
-# Blazar Fix Parser
+# Blazar FIX Parser
 
 [![Build Status](https://travis-ci.org/OpenBlazar/blazar-fix-parser.svg?branch=master)](https://travis-ci.org/OpenBlazar/blazar-fix-parser) 
 [![codecov.io](https://codecov.io/github/OpenBlazar/blazar-fix-parser/coverage.svg?branch=master)](https://codecov.io/github/OpenBlazar/blazar-fix-parser?branch=master)
