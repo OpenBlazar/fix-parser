@@ -51,24 +51,22 @@
         <javax.el>3.0.0</javax.el>
         <javax.servlet.api>3.1.0</javax.servlet.api>
         <jstl>1.2</jstl>
-        <primefaces>6.0.RC3</primefaces>
+        <primefaces>6.0</primefaces>
         <primefaces.bootstrap>1.0.10</primefaces.bootstrap>
         <version.picketlink.javaee.bom>2.7.1.Final</version.picketlink.javaee.bom>
         <taglibs.standard>1.2.5</taglibs.standard>
 
         <mybatis>3.4.0</mybatis>
         <mybati.guice>3.8.0-SNAPSHOT</mybati.guice>
-        <mariadb.java.client>1.4.3</mariadb.java.client>
+        <mariadb.java.client>1.4.6</mariadb.java.client>
         <commons.dbcp>1.4</commons.dbcp>
 
         <guice>4.0</guice>
         <guice.multibindings>4.0</guice.multibindings>
 
-        <shiro>1.2.4</shiro>
+        <shiro>1.2.5</shiro>
 
-        <log4j.core>2.5</log4j.core>
-        <log4j.slf4j>2.5</log4j.slf4j>
-        <log4j.web>2.5</log4j.web>
+        <log4j>2.6.1</log4j>
 
         <junit>4.12</junit>
 
@@ -175,12 +173,6 @@
             </dependency>
 
             <dependency>
-                <groupId>org.primefaces.themes</groupId>
-                <artifactId>bootstrap</artifactId>
-                <version>${primefaces.bootstrap}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.ocpsoft.rewrite</groupId>
                 <artifactId>rewrite-servlet</artifactId>
                 <version>2.0.12.Final</version>
@@ -278,7 +270,7 @@
             <dependency>
                 <groupId>commons-fileupload</groupId>
                 <artifactId>commons-fileupload</artifactId>
-                <version>1.3.1</version>
+                <version>1.3.2</version>
             </dependency>
 
             <!-- Mail -->
@@ -302,13 +294,13 @@
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-core</artifactId>
-                <version>${log4j.core}</version>
+                <version>${log4j}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-slf4j-impl</artifactId>
-                <version>${log4j.slf4j}</version>
+                <version>${log4j}</version>
             </dependency>
 
             <!-- test libraries -->
@@ -406,7 +398,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>3.0.1</version>
                 </plugin>
 
                 <plugin>
