@@ -1,4 +1,4 @@
-package com.blazarquant.bfp.core.payments.paypal;
+package com.blazarquant.bfp.core.payments.paypal.util;
 
 import com.blazarquant.bfp.core.payments.paypal.util.PayPalAgreementFactory;
 import com.blazarquant.bfp.data.payments.paypal.PayPalCountryCodes;
