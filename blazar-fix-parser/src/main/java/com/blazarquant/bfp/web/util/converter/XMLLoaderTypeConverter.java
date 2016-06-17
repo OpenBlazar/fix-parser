@@ -20,6 +20,10 @@ public class XMLLoaderTypeConverter implements Converter {
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-        return ((XMLLoaderType) value).name();
+        if (value instanceof XMLLoaderType) {
+            return ((XMLLoaderType) value).name();
+        } else {
+            throw new IllegalArgumentException("Failed to convert XMLLoaderType. Unexpected object type.");
+        }
     }
 }

@@ -21,7 +21,11 @@ public class ProviderDescriptorConverter implements Converter {
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-        return FixDefinitionProvidersFileUtility.createProviderFileName((ProviderDescriptor) value);
+        if (value instanceof ProviderDescriptor) {
+            return FixDefinitionProvidersFileUtility.createProviderFileName((ProviderDescriptor) value);
+        } else {
+            throw new IllegalArgumentException("Failed to convert ProviderDescriptor. Unexpected object type.");
+        }
     }
 
 }

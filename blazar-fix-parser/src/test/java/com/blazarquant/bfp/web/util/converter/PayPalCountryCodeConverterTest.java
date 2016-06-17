@@ -50,5 +50,5 @@ public class PayPalCountryCodeConverterTest {
             assertEquals("Failed to convert PayPalCountryCode. Unexpected object type.", e.getMessage());
         }
     }
-    
+
 }
