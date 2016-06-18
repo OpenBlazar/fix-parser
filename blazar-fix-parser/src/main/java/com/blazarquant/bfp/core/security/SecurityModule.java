@@ -37,9 +37,6 @@ public class SecurityModule extends ShiroWebModule {
 
     @Override
     protected void configureShiroWeb() {
-        SettingsManager settingsManager = new SettingsManager();
-        Names.bindProperties(binder(), settingsManager.getProperties());
-
         bind(CredentialsMatcher.class).to(BcryptCredentialsMatcher.class);
         bindRealm().to(DatabaseUserRealm.class).asEagerSingleton();
 

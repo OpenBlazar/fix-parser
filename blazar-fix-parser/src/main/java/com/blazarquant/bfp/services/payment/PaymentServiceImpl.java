@@ -1,8 +1,10 @@
 package com.blazarquant.bfp.services.payment;
 
+import com.blazarquant.bfp.common.PathUtils;
 import com.blazarquant.bfp.core.payments.SubscriptionPlan;
 import com.blazarquant.bfp.core.payments.exception.PaymentException;
 import com.blazarquant.bfp.core.payments.paypal.PayPalSubscriptionService;
+import com.blazarquant.bfp.core.security.util.SettingsManager;
 import com.blazarquant.bfp.data.user.UserAddress;
 import com.paypal.base.rest.PayPalRESTException;
 
@@ -13,13 +15,15 @@ import java.io.IOException;
  * @author Wojciech Zankowski
  */
 public class PaymentServiceImpl implements PaymentService {
-
-    private static final String CONFIG_PATH = System.getProperty("jboss.server.base.dir") + "/config/paypal";
+    
     private final PayPalSubscriptionService payPalSubscriptionService;
 
     public PaymentServiceImpl() throws PayPalRESTException, IOException {
         payPalSubscriptionService = new PayPalSubscriptionService(
-                new File(CONFIG_PATH, "config.properties"));
+                new File(
+                        PathUtils.joinPath(SettingsManager.getInstance().getPathResolver().getAppDirectory(), "config", "paypal"),
+                        "config.properties"
+                ));
     }
 
     @Override

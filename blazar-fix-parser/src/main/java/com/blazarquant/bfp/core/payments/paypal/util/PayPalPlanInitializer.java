@@ -1,5 +1,7 @@
 package com.blazarquant.bfp.core.payments.paypal.util;
 
+import com.blazarquant.bfp.common.PathUtils;
+import com.blazarquant.bfp.core.security.util.SettingsManager;
 import com.google.gson.internal.StringMap;
 import com.paypal.api.payments.Patch;
 import com.paypal.api.payments.Plan;
@@ -16,7 +18,7 @@ import java.util.Arrays;
 public class PayPalPlanInitializer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PayPalPlanInitializer.class);
-    private static final String CONFIG_PATH = System.getProperty("jboss.server.base.dir") + "/config/paypal/";
+    private static final String CONFIG_PATH = PathUtils.joinPath(SettingsManager.getInstance().getPathResolver().getAppDirectory(), "config", "paypal");
 
     private final PayPalJSONLoader jsonLoader;
     private final String accessToken;
@@ -39,7 +41,7 @@ public class PayPalPlanInitializer {
     }
 
     public Plan initializeEnterprisePlan() throws IOException, PayPalRESTException {
-        Plan plan = jsonLoader.load(CONFIG_PATH + "bilingplan_enterprise.json", Plan.class);
+        Plan plan = jsonLoader.load(PathUtils.joinPath(CONFIG_PATH, "bilingplan_enterprise.json"), Plan.class);
         plan = plan.create(accessToken);
         LOGGER.error(Plan.getLastResponse());
 
@@ -49,7 +51,7 @@ public class PayPalPlanInitializer {
     }
 
     public Plan initializeProPlan() throws IOException, PayPalRESTException {
-        Plan plan = jsonLoader.load(CONFIG_PATH + "bilingplan_pro.json", Plan.class);
+        Plan plan = jsonLoader.load(PathUtils.joinPath(CONFIG_PATH, "bilingplan_pro.json"), Plan.class);
         plan = plan.create(accessToken);
         LOGGER.error(Plan.getLastResponse());
 

@@ -1,5 +1,9 @@
 package com.blazarquant.bfp.core.security.util;
 
+import com.blazarquant.bfp.common.BlazarFixParserConstants;
+import com.blazarquant.bfp.common.Directories;
+import com.blazarquant.bfp.common.PathResolver;
+import com.blazarquant.bfp.common.PathUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,22 +17,32 @@ import java.util.Properties;
  */
 public class SettingsManager {
 
-    private static final String CONFIG_PATH = System.getProperty("jboss.server.base.dir") + "/config/blazarfixparser.properties";
     private static final Logger LOGGER = LoggerFactory.getLogger(SettingsManager.class);
 
-    private static Properties properties;
+    private final PathResolver pathResolver = new PathResolver(BlazarFixParserConstants.WIDLFLY_BASE_DIR);
+    private Properties properties;
 
-    public SettingsManager() {
-        this.properties = loadProperties();
+    private static class SettingsManagerHolder {
+        static final SettingsManager INSTANCE = new SettingsManager();
     }
 
-    private Properties loadProperties() {
+    public static SettingsManager getInstance() {
+        return SettingsManagerHolder.INSTANCE;
+    }
+
+    private SettingsManager() {
+        this.properties = loadProperties(
+                PathUtils.joinPath(pathResolver.getAppDirectory(), Directories.CONFIG.getDirName(), "blazarfixparser.properties")
+        );
+    }
+
+    private Properties loadProperties(String configPath) {
         Properties properties = null;
-        try (FileInputStream inputStream = new FileInputStream(new File(CONFIG_PATH))) {
+        try (FileInputStream inputStream = new FileInputStream(new File(configPath))) {
             properties = new Properties();
             properties.load(inputStream);
         } catch (IOException e) {
-            LOGGER.error("Failed to load database properties. {}", e);
+            LOGGER.error("Failed to load properties. {}", e);
         }
         return properties;
     }
@@ -37,12 +51,7 @@ public class SettingsManager {
         return properties;
     }
 
-    public String getProperty(Settings setting) {
-        String property = properties.getProperty(setting.getProperty());
-        if (property == null) {
-            throw new IllegalArgumentException("Illegal property name. Property " + setting.name() + " does not seem to exists.");
-        }
-        return property;
+    public PathResolver getPathResolver() {
+        return pathResolver;
     }
-
 }

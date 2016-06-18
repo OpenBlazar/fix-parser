@@ -1,5 +1,6 @@
 package com.blazarquant.bfp.core.parser;
 
+import com.blazarquant.bfp.core.security.util.SettingsManager;
 import com.blazarquant.bfp.data.user.UserID;
 import com.blazarquant.bfp.fix.parser.definition.data.ProviderDescriptor;
 import com.blazarquant.bfp.fix.parser.definition.data.XMLLoaderType;
@@ -11,7 +12,7 @@ import java.io.File;
  */
 public class FixDefinitionProvidersFileUtility {
 
-    private static final String MAIN_DIR = System.getProperty("jboss.server.base.dir") + File.separator + "dictionaries";
+    private static final String MAIN_DIR = SettingsManager.getInstance().getPathResolver().getAppDirectory() + File.separator + "dictionaries";
     private static final String DELIMITER = "#";
 
     private static final int PROVIDER_LOADER_TYPE = 0;
