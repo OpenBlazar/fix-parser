@@ -4,6 +4,7 @@ import com.blazarquant.bfp.core.security.config.BcryptCredentialsMatcher;
 import com.blazarquant.bfp.core.security.config.DatabaseUserRealm;
 import com.blazarquant.bfp.core.security.config.FixedCookieRememberMeManager;
 import com.blazarquant.bfp.core.security.config.ShiroMethodInterceptor;
+import com.blazarquant.bfp.core.security.util.SettingsManager;
 import com.blazarquant.bfp.data.user.Role;
 import com.blazarquant.bfp.web.util.BlazarURL;
 import com.google.inject.Key;
@@ -36,6 +37,9 @@ public class SecurityModule extends ShiroWebModule {
 
     @Override
     protected void configureShiroWeb() {
+        SettingsManager settingsManager = new SettingsManager();
+        Names.bindProperties(binder(), settingsManager.getProperties());
+
         bind(CredentialsMatcher.class).to(BcryptCredentialsMatcher.class);
         bindRealm().to(DatabaseUserRealm.class).asEagerSingleton();
 
