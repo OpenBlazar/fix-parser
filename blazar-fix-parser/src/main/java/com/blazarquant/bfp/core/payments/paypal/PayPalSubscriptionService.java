@@ -29,19 +29,17 @@ public class PayPalSubscriptionService implements SubscriptionService {
     private final PayPalPlanManager payPalPlanManager;
     private final PayPalAgreementManager payPalAgreementManager;
     private final PayPalAgreementFactory agreementFactory;
-    private final OAuthTokenCredential tokenCredential;
+    private OAuthTokenCredential tokenCredential;
 
     private final Object accessTokenLock = new Object();
 
     private PayPalAccessTokenRefreshingThread payPalAccessTokenRefreshingThread;
-    private String accessToken;
 
     public PayPalSubscriptionService(File payPalConfig) throws PayPalRESTException, IOException {
         this.tokenCredential = PayPalResource.initConfig(payPalConfig);
         this.payPalPlanManager = new PayPalPlanManager(tokenCredential.getAccessToken());
         this.agreementFactory = new PayPalAgreementFactory();
         this.payPalAgreementManager = new PayPalAgreementManager();
-        this.accessToken = tokenCredential.getAccessToken();
         startPayPalAccessTokenRefreshingThread();
     }
 
@@ -53,7 +51,7 @@ public class PayPalSubscriptionService implements SubscriptionService {
                     userAddress
             );
             synchronized (accessTokenLock) {
-                agreement = agreement.create(accessToken);
+                agreement = agreement.create(tokenCredential.getAccessToken());
             }
 
             payPalAgreementManager.saveAgreement(agreement, subscriptionPlan);
@@ -77,7 +75,7 @@ public class PayPalSubscriptionService implements SubscriptionService {
             Agreement agreement = payPalAgreementManager.getAgreement(token);
             if (agreement != null) {
                 synchronized (accessTokenLock) {
-                    agreement = agreement.execute(accessToken);
+                    agreement = agreement.execute(tokenCredential.getAccessToken());
                 }
                 final SubscriptionPlan subscriptionPlan = payPalAgreementManager.getSubscriptionTypeForToken(token);
 
@@ -93,21 +91,20 @@ public class PayPalSubscriptionService implements SubscriptionService {
     }
 
     private void startPayPalAccessTokenRefreshingThread() {
-        payPalAccessTokenRefreshingThread = new PayPalAccessTokenRefreshingThread(tokenCredential);
+        payPalAccessTokenRefreshingThread = new PayPalAccessTokenRefreshingThread();
         payPalAccessTokenRefreshingThread.start();
     }
 
     private class PayPalAccessTokenRefreshingThread extends Thread {
 
         private static final String THREAD_NAME = "PayPal-AccessToken-Refreshing-Thread";
-        private final long REFRESH_DELAY = TimeUnit.HOURS.toMillis(2);
+        private final long REFRESH_DELAY = TimeUnit.MINUTES.toMillis(2);
+        private final long EXPIRE_TIME = 10000;
 
         private AtomicBoolean stop = new AtomicBoolean(false);
-        private OAuthTokenCredential tokenCredential;
 
-        private PayPalAccessTokenRefreshingThread(OAuthTokenCredential tokenCredential) {
+        private PayPalAccessTokenRefreshingThread() {
             super(THREAD_NAME);
-            this.tokenCredential = tokenCredential;
         }
 
         public void sendStop() {
@@ -124,8 +121,10 @@ public class PayPalSubscriptionService implements SubscriptionService {
                     }
                     synchronized (accessTokenLock) {
                         try {
-                            accessToken = tokenCredential.getAccessToken();
-                        } catch (PayPalRESTException e) {
+                            if (tokenCredential.expiresIn() <= EXPIRE_TIME) {
+                                tokenCredential = PayPalResource.getOAuthTokenCredential();
+                            }
+                        } catch (Exception e) {
                             LOGGER.error("Failed to generate new access token.", e);
                         }
                     }
