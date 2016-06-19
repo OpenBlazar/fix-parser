@@ -7,7 +7,7 @@
 
 # TODO
 
-* Advanced Admin Panel
+* Admin Panel
 * FAST support
 * SBE FIX support
 * Improve UX
