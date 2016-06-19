@@ -66,6 +66,10 @@ OneMessageDecoderBenchmark.oneMessageDecoderBenchmark  thrpt   50   126210,834 Â
 OneMessageEncoderBenchmark.oneMessageEncoderBenchmark  thrpt   50  1092471,295 Â± 7138,211  ops/s
 ```
 
+# JavaDocs
+
+To see JavaDocs click [here](http://openblazar.github.io/blazar-fix-parser/).
+
 # TODO
 
 * Increase unit test coverage
