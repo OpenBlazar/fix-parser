@@ -24,6 +24,36 @@ Technology stack may feel odd for some developers, but as I said choice was made
 
 # FIX Parser
 
+FIX Parser was meant to find FIX messages in large chunks of application logs without any user's input. That's why parser has couple steps to perform before giving an output. First step is to find any FIX message in given input, then based on the message field delimiter is resolved and then we parse it to readable form.
+
+1. To find first FIX message we use regular expression `"[^0-9a-zA-Z!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?\\s]*8=FIX(.*?)[^0-9]10=\\d{3}.?"`. To understand this regexp we have to know some basic facts about FIX messages strucutre. Every FIX message starts with header and ends with tail, so it looks like this:
+
+  ``` 8=FIX.4.2#9=41#35=0 ... #10=052 ``` 
+
+  First field of the FIX messages is always BeginString (tag 8) indicating used FIX Specification version used in message. The last field is Checksum (tag 10).
+
+2. If we found the message then field delimiter can be resolved. Once again resolver relies on FIX message specification
+
+  ``` 8=FIX.4.2#9=41#35=0 ...```
+  
+  Delimiter is extracted based on fields BodyLength (tag 9) and MsgType (tag 35). As BodyLength value is always numerical and those tags are always in the same sequence we can easily extract delimiter. In case of this example delimiter is `#`.
+  
+3. Last thing to do is transform FIX messages to readable form. FIX message are splitted by field delimiter and then using DefinitionProvider every field is described with name and value description.
+ 
+# Custom dictionaries
+
+Blazar FIX Parse supports custom dictionaries. It is extremly helpful to work with brokers that provides extended FIX definitions and probably every FIX broker did extend its FIX specification. At the moment Blazar FIX parser supports custom dictionaries in QuickFIX format. Whole dictionaries are not required, `<messages>` and `<components>` tags are not interpreted, only `<fields>` ones.
+
+```
+<fields>
+    <field number="1" name="Account" type="STRING"/>
+    <field number="2" name="AdvId" type="STRING"/>
+    .
+    .
+    .
+</fields>
+```
+
 # TODO
 
 * Increase unit test coverage
