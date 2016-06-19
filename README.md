@@ -13,9 +13,14 @@ Main goal of this project was to get familiar with different technologies than I
 
 # Stack
 
-Technology stack may feel odd for more experience developers, but as I said choice was made to choose more uncommon technologies.
+Technology stack may feel odd for more experience developers, but as I said choice was made to choose older or less common technologies, so no Spring, Hibernate and AngularJS. What I decided to use is:
 
-
+* JSF 2 - Heavyweight web framework. People say it is relic technology and javascript frameworks with REST services are way to go for the future, but with Java EE8 and JSF 2.3 it all can turn around. With extensions like primefaces and prettyfaces it wasn't hard to work with it.
+* Primefaces - Extension that really eases up working with JSF, with new 6.0 version it makes JSF looks modern. 
+* Prettyfaces - I used it to short URLs, cannot say bad thing.
+* Shiro - Alternative to Spring Security and PicketLink. It has some security pitfalls with default configuration, but they can be patched after little googling. Configuration file can be avoided if we mix framework with e.g. Google Guice. 
+* MyBatis - More alternative to Spring JDBC than Hibernate, but it is decent framework for database connection. I used their Annotation API instead of configuration file and it worked really well. Some people say that clear SQL queries in Java code can be hard to mantain and I would agree with them after all.
+* Guice - In-Java lightweight dependency injection framework. Before I had only experience with Spring XML DI, so it was quite a new thing for me. After first little confusion I really enjoyed working with Guice, definetly will use it in future projects.
 
 # FIX Parser
 
