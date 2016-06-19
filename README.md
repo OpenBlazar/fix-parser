@@ -56,6 +56,8 @@ Blazar FIX Parse supports custom dictionaries. It is extremly helpful to work wi
 
 # Benchmark
 
+There are available 4 benchmarks for FIX parser. 2 benchmarks for 'Huge Chunk' i.e. file with 800 lines and 400 messages inside and 2 benchmarks for single fix message. For closer look up to benchmarks code see blazar-fix-parser-performance module.
+
 ```
 Benchmark                                               Mode  Cnt        Score      Error  Units
 HugeChunkDecoderBenchmark.hugeChunkDecoderBenchmark    thrpt   15      157,784 Â±   12,881  ops/s
@@ -67,7 +69,7 @@ OneMessageEncoderBenchmark.oneMessageEncoderBenchmark  thrpt   50  1092471,295 Â
 # TODO
 
 * Increase unit test coverage
-* Integartion tests
+* Integration tests
 * Clean up
 * Admin Panel
 * FAST support
