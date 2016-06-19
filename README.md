@@ -13,7 +13,7 @@ Main goal of this project was to get familiar with different technologies than I
 
 # Stack
 
-Technology stack may feel odd for more experience developers, but as I said choice was made to choose older or less common technologies, so no Spring, Hibernate and AngularJS. What I decided to use is:
+Technology stack may feel odd for some developers, but as I said choice was made to choose older or less common technologies, so no Spring, Hibernate and AngularJS. What I decided to use is:
 
 * [JSF 2](https://javaserverfaces.java.net/) - Heavyweight web framework. People say it is relic technology and javascript frameworks with REST services are way to go for the future, but with Java EE8 and JSF 2.3 it all can turn around. With extensions like primefaces and prettyfaces it wasn't hard to work with it.
 * [Primefaces](https://github.com/primefaces/primefaces) - UI extension that really eases up working with JSF, with new 6.0 version it makes JSF looks modern. 
