@@ -54,6 +54,16 @@ Blazar FIX Parse supports custom dictionaries. It is extremly helpful to work wi
 </fields>
 ```
 
+# Benchmark
+
+```
+Benchmark                                               Mode  Cnt        Score      Error  Units
+HugeChunkDecoderBenchmark.hugeChunkDecoderBenchmark    thrpt   15      157,784 ±   12,881  ops/s
+HugeChunkEncoderBenchmark.hugeChunkEncoderBenchmark    thrpt   15     4273,936 ±  266,361  ops/s
+OneMessageDecoderBenchmark.oneMessageDecoderBenchmark  thrpt   50   126210,834 ± 3619,314  ops/s
+OneMessageEncoderBenchmark.oneMessageEncoderBenchmark  thrpt   50  1092471,295 ± 7138,211  ops/s
+```
+
 # TODO
 
 * Increase unit test coverage
