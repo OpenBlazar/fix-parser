@@ -101,7 +101,8 @@ public class ParserServiceImpl implements ParserService {
 
     @Override
     public FixDefinitionProvider getDefinitionProvider(ProviderDescriptor providerDescriptor, UserID userID, boolean isPermitted) {
-        if (isPermitted && definitionProviderManager.getProDefinitionProviders().keySet().contains(providerDescriptor)) {
+        if (isPermitted && providerDescriptor != null
+                && definitionProviderManager.getProDefinitionProviders().keySet().contains(providerDescriptor)) {
             return definitionProviderFactory.getProDefinitionProvider(providerDescriptor);
         } else {
             return definitionProviderFactory.getDefinitionProvider(userID, providerDescriptor);

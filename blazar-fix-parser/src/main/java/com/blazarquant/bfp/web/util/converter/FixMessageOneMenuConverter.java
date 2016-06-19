@@ -2,6 +2,7 @@ package com.blazarquant.bfp.web.util.converter;
 
 import com.blazarquant.bfp.data.user.Permission;
 import com.blazarquant.bfp.fix.data.FixMessage;
+import com.blazarquant.bfp.fix.parser.definition.DefaultFixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.FixDefinitionProvider;
 import com.blazarquant.bfp.fix.parser.definition.data.ProviderDescriptor;
 import com.blazarquant.bfp.fix.parser.util.FixMessageConverter;
@@ -57,7 +58,7 @@ public class FixMessageOneMenuConverter implements Converter {
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         int index = value.indexOf(DELIMITER);
 
-        ProviderDescriptor providerDescriptor = null;
+        ProviderDescriptor providerDescriptor = DefaultFixDefinitionProvider.DESCRIPTOR;
         if (shiroUtils.isUserAuthenticated()) {
             providerDescriptor = (ProviderDescriptor) facesUtils.getContextAttribute(
                     shiroUtils.getCurrentUserID().getId() + FixDefinitionProvider.class.getSimpleName());

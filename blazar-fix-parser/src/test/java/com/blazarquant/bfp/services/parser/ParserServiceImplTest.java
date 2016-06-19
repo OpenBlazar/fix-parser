@@ -149,6 +149,16 @@ public class ParserServiceImplTest {
         assertTrue(definitionProvider instanceof DefaultFixDefinitionProvider);
     }
 
+    /**
+     * There was a NullPointerException when we tried to get DefinitionProvider
+     * with null ProviderDescriptor and permission set to true.
+     */
+    @Test
+    public void testGetDefinitionProviderWithNullProvider() {
+        FixDefinitionProvider definitionProvider = parserService.getDefinitionProvider(null, new UserID(5), true);
+        assertTrue(definitionProvider instanceof DefaultFixDefinitionProvider);
+    }
+
     @Test
     public void testGetProviders() {
         Set<ProviderDescriptor> expectedDescriptors = new HashSet<>();
