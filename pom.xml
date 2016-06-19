@@ -79,6 +79,7 @@
         <module>blazar-fix-parser-fix</module>
         <module>blazar-fix-parser-common</module>
         <module>blazar-fix-parser-it</module>
+        <module>blazar-fix-parser-performance</module>
     </modules>
 
     <dependencyManagement>
@@ -306,6 +307,18 @@
             <!-- test libraries -->
 
             <dependency>
+                <groupId>org.openjdk.jmh</groupId>
+                <artifactId>jmh-core</artifactId>
+                <version>1.12</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openjdk.jmh</groupId>
+                <artifactId>jmh-generator-annprocess</artifactId>
+                <version>1.12</version>
+            </dependency>
+
+            <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit}</version>
@@ -431,6 +444,12 @@
                             </goals>
                         </execution>
                     </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>2.0</version>
                 </plugin>
             </plugins>
         </pluginManagement>
