@@ -68,7 +68,7 @@ OneMessageEncoderBenchmark.oneMessageEncoderBenchmark  thrpt   50  1092471,295 Â
 
 # JavaDocs
 
-To see JavaDocs click [here](http://openblazar.github.io/blazar-fix-parser/)
+To see JavaDocs click [here](http://openblazar.github.io/blazar-fix-parser/).
 
 # TODO
 
