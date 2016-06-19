@@ -13,10 +13,16 @@ Main goal of this project was to get familiar with different technologies than I
 
 # Stack
 
+Technology stack may feel odd for more experience developers, but as I said choice was made to choose more uncommon technologies.
+
+
+
 # FIX Parser
 
 # TODO
 
+* Increase unit test coverage
+* Integartion tests
 * Clean up
 * Admin Panel
 * FAST support
