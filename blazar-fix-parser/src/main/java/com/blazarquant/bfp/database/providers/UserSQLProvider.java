@@ -134,6 +134,14 @@ public class UserSQLProvider {
         }}.toString();
     }
 
+    public String buildUpdateUserLastLogin() {
+        return new SQL() {{
+            UPDATE(Tables.USERS_TABLE);
+            SET("user_lastlogin = #{lastLogin, typeHandler=com.blazarquant.bfp.database.typehandlers.InstantTypeHandler}");
+            WHERE("ID = #{userId.id}");
+        }}.toString();
+    }
+
     public String buildUpdateUserStatus() {
         return new SQL() {{
             UPDATE(Tables.USERS_TABLE);

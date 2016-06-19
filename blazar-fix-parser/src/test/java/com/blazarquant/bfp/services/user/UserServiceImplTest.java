@@ -220,6 +220,20 @@ public class UserServiceImplTest {
     }
 
     @Test
+    public void testLoginUser() {
+        final UserID userID = new UserID(9);
+        final Instant instantNow = Instant.now().minusMillis(100);
+
+        userService.loginUser(userID);
+
+        final ArgumentCaptor<UserID> userIDCaptor = ArgumentCaptor.forClass(UserID.class);
+        final ArgumentCaptor<Instant> timeCaptor = ArgumentCaptor.forClass(Instant.class);
+        verify(userDAO, times(1)).updateLastLogin(userIDCaptor.capture(), timeCaptor.capture());
+        assertEquals(userID, userIDCaptor.getValue());
+        assertTrue(timeCaptor.getValue().isAfter(instantNow));
+    }
+
+    @Test
     public void testGetUserSettingsCache() {
         UserSettingsCache userSettingsCache = userService.getUserSettingsCache();
         assertNotNull(userSettingsCache);

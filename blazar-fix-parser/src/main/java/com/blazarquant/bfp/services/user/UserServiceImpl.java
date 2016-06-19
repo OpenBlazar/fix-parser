@@ -22,10 +22,6 @@ import com.blazarquant.bfp.data.user.*;
 import com.blazarquant.bfp.database.dao.UserDAO;
 import com.blazarquant.bfp.services.mail.MailService;
 import com.google.inject.Inject;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.time.Instant;
 import java.util.List;
@@ -118,6 +114,11 @@ public class UserServiceImpl implements UserService {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public void loginUser(UserID userID) {
+        userDAO.updateLastLogin(userID, Instant.now());
     }
 
     @Override

@@ -155,6 +155,12 @@ public interface UserDAO {
             @Param("confirmationKey") String confirmationKey
     );
 
+    @UpdateProvider(type = UserSQLProvider.class, method = "buildUpdateUserLastLogin")
+    void updateLastLogin(
+            @Param("userId") UserID userID,
+            @Param("lastLogin") Instant lastLogin
+    );
+
     @UpdateProvider(type = UserSQLProvider.class, method = "buildUpdateUserStatus")
     void updateUserStatus(
             @Param("userId") UserID userID,

@@ -50,6 +50,8 @@ public interface UserService {
 
     boolean confirmUser(String confirmationKey) throws DecodingException;
 
+    void loginUser(UserID userID);
+
     UserSettingsCache getUserSettingsCache();
 
 }

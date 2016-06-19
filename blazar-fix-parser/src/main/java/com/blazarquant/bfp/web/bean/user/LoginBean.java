@@ -105,6 +105,7 @@ public class LoginBean extends AbstractBean {
                 UserID userID = ((UserDetails) currentUser.getPrincipal()).getUserID();
                 parserService.loadProvidersForUser(userID);
                 userService.getUserSettingsCache().loadParameters(userID);
+                userService.loginUser(userID);
 
                 redirectToPreviousPage();
             } else {

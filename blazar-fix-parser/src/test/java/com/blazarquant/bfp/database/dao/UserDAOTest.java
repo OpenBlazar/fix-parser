@@ -155,6 +155,19 @@ public class UserDAOTest extends DatabaseTestBase {
     }
 
     @Test
+    public void testUpdateLastLogin() {
+        final UserID userID = new UserID(9);
+        final Instant newLastLogin = Instant.ofEpochMilli(1460958358001L);
+
+        UserDetails userDetails = userDAO.findUserById(userID);
+        assertEquals(Instant.ofEpochMilli(1460848358001L), userDetails.getLastLogin());
+
+        userDAO.updateLastLogin(userID, newLastLogin);
+        userDetails = userDAO.findUserById(userID);
+        assertEquals(newLastLogin, userDetails.getLastLogin());
+    }
+
+    @Test
     public void testUpdateUserStatus() {
         final UserID userID = new UserID(9);
 
