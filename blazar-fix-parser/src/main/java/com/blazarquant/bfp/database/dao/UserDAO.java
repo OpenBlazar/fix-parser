@@ -130,7 +130,7 @@ public interface UserDAO {
     );
 
     @SelectProvider(type = UserSQLProvider.class, method = "buildIsUserActive")
-    int isUserActive(
+    Integer isUserActive(
             @Param("userName") String userName
     );
 
@@ -140,7 +140,7 @@ public interface UserDAO {
     );
 
     @InsertProvider(type = UserSQLProvider.class, method = "buildSaveUser")
-    long saveUser(
+    Long saveUser(
             @Param("userName") String userName,
             @Param("userMail") String userMail,
             @Param("hashedPassword") String hashedPassword,

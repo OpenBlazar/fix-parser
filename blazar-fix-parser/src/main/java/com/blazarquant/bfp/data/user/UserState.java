@@ -32,9 +32,9 @@ public enum UserState implements Serializable {
         this.state = state;
     }
 
-    public static UserState getUserStateFromCode(int code) {
+    public static UserState getUserStateFromCode(Integer code) {
         for (UserState userState : values()) {
-            if (userState.getState() == code) {
+            if (Integer.valueOf(userState.getState()).equals(code)) {
                 return userState;
             }
         }

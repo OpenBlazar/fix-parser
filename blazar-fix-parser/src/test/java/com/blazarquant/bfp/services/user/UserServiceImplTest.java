@@ -133,11 +133,14 @@ public class UserServiceImplTest {
     public void testIsUserActive() {
         final String userNameTrue = "testTrue";
         final String userNameFalse = "testFalse";
+        final String userNameNull = "testNull";
         when(userDAO.isUserActive(userNameFalse)).thenReturn(0);
         when(userDAO.isUserActive(userNameTrue)).thenReturn(1);
+        when(userDAO.isUserActive(userNameNull)).thenReturn(null);
 
         assertTrue(userService.isUserActive(userNameTrue));
         assertFalse(userService.isUserActive(userNameFalse));
+        assertFalse(userService.isUserActive(userNameNull));
     }
 
     @Test
