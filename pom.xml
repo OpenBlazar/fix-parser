@@ -62,7 +62,6 @@
         <commons.dbcp>1.4</commons.dbcp>
 
         <guice>4.1.0</guice>
-        <guice.multibindings>4.0</guice.multibindings>
 
         <shiro>1.2.5</shiro>
 
@@ -227,7 +226,7 @@
             <dependency>
                 <groupId>com.google.inject.extensions</groupId>
                 <artifactId>guice-multibindings</artifactId>
-                <version>${guice.multibindings}</version>
+                <version>${guice}</version>
             </dependency>
 
             <!-- Shiro security -->
