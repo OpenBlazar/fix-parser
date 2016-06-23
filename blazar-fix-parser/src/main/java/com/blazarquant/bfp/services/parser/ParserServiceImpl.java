@@ -19,7 +19,6 @@ import com.blazarquant.bfp.core.parser.FixDefinitionProviderFactory;
 import com.blazarquant.bfp.core.parser.FixDefinitionProviderManager;
 import com.blazarquant.bfp.core.parser.FixDefinitionProvidersFileStore;
 import com.blazarquant.bfp.core.security.util.SecurityUtil;
-import com.blazarquant.bfp.core.security.util.SecurityUtilImpl;
 import com.blazarquant.bfp.data.user.UserDetails;
 import com.blazarquant.bfp.data.user.UserID;
 import com.blazarquant.bfp.database.dao.MessageDAO;
