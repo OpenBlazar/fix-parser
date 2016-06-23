@@ -61,7 +61,7 @@
         <mariadb.java.client>1.4.6</mariadb.java.client>
         <commons.dbcp>1.4</commons.dbcp>
 
-        <guice>4.0</guice>
+        <guice>4.1.0</guice>
         <guice.multibindings>4.0</guice.multibindings>
 
         <shiro>1.2.5</shiro>
@@ -287,7 +287,7 @@
             <dependency>
                 <groupId>com.paypal.sdk</groupId>
                 <artifactId>rest-api-sdk</artifactId>
-                <version>LATEST</version>
+                <version>1.7.0</version>
             </dependency>
 
             <!-- Logging -->
