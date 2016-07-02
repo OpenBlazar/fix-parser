@@ -146,6 +146,6 @@ public class SubscriptionBean extends AbstractBean {
     }
 
     public String getSummaryPrice() {
-        return subscriptionPlan == SubscriptionPlan.PRO ? "$3" : "$30";
+        return subscriptionPlan == SubscriptionPlan.PRO ? "$2" : "$30";
     }
 }
