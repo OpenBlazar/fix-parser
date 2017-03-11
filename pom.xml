@@ -56,16 +56,16 @@
         <version.picketlink.javaee.bom>2.7.1.Final</version.picketlink.javaee.bom>
         <taglibs.standard>1.2.5</taglibs.standard>
 
-        <mybatis>3.4.1</mybatis>
+        <mybatis>3.4.2</mybatis>
         <mybatis.guice>3.9</mybatis.guice>
-        <mariadb.java.client>1.5.5</mariadb.java.client>
+        <mariadb.java.client>1.5.8</mariadb.java.client>
         <commons.dbcp>1.4</commons.dbcp>
 
         <guice>4.1.0</guice>
 
         <shiro>1.3.2</shiro>
 
-        <log4j>2.7</log4j>
+        <log4j>2.8.1</log4j>
 
         <junit>4.12</junit>
 
@@ -258,7 +258,7 @@
             <dependency>
                 <groupId>org.mindrot</groupId>
                 <artifactId>jbcrypt</artifactId>
-                <version>0.3m</version>
+                <version>0.4</version>
             </dependency>
 
             <dependency>
@@ -286,7 +286,7 @@
             <dependency>
                 <groupId>com.paypal.sdk</groupId>
                 <artifactId>rest-api-sdk</artifactId>
-                <version>1.13.0</version>
+                <version>1.13.1</version>
                 <exclusions>
                     <exclusion>
                         <groupId>org.apache.logging.log4j</groupId>
@@ -314,13 +314,13 @@
             <dependency>
                 <groupId>org.openjdk.jmh</groupId>
                 <artifactId>jmh-core</artifactId>
-                <version>1.17.1</version>
+                <version>1.17.5</version>
             </dependency>
 
             <dependency>
                 <groupId>org.openjdk.jmh</groupId>
                 <artifactId>jmh-generator-annprocess</artifactId>
-                <version>1.17.1</version>
+                <version>1.17.5</version>
             </dependency>
 
             <dependency>
@@ -359,7 +359,7 @@
     </dependencyManagement>
 
     <repositories>
-        
+
         <!-- maven central -->
         <repository>
             <id>central</id>
@@ -386,7 +386,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.6.0</version>
+                    <version>3.6.1</version>
                     <configuration>
                         <source>${maven.compiler.source}</source>
                         <target>${maven.compiler.target}</target>
@@ -414,13 +414,13 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>2.10</version>
+                    <version>3.0.0</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.7.7.201606060606</version>
+                    <version>0.7.9</version>
                     <executions>
                         <execution>
                             <goals>
@@ -440,7 +440,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-shade-plugin</artifactId>
-                    <version>2.4.3</version>
+                    <version>3.0.0</version>
                 </plugin>
             </plugins>
         </pluginManagement>
