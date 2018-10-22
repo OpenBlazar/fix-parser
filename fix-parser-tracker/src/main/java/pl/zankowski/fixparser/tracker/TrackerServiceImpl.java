@@ -1,6 +1,10 @@
 package pl.zankowski.fixparser.tracker;
 
 import com.google.inject.Inject;
+import pl.zankowski.fixparser.core.DateRangeTO;
+import pl.zankowski.fixparser.core.ListWrapperTO;
+import pl.zankowski.fixparser.tracker.api.TrackerDataTO;
+import pl.zankowski.fixparser.tracker.spi.TrackerService;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -20,11 +24,19 @@ public class TrackerServiceImpl implements TrackerService {
     }
 
     @Override
+    public ListWrapperTO<TrackerDataTO> getTrackerData(final DateRangeTO dateRange) {
+        return null;
+    }
+
+    @Override
+    public void track(final TrackerDataTO trackerData) {
+        trackerDAO.saveInputParse(trackerData.getParseDate(), trackerData.getMessageNumber());
+    }
+
     public List<TrackerData> getTrackerData() {
         return trackerDAO.findTrackerData();
     }
 
-    @Override
     public Map<LocalDate, Integer> getTrackerDailyDataAgg() {
         List<TrackerData> trackerDataList = trackerDAO.findTrackerData();
         Map<LocalDate, Integer> trackerDataMap = new HashMap<>();
@@ -39,8 +51,4 @@ public class TrackerServiceImpl implements TrackerService {
         return trackerDataMap;
     }
 
-    @Override
-    public void inputParsed(int messagesNumber) {
-        trackerDAO.saveInputParse(Instant.now(), messagesNumber);
-    }
 }

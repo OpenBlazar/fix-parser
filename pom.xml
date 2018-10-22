@@ -92,6 +92,8 @@
         <module>fix-parser-user-api</module>
         <module>fix-parser-tracker-api</module>
         <module>fix-parser-messages-api</module>
+        <module>fix-parser-core</module>
+        <module>fix-parser-tracker-spi</module>
     </modules>
 
     <dependencyManagement>
@@ -103,6 +105,12 @@
                 <groupId>pl.zankowski</groupId>
                 <artifactId>fix-parser</artifactId>
                 <version>${bfp.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-tracker-api</artifactId>
+                <version>1.0</version>
             </dependency>
 
             <dependency>
@@ -147,13 +155,31 @@
 
             <dependency>
                 <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-core</artifactId>
+                <version>${bfp.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
                 <artifactId>fix-parser-core-entity</artifactId>
                 <version>${bfp.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-tracker-spi</artifactId>
+                <version>1.0</version>
             </dependency>
 
             <!-- libraries -->
 
             <!-- JSF -->
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>2.9.6</version>
+            </dependency>
 
             <dependency>
                 <groupId>javax.el</groupId>
@@ -245,7 +271,7 @@
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>23.0</version>
+                <version>27.0-jre</version>
             </dependency>
 
             <dependency>

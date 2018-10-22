@@ -9,15 +9,20 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>fix-parser-tracker-api</artifactId>
+    <artifactId>fix-parser-core</artifactId>
 
     <dependencies>
 
-        <!--Internal -->
+        <!-- External -->
 
         <dependency>
-            <groupId>pl.zankowski</groupId>
-            <artifactId>fix-parser-core</artifactId>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
         </dependency>
 
     </dependencies>

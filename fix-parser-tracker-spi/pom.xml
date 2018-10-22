@@ -9,15 +9,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>fix-parser-tracker-api</artifactId>
+    <artifactId>fix-parser-tracker-spi</artifactId>
 
     <dependencies>
 
-        <!--Internal -->
+        <!-- Internal -->
 
         <dependency>
             <groupId>pl.zankowski</groupId>
-            <artifactId>fix-parser-core</artifactId>
+            <artifactId>fix-parser-tracker-api</artifactId>
         </dependency>
 
     </dependencies>
