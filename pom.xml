@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.blazarquant</groupId>
-    <artifactId>blazar-fix-parser-all</artifactId>
+    <groupId>pl.zankowski</groupId>
+    <artifactId>fix-parser-all</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
 
-    <name>blazar-fix-parser-all</name>
-    <description>Blazar Fix Parser parent POM.</description>
+    <name>fix-parser-all</name>
+    <description>Fix Parser parent POM.</description>
     <inceptionYear>2016</inceptionYear>
     <organization>
         <name>OpenBlazar</name>
@@ -38,9 +38,9 @@
     </developers>
 
     <scm>
-        <url>https://github.com/OpenBlazar/blazar-fix-parser</url>
-        <connection>scm:git:ssh://github.com/OpenBlazar/blazar-fix-parser.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/OpenBlazar/blazar-fix-parser.git
+        <url>https://github.com/OpenBlazar/fix-parser</url>
+        <connection>scm:git:ssh://github.com/OpenBlazar/fix-parser.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/OpenBlazar/fix-parser.git
         </developerConnection>
         <tag>HEAD</tag>
     </scm>
@@ -56,12 +56,12 @@
         <version.picketlink.javaee.bom>2.7.1.Final</version.picketlink.javaee.bom>
         <taglibs.standard>1.2.5</taglibs.standard>
 
-        <mybatis>3.4.2</mybatis>
-        <mybatis.guice>3.9</mybatis.guice>
+        <mybatis>3.4.6</mybatis>
+        <mybatis.guice>3.10</mybatis.guice>
         <mariadb.java.client>1.5.8</mariadb.java.client>
         <commons.dbcp>1.4</commons.dbcp>
 
-        <guice>4.1.0</guice>
+        <guice>4.2.1</guice>
 
         <shiro>1.3.2</shiro>
 
@@ -71,14 +71,27 @@
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <dockerfile-maven-version>1.4.7</dockerfile-maven-version>
     </properties>
 
     <modules>
-        <module>blazar-fix-parser</module>
-        <module>blazar-fix-parser-fix</module>
-        <module>blazar-fix-parser-common</module>
-        <module>blazar-fix-parser-it</module>
-        <module>blazar-fix-parser-performance</module>
+        <module>fix-parser</module>
+        <module>fix-parser-messages</module>
+        <module>fix-parser-common</module>
+        <module>fix-parser-performance</module>
+        <module>fix-parser-web</module>
+        <module>fix-parser-mail</module>
+        <module>fix-parser-user</module>
+        <module>fix-parser-tracker</module>
+        <module>fix-parser-payment</module>
+        <module>fix-parser-security</module>
+        <module>fix-parser-core-entity</module>
+        <module>fix-parser-mail-spi</module>
+        <module>fix-parser-mail-api</module>
+        <module>fix-parser-user-spi</module>
+        <module>fix-parser-user-api</module>
+        <module>fix-parser-tracker-api</module>
+        <module>fix-parser-messages-api</module>
     </modules>
 
     <dependencyManagement>
@@ -87,37 +100,55 @@
             <!-- projects -->
 
             <dependency>
-                <groupId>com.blazarquant</groupId>
-                <artifactId>blazar-fix-parser</artifactId>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser</artifactId>
                 <version>${bfp.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.blazarquant</groupId>
-                <artifactId>blazar-fix-parser-fix</artifactId>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-mail-spi</artifactId>
                 <version>${bfp.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.blazarquant</groupId>
-                <artifactId>blazar-fix-parser-fix</artifactId>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-mail-api</artifactId>
+                <version>${bfp.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-messages</artifactId>
+                <version>${bfp.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-messages</artifactId>
                 <version>${bfp.version}</version>
                 <type>test-jar</type>
                 <scope>test</scope>
             </dependency>
 
             <dependency>
-                <groupId>com.blazarquant</groupId>
-                <artifactId>blazar-fix-parser-common</artifactId>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-common</artifactId>
                 <version>${bfp.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.blazarquant</groupId>
-                <artifactId>blazar-fix-parser-common</artifactId>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-common</artifactId>
                 <version>${bfp.version}</version>
                 <type>test-jar</type>
                 <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-core-entity</artifactId>
+                <version>${bfp.version}</version>
             </dependency>
 
             <!-- libraries -->
@@ -212,6 +243,12 @@
             <!-- Dependency Injection / Guice -->
 
             <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>23.0</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.google.inject</groupId>
                 <artifactId>guice</artifactId>
                 <version>${guice}</version>
@@ -281,6 +318,12 @@
                 <version>1.5.6</version>
             </dependency>
 
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>javax.mail-api</artifactId>
+                <version>1.6.2</version>
+            </dependency>
+
             <!-- PayPal -->
 
             <dependency>
@@ -296,6 +339,12 @@
             </dependency>
 
             <!-- Logging -->
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.25</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
@@ -383,6 +432,28 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>dockerfile-maven-plugin</artifactId>
+                    <version>${dockerfile-maven-version}</version>
+                    <executions>
+                        <execution>
+                            <id>default</id>
+                            <goals>
+                                <goal>build</goal>
+                                <goal>push</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <repository>spotify/foobar</repository>
+                        <tag>${project.version}</tag>
+                        <buildArgs>
+                            <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                        </buildArgs>
+                    </configuration>
+                </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
