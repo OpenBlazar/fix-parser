@@ -94,6 +94,7 @@
         <module>fix-parser-messages-api</module>
         <module>fix-parser-core</module>
         <module>fix-parser-tracker-spi</module>
+        <module>fix-parser-messages-spi</module>
     </modules>
 
     <dependencyManagement>
@@ -168,6 +169,18 @@
             <dependency>
                 <groupId>pl.zankowski</groupId>
                 <artifactId>fix-parser-tracker-spi</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-mail-spi</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-user-api</artifactId>
                 <version>1.0</version>
             </dependency>
 

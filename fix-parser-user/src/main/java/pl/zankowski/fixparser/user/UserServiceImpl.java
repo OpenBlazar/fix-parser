@@ -1,7 +1,7 @@
 package pl.zankowski.fixparser.user;
 
-
 import com.google.inject.Inject;
+import pl.zankowski.fixparser.mail.spi.MailService;
 import pl.zankowski.fixparser.user.entity.Permission;
 import pl.zankowski.fixparser.user.entity.Role;
 import pl.zankowski.fixparser.user.entity.UserDetails;

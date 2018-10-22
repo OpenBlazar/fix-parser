@@ -1,6 +1,6 @@
 package pl.zankowski.fixparser.mail.spi;
 
-public interface IMailService {
+public interface MailService {
 
     void sendConfirmationLink(String confirmationKey, String userMail);
 

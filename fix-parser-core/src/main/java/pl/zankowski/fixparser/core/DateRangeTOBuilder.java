@@ -6,12 +6,12 @@ public final class DateRangeTOBuilder {
     private LocalDate from;
     private LocalDate to;
 
-    public DateRangeTOBuilder withFrom(LocalDate from) {
+    public DateRangeTOBuilder withFrom(final LocalDate from) {
         this.from = from;
         return this;
     }
 
-    public DateRangeTOBuilder withTo(LocalDate to) {
+    public DateRangeTOBuilder withTo(final LocalDate to) {
         this.to = to;
         return this;
     }

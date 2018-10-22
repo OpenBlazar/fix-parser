@@ -1,6 +1,7 @@
 package pl.zankowski.fixparser.mail;
 
 import com.google.inject.Inject;
+import pl.zankowski.fixparser.mail.spi.MailService;
 import pl.zankowski.fixparser.mail.util.MailMessageFactory;
 
 import javax.mail.MessagingException;
