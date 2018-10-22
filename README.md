@@ -1,7 +1,7 @@
 # Blazar FIX Parser
 
-[![Build Status](https://travis-ci.org/OpenBlazar/blazar-fix-parser.svg?branch=master)](https://travis-ci.org/OpenBlazar/blazar-fix-parser) 
-[![codecov.io](https://codecov.io/github/OpenBlazar/blazar-fix-parser/coverage.svg?branch=master)](https://codecov.io/github/OpenBlazar/blazar-fix-parser?branch=master)
+[![Build Status](https://travis-ci.org/OpenBlazar/fix-parser.svg?branch=master)](https://travis-ci.org/OpenBlazar/fix-parser) 
+[![codecov.io](https://codecov.io/github/OpenBlazar/fix-parser/coverage.svg?branch=master)](https://codecov.io/github/OpenBlazar/fix-parser?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/56ac0d077e03c7003ba40de7/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56ac0d077e03c7003ba40de7)
 [![Apache 2](http://img.shields.io/badge/license-Apache%202-red.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
@@ -56,7 +56,7 @@ Blazar FIX Parse supports custom dictionaries. It is extremly helpful to work wi
 
 # Benchmark
 
-There are available 4 benchmarks for FIX parser. 2 benchmarks for 'Huge Chunk' i.e. file with 800 lines and 400 messages inside and 2 benchmarks for single fix message. For closer look up to benchmarks code see blazar-fix-parser-performance module.
+There are available 4 benchmarks for FIX parser. 2 benchmarks for 'Huge Chunk' i.e. file with 800 lines and 400 messages inside and 2 benchmarks for single fix message. For closer look up to benchmarks code see fix-parser-performance module.
 
 ```
 Benchmark                                               Mode  Cnt        Score      Error  Units
@@ -68,7 +68,7 @@ OneMessageEncoderBenchmark.oneMessageEncoderBenchmark  thrpt   50  1092471,295 Â
 
 # JavaDocs
 
-To see JavaDocs click [here](http://openblazar.github.io/blazar-fix-parser/).
+To see JavaDocs click [here](http://openblazar.github.io/fix-parser/).
 
 # TODO
 
