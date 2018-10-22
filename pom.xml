@@ -184,6 +184,18 @@
                 <version>1.0</version>
             </dependency>
 
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-messages-spi</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-messages-api</artifactId>
+                <version>1.0</version>
+            </dependency>
+
             <!-- libraries -->
 
             <!-- JSF -->

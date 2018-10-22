@@ -25,6 +25,11 @@
             <artifactId>fix-parser-user-api</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>pl.zankowski</groupId>
+            <artifactId>fix-parser-messages-spi</artifactId>
+        </dependency>
+
         <!-- External -->
 
         <dependency>
