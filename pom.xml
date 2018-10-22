@@ -57,7 +57,7 @@
         <taglibs.standard>1.2.5</taglibs.standard>
 
         <mybatis>3.4.6</mybatis>
-        <mybatis.guice>3.9</mybatis.guice>
+        <mybatis.guice>3.10</mybatis.guice>
         <mariadb.java.client>1.5.8</mariadb.java.client>
         <commons.dbcp>1.4</commons.dbcp>
 
@@ -88,6 +88,10 @@
         <module>fix-parser-core-entity</module>
         <module>fix-parser-mail-spi</module>
         <module>fix-parser-mail-api</module>
+        <module>fix-parser-user-spi</module>
+        <module>fix-parser-user-api</module>
+        <module>fix-parser-tracker-api</module>
+        <module>fix-parser-messages-api</module>
     </modules>
 
     <dependencyManagement>

@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.InstantTypeHandler;
 import org.apache.ibatis.type.JdbcType;
-import pl.zankowski.bfp.database.providers.UserSQLProvider;
 import pl.zankowski.fixparser.core.entity.IDAO;
 import pl.zankowski.fixparser.user.entity.Role;
 import pl.zankowski.fixparser.user.entity.UserDetails;
