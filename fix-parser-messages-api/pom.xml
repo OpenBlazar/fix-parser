@@ -11,5 +11,20 @@
 
     <artifactId>fix-parser-messages-api</artifactId>
 
+    <dependencies>
+
+        <!--Internal -->
+
+        <dependency>
+            <groupId>pl.zankowski</groupId>
+            <artifactId>fix-parser-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>pl.zankowski</groupId>
+            <artifactId>fix-parser-user-api</artifactId>
+        </dependency>
+
+    </dependencies>
 
 </project>
