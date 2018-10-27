@@ -1,14 +1,9 @@
 package pl.zankowski.fixparser.web.bean.payment;
 
-import pl.zankowski.bfp.core.payments.SubscriptionPlan;
-import pl.zankowski.bfp.core.payments.exception.PaymentException;
-import pl.zankowski.bfp.data.payments.paypal.PayPalCountryCodes;
-import pl.zankowski.bfp.data.user.UserAddress;
-import pl.zankowski.bfp.services.payment.PaymentService;
-import pl.zankowski.bfp.web.bean.AbstractBean;
-import pl.zankowski.bfp.web.util.FacesUtils;
-import pl.zankowski.bfp.web.util.ShiroUtils;
 import com.google.inject.Inject;
+import pl.zankowski.fixparser.web.bean.AbstractBean;
+import pl.zankowski.fixparser.web.util.FacesUtils;
+import pl.zankowski.fixparser.web.util.ShiroUtils;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;

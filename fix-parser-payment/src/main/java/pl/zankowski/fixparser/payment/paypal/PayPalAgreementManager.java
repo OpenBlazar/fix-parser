@@ -15,7 +15,7 @@
  */
 package pl.zankowski.bfp.core.payments.paypal;
 
-import pl.zankowski.bfp.core.payments.SubscriptionPlan;
+import pl.zankowski.fixparser.payment.api.exception.SubscriptionPlan;
 import com.paypal.api.payments.Agreement;
 
 import java.util.Map;

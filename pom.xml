@@ -203,6 +203,18 @@
                 <version>1.0</version>
             </dependency>
 
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-payment-spi</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-payment-api</artifactId>
+                <version>1.0</version>
+            </dependency>
+
             <!-- libraries -->
 
             <!-- JSF -->

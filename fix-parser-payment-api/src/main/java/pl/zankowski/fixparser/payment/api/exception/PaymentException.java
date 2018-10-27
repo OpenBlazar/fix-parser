@@ -13,14 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package pl.zankowski.bfp.core.payments;
+package pl.zankowski.fixparser.payment.api.exception;
 
 /**
  * @author Wojciech Zankowski
  */
-public enum SubscriptionPlan {
+public class PaymentException extends Exception {
 
-    PRO,
-    ENTERPRISE;
+    public PaymentException(String message) {
+        super(message);
+    }
 
 }

@@ -15,7 +15,7 @@
  */
 package pl.zankowski.bfp.core.payments.paypal;
 
-import pl.zankowski.bfp.core.payments.SubscriptionPlan;
+import pl.zankowski.fixparser.payment.api.exception.SubscriptionPlan;
 import pl.zankowski.bfp.core.payments.SubscriptionService;
 import pl.zankowski.bfp.core.payments.exception.PaymentException;
 import pl.zankowski.bfp.core.payments.paypal.util.PayPalAgreementFactory;

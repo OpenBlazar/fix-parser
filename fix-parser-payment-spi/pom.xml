@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>fix-parser-payment</artifactId>
+        <artifactId>fix-parser-all</artifactId>
         <groupId>pl.zankowski</groupId>
         <version>1.0</version>
     </parent>
@@ -11,5 +11,20 @@
 
     <artifactId>fix-parser-payment-spi</artifactId>
 
+    <dependencies>
+
+        <!-- Internal -->
+
+        <dependency>
+            <groupId>pl.zankowski</groupId>
+            <artifactId>fix-parser-payment-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>pl.zankowski</groupId>
+            <artifactId>fix-parser-user-api</artifactId>
+        </dependency>
+
+    </dependencies>
 
 </project>
