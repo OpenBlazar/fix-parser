@@ -8,18 +8,28 @@ import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.zankowski.fixparser.tracker.api.TrackerDataTO;
 import pl.zankowski.fixparser.tracker.spi.TrackerService;
+import pl.zankowski.fixparser.user.api.Role;
+import pl.zankowski.fixparser.user.api.UserDetailsTO;
+import pl.zankowski.fixparser.user.spi.UserService;
 import pl.zankowski.fixparser.web.bean.AbstractBean;
+import pl.zankowski.fixparser.web.util.BlazarURL;
 import pl.zankowski.fixparser.web.util.FacesUtils;
 import pl.zankowski.fixparser.web.util.ShiroUtils;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.management.relation.Role;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 @ManagedBean(name = "adminBean")
@@ -36,8 +46,8 @@ public class AdminBean extends AbstractBean {
 
     private Set<Map.Entry<LocalDate, Integer>> trackerDailyData = new HashSet<>();
     private LineChartModel trackerChartModel = new LineChartModel();
-    private List<TrackerData> trackerData = new ArrayList<>();
-    private List<UserDetails> userDetails = new ArrayList<>();
+    private List<TrackerDataTO> trackerData = new ArrayList<>();
+    private List<UserDetailsTO> userDetails = new ArrayList<>();
 
     @PostConstruct
     @Override
@@ -48,7 +58,7 @@ public class AdminBean extends AbstractBean {
                 userDetails = userService.getUsers();
 
                 trackerData = trackerService.getTrackerData().stream()
-                        .sorted(Comparator.comparing(TrackerData::getParseDate))
+                        .sorted(Comparator.comparing(TrackerDataTO::getParseDate))
                         .collect(Collectors.toList());
 
                 // TODO do collector
@@ -102,11 +112,11 @@ public class AdminBean extends AbstractBean {
         this.facesUtils = facesUtils;
     }
 
-    public List<UserDetails> getUserDetails() {
+    public List<UserDetailsTO> getUserDetails() {
         return userDetails;
     }
 
-    public List<TrackerData> getTrackerData() {
+    public List<TrackerDataTO> getTrackerData() {
         return trackerData;
     }
 

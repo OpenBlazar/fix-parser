@@ -1,9 +1,9 @@
 package pl.zankowski.fixparser.web.bean.help;
 
-import pl.zankowski.bfp.fix.data.FixMessage;
-import pl.zankowski.bfp.fix.data.FixPair;
-import pl.zankowski.bfp.fix.parser.util.FixUtilities;
-import pl.zankowski.bfp.web.util.StyleUtilities;
+import pl.zankowski.fixparser.messages.api.FixMessageTO;
+import pl.zankowski.fixparser.messages.api.FixPairTO;
+import pl.zankowski.fixparser.web.util.FixUtilities;
+import pl.zankowski.fixparser.web.util.StyleUtilities;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
@@ -12,7 +12,7 @@ import javax.faces.bean.ManagedBean;
 @ApplicationScoped
 public class StyleBean {
 
-    public String getStyleForMsgType(FixPair msgType) {
+    public String getStyleForMsgType(FixPairTO msgType) {
         return StyleUtilities.getStyleForMsgType(msgType);
     }
 
@@ -20,7 +20,7 @@ public class StyleBean {
         return StyleUtilities.getStyleForField(tag);
     }
 
-    public String getStyleForOrdStatus(FixMessage message) {
+    public String getStyleForOrdStatus(FixMessageTO message) {
         return StyleUtilities.getStyleForOrdStatus(FixUtilities.getOrdStatus(message));
     }
 

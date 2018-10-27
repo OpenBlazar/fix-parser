@@ -1,25 +1,19 @@
 package pl.zankowski.fixparser.web.bean.parser;
 
-import pl.zankowski.bfp.core.share.exception.ShareException;
-import pl.zankowski.bfp.data.user.Permission;
-import pl.zankowski.bfp.data.user.UserDetails;
-import pl.zankowski.bfp.data.user.UserID;
-import pl.zankowski.bfp.data.user.UserSetting;
-import pl.zankowski.bfp.fix.data.FixMessage;
-import pl.zankowski.bfp.fix.parser.definition.DefaultFixDefinitionProvider;
-import pl.zankowski.bfp.fix.parser.definition.FixDefinitionProvider;
-import pl.zankowski.bfp.fix.parser.definition.data.ProviderDescriptor;
-import pl.zankowski.bfp.fix.parser.util.FixParserConstants;
-import pl.zankowski.bfp.services.parser.ParserService;
-import pl.zankowski.bfp.services.share.ShareService;
-import pl.zankowski.bfp.services.tracker.TrackerService;
-import pl.zankowski.bfp.services.user.UserService;
-import pl.zankowski.bfp.web.bean.AbstractBean;
-import pl.zankowski.bfp.web.util.FacesUtils;
-import pl.zankowski.bfp.web.util.ShiroUtils;
 import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.zankowski.fixparser.messages.api.FixMessageTO;
+import pl.zankowski.fixparser.messages.api.share.ShareException;
+import pl.zankowski.fixparser.messages.spi.MessageService;
+import pl.zankowski.fixparser.messages.spi.ShareService;
+import pl.zankowski.fixparser.tracker.spi.TrackerService;
+import pl.zankowski.fixparser.user.api.Permission;
+import pl.zankowski.fixparser.user.api.UserId;
+import pl.zankowski.fixparser.user.spi.UserService;
+import pl.zankowski.fixparser.web.bean.AbstractBean;
+import pl.zankowski.fixparser.web.util.FacesUtils;
+import pl.zankowski.fixparser.web.util.ShiroUtils;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -45,18 +39,18 @@ public class ParserBean extends AbstractBean {
     private ShiroUtils shiroUtils;
     private FacesUtils facesUtils;
 
-    private ParserService parserService;
+    private MessageService parserService;
     private TrackerService trackerService;
     private ShareService shareService;
     private UserService userService;
 
-    private List<FixMessage> messages = new ArrayList<>();
+    private List<FixMessageTO> messages = new ArrayList<>();
     private List<ProviderDescriptor> providers = Arrays.asList(DefaultFixDefinitionProvider.DESCRIPTOR);
 
     private ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     protected ProviderDescriptor selectedProvider = DefaultFixDefinitionProvider.DESCRIPTOR;
-    private FixMessage selectedMessage;
+    private FixMessageTO selectedMessage;
     private String shareKey;
     private String input;
 
@@ -71,7 +65,7 @@ public class ParserBean extends AbstractBean {
     }
 
     @Inject
-    public void setParserService(ParserService parserService) {
+    public void setParserService(MessageService parserService) {
         this.parserService = parserService;
     }
 
@@ -102,7 +96,7 @@ public class ParserBean extends AbstractBean {
 
     private void doLoadProviders() {
         if (shiroUtils.isUserAuthenticated()) {
-            UserID userID = shiroUtils.getCurrentUserID();
+            UserId userID = shiroUtils.getCurrentUserID();
             providers = new ArrayList<>();
             providers.addAll(parserService.getProviders(
                     userID,
@@ -156,7 +150,7 @@ public class ParserBean extends AbstractBean {
         }
     }
 
-    protected void doSaveMessages(List<FixMessage> messages) {
+    protected void doSaveMessages(List<FixMessageTO> messages) {
         if (shiroUtils.isUserAuthenticated()) {
             UserDetails userDetails = shiroUtils.getCurrentUserDetails();
             if (userDetails != null) {
@@ -198,15 +192,15 @@ public class ParserBean extends AbstractBean {
         return shareKey == null ? "" : SHARE_URL + shareKey;
     }
 
-    public List<FixMessage> getMessages() {
+    public List<FixMessageTO> getMessages() {
         return messages;
     }
 
-    public FixMessage getSelectedMessage() {
+    public FixMessageTO getSelectedMessage() {
         return selectedMessage;
     }
 
-    public void setSelectedMessage(FixMessage selectedMessage) {
+    public void setSelectedMessage(FixMessageTO selectedMessage) {
         this.selectedMessage = selectedMessage;
     }
 

@@ -1,17 +1,16 @@
 package pl.zankowski.fixparser.web.bean.parser;
 
-import pl.zankowski.bfp.data.user.Permission;
-import pl.zankowski.bfp.data.user.UserDetails;
-import pl.zankowski.bfp.data.user.UserSetting;
-import pl.zankowski.bfp.fix.data.FixMessage;
-import pl.zankowski.bfp.fix.parser.definition.data.ProviderDescriptor;
-import pl.zankowski.bfp.services.parser.ParserService;
-import pl.zankowski.bfp.services.user.UserService;
-import pl.zankowski.bfp.web.bean.AbstractBean;
-import pl.zankowski.bfp.web.model.FixMessageLazyDataModel;
-import pl.zankowski.bfp.web.util.ShiroUtils;
 import com.google.inject.Inject;
 import org.primefaces.model.LazyDataModel;
+import pl.zankowski.fixparser.messages.api.FixMessageTO;
+import pl.zankowski.fixparser.messages.api.dictionary.DictionaryDescriptorTO;
+import pl.zankowski.fixparser.messages.spi.MessageService;
+import pl.zankowski.fixparser.user.api.Permission;
+import pl.zankowski.fixparser.user.api.UserDetailsTO;
+import pl.zankowski.fixparser.user.spi.UserService;
+import pl.zankowski.fixparser.web.bean.AbstractBean;
+import pl.zankowski.fixparser.web.model.FixMessageLazyDataModel;
+import pl.zankowski.fixparser.web.util.ShiroUtils;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -21,12 +20,12 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class HistoryBean extends AbstractBean {
 
-    private ParserService parserService;
+    private MessageService parserService;
     private UserService userService;
     private ShiroUtils shiroUtils;
 
-    private LazyDataModel<FixMessage> messagesModel;
-    private FixMessage selectedMessage;
+    private LazyDataModel<FixMessageTO> messagesModel;
+    private FixMessageTO selectedMessage;
     private int messageCount;
 
     @PostConstruct
@@ -34,10 +33,10 @@ public class HistoryBean extends AbstractBean {
     public void init() {
         super.init();
         if (shiroUtils.isUserAuthenticated()) {
-            UserDetails userDetails = shiroUtils.getCurrentUserDetails();
+            UserDetailsTO userDetails = shiroUtils.getCurrentUserDetails();
             if (userDetails != null) {
-                ProviderDescriptor providerDescriptor = (ProviderDescriptor) userService.getUserSettingsCache().getObject(userDetails.getUserID(), UserSetting.DEFAULT_PROVIDER);
-                messageCount = parserService.countUserMessages(userDetails);
+                DictionaryDescriptorTO providerDescriptor = (DictionaryDescriptorTO) userService.getUserSettingsCache().getObject(userDetails.getUserID(), UserSetting.DEFAULT_PROVIDER);
+                messageCount = parserService.countUserMessages(userDetails.getUserId());
                 messagesModel = new FixMessageLazyDataModel(
                         parserService,
                         providerDescriptor,
@@ -50,7 +49,7 @@ public class HistoryBean extends AbstractBean {
     }
 
     @Inject
-    public void setParserService(ParserService parserService) {
+    public void setParserService(MessageService parserService) {
         this.parserService = parserService;
     }
 
@@ -64,15 +63,15 @@ public class HistoryBean extends AbstractBean {
         this.shiroUtils = shiroUtils;
     }
 
-    public FixMessage getSelectedMessage() {
+    public FixMessageTO getSelectedMessage() {
         return selectedMessage;
     }
 
-    public LazyDataModel<FixMessage> getMessagesModel() {
+    public LazyDataModel<FixMessageTO> getMessagesModel() {
         return messagesModel;
     }
 
-    public void setSelectedMessage(FixMessage selectedMessage) {
+    public void setSelectedMessage(FixMessageTO selectedMessage) {
         this.selectedMessage = selectedMessage;
     }
 
