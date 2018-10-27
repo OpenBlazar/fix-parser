@@ -1,14 +1,11 @@
 package pl.zankowski.fixparser.web.bean.payment;
 
-import pl.zankowski.bfp.core.payments.SubscriptionPlan;
-import pl.zankowski.bfp.core.payments.exception.PaymentException;
-import pl.zankowski.bfp.data.user.Permission;
-import pl.zankowski.bfp.data.user.UserID;
-import pl.zankowski.bfp.services.payment.PaymentService;
-import pl.zankowski.bfp.services.user.UserService;
-import pl.zankowski.bfp.web.bean.AbstractBean;
-import pl.zankowski.bfp.web.util.ShiroUtils;
 import com.google.inject.Inject;
+import pl.zankowski.fixparser.user.api.Permission;
+import pl.zankowski.fixparser.user.api.UserId;
+import pl.zankowski.fixparser.user.spi.UserService;
+import pl.zankowski.fixparser.web.bean.AbstractBean;
+import pl.zankowski.fixparser.web.util.ShiroUtils;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -48,7 +45,7 @@ public class PaymentBean extends AbstractBean {
     public void doConfirmPayment() throws PaymentException {
         SubscriptionPlan subscriptionPlan = paymentService.confirmPayment(paymentToken);
         if (subscriptionPlan != null && shiroUtils.isUserAuthenticated()) {
-            UserID userID = shiroUtils.getCurrentUserID();
+            UserId userID = shiroUtils.getCurrentUserID();
             Permission permission = Permission.valueOf(subscriptionPlan.name());
             switch (permission) {
                 case ENTERPRISE:
