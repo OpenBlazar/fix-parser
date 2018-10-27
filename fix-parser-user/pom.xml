@@ -25,6 +25,11 @@
             <artifactId>fix-parser-mail-spi</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>pl.zankowski</groupId>
+            <artifactId>fix-parser-user-spi</artifactId>
+        </dependency>
+
         <!-- External libraries -->
 
         <dependency>

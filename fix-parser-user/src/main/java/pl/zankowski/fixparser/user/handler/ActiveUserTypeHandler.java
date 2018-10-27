@@ -1,6 +1,6 @@
 package pl.zankowski.fixparser.user.handler;
 
-import pl.zankowski.fixparser.user.entity.UserState;
+import pl.zankowski.fixparser.user.api.UserState;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandler;
 

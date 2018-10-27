@@ -1,4 +1,4 @@
-package pl.zankowski.fixparser.user.entity;
+package pl.zankowski.fixparser.user.api;
 
 import pl.zankowski.fixparser.core.entity.IEntity;
 

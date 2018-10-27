@@ -4,7 +4,7 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.mybatis.guice.MyBatisModule;
 import org.mybatis.guice.datasource.dbcp.BasicDataSourceProvider;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
-import pl.zankowski.fixparser.messages.spi.share.ShareService;
+import pl.zankowski.fixparser.messages.spi.ShareService;
 
 public class ShareModule extends MyBatisModule {
 

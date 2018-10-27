@@ -9,12 +9,12 @@ import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.InstantTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 import pl.zankowski.fixparser.core.entity.IDAO;
-import pl.zankowski.fixparser.user.entity.Role;
+import pl.zankowski.fixparser.user.api.Role;
 import pl.zankowski.fixparser.user.entity.UserDetails;
-import pl.zankowski.fixparser.user.entity.UserID;
+import pl.zankowski.fixparser.user.api.UserId;
 import pl.zankowski.fixparser.user.entity.UserSetting;
 import pl.zankowski.fixparser.user.entity.UserSettingHolder;
-import pl.zankowski.fixparser.user.entity.UserState;
+import pl.zankowski.fixparser.user.api.UserState;
 import pl.zankowski.fixparser.user.handler.ActiveUserTypeHandler;
 import pl.zankowski.fixparser.user.handler.UserIDTypeHandler;
 import pl.zankowski.fixparser.user.handler.UserSettingTypeHandler;
@@ -26,7 +26,7 @@ public interface UserDAO extends IDAO {
 
     @SelectProvider(type = UserSQLProvider.class, method = "buildFindAllUsers")
     @ConstructorArgs(value = {
-            @Arg(column = "id", javaType = UserID.class, jdbcType = JdbcType.BIGINT, typeHandler = UserIDTypeHandler.class),
+            @Arg(column = "id", javaType = UserId.class, jdbcType = JdbcType.BIGINT, typeHandler = UserIDTypeHandler.class),
             @Arg(column = "user_login", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_email", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_pass", javaType = String.class, jdbcType = JdbcType.VARCHAR),
@@ -38,7 +38,7 @@ public interface UserDAO extends IDAO {
 
     @SelectProvider(type = UserSQLProvider.class, method = "buildFindUserByLogin")
     @ConstructorArgs(value = {
-            @Arg(column = "id", javaType = UserID.class, jdbcType = JdbcType.BIGINT, typeHandler = UserIDTypeHandler.class),
+            @Arg(column = "id", javaType = UserId.class, jdbcType = JdbcType.BIGINT, typeHandler = UserIDTypeHandler.class),
             @Arg(column = "user_login", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_email", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_pass", javaType = String.class, jdbcType = JdbcType.VARCHAR),
@@ -52,7 +52,7 @@ public interface UserDAO extends IDAO {
 
     @SelectProvider(type = UserSQLProvider.class, method = "buildFindUserByMail")
     @ConstructorArgs(value = {
-            @Arg(column = "id", javaType = UserID.class, jdbcType = JdbcType.BIGINT, typeHandler = UserIDTypeHandler.class),
+            @Arg(column = "id", javaType = UserId.class, jdbcType = JdbcType.BIGINT, typeHandler = UserIDTypeHandler.class),
             @Arg(column = "user_login", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_email", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_pass", javaType = String.class, jdbcType = JdbcType.VARCHAR),
@@ -68,13 +68,13 @@ public interface UserDAO extends IDAO {
     @ConstructorArgs(value = {
             @Arg(column = "ID", javaType = long.class, jdbcType = JdbcType.BIGINT),
     })
-    UserID findUserIDByLogin(
+    UserId findUserIDByLogin(
             @Param("userName") String userName
     );
 
     @SelectProvider(type = UserSQLProvider.class, method = "buildFindUserById")
     @ConstructorArgs(value = {
-            @Arg(column = "id", javaType = UserID.class, jdbcType = JdbcType.BIGINT, typeHandler = UserIDTypeHandler.class),
+            @Arg(column = "id", javaType = UserId.class, jdbcType = JdbcType.BIGINT, typeHandler = UserIDTypeHandler.class),
             @Arg(column = "user_login", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_email", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Arg(column = "user_pass", javaType = String.class, jdbcType = JdbcType.VARCHAR),
@@ -83,7 +83,7 @@ public interface UserDAO extends IDAO {
             @Arg(column = "user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.BIGINT, typeHandler = InstantTypeHandler.class)
     })
     UserDetails findUserById(
-            @Param("userId") UserID userID
+            @Param("userId") UserId userId
     );
 
     @SelectProvider(type = UserSQLProvider.class, method = "buildFindUserRoles")
@@ -91,23 +91,23 @@ public interface UserDAO extends IDAO {
             @Arg(column = "role_name", javaType = String.class, jdbcType = JdbcType.VARCHAR)
     })
     List<Role> findUserRoles(
-            @Param("userId") UserID userID
+            @Param("userId") UserId userId
     );
 
     @InsertProvider(type = UserSQLProvider.class, method = "buildSaveUserRole")
     void saveUserRole(
-            @Param("userId") UserID userID,
+            @Param("userId") UserId userId,
             @Param("role") Role role
     );
 
     @SelectProvider(type = UserSQLProvider.class, method = "buildFindUserPermissions")
     List<String> findUserPermissions(
-            @Param("userId") UserID userID
+            @Param("userId") UserId userId
     );
 
     @InsertProvider(type = UserSQLProvider.class, method = "buildSaveUserPermission")
     void saveUserPermission(
-            @Param("userId") UserID userID,
+            @Param("userId") UserId userId,
             @Param("permission") String permission
     );
 
@@ -128,7 +128,7 @@ public interface UserDAO extends IDAO {
 
     @SelectProvider(type = UserSQLProvider.class, method = "buildFindConfirmationKeyFromUser")
     String findConfirmationKeyFromUser(
-            @Param("userId") UserID userID
+            @Param("userId") UserId userId
     );
 
     @InsertProvider(type = UserSQLProvider.class, method = "buildSaveUser")
@@ -143,19 +143,19 @@ public interface UserDAO extends IDAO {
 
     @UpdateProvider(type = UserSQLProvider.class, method = "buildUpdateConfirmationKey")
     void updateConfirmationKey(
-            @Param("userId") UserID userID,
+            @Param("userId") UserId userId,
             @Param("confirmationKey") String confirmationKey
     );
 
     @UpdateProvider(type = UserSQLProvider.class, method = "buildUpdateUserLastLogin")
     void updateLastLogin(
-            @Param("userId") UserID userID,
+            @Param("userId") UserId userId,
             @Param("lastLogin") Instant lastLogin
     );
 
     @UpdateProvider(type = UserSQLProvider.class, method = "buildUpdateUserStatus")
     void updateUserStatus(
-            @Param("userId") UserID userID,
+            @Param("userId") UserId userId,
             @Param("userStatus") UserState userState
     );
 
@@ -165,12 +165,12 @@ public interface UserDAO extends IDAO {
             @Arg(column = "setting_value", jdbcType = JdbcType.VARCHAR, javaType = String.class)
     })
     List<UserSettingHolder> findParameters(
-            @Param("userId") UserID userID
+            @Param("userId") UserId userId
     );
 
     @InsertProvider(type = UserSQLProvider.class, method = "buildSaveParameter")
     void saveParameter(
-            @Param("userId") UserID userID,
+            @Param("userId") UserId userId,
             @Param("userSetting") UserSetting userSetting,
             @Param("value") String value
     );

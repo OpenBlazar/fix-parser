@@ -14,12 +14,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TrackerServiceImpl implements TrackerService {
+public class DefaultTrackerService implements TrackerService {
 
     private final TrackerDAO trackerDAO;
 
     @Inject
-    public TrackerServiceImpl(TrackerDAO trackerDAO) {
+    public DefaultTrackerService(TrackerDAO trackerDAO) {
         this.trackerDAO = trackerDAO;
     }
 

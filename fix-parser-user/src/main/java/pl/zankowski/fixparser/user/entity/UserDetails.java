@@ -1,6 +1,8 @@
 package pl.zankowski.fixparser.user.entity;
 
 import pl.zankowski.fixparser.core.entity.IEntity;
+import pl.zankowski.fixparser.user.api.UserId;
+import pl.zankowski.fixparser.user.api.UserState;
 
 import java.time.Instant;
 import java.util.Objects;
@@ -9,7 +11,7 @@ public class UserDetails implements IEntity {
 
     private static final long serialVersionUID = 3187485280700741057L;
 
-    private final UserID userID;
+    private final UserId userId;
     private final String userName;
     private final String userMail;
     private final String password;
@@ -17,9 +19,9 @@ public class UserDetails implements IEntity {
     private final Instant registrationDate;
     private final Instant lastLogin;
 
-    public UserDetails(final UserID userID, final String userName, final String userMail, final String password,
+    public UserDetails(final UserId userId, final String userName, final String userMail, final String password,
             final UserState isActive, final Instant registrationDate, final Instant lastLogin) {
-        Objects.requireNonNull(userID);
+        Objects.requireNonNull(userId);
         Objects.requireNonNull(userName);
         Objects.requireNonNull(userMail);
         Objects.requireNonNull(password);
@@ -27,7 +29,7 @@ public class UserDetails implements IEntity {
         Objects.requireNonNull(registrationDate);
         Objects.requireNonNull(lastLogin);
 
-        this.userID = userID;
+        this.userId = userId;
         this.userName = userName;
         this.userMail = userMail;
         this.password = password;
@@ -36,8 +38,8 @@ public class UserDetails implements IEntity {
         this.lastLogin = lastLogin;
     }
 
-    public UserID getUserID() {
-        return userID;
+    public UserId getUserId() {
+        return userId;
     }
 
     public String getUserName() {
@@ -69,7 +71,7 @@ public class UserDetails implements IEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final UserDetails that = (UserDetails) o;
-        return Objects.equals(userID, that.userID) &&
+        return Objects.equals(userId, that.userId) &&
                 Objects.equals(userName, that.userName) &&
                 Objects.equals(userMail, that.userMail) &&
                 Objects.equals(password, that.password) &&
@@ -80,13 +82,13 @@ public class UserDetails implements IEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(userID, userName, userMail, password, userState, registrationDate, lastLogin);
+        return Objects.hash(userId, userName, userMail, password, userState, registrationDate, lastLogin);
     }
 
     @Override
     public String toString() {
         return "UserDetails{" +
-                "userID=" + userID +
+                "userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", userMail='" + userMail + '\'' +
                 ", password='" + password + '\'' +

@@ -11,5 +11,15 @@
 
     <artifactId>fix-parser-user-spi</artifactId>
 
+    <dependencies>
+
+        <!-- Internal -->
+
+        <dependency>
+            <groupId>pl.zankowski</groupId>
+            <artifactId>fix-parser-user-api</artifactId>
+        </dependency>
+
+    </dependencies>
 
 </project>

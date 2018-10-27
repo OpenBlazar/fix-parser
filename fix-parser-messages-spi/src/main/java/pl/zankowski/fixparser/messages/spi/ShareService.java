@@ -1,4 +1,4 @@
-package pl.zankowski.fixparser.messages.spi.share;
+package pl.zankowski.fixparser.messages.spi;
 
 import pl.zankowski.fixparser.messages.api.share.ShareException;
 
