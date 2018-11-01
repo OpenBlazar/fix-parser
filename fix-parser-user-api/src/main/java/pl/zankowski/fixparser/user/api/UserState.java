@@ -1,8 +1,8 @@
 package pl.zankowski.fixparser.user.api;
 
-import pl.zankowski.fixparser.core.entity.IEntity;
+import pl.zankowski.fixparser.core.ITransferObject;
 
-public enum UserState implements IEntity {
+public enum UserState implements ITransferObject {
 
     ACTIVE(1),
     INACTIVE(0),

@@ -4,34 +4,36 @@ import pl.zankowski.fixparser.messages.api.FixMessageTO;
 import pl.zankowski.fixparser.messages.api.FixPairTO;
 import pl.zankowski.fixparser.web.bean.AbstractBean;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
-@ManagedBean(name = "comparatorBean")
+@Named("comparatorBean")
 @RequestScoped
 public class ComparatorBean extends AbstractBean {
 
-    private FixMessageTO selectedMessage_1;
-    private FixMessageTO selectedMessage_2;
+    private static final long serialVersionUID = 1076467665275238178L;
 
-    public FixMessageTO getSelectedMessage_1() {
-        return selectedMessage_1;
+    private FixMessageTO firstMessage;
+    private FixMessageTO secondMessage;
+
+    public FixMessageTO getFirstMessage() {
+        return firstMessage;
     }
 
-    public void setSelectedMessage_1(FixMessageTO selectedMessage_1) {
-        this.selectedMessage_1 = selectedMessage_1;
+    public void setFirstMessage(final FixMessageTO firstMessage) {
+        this.firstMessage = firstMessage;
     }
 
-    public FixMessageTO getSelectedMessage_2() {
-        return selectedMessage_2;
+    public FixMessageTO getSecondMessage() {
+        return secondMessage;
     }
 
-    public void setSelectedMessage_2(FixMessageTO selectedMessage_2) {
-        this.selectedMessage_2 = selectedMessage_2;
+    public void setSecondMessage(final FixMessageTO secondMessage) {
+        this.secondMessage = secondMessage;
     }
 
-    public String getRowStyleForSecondMessage(FixPairTO fixPair) {
-        if (selectedMessage_1.getMessageFields().contains(fixPair)) {
+    public String getRowStyleForSecondMessage(final FixPairTO fixPair) {
+        if (firstMessage.getMessageFields().contains(fixPair)) {
             return "null";
         } else {
             return "blazar-comparator-row";

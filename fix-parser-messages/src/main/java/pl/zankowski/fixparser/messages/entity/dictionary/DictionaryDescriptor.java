@@ -1,28 +1,21 @@
-package pl.zankowski.fixparser.messages.api.dictionary;
+package pl.zankowski.fixparser.messages.entity.dictionary;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.google.common.base.MoreObjects;
-import pl.zankowski.fixparser.core.ITransferObject;
+import pl.zankowski.fixparser.core.entity.IEntity;
+import pl.zankowski.fixparser.messages.api.dictionary.DictionaryLoaderType;
 import pl.zankowski.fixparser.user.api.UserId;
 
 import java.util.Objects;
 
-@JsonPropertyOrder({"userId", "providerName", "loaderType"})
-public class DictionaryDescriptorTO implements ITransferObject {
+public class DictionaryDescriptor implements IEntity {
 
-    private static final long serialVersionUID = -2764206970798569139L;
+    private static final long serialVersionUID = -1878360863772226497L;
 
     private final UserId userId;
     private final String providerName;
     private final DictionaryLoaderType loaderType;
 
-    @JsonCreator
-    public DictionaryDescriptorTO(
-            @JsonProperty("userId") final UserId userId,
-            @JsonProperty("providerName") final String providerName,
-            @JsonProperty("loaderType") final DictionaryLoaderType loaderType) {
+    public DictionaryDescriptor(final UserId userId, final String providerName, final DictionaryLoaderType loaderType) {
         this.userId = userId;
         this.providerName = providerName;
         this.loaderType = loaderType;
@@ -44,7 +37,7 @@ public class DictionaryDescriptorTO implements ITransferObject {
     public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        final DictionaryDescriptorTO that = (DictionaryDescriptorTO) o;
+        final DictionaryDescriptor that = (DictionaryDescriptor) o;
         return Objects.equals(userId, that.userId) &&
                 Objects.equals(providerName, that.providerName) &&
                 loaderType == that.loaderType;
@@ -63,4 +56,5 @@ public class DictionaryDescriptorTO implements ITransferObject {
                 .add("loaderType", loaderType)
                 .toString();
     }
+
 }

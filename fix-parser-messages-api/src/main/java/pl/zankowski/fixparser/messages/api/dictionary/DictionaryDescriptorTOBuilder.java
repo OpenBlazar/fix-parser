@@ -1,13 +1,13 @@
 package pl.zankowski.fixparser.messages.api.dictionary;
 
-import pl.zankowski.fixparser.user.api.UserIdTO;
+import pl.zankowski.fixparser.user.api.UserId;
 
 public final class DictionaryDescriptorTOBuilder {
-    private UserIdTO userId;
+    private UserId userId;
     private String providerName;
     private DictionaryLoaderType loaderType;
 
-    public DictionaryDescriptorTOBuilder withUserId(final UserIdTO userId) {
+    public DictionaryDescriptorTOBuilder withUserId(final UserId userId) {
         this.userId = userId;
         return this;
     }

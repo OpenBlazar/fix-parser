@@ -6,12 +6,12 @@ import pl.zankowski.fixparser.mail.util.MailMessageFactory;
 
 import javax.mail.MessagingException;
 
-public class MailServiceImpl implements MailService {
+public class DefaultMailService implements MailService {
 
     private final MailEngine mailEngine;
 
     @Inject
-    public MailServiceImpl(final MailEngine mailEngine) throws MessagingException {
+    public DefaultMailService(final MailEngine mailEngine) throws MessagingException {
         this.mailEngine = mailEngine;
         this.mailEngine.start();
     }

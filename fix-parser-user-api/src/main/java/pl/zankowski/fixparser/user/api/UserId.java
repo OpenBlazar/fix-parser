@@ -1,15 +1,23 @@
 package pl.zankowski.fixparser.user.api;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import pl.zankowski.fixparser.core.ITransferObject;
+
 import java.io.Serializable;
 import java.util.Objects;
 
-public class UserId implements Serializable {
+@JsonPropertyOrder({"id"})
+public class UserId implements ITransferObject {
 
     private static final long serialVersionUID = 1926039666988035924L;
 
     private final long id;
 
-    public UserId(final long id) {
+    @JsonCreator
+    public UserId(
+            @JsonProperty("id") final long id) {
         this.id = id;
     }
 

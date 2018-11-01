@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.zankowski.fixparser.messages.api.FixMessageTO;
+import pl.zankowski.fixparser.messages.api.dictionary.DictionaryDescriptorTO;
 import pl.zankowski.fixparser.messages.api.share.ShareException;
 import pl.zankowski.fixparser.messages.spi.MessageService;
 import pl.zankowski.fixparser.messages.spi.ShareService;
@@ -17,15 +18,15 @@ import pl.zankowski.fixparser.web.util.ShiroUtils;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@ManagedBean(name = "parserBean")
+@Named("parserBean")
 @ViewScoped
 public class ParserBean extends AbstractBean {
 
@@ -36,6 +37,8 @@ public class ParserBean extends AbstractBean {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(ParserBean.class);
 
+    private static final long serialVersionUID = 6160698503177122700L;
+
     private ShiroUtils shiroUtils;
     private FacesUtils facesUtils;
 
@@ -45,11 +48,11 @@ public class ParserBean extends AbstractBean {
     private UserService userService;
 
     private List<FixMessageTO> messages = new ArrayList<>();
-    private List<ProviderDescriptor> providers = Arrays.asList(DefaultFixDefinitionProvider.DESCRIPTOR);
+    private List<DictionaryDescriptorTO> providers = Arrays.asList(DefaultFixDefinitionProvider.DESCRIPTOR);
 
     private ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-    protected ProviderDescriptor selectedProvider = DefaultFixDefinitionProvider.DESCRIPTOR;
+    protected DictionaryDescriptorTO selectedProvider = DefaultFixDefinitionProvider.DESCRIPTOR;
     private FixMessageTO selectedMessage;
     private String shareKey;
     private String input;
@@ -125,7 +128,7 @@ public class ParserBean extends AbstractBean {
 
     private void doLoadDefaultProvider() {
         if (shiroUtils.isUserAuthenticated()) {
-            ProviderDescriptor savedProvider = (ProviderDescriptor) userService.getUserSettingsCache().getObject(shiroUtils.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER);
+            DictionaryDescriptorTO savedProvider = (DictionaryDescriptorTO) userService.getUserSettingsCache().getObject(shiroUtils.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER);
             if (savedProvider != null) {
                 selectedProvider = savedProvider;
             }
@@ -212,20 +215,20 @@ public class ParserBean extends AbstractBean {
         this.input = input;
     }
 
-    public ProviderDescriptor getSelectedProvider() {
+    public DictionaryDescriptorTO getSelectedProvider() {
         return selectedProvider;
     }
 
-    public void setSelectedProvider(ProviderDescriptor selectedProvider) {
+    public void setSelectedProvider(DictionaryDescriptorTO selectedProvider) {
         this.selectedProvider = selectedProvider;
         setProviderToContext(selectedProvider);
     }
 
-    public List<ProviderDescriptor> getProviders() {
+    public List<DictionaryDescriptorTO> getProviders() {
         return providers;
     }
 
-    public void setProviders(List<ProviderDescriptor> providers) {
+    public void setProviders(List<DictionaryDescriptorTO> providers) {
         this.providers = providers;
     }
 }
