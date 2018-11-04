@@ -1,35 +1,17 @@
-/*
- * Copyright 2016 Wojciech Zankowski.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-package pl.zankowski.bfp.core.payments.paypal;
+package pl.zankowski.fixparser.payment.paypal;
 
-import pl.zankowski.bfp.core.payments.exception.PaymentException;
-import pl.zankowski.fixparser.payment.api.exception.SubscriptionPlan;
-import pl.zankowski.bfp.core.payments.paypal.util.PayPalPlanInitializer;
 import com.paypal.api.payments.Plan;
 import com.paypal.base.rest.PayPalRESTException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.zankowski.fixparser.payment.api.SubscriptionPlan;
+import pl.zankowski.fixparser.payment.api.exception.PaymentException;
+import pl.zankowski.fixparser.payment.paypal.util.PayPalPlanInitializer;
 
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * @author Wojciech Zankowski
- */
 public class PayPalPlanManager {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PayPalPlanManager.class);

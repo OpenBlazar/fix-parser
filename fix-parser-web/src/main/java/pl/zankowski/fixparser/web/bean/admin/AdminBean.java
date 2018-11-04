@@ -8,6 +8,8 @@ import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.zankowski.fixparser.core.DateRangeTO;
+import pl.zankowski.fixparser.core.DateRangeTOBuilder;
 import pl.zankowski.fixparser.tracker.api.TrackerDataTO;
 import pl.zankowski.fixparser.tracker.spi.TrackerService;
 import pl.zankowski.fixparser.user.api.Role;
@@ -19,12 +21,15 @@ import pl.zankowski.fixparser.web.util.FacesUtils;
 import pl.zankowski.fixparser.web.util.ShiroUtils;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -32,12 +37,15 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
-@ManagedBean(name = "adminBean")
+@Named("adminBean")
 @ViewScoped
 public class AdminBean extends AbstractBean {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AdminBean.class);
     private static final DateTimeFormatter DATE_CHART_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+    private final LocalDate startDate = LocalDate.of(2017, 1, 1);
+    private final LocalDate endDate = LocalDate.of(2018, 12, 12);
 
     private UserService userService;
     private TrackerService trackerService;
@@ -57,12 +65,17 @@ public class AdminBean extends AbstractBean {
             if (shiroUtils.hasRole(Role.ADMIN_ROLE.getName())) {
                 userDetails = userService.getUsers();
 
-                trackerData = trackerService.getTrackerData().stream()
+                final DateRangeTO range = new DateRangeTOBuilder()
+                        .withFrom(startDate)
+                        .withTo(endDate)
+                        .build();
+
+                trackerData = trackerService.getTrackerData(range).getList().stream()
                         .sorted(Comparator.comparing(TrackerDataTO::getParseDate))
                         .collect(Collectors.toList());
 
                 // TODO do collector
-                trackerDailyData = trackerService.getTrackerDailyDataAgg().entrySet().stream()
+                trackerDailyData = getTrackerDailyDataAgg(trackerData).entrySet().stream()
                         .collect(Collectors.toCollection(
                                 () -> new TreeSet<>(Comparator.comparing(Map.Entry::getKey))));
 
@@ -122,6 +135,19 @@ public class AdminBean extends AbstractBean {
 
     public LineChartModel getChartSeries() {
         return trackerChartModel;
+    }
+
+    public Map<LocalDate, Integer> getTrackerDailyDataAgg(final List<TrackerDataTO> trackerDataList) {
+        Map<LocalDate, Integer> trackerDataMap = new HashMap<>();
+        for (TrackerDataTO trackerData : trackerDataList) {
+            LocalDate date = LocalDateTime.ofInstant(trackerData.getParseDate(), ZoneId.systemDefault()).toLocalDate();
+            Integer dayNumber = trackerDataMap.get(date);
+            if (dayNumber == null) {
+                dayNumber = 0;
+            }
+            trackerDataMap.put(date, dayNumber + trackerData.getMessageNumber());
+        }
+        return trackerDataMap;
     }
 
 }

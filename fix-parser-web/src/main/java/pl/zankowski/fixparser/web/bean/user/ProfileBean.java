@@ -3,9 +3,14 @@ package pl.zankowski.fixparser.web.bean.user;
 import com.google.inject.Inject;
 import org.apache.shiro.subject.Subject;
 import org.primefaces.model.UploadedFile;
+import pl.zankowski.fixparser.messages.api.dictionary.DictionaryDescriptorTO;
+import pl.zankowski.fixparser.messages.api.dictionary.DictionaryLoaderType;
+import pl.zankowski.fixparser.messages.api.dictionary.DictionaryTOBuilder;
+import pl.zankowski.fixparser.messages.spi.DictionaryService;
 import pl.zankowski.fixparser.messages.spi.MessageService;
 import pl.zankowski.fixparser.user.api.Permission;
 import pl.zankowski.fixparser.user.api.UserDetailsTO;
+import pl.zankowski.fixparser.user.api.UserSetting;
 import pl.zankowski.fixparser.user.spi.UserService;
 import pl.zankowski.fixparser.web.bean.AbstractBean;
 import pl.zankowski.fixparser.web.util.FacesUtils;
@@ -13,8 +18,8 @@ import pl.zankowski.fixparser.web.util.ShiroUtils;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +27,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
-@ManagedBean(name = "profileBean")
+@Named("profileBean")
 @ViewScoped
 public class ProfileBean extends AbstractBean {
 
@@ -32,20 +37,21 @@ public class ProfileBean extends AbstractBean {
 
     private MessageService parserService;
     private UserService userService;
+    private DictionaryService dictionaryService;
 
     private ShiroUtils shiroUtils;
     private FacesUtils facesUtils;
 
     private ExecutorService threadService = Executors.newSingleThreadExecutor();
 
-    private Set<ProviderDescriptor> providerDescriptors = new HashSet<>();
-    private XMLLoaderType[] loaderTypes = XMLLoaderType.values();
+    private Set<DictionaryDescriptorTO> providerDescriptors = new HashSet<>();
+    private DictionaryLoaderType[] loaderTypes = DictionaryLoaderType.values();
 
     private String providerName;
-    private XMLLoaderType providerLoader = XMLLoaderType.QUICKFIX_LOADER;
+    private DictionaryLoaderType providerLoader = DictionaryLoaderType.QUICKFIX_LOADER;
     private UploadedFile uploadedFile;
 
-    private ProviderDescriptor defaultProvider;
+    private DictionaryDescriptorTO defaultProvider;
     private Boolean storeMessages;
     private String permissions;
 
@@ -73,6 +79,11 @@ public class ProfileBean extends AbstractBean {
     }
 
     @Inject
+    public void setDictionaryService(final DictionaryService dictionaryService) {
+        this.dictionaryService = dictionaryService;
+    }
+
+    @Inject
     public void setShiroUtils(ShiroUtils shiroUtils) {
         this.shiroUtils = shiroUtils;
     }
@@ -83,22 +94,21 @@ public class ProfileBean extends AbstractBean {
     }
 
     private void doLoadDefaultParameters() {
-        ProviderDescriptor savedProvider = (ProviderDescriptor) userService.getUserSettingsCache().getObject(shiroUtils.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER);
+        DictionaryDescriptorTO savedProvider = (DictionaryDescriptorTO) userService.getParameter(
+                shiroUtils.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER);
         if (savedProvider != null) {
             defaultProvider = savedProvider;
         }
 
-        Boolean storeMessages = userService.getUserSettingsCache().getBoolean(shiroUtils.getCurrentUserID(), UserSetting.STORE_MESSAGES);
+        Boolean storeMessages = (Boolean) userService.getParameter(shiroUtils.getCurrentUserID(),
+                UserSetting.STORE_MESSAGES);
         if (storeMessages != null) {
             this.storeMessages = storeMessages;
         }
     }
 
     private void doReloadProviders() {
-        providerDescriptors = parserService.getProviders(
-                shiroUtils.getCurrentUserID(),
-                shiroUtils.isPermitted(Permission.PRO.name()) || shiroUtils.isPermitted(Permission.ENTERPRISE.name())
-        );
+        providerDescriptors = dictionaryService.getDictionaryDescriptors(shiroUtils.getCurrentUserID());
     }
 
     private void doLoadPermissions() {
@@ -143,9 +153,13 @@ public class ProfileBean extends AbstractBean {
                 providerName = uploadedFile.getFileName();
             }
 
-            ProviderDescriptor providerDescriptor = new ProviderDescriptor(providerName, providerLoader);
+            DictionaryDescriptorTO providerDescriptor = new DictionaryDescriptorTO(
+                    userDetails.getUserId(), providerName, providerLoader);
 
-            parserService.saveProviderFile(userDetails.getUserId(), providerDescriptor, uploadedFile.getContents());
+            dictionaryService.saveDictionary(new DictionaryTOBuilder()
+                    .withContent(uploadedFile.getContents())
+                    .withDictionaryDescriptor(providerDescriptor)
+                    .build());
 
             doReloadProviders();
 
@@ -153,29 +167,30 @@ public class ProfileBean extends AbstractBean {
         }
     }
 
-    public void doRemoveProvider(ProviderDescriptor providerDescriptor) {
+    public void doRemoveProvider(DictionaryDescriptorTO providerDescriptor) {
         if (shiroUtils.isUserAuthenticated()) {
-            if (parserService.removeProvider(shiroUtils.getCurrentUserID(), providerDescriptor)) {
+            if (dictionaryService.removeDictionary(providerDescriptor)) {
                 if (providerDescriptor.equals(defaultProvider)) {
-                    userService.getUserSettingsCache().setParameter(shiroUtils.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER, DefaultFixDefinitionProvider.DESCRIPTOR);
+                    userService.setParameter(shiroUtils.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER, null);
                 }
 
-                defaultProvider = DefaultFixDefinitionProvider.DESCRIPTOR;
+                defaultProvider = null;
             } else {
                 facesUtils.addMessage(FacesMessage.SEVERITY_WARN, String.format(FAILED_TO_REMOVE, providerDescriptor));
             }
         }
     }
 
-    public boolean isDefaultProvider(ProviderDescriptor providerDescriptor) {
-        return !DefaultFixDefinitionProvider.DESCRIPTOR.equals(providerDescriptor) && !parserService.isProProvider(providerDescriptor);
+    public boolean isDefaultProvider(DictionaryDescriptorTO providerDescriptor) {
+//        return !DefaultFixDefinitionProvider.DESCRIPTOR.equals(providerDescriptor) && !parserService.isProProvider(providerDescriptor);
+        return true;
     }
 
-    public Set<ProviderDescriptor> getProviderDescriptors() {
+    public Set<DictionaryDescriptorTO> getProviderDescriptors() {
         return providerDescriptors;
     }
 
-    public XMLLoaderType[] getLoaderTypes() {
+    public DictionaryLoaderType[] getLoaderTypes() {
         return Arrays.copyOf(loaderTypes, loaderTypes.length);
     }
 
@@ -187,11 +202,11 @@ public class ProfileBean extends AbstractBean {
         this.providerName = providerName;
     }
 
-    public XMLLoaderType getProviderLoader() {
+    public DictionaryLoaderType getProviderLoader() {
         return providerLoader;
     }
 
-    public void setProviderLoader(XMLLoaderType providerLoader) {
+    public void setProviderLoader(DictionaryLoaderType providerLoader) {
         this.providerLoader = providerLoader;
     }
 
@@ -203,18 +218,18 @@ public class ProfileBean extends AbstractBean {
         this.uploadedFile = uploadedFile;
     }
 
-    public ProviderDescriptor getDefaultProvider() {
+    public DictionaryDescriptorTO getDefaultProvider() {
         return defaultProvider;
     }
 
-    public void setDefaultProvider(ProviderDescriptor defaultProvider) {
+    public void setDefaultProvider(DictionaryDescriptorTO defaultProvider) {
         this.defaultProvider = defaultProvider;
         saveParameter(defaultProvider);
     }
 
-    private void saveParameter(ProviderDescriptor defaultProvider) {
+    private void saveParameter(DictionaryDescriptorTO defaultProvider) {
         if (shiroUtils.isUserAuthenticated()) {
-            this.userService.getUserSettingsCache().setParameter(shiroUtils.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER, defaultProvider);
+            this.userService.setParameter(shiroUtils.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER, defaultProvider);
         }
     }
 
@@ -237,7 +252,7 @@ public class ProfileBean extends AbstractBean {
 
     private void saveParameter(Boolean storeMessages) {
         if (shiroUtils.isUserAuthenticated()) {
-            this.userService.getUserSettingsCache().setParameter(shiroUtils.getCurrentUserID(), UserSetting.STORE_MESSAGES, storeMessages);
+            this.userService.setParameter(shiroUtils.getCurrentUserID(), UserSetting.STORE_MESSAGES, storeMessages);
         }
     }
 

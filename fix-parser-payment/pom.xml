@@ -20,6 +20,16 @@
             <artifactId>fix-parser-payment-spi</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>pl.zankowski</groupId>
+            <artifactId>fix-parser-core-framework</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>pl.zankowski</groupId>
+            <artifactId>fix-parser-common</artifactId>
+        </dependency>
+
         <!-- External libraries -->
 
         <dependency>

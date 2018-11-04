@@ -1,5 +1,7 @@
 package pl.zankowski.fixparser.user.entity;
 
+import pl.zankowski.fixparser.user.api.UserSetting;
+
 import java.util.Objects;
 
 public class UserSettingHolder {

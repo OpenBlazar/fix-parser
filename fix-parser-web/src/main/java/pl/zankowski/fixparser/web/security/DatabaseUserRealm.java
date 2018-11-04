@@ -1,4 +1,4 @@
-package pl.zankowski.fixparser.security.config;
+package pl.zankowski.fixparser.web.security;
 
 import pl.zankowski.bfp.data.user.Role;
 import pl.zankowski.bfp.data.user.UserDetails;

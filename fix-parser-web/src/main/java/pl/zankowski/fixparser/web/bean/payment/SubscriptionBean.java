@@ -1,16 +1,21 @@
 package pl.zankowski.fixparser.web.bean.payment;
 
 import com.google.inject.Inject;
+import pl.zankowski.fixparser.payment.api.ClientAddressTO;
+import pl.zankowski.fixparser.payment.api.PayPalCountryCodes;
+import pl.zankowski.fixparser.payment.api.SubscriptionPlan;
+import pl.zankowski.fixparser.payment.api.exception.PaymentException;
+import pl.zankowski.fixparser.payment.spi.PaymentService;
 import pl.zankowski.fixparser.web.bean.AbstractBean;
 import pl.zankowski.fixparser.web.util.FacesUtils;
 import pl.zankowski.fixparser.web.util.ShiroUtils;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 import java.io.IOException;
 
-@ManagedBean
+@Named("subscriptionBean")
 @ViewScoped
 public class SubscriptionBean extends AbstractBean {
 
@@ -50,7 +55,8 @@ public class SubscriptionBean extends AbstractBean {
 
     public void doSubscribe() throws PaymentException, IOException {
         if (shiroUtils.isUserAuthenticated()) {
-            String acceptUrl = this.paymentService.subscribe(subscriptionPlan, new UserAddress(address, city, state, postalCode, countryCode.getCountryCode()));
+            String acceptUrl = this.paymentService.subscribe(subscriptionPlan,
+                    new ClientAddressTO(address, city, state, postalCode, countryCode.getCountryCode()));
             facesUtils.redirect(acceptUrl);
         }
     }

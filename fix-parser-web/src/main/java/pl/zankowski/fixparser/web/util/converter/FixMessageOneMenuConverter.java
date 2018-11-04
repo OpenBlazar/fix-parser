@@ -2,6 +2,7 @@ package pl.zankowski.fixparser.web.util.converter;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;
+import pl.zankowski.fixparser.core.exception.FixParserBusinessException;
 import pl.zankowski.fixparser.messages.api.FixMessageTO;
 import pl.zankowski.fixparser.messages.api.dictionary.DictionaryDescriptorTO;
 import pl.zankowski.fixparser.messages.spi.MessageService;
@@ -20,7 +21,6 @@ public class FixMessageOneMenuConverter implements Converter {
 
     private static final char DELIMITER = ';';
     private static final char ENTRY_DELIMITER = '#';
-    private final FixMessageConverter messageConverter = new FixMessageConverter();
 
     private FacesUtils facesUtils;
     private ShiroUtils shiroUtils;
@@ -52,21 +52,17 @@ public class FixMessageOneMenuConverter implements Converter {
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         int index = value.indexOf(DELIMITER);
 
-        DictionaryDescriptorTO providerDescriptor = DefaultFixDefinitionProvider.DESCRIPTOR;
+        DictionaryDescriptorTO providerDescriptor = null;
         if (shiroUtils.isUserAuthenticated()) {
-            providerDescriptor = (ProviderDescriptor) facesUtils.getContextAttribute(
-                    shiroUtils.getCurrentUserID().getId() + FixDefinitionProvider.class.getSimpleName());
+            providerDescriptor = (DictionaryDescriptorTO) facesUtils.getContextAttribute(
+                    shiroUtils.getCurrentUserID().getId() + DictionaryDescriptorTO.class.getSimpleName());
         }
 
-        return messageConverter.convertToFixMessage(
-                value.substring(index + 1),
-                String.valueOf(ENTRY_DELIMITER),
-                Integer.parseInt(value.substring(0, index)),
-                parserService.getDefinitionProvider(
-                        providerDescriptor,
-                        shiroUtils.getCurrentUserID(),
-                        shiroUtils.isPermitted(Permission.PRO.name()) || shiroUtils.isPermitted(Permission.ENTERPRISE.name())
-                ));
+        try {
+            return parserService.parseInput(value.substring(index + 1));
+        } catch (FixParserBusinessException e) {
+            return null;
+        }
     }
 
     @Override
@@ -75,7 +71,7 @@ public class FixMessageOneMenuConverter implements Converter {
             return "";
         } else {
             FixMessageTO fixMessage = (FixMessageTO) value;
-            return fixMessage.getMessageID().toString() + DELIMITER + messageConverter.convertToString(fixMessage, ENTRY_DELIMITER);
+            return fixMessage.getMessageId().toString() + DELIMITER + parserService.parseInput(fixMessage);
         }
     }
 

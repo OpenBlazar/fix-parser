@@ -1,4 +1,4 @@
-package pl.zankowski.fixparser.messages.fix;
+package pl.zankowski.fixparser.web.util;
 
 public class FixParserConstants {
 

@@ -16,6 +16,36 @@
 
         <dependency>
             <groupId>pl.zankowski</groupId>
+            <artifactId>fix-parser-web</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>pl.zankowski</groupId>
+            <artifactId>fix-parser-payment</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>pl.zankowski</groupId>
+            <artifactId>fix-parser-tracker</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>pl.zankowski</groupId>
+            <artifactId>fix-parser-mail</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>pl.zankowski</groupId>
+            <artifactId>fix-parser-user</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>pl.zankowski</groupId>
             <artifactId>fix-parser-messages</artifactId>
         </dependency>
 

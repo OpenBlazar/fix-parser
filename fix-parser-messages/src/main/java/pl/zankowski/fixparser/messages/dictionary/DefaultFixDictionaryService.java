@@ -69,4 +69,10 @@ public class DefaultFixDictionaryService implements FixDictionaryService {
                 .map(DefaultFixDefinitionProvider::new)
                 .orElseThrow(DefinitionProviderNotFoundException::new);
     }
+
+    @Override
+    public boolean removeDictionary(final DictionaryDescriptorTO descriptor) {
+        return false;
+    }
+
 }

@@ -1,10 +1,10 @@
-package pl.zankowski.bfp.core.payments.paypal.util;
+package pl.zankowski.fixparser.payment.paypal.util;
 
-import pl.zankowski.bfp.data.user.UserAddress;
 import com.paypal.api.payments.Address;
 import com.paypal.api.payments.Agreement;
 import com.paypal.api.payments.Payer;
 import com.paypal.api.payments.Plan;
+import pl.zankowski.fixparser.payment.api.ClientAddressTO;
 
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
@@ -17,7 +17,7 @@ public class PayPalAgreementFactory {
 
     public static final DateTimeFormatter START_DATE_FORMATTER = DateTimeFormatter.ISO_INSTANT;
 
-    public Agreement createAgreement(String planId, UserAddress userAddress) {
+    public Agreement createAgreement(String planId, ClientAddressTO userAddress) {
         Agreement agreement = new Agreement();
         agreement = agreement
                 .setName(AGREEMENT_NAME)

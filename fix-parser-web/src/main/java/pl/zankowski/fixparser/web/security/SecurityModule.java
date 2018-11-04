@@ -1,12 +1,5 @@
-package pl.zankowski.bfp.core.security;
+package pl.zankowski.fixparser.web.security;
 
-import pl.zankowski.bfp.core.security.config.BcryptCredentialsMatcher;
-import pl.zankowski.bfp.core.security.config.DatabaseUserRealm;
-import pl.zankowski.bfp.core.security.config.FixedCookieRememberMeManager;
-import pl.zankowski.bfp.core.security.config.ShiroMethodInterceptor;
-import pl.zankowski.bfp.core.security.util.SettingsManager;
-import pl.zankowski.bfp.data.user.Role;
-import pl.zankowski.bfp.web.util.BlazarURL;
 import com.google.inject.Key;
 import com.google.inject.Singleton;
 import com.google.inject.binder.AnnotatedBindingBuilder;
@@ -23,6 +16,8 @@ import org.apache.shiro.web.filter.PathMatchingFilter;
 import org.apache.shiro.web.filter.authz.RolesAuthorizationFilter;
 import org.apache.shiro.web.mgt.WebSecurityManager;
 import org.apache.shiro.web.session.mgt.ServletContainerSessionManager;
+import pl.zankowski.fixparser.user.api.Role;
+import pl.zankowski.fixparser.web.util.BlazarURL;
 
 import javax.servlet.ServletContext;
 
@@ -80,7 +75,6 @@ public class SecurityModule extends ShiroWebModule {
             super(ROLES, configValue);
         }
     }
-
     private static class FilterConfigKey<T extends PathMatchingFilter> extends Key<T> {
         private Key<T> key;
         private String configValue;

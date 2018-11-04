@@ -84,7 +84,6 @@
         <module>fix-parser-user</module>
         <module>fix-parser-tracker</module>
         <module>fix-parser-payment</module>
-        <module>fix-parser-security</module>
         <module>fix-parser-core-entity</module>
         <module>fix-parser-mail-spi</module>
         <module>fix-parser-mail-api</module>
@@ -103,6 +102,36 @@
         <dependencies>
 
             <!-- projects -->
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-web</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-payment</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-tracker</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-mail</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>fix-parser-user</artifactId>
+                <version>1.0</version>
+            </dependency>
 
             <dependency>
                 <groupId>pl.zankowski</groupId>

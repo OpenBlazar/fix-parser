@@ -12,7 +12,7 @@ import pl.zankowski.fixparser.core.entity.IRepository;
 import pl.zankowski.fixparser.user.api.Role;
 import pl.zankowski.fixparser.user.entity.UserDetails;
 import pl.zankowski.fixparser.user.api.UserId;
-import pl.zankowski.fixparser.user.entity.UserSetting;
+import pl.zankowski.fixparser.user.api.UserSetting;
 import pl.zankowski.fixparser.user.entity.UserSettingHolder;
 import pl.zankowski.fixparser.user.api.UserState;
 import pl.zankowski.fixparser.user.handler.ActiveUserTypeHandler;

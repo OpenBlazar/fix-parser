@@ -10,11 +10,11 @@ import pl.zankowski.fixparser.web.util.FacesUtils;
 import pl.zankowski.fixparser.web.util.ShiroUtils;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
-@ManagedBean
-@RequestScoped
+@Named
+@ViewScoped
 public class LogoutBean extends AbstractBean {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(LogoutBean.class);

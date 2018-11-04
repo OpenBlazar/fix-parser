@@ -3,17 +3,16 @@ package pl.zankowski.fixparser.web.bean.user;
 import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.zankowski.fixparser.user.api.UserId;
 import pl.zankowski.fixparser.user.spi.UserService;
 import pl.zankowski.fixparser.web.bean.AbstractBean;
 import pl.zankowski.fixparser.web.util.FacesUtils;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.inject.Named;
 
-@ManagedBean(name = "confirmationBean")
+@Named("confirmationBean")
 @RequestScoped
 public class ConfirmationBean extends AbstractBean {
 
@@ -23,7 +22,6 @@ public class ConfirmationBean extends AbstractBean {
     private static final Logger LOGGER = LoggerFactory.getLogger(ConfirmationBean.class);
 
     private UserService userService;
-    private SecurityUtil securityUtil;
     private FacesUtils facesUtils;
 
     private String confirmationKey;
@@ -37,11 +35,6 @@ public class ConfirmationBean extends AbstractBean {
     @Inject
     public void setUserService(UserService userService) {
         this.userService = userService;
-    }
-
-    @Inject
-    public void setSecurityUtil(SecurityUtil securityUtil) {
-        this.securityUtil = securityUtil;
     }
 
     @Inject
@@ -62,9 +55,6 @@ public class ConfirmationBean extends AbstractBean {
             boolean confirmed = userService.confirmUser(confirmationKey);
             if (confirmed) {
                 facesUtils.addMessage(FacesMessage.SEVERITY_INFO, CONFIRMATION_SUCCEDED);
-
-                UserId userID = new UserId(securityUtil.decodeConfirmationKey(confirmationKey));
-                userService.getUserSettingsCache().createDefaultParameters(userID);
             } else {
                 facesUtils.addMessage(FacesMessage.SEVERITY_WARN, FAILED_TO_CONFIRM);
             }

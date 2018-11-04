@@ -1,4 +1,4 @@
-package pl.zankowski.fixparser.security.config;
+package pl.zankowski.fixparser.web.security;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;

@@ -1,6 +1,6 @@
 package pl.zankowski.fixparser.user;
 
-import pl.zankowski.fixparser.user.entity.UserSetting;
+import pl.zankowski.fixparser.user.api.UserSetting;
 
 public class UserSettingTranslator {
 

@@ -8,11 +8,11 @@ import pl.zankowski.fixparser.web.bean.AbstractBean;
 import pl.zankowski.fixparser.web.util.FacesUtils;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.inject.Named;
 
-@ManagedBean(name = "registerBean")
+@Named("registerBean")
 @RequestScoped
 public class RegisterBean extends AbstractBean {
 

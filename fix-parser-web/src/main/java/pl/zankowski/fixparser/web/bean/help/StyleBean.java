@@ -5,10 +5,10 @@ import pl.zankowski.fixparser.messages.api.FixPairTO;
 import pl.zankowski.fixparser.web.util.FixUtilities;
 import pl.zankowski.fixparser.web.util.StyleUtilities;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
 
-@ManagedBean(name = "styleBean")
+@Named("styleBean")
 @ApplicationScoped
 public class StyleBean {
 

@@ -42,6 +42,11 @@
             <artifactId>mybatis</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-guice</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

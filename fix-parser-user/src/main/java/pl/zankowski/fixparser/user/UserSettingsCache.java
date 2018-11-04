@@ -1,7 +1,7 @@
 package pl.zankowski.fixparser.user;
 
 import pl.zankowski.fixparser.user.api.UserId;
-import pl.zankowski.fixparser.user.entity.UserSetting;
+import pl.zankowski.fixparser.user.api.UserSetting;
 import pl.zankowski.fixparser.user.entity.UserSettingHolder;
 
 import java.util.HashMap;

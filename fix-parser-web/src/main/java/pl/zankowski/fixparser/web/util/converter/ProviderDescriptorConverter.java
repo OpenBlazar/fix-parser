@@ -1,7 +1,6 @@
 package pl.zankowski.fixparser.web.util.converter;
 
-import pl.zankowski.bfp.core.parser.FixDefinitionProvidersFileUtility;
-import pl.zankowski.bfp.fix.parser.definition.data.ProviderDescriptor;
+import pl.zankowski.fixparser.messages.api.dictionary.DictionaryDescriptorTO;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -13,16 +12,24 @@ public class ProviderDescriptorConverter implements Converter {
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        return FixDefinitionProvidersFileUtility.resolveProviderFileName(value);
+        return resolveProviderFileName(value);
     }
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-        if (value instanceof ProviderDescriptor) {
-            return FixDefinitionProvidersFileUtility.createProviderFileName((ProviderDescriptor) value);
+        if (value instanceof DictionaryDescriptorTO) {
+            return createProviderFileName((DictionaryDescriptorTO) value);
         } else {
             throw new IllegalArgumentException("Failed to convert ProviderDescriptor. Unexpected object type.");
         }
+    }
+
+    private String resolveProviderFileName(String value) {
+        return value;
+    }
+
+    private String createProviderFileName(DictionaryDescriptorTO dictionaryDescriptor) {
+        return dictionaryDescriptor.toString();
     }
 
 }

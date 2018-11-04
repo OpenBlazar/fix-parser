@@ -1,4 +1,4 @@
-package pl.zankowski.fixparser.security.config;
+package pl.zankowski.fixparser.web.security;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;

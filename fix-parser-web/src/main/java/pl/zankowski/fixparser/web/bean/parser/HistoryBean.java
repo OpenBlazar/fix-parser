@@ -7,16 +7,17 @@ import pl.zankowski.fixparser.messages.api.dictionary.DictionaryDescriptorTO;
 import pl.zankowski.fixparser.messages.spi.MessageService;
 import pl.zankowski.fixparser.user.api.Permission;
 import pl.zankowski.fixparser.user.api.UserDetailsTO;
+import pl.zankowski.fixparser.user.api.UserSetting;
 import pl.zankowski.fixparser.user.spi.UserService;
 import pl.zankowski.fixparser.web.bean.AbstractBean;
 import pl.zankowski.fixparser.web.model.FixMessageLazyDataModel;
 import pl.zankowski.fixparser.web.util.ShiroUtils;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
-@ManagedBean(name = "historyBean")
+@Named("historyBean")
 @ViewScoped
 public class HistoryBean extends AbstractBean {
 
@@ -35,7 +36,8 @@ public class HistoryBean extends AbstractBean {
         if (shiroUtils.isUserAuthenticated()) {
             UserDetailsTO userDetails = shiroUtils.getCurrentUserDetails();
             if (userDetails != null) {
-                DictionaryDescriptorTO providerDescriptor = (DictionaryDescriptorTO) userService.getUserSettingsCache().getObject(userDetails.getUserID(), UserSetting.DEFAULT_PROVIDER);
+                DictionaryDescriptorTO providerDescriptor = (DictionaryDescriptorTO) userService.getParameter(
+                        userDetails.getUserId(), UserSetting.DEFAULT_PROVIDER);
                 messageCount = parserService.countUserMessages(userDetails.getUserId());
                 messagesModel = new FixMessageLazyDataModel(
                         parserService,

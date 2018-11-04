@@ -1,27 +1,34 @@
 package pl.zankowski.fixparser.web.bean.parser;
 
+import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.zankowski.fixparser.core.exception.FixParserBusinessException;
 import pl.zankowski.fixparser.messages.api.FixMessageTO;
 import pl.zankowski.fixparser.messages.api.dictionary.DictionaryDescriptorTO;
 import pl.zankowski.fixparser.messages.api.share.ShareException;
+import pl.zankowski.fixparser.messages.spi.DictionaryService;
 import pl.zankowski.fixparser.messages.spi.MessageService;
 import pl.zankowski.fixparser.messages.spi.ShareService;
+import pl.zankowski.fixparser.tracker.api.TrackerDataTOBuilder;
 import pl.zankowski.fixparser.tracker.spi.TrackerService;
 import pl.zankowski.fixparser.user.api.Permission;
+import pl.zankowski.fixparser.user.api.UserDetailsTO;
 import pl.zankowski.fixparser.user.api.UserId;
+import pl.zankowski.fixparser.user.api.UserSetting;
 import pl.zankowski.fixparser.user.spi.UserService;
 import pl.zankowski.fixparser.web.bean.AbstractBean;
 import pl.zankowski.fixparser.web.util.FacesUtils;
+import pl.zankowski.fixparser.web.util.FixParserConstants;
 import pl.zankowski.fixparser.web.util.ShiroUtils;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -43,16 +50,17 @@ public class ParserBean extends AbstractBean {
     private FacesUtils facesUtils;
 
     private MessageService parserService;
+    private DictionaryService dictionaryService;
     private TrackerService trackerService;
     private ShareService shareService;
     private UserService userService;
 
     private List<FixMessageTO> messages = new ArrayList<>();
-    private List<DictionaryDescriptorTO> providers = Arrays.asList(DefaultFixDefinitionProvider.DESCRIPTOR);
+    private List<DictionaryDescriptorTO> providers = Lists.newArrayList();
 
     private ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-    protected DictionaryDescriptorTO selectedProvider = DefaultFixDefinitionProvider.DESCRIPTOR;
+    protected DictionaryDescriptorTO selectedProvider;
     private FixMessageTO selectedMessage;
     private String shareKey;
     private String input;
@@ -87,6 +95,11 @@ public class ParserBean extends AbstractBean {
         this.userService = userService;
     }
 
+    @Inject
+    public void setDictionaryService(final DictionaryService dictionaryService) {
+        this.dictionaryService = dictionaryService;
+    }
+
     @PostConstruct
     @Override
     public void init() {
@@ -101,10 +114,8 @@ public class ParserBean extends AbstractBean {
         if (shiroUtils.isUserAuthenticated()) {
             UserId userID = shiroUtils.getCurrentUserID();
             providers = new ArrayList<>();
-            providers.addAll(parserService.getProviders(
-                    userID,
-                    shiroUtils.isPermitted(Permission.PRO.name()) || shiroUtils.isPermitted(Permission.ENTERPRISE.name())
-            ));
+            providers.addAll(dictionaryService.getDictionaryDescriptors(userID));
+            selectedProvider = providers.isEmpty() ? null : providers.get(0);
         }
     }
 
@@ -115,7 +126,7 @@ public class ParserBean extends AbstractBean {
         }
         try {
             synchronized (this) {
-                input = shareService.getMessageFromKey(shareKey);
+                input = shareService.getMessage(shareKey);
                 // TODO hack, inputTextArea eats \u0001, why? // FIXME: 21.04.2016
                 input = input.replaceAll("\u0001", "#");
                 messages = new ArrayList<>(parserService.parseInput(input));
@@ -128,14 +139,15 @@ public class ParserBean extends AbstractBean {
 
     private void doLoadDefaultProvider() {
         if (shiroUtils.isUserAuthenticated()) {
-            DictionaryDescriptorTO savedProvider = (DictionaryDescriptorTO) userService.getUserSettingsCache().getObject(shiroUtils.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER);
+            DictionaryDescriptorTO savedProvider =
+                    (DictionaryDescriptorTO) userService.getParameter(shiroUtils.getCurrentUserID(), UserSetting.DEFAULT_PROVIDER);
             if (savedProvider != null) {
                 selectedProvider = savedProvider;
             }
         }
     }
 
-    public void doParse(String input) {
+    public void doParse(String input) throws FixParserBusinessException {
         synchronized (this) {
             selectedMessage = null;
             if (shiroUtils.isUserAuthenticated()) {
@@ -148,19 +160,24 @@ public class ParserBean extends AbstractBean {
             } else {
                 messages = new ArrayList<>(parserService.parseInput(input));
             }
-            trackerService.inputParsed(messages.size());
+
+            trackerService.track(new TrackerDataTOBuilder()
+                    .withMessageNumber(messages.size())
+                    .withParseDate(Instant.now())
+                    .build());
+
             doSaveMessages(messages);
         }
     }
 
     protected void doSaveMessages(List<FixMessageTO> messages) {
         if (shiroUtils.isUserAuthenticated()) {
-            UserDetails userDetails = shiroUtils.getCurrentUserDetails();
+            UserDetailsTO userDetails = shiroUtils.getCurrentUserDetails();
             if (userDetails != null) {
-                Boolean storeMessages = userService.getUserSettingsCache().getBoolean(userDetails.getUserID(), UserSetting.STORE_MESSAGES);
+                Boolean storeMessages = (Boolean) userService.getParameter(userDetails.getUserId(), UserSetting.STORE_MESSAGES);
                 if (storeMessages) {
                     executorService.submit(() -> {
-                        parserService.saveMessages(userDetails, messages);
+                        parserService.saveMessages(userDetails.getUserId(), messages);
                     });
                 }
             }
@@ -183,10 +200,10 @@ public class ParserBean extends AbstractBean {
         }
     }
 
-    private void setProviderToContext(ProviderDescriptor selectedProvider) {
+    private void setProviderToContext(DictionaryDescriptorTO selectedProvider) {
         if (shiroUtils.isUserAuthenticated()) {
             facesUtils.setContextAttribute(
-                    shiroUtils.getCurrentUserID().getId() + FixDefinitionProvider.class.getSimpleName(),
+                    shiroUtils.getCurrentUserID().getId() + DictionaryDescriptorTO.class.getSimpleName(),
                     selectedProvider);
         }
     }

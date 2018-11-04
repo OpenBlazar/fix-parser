@@ -11,5 +11,15 @@
 
     <artifactId>fix-parser-payment-api</artifactId>
 
+    <dependencies>
+
+        <!-- Internal -->
+
+        <dependency>
+            <groupId>pl.zankowski</groupId>
+            <artifactId>fix-parser-core</artifactId>
+        </dependency>
+
+    </dependencies>
 
 </project>

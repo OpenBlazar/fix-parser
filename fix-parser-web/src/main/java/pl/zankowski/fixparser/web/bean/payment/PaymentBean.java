@@ -1,6 +1,9 @@
 package pl.zankowski.fixparser.web.bean.payment;
 
 import com.google.inject.Inject;
+import pl.zankowski.fixparser.payment.api.SubscriptionPlan;
+import pl.zankowski.fixparser.payment.api.exception.PaymentException;
+import pl.zankowski.fixparser.payment.spi.PaymentService;
 import pl.zankowski.fixparser.user.api.Permission;
 import pl.zankowski.fixparser.user.api.UserId;
 import pl.zankowski.fixparser.user.spi.UserService;
@@ -8,10 +11,10 @@ import pl.zankowski.fixparser.web.bean.AbstractBean;
 import pl.zankowski.fixparser.web.util.ShiroUtils;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
-@ManagedBean
+@Named("paymentBean")
 @ViewScoped
 public class PaymentBean extends AbstractBean {
 

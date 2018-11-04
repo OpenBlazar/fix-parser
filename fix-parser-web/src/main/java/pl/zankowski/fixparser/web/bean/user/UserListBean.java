@@ -8,11 +8,11 @@ import pl.zankowski.fixparser.user.spi.UserService;
 import pl.zankowski.fixparser.web.bean.AbstractBean;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 import java.util.List;
 
-@ManagedBean
+@Named("userListBean")
 @ViewScoped
 public class UserListBean extends AbstractBean {
 

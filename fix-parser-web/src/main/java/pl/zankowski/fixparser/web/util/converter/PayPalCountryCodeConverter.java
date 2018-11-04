@@ -1,6 +1,6 @@
 package pl.zankowski.fixparser.web.util.converter;
 
-import pl.zankowski.bfp.data.payments.paypal.PayPalCountryCodes;
+import pl.zankowski.fixparser.payment.api.PayPalCountryCodes;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;

@@ -5,7 +5,6 @@ import pl.zankowski.fixparser.web.model.FixEnum;
 import pl.zankowski.fixparser.web.model.field.MsgType;
 import pl.zankowski.fixparser.web.model.field.OrdStatus;
 
-
 public class StyleUtilities {
 
     public static String getStyleForMsgType(FixPairTO fixPair) {

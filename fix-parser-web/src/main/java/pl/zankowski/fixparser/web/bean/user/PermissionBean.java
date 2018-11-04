@@ -7,10 +7,10 @@ import pl.zankowski.fixparser.web.bean.AbstractBean;
 import pl.zankowski.fixparser.web.util.ShiroUtils;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
-@ManagedBean(name = "currentUser")
+@Named("currentUser")
 @SessionScoped
 public class PermissionBean extends AbstractBean {
 

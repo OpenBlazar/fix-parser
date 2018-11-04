@@ -1,7 +1,9 @@
 package pl.zankowski.fixparser.web.model;
 
+import com.google.common.collect.Lists;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
+import pl.zankowski.fixparser.core.exception.FixParserBusinessException;
 import pl.zankowski.fixparser.messages.api.FixMessageTO;
 import pl.zankowski.fixparser.messages.api.FixMessageTOBuilder;
 import pl.zankowski.fixparser.messages.api.dictionary.DictionaryDescriptorTO;
@@ -27,7 +29,11 @@ public class FixMessageLazyDataModel extends LazyDataModel<FixMessageTO> {
 
     @Override
     public List<FixMessageTO> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filters) {
-        return parserService.findMessagesByUser(userDetails.getUserId(), providerDescriptor, isPermitted, first, first + pageSize);
+        try {
+            return parserService.findMessagesByUser(userDetails.getUserId(), providerDescriptor, isPermitted, first, first + pageSize);
+        } catch (FixParserBusinessException e) {
+            return Lists.newArrayList();
+        }
     }
 
     @Override

@@ -6,6 +6,7 @@ import pl.zankowski.fixparser.user.api.Permission;
 import pl.zankowski.fixparser.user.api.Role;
 import pl.zankowski.fixparser.user.api.UserDetailsTO;
 import pl.zankowski.fixparser.user.api.UserId;
+import pl.zankowski.fixparser.user.api.UserSetting;
 import pl.zankowski.fixparser.user.api.UserState;
 import pl.zankowski.fixparser.user.spi.UserService;
 
@@ -96,6 +97,7 @@ public class DefaultUserService implements UserService {
         UserId userId = new UserId(securityUtil.decodeConfirmationKey(confirmationKey));
 
         String storedKey = userDAO.findConfirmationKeyFromUser(userId);
+        getUserSettingsCache().createDefaultParameters(userId);
         if (confirmationKey.equals(storedKey)) {
             userDAO.updateUserStatus(userId, UserState.ACTIVE);
             return true;
@@ -114,4 +116,13 @@ public class DefaultUserService implements UserService {
         return userSettingsCache;
     }
 
+    @Override
+    public Object getParameter(final UserId userId, final UserSetting userSetting) {
+        return getUserSettingsCache().getObject(userId, UserSetting.DEFAULT_PROVIDER);
+    }
+
+    @Override
+    public void setParameter(final UserId userId, final UserSetting userSetting, final Object parameter) {
+        getUserSettingsCache().setParameter(userId, UserSetting.DEFAULT_PROVIDER, parameter);
+    }
 }

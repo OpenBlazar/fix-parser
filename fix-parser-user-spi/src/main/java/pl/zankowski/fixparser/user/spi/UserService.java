@@ -4,6 +4,7 @@ import pl.zankowski.fixparser.user.api.Permission;
 import pl.zankowski.fixparser.user.api.Role;
 import pl.zankowski.fixparser.user.api.UserDetailsTO;
 import pl.zankowski.fixparser.user.api.UserId;
+import pl.zankowski.fixparser.user.api.UserSetting;
 
 import java.util.List;
 
@@ -30,5 +31,9 @@ public interface UserService {
     boolean confirmUser(String confirmationKey);
 
     void loginUser(UserId userId);
+
+    Object getParameter(UserId userId, UserSetting userSetting);
+
+    void setParameter(UserId userId, UserSetting userSetting, Object parameter);
 
 }

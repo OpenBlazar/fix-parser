@@ -1,31 +1,30 @@
 package pl.zankowski.fixparser.payment;
 
 import com.paypal.base.rest.PayPalRESTException;
-import pl.zankowski.bfp.common.PathUtils;
-import pl.zankowski.fixparser.payment.api.exception.SubscriptionPlan;
-import pl.zankowski.bfp.core.payments.exception.PaymentException;
-import pl.zankowski.bfp.core.payments.paypal.PayPalSubscriptionService;
-import pl.zankowski.bfp.core.security.util.SettingsManager;
-import pl.zankowski.bfp.data.user.UserAddress;
+import pl.zankowski.fixparser.common.PathUtils;
+import pl.zankowski.fixparser.payment.api.ClientAddressTO;
+import pl.zankowski.fixparser.payment.api.SubscriptionPlan;
+import pl.zankowski.fixparser.payment.api.exception.PaymentException;
+import pl.zankowski.fixparser.payment.paypal.PayPalSubscriptionService;
 import pl.zankowski.fixparser.payment.spi.PaymentService;
 
 import java.io.File;
 import java.io.IOException;
 
-public class PaymentServiceImpl implements PaymentService {
+public class DefaultPaymentService implements PaymentService {
     
     private final PayPalSubscriptionService payPalSubscriptionService;
 
-    public PaymentServiceImpl() throws PayPalRESTException, IOException {
+    public DefaultPaymentService() throws PayPalRESTException, IOException {
         payPalSubscriptionService = new PayPalSubscriptionService(
                 new File(
-                        PathUtils.joinPath(SettingsManager.getInstance().getPathResolver().getAppDirectory(), "config", "paypal"),
+                        PathUtils.joinPath(".", "config", "paypal"),
                         "config.properties"
                 ));
     }
 
     @Override
-    public String subscribe(SubscriptionPlan subscriptionPlan, UserAddress userAddress) throws PaymentException {
+    public String subscribe(SubscriptionPlan subscriptionPlan, ClientAddressTO userAddress) throws PaymentException {
         return payPalSubscriptionService.doSubscription(subscriptionPlan, userAddress);
     }
 

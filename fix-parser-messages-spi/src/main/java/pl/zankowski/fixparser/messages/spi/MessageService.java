@@ -18,6 +18,8 @@ public interface MessageService {
 
     List<FixMessageTO> parseInput(String input) throws FixParserBusinessException;
 
+    String parseInput(FixMessageTO message);
+
     List<FixMessageTO> parseInput(DictionaryDescriptorTO providerDescriptor, UserId userID, String input, boolean isPermitted) throws FixParserBusinessException;
 
     void saveMessages(UserId userDetails, List<FixMessageTO> messages);

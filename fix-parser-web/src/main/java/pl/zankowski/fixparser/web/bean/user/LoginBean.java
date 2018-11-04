@@ -15,12 +15,12 @@ import pl.zankowski.fixparser.web.util.FacesUtils;
 import pl.zankowski.fixparser.web.util.ShiroUtils;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.inject.Named;
 import java.io.IOException;
 
-@ManagedBean(name = "loginBean")
+@Named("loginBean")
 @RequestScoped
 public class LoginBean extends AbstractBean {
 
@@ -85,8 +85,6 @@ public class LoginBean extends AbstractBean {
                 currentUser.login(token);
 
                 UserId userID = ((UserDetailsTO) currentUser.getPrincipal()).getUserId();
-                parserService.loadProvidersForUser(userID);
-                userService.getUserSettingsCache().loadParameters(userID);
                 userService.loginUser(userID);
 
                 redirectToPreviousPage();

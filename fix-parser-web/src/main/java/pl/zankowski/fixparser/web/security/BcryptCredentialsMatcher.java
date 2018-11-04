@@ -1,4 +1,4 @@
-package pl.zankowski.fixparser.security.config;
+package pl.zankowski.fixparser.web.security;
 
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
