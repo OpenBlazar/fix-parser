@@ -3,9 +3,9 @@ package pl.zankowski.fixparser.messages.share;
 import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectProvider;
-import pl.zankowski.fixparser.core.entity.IDAO;
+import pl.zankowski.fixparser.core.entity.IRepository;
 
-public interface ShareDAO extends IDAO {
+public interface ShareRepository extends IRepository {
 
     @SelectProvider(type = ShareSQLProvider.class, method = "buildFindMessageByKey")
     String findMessageByKey(

@@ -15,7 +15,7 @@ public class ShareModule extends MyBatisModule {
         bindDataSourceProviderType(BasicDataSourceProvider.class);
         bindTransactionFactoryType(JdbcTransactionFactory.class);
 
-        addMapperClass(ShareDAO.class);
+        addMapperClass(ShareRepository.class);
         bind(ShareService.class).to(DefaultShareService.class).asEagerSingleton();
     }
 }

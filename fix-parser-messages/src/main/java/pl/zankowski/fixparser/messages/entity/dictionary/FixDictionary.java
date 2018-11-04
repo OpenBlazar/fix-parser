@@ -1,19 +1,15 @@
 package pl.zankowski.fixparser.messages.entity.dictionary;
 
 import com.google.common.base.MoreObjects;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import pl.zankowski.fixparser.core.entity.IEntity;
 
 import java.util.Map;
 import java.util.Objects;
 
-@Document
 public class FixDictionary implements IEntity {
 
     private static final long serialVersionUID = 7343128776320499665L;
 
-    @Id
     private final DictionaryDescriptor dictionaryDescriptor;
     private final Map<Integer, FixFieldDefinition> dictionaryMap;
 

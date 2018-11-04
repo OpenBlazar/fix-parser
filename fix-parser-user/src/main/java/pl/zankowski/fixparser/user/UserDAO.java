@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.InstantTypeHandler;
 import org.apache.ibatis.type.JdbcType;
-import pl.zankowski.fixparser.core.entity.IDAO;
+import pl.zankowski.fixparser.core.entity.IRepository;
 import pl.zankowski.fixparser.user.api.Role;
 import pl.zankowski.fixparser.user.entity.UserDetails;
 import pl.zankowski.fixparser.user.api.UserId;
@@ -22,7 +22,7 @@ import pl.zankowski.fixparser.user.handler.UserSettingTypeHandler;
 import java.time.Instant;
 import java.util.List;
 
-public interface UserDAO extends IDAO {
+public interface UserDAO extends IRepository {
 
     @SelectProvider(type = UserSQLProvider.class, method = "buildFindAllUsers")
     @ConstructorArgs(value = {

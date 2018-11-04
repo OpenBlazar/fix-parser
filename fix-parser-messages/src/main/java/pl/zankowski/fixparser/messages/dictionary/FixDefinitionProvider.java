@@ -1,4 +1,4 @@
-package pl.zankowski.fixparser.messages.fix;
+package pl.zankowski.fixparser.messages.dictionary;
 
 import pl.zankowski.fixparser.messages.api.FixFieldTO;
 import pl.zankowski.fixparser.messages.api.FixValueTO;

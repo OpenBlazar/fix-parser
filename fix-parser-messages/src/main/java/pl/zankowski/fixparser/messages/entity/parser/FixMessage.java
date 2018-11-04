@@ -1,17 +1,13 @@
 package pl.zankowski.fixparser.messages.entity.parser;
 
 import com.google.common.base.MoreObjects;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import pl.zankowski.fixparser.core.entity.IEntity;
 
 import java.time.Instant;
 import java.util.Objects;
 
-@Document
 public class FixMessage implements IEntity {
 
-    @Id
     private final String id;
     private final Long userId;
     private final Instant timestamp;

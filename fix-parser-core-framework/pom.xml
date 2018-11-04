@@ -11,5 +11,32 @@
 
     <artifactId>fix-parser-core-framework</artifactId>
 
+    <dependencies>
+
+        <!-- Internal -->
+
+        <dependency>
+            <groupId>pl.zankowski</groupId>
+            <artifactId>fix-parser-core-entity</artifactId>
+        </dependency>
+
+        <!-- External -->
+
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mongodb.morphia</groupId>
+            <artifactId>morphia</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+    </dependencies>
 
 </project>

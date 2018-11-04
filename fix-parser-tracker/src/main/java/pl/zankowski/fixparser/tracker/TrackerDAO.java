@@ -7,12 +7,12 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.type.InstantTypeHandler;
 import org.apache.ibatis.type.JdbcType;
-import pl.zankowski.fixparser.core.entity.IDAO;
+import pl.zankowski.fixparser.core.entity.IRepository;
 
 import java.time.Instant;
 import java.util.List;
 
-public interface TrackerDAO extends IDAO {
+public interface TrackerDAO extends IRepository {
 
     @SelectProvider(type = TrackerSQLProvider.class, method = "buildFindTrackerData")
     @ConstructorArgs(value = {

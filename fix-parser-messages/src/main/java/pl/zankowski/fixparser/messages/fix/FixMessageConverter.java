@@ -7,6 +7,7 @@ import pl.zankowski.fixparser.messages.api.FixMessageTOBuilder;
 import pl.zankowski.fixparser.messages.api.FixPairTO;
 import pl.zankowski.fixparser.messages.api.FixValueTO;
 import pl.zankowski.fixparser.messages.api.FixVersion;
+import pl.zankowski.fixparser.messages.dictionary.FixDefinitionProvider;
 
 import java.util.List;
 import java.util.stream.Collectors;

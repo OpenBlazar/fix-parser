@@ -2,7 +2,7 @@ package pl.zankowski.fixparser.messages.fix;
 
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandler;
-import pl.zankowski.bfp.fix.data.FixMessage;
+import pl.zankowski.fixparser.messages.entity.parser.FixMessage;
 
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
@@ -14,10 +14,11 @@ import static pl.zankowski.fixparser.core.framework.CodecUtil.encodeBase64;
 public class FixMessageTypeHandler implements TypeHandler<FixMessage> {
 
     private final FixMessageConverter messageConverter = new FixMessageConverter();
+    private final FixMessageMapper mapper = new FixMessageMapper();
 
     @Override
     public void setParameter(PreparedStatement ps, int i, FixMessage message, JdbcType jdbcType) throws SQLException {
-        ps.setString(i, encodeBase64(messageConverter.convertToString(message)));
+        ps.setString(i, encodeBase64(messageConverter.convertToString(mapper.map(message))));
     }
 
     @Override

@@ -12,11 +12,11 @@ public class DefaultShareService implements ShareService {
 
     public static final int CHARACTER_LIMIT = 8192;
 
-    private final ShareDAO shareDAO;
+    private final ShareRepository shareRepository;
 
     @Inject
-    public DefaultShareService(final ShareDAO shareDAO) {
-        this.shareDAO = shareDAO;
+    public DefaultShareService(final ShareRepository shareRepository) {
+        this.shareRepository = shareRepository;
     }
 
     @Override
@@ -29,13 +29,13 @@ public class DefaultShareService implements ShareService {
         }
         final String shareKey = generateRandomKey();
         final String shareMessage = encodeBase64(message);
-        shareDAO.saveSharedMessage(shareKey, shareMessage);
+        shareRepository.saveSharedMessage(shareKey, shareMessage);
         return shareKey;
     }
 
     @Override
     public String getMessage(final String shareKey) {
-        return decodeBase64(shareDAO.findMessageByKey(shareKey));
+        return decodeBase64(shareRepository.findMessageByKey(shareKey));
     }
 
 }
