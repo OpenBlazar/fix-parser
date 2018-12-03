@@ -10,11 +10,11 @@ import pl.zankowski.fixparser.messages.entity.dictionary.FixFieldDefinition;
 
 import java.util.Map;
 
-class DefaultFixDefinitionProvider implements FixDefinitionProvider {
+public class DefaultFixDefinitionProvider implements FixDefinitionProvider {
 
     private final Map<Integer, FixFieldDefinition> dictionaryMap;
 
-    DefaultFixDefinitionProvider(final FixDictionary fixDictionary) {
+    public DefaultFixDefinitionProvider(final FixDictionary fixDictionary) {
         this.dictionaryMap = ImmutableMap.copyOf(fixDictionary.getDictionaryMap());
     }
 

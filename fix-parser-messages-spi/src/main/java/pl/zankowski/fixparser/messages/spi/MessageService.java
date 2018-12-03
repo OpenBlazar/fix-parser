@@ -3,11 +3,9 @@ package pl.zankowski.fixparser.messages.spi;
 import pl.zankowski.fixparser.core.exception.FixParserBusinessException;
 import pl.zankowski.fixparser.messages.api.FixMessageTO;
 import pl.zankowski.fixparser.messages.api.dictionary.DictionaryDescriptorTO;
-import pl.zankowski.fixparser.messages.api.dictionary.DictionaryTO;
 import pl.zankowski.fixparser.user.api.UserId;
 
 import java.util.List;
-import java.util.Set;
 
 public interface MessageService {
 
@@ -20,7 +18,8 @@ public interface MessageService {
 
     String parseInput(FixMessageTO message);
 
-    List<FixMessageTO> parseInput(DictionaryDescriptorTO providerDescriptor, UserId userID, String input, boolean isPermitted) throws FixParserBusinessException;
+    List<FixMessageTO> parseInput(DictionaryDescriptorTO providerDescriptor, UserId userID, String input,
+            boolean isPermitted) throws FixParserBusinessException;
 
     void saveMessages(UserId userDetails, List<FixMessageTO> messages);
 

@@ -86,6 +86,20 @@ public interface UserDAO extends IRepository {
             @Param("userId") UserId userId
     );
 
+    @SelectProvider(type = UserSQLProvider.class, method = "buildFindUserByConfirmationKey")
+    @ConstructorArgs(value = {
+            @Arg(column = "id", javaType = UserId.class, jdbcType = JdbcType.BIGINT, typeHandler = UserIDTypeHandler.class),
+            @Arg(column = "user_login", javaType = String.class, jdbcType = JdbcType.VARCHAR),
+            @Arg(column = "user_email", javaType = String.class, jdbcType = JdbcType.VARCHAR),
+            @Arg(column = "user_pass", javaType = String.class, jdbcType = JdbcType.VARCHAR),
+            @Arg(column = "user_status", javaType = UserState.class, jdbcType = JdbcType.INTEGER, typeHandler = ActiveUserTypeHandler.class),
+            @Arg(column = "user_registerdate", javaType = Instant.class, jdbcType = JdbcType.BIGINT, typeHandler = InstantTypeHandler.class),
+            @Arg(column = "user_lastlogin", javaType = Instant.class, jdbcType = JdbcType.BIGINT, typeHandler = InstantTypeHandler.class)
+    })
+    UserDetails findUserByConfirmationKey(
+            @Param("confirmationKey") String confirmationKey
+    );
+
     @SelectProvider(type = UserSQLProvider.class, method = "buildFindUserRoles")
     @ConstructorArgs(value = {
             @Arg(column = "role_name", javaType = String.class, jdbcType = JdbcType.VARCHAR)

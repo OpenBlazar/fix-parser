@@ -1,5 +1,6 @@
 package pl.zankowski.fixparser.user;
 
+import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import pl.zankowski.fixparser.mail.spi.MailService;
 import pl.zankowski.fixparser.user.api.Permission;
@@ -8,13 +9,15 @@ import pl.zankowski.fixparser.user.api.UserDetailsTO;
 import pl.zankowski.fixparser.user.api.UserId;
 import pl.zankowski.fixparser.user.api.UserSetting;
 import pl.zankowski.fixparser.user.api.UserState;
+import pl.zankowski.fixparser.user.entity.UserDetails;
 import pl.zankowski.fixparser.user.spi.UserService;
 
 import java.time.Instant;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
+import static pl.zankowski.fixparser.core.framework.HashUtil.hash;
+import static pl.zankowski.fixparser.core.framework.RandomUtil.generateRandomKey;
 
 public class DefaultUserService implements UserService {
 
@@ -77,14 +80,14 @@ public class DefaultUserService implements UserService {
     public boolean registerUser(String userName, String userMail, char[] password) {
         // Save user
         Instant currentTime = Instant.now();
-        userDAO.saveUser(userName, userMail, securityUtil.hashPassword(password),
+        userDAO.saveUser(userName, userMail, hash(password),
                 UserState.INACTIVE, currentTime, currentTime);
         UserId userId = userDAO.findUserIDByLogin(userName);
         userDAO.saveUserRole(userId, Role.USER_ROLE);
         userDAO.saveUserPermission(userId, Permission.BASIC.name());
 
         // Generate confirmation key
-        String confirmationKey = securityUtil.generateConfirmationKey(userId.getId(), userName, userMail);
+        String confirmationKey = generateRandomKey();
         userDAO.updateConfirmationKey(userId, confirmationKey);
 
         // Send to mail Service
@@ -94,16 +97,13 @@ public class DefaultUserService implements UserService {
 
     @Override
     public boolean confirmUser(String confirmationKey) {
-        UserId userId = new UserId(securityUtil.decodeConfirmationKey(confirmationKey));
-
-        String storedKey = userDAO.findConfirmationKeyFromUser(userId);
-        getUserSettingsCache().createDefaultParameters(userId);
-        if (confirmationKey.equals(storedKey)) {
-            userDAO.updateUserStatus(userId, UserState.ACTIVE);
-            return true;
-        } else {
+        final UserDetails userDetails = userDAO.findUserByConfirmationKey(confirmationKey);
+        if (userDetails == null) {
             return false;
         }
+        getUserSettingsCache().createDefaultParameters(userDetails.getUserId());
+        userDAO.updateUserStatus(userDetails.getUserId(), UserState.ACTIVE);
+        return true;
     }
 
     @Override
@@ -111,7 +111,7 @@ public class DefaultUserService implements UserService {
         userDAO.updateLastLogin(userId, Instant.now());
     }
 
-//    @Override
+    //    @Override
     public UserSettingsCache getUserSettingsCache() {
         return userSettingsCache;
     }
@@ -124,5 +124,10 @@ public class DefaultUserService implements UserService {
     @Override
     public void setParameter(final UserId userId, final UserSetting userSetting, final Object parameter) {
         getUserSettingsCache().setParameter(userId, UserSetting.DEFAULT_PROVIDER, parameter);
+    }
+
+    @Override
+    public List<String> findUserPermissions(final UserId userId) {
+        return Lists.newArrayList();
     }
 }

@@ -4,6 +4,9 @@ public class FixParserBusinessException extends Exception {
 
     private static final long serialVersionUID = 1254663866476850328L;
 
+    public FixParserBusinessException() {
+    }
+
     public FixParserBusinessException(final String message) {
         super(message);
     }

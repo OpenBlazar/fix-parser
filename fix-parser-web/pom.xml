@@ -17,6 +17,11 @@
 
         <dependency>
             <groupId>pl.zankowski</groupId>
+            <artifactId>fix-parser-core-framework</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>pl.zankowski</groupId>
             <artifactId>fix-parser-mail-spi</artifactId>
         </dependency>
 
@@ -38,6 +43,13 @@
         <dependency>
             <groupId>pl.zankowski</groupId>
             <artifactId>fix-parser-user-spi</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>pl.zankowski</groupId>
+            <artifactId>fix-parser-messages</artifactId>
+            <type>test-jar</type>
+            <scope>test</scope>
         </dependency>
 
         <!-- External libraries -->
@@ -90,6 +102,14 @@
         <dependency>
             <groupId>com.google.inject.extensions</groupId>
             <artifactId>guice-servlet</artifactId>
+        </dependency>
+
+        <!-- Test libraries -->
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

@@ -1,8 +1,5 @@
 package pl.zankowski.fixparser.web.security;
 
-import pl.zankowski.bfp.data.user.Role;
-import pl.zankowski.bfp.data.user.UserDetails;
-import pl.zankowski.bfp.database.dao.UserDAO;
 import com.google.inject.Inject;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
@@ -48,7 +45,7 @@ public class DatabaseUserRealm extends AuthorizingRealm {
             SimpleAuthorizationInfo authInfo = new SimpleAuthorizationInfo();
             userRoles.forEach(r -> authInfo.addRole(r.getName()));
             List<String> userPermissions = userService.findUserPermissions(userDetails.getUserId());
-            userPermissions.forEach(p -> authInfo.addStringPermission(p));
+            userPermissions.forEach(authInfo::addStringPermission);
             return authInfo;
         }
         return null;

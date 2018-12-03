@@ -75,6 +75,7 @@ public class SecurityModule extends ShiroWebModule {
             super(ROLES, configValue);
         }
     }
+
     private static class FilterConfigKey<T extends PathMatchingFilter> extends Key<T> {
         private Key<T> key;
         private String configValue;

@@ -36,4 +36,5 @@ public interface UserService {
 
     void setParameter(UserId userId, UserSetting userSetting, Object parameter);
 
+    List<String> findUserPermissions(UserId userId);
 }

@@ -57,6 +57,11 @@ public class DefaultMessageService implements MessageService {
     }
 
     @Override
+    public String parseInput(final FixMessageTO message) {
+        return messageConverter.convertToString(message);
+    }
+
+    @Override
     public List<FixMessageTO> parseInput(DictionaryDescriptorTO dictionaryDescriptor, UserId userID, String input,
             boolean isPermitted) throws FixParserBusinessException {
         return fixParser.parseInput(

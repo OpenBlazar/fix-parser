@@ -9,6 +9,9 @@ public final class DictionaryDescriptorBuilder {
     private String providerName;
     private DictionaryLoaderType loaderType;
 
+    public DictionaryDescriptorBuilder() {
+    }
+
     public DictionaryDescriptorBuilder(final DictionaryDescriptorTO providerDescriptor) {
         this.userId = providerDescriptor.getUserId();
         this.providerName = providerDescriptor.getProviderName();

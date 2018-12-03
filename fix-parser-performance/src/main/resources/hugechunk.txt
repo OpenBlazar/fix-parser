@@ -1,0 +1,801 @@
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+8=FIX.4.2#9=123#35=D#49=BlazarQuant#56=Broker#52=20160325-22:52:30.530#11=1001#38=200#40=1#54=1#55=IBM#59=0#10=013
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+8=FIX.4.2#9=157#35=8#49=Broker#56=BlazarQuant#52=20160325-22:52:30.532#6=0#11=1001#14=0#17=1#20=0#31=0#32=0#37=1001#38=200#39=0#40=1#54=1#55=IBM#59=0#60=20160325-22:52:30.534#150=0#151=200#10=121
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+8=FIX.4.2#9=123#35=G#49=BlazarQuant#56=Broker#52=20160325-22:52:12.222#11=1003#41=1002#38=100#40=2#44=450#54=1#55=GE#59=0#10=064
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+8=FIX.4.2#9=123#35=F#49=BlazarQuant#56=Broker#52=20160325-23:03:39.526#11=1005#41=1004#55=KO#59=0#10=064#
+

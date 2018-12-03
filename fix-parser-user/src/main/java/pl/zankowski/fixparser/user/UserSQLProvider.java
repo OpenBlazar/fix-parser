@@ -50,6 +50,14 @@ public class UserSQLProvider {
         }}.toString();
     }
 
+    public String buildFindUserByConfirmationKey() {
+        return new SQL() {{
+            SELECT("*");
+            FROM(USERS_TABLE);
+            WHERE("user_confirmationkey = #{confirmationKey}");
+        }}.toString();
+    }
+
     public String buildFindUserRoles() {
         return new SQL() {{
             SELECT("role_name");
