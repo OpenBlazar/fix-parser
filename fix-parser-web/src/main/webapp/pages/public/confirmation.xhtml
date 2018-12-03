@@ -1,0 +1,15 @@
+<ui:composition template="/template/layoutTemplate.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+>
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="key" value="#{confirmationBean.confirmationKey}" />
+            <f:viewAction action="#{confirmationBean.doConfirmation}" />
+        </f:metadata>
+
+        <p:messages id="messages" autoUpdate="true" closable="true"/>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,378 @@
+@import url('http://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+
+/* FOOTER CSS
+-------------------------------------------------- */
+
+html {
+    position: relative !important;
+    min-height: 100% !important;
+    font-family: 'Open Sans', Helvetica;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 220px;
+    background-color: #f5f5f5;
+}
+
+.footerform {
+    height: 60px;
+}
+
+/* REGISTRATION / LOGIN CSS
+-------------------------------------------------- */
+
+.form-signin {
+    max-width: 500px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin .form-signin-heading {
+    margin-bottom: 20px;
+}
+
+.form-signin .checkbox {
+    font-weight: normal;
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+/* BUTTONS
+-------------------------------------------------- */
+
+.btn-blazar-form.ui-button.ui-state-default {
+    margin-bottom: 5px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    text-shadow: none;
+    height: 40px;
+}
+
+.btn-blazar-menu.ui-button.ui-state-default {
+    margin-top: 10px;
+    display: block;
+}
+
+.btn-blazar.ui-button.ui-state-default {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.btn-blazar-red.ui-button.ui-state-default {
+    background: #c9302c;
+    border: 1px solid #a02623;
+}
+
+.btn-blazar-red-hover.ui-button.ui-state-hover {
+    background: #d35956;
+    border: 1px solid #a02623;
+}
+
+.btn-blazar-blue.ui-button.ui-state-default {
+    background: #386dc1;
+}
+
+.btn-blazar-blue-hover.ui-button.ui-state-hover {
+    background: #2399e5;
+}
+
+.ui-accordion .ui-accordion-header,
+.ui-accordion .ui-accordion-header .ui-state-default,
+.ui-accordion .ui-accordion-header .ui-state-active {
+    background: #386dc1 !important;
+    color: #ffffff;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+}
+
+/* TABLE COLUMNS CSS
+-------------------------------------------------- */
+
+.blazar-columnStyle {
+    font-size: 12px;
+}
+
+.fieldcolumn {
+    display: inline-block;
+    padding: 1px 2px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.fieldcolumn-grey {
+    color: #fff;
+    background-color: #919180;
+    border-color: #656559;
+}
+
+.fieldcolumn-blue {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4
+}
+
+.fieldcolumn-green {
+    color: #fff;
+    background-color: #53D769;
+    border-color: #3a9649;
+}
+
+.fieldcolumn-dict {
+    color: #fff;
+    background-color: #7fbf7f;
+    border-color: #3a9649;
+}
+
+.fieldcolumn-red {
+    color: #fff;
+    background-color: #BA4141;
+    border-color: #6f2727;
+}
+
+.fieldcolumn-orange {
+    color: #fff;
+    background-color: #E59400;
+    border-color: #CC8400;
+}
+
+.fieldcolumn-purple-light {
+    color: #fff;
+    background-color: #730073;
+    border-color: #670067;
+}
+
+.fieldcolumn-purple-hard {
+    color: #fff;
+    background-color: #2e002e;
+    border-color: #220022;
+}
+
+.fieldcolumn-dust {
+    color: #fff;
+    background-color: #a39457;
+    border-color: #8e814c;
+}
+
+.blazar-comparator-row {
+    background: #7fbf7f;
+}
+
+/* COMBOBOX
+-------------------------------------------------- */
+
+.ui-selectonemenu .ui-selectonemenu-trigger {
+    width: auto !important;
+}
+
+.ui-selectonemenu {
+    display: flex !important;
+}
+
+/* OTHERS
+-------------------------------------------------- */
+
+input,
+select,
+.ui-widget,
+.ui-widget input,
+.ui-widget select,
+.ui-widget-header,
+.ui-widget-content,
+.ui-widget-header .ui-widget-header,
+.ui-widget-content .ui-widget-content {
+    font-size: 14px !important;
+    font-family: 'Open Sans', Helvetica !important;
+}
+
+.ui-dialog-titlebar {
+    background-color: #f8f8f8;
+    overflow: hidden !important;
+}
+
+.disable-scroll .ui-dialog-content {
+    overflow: hidden !important;
+}
+
+/* INDEX PAGE
+-------------------------------------------------- */
+
+.blazar-jumbotron.jumbotron {
+    background: #386dc1;
+    height: 550px;
+    color: #ffffff;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: -20px;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    font-family: 'Open Sans', Helvetica;
+}
+
+.navbar-default .navbar-nav > li > a {
+    font-family: 'Open Sans', Helvetica;
+}
+
+/* PRICING TABLE
+-------------------------------------------------- */
+
+#pricing{
+    width: 989px;
+    margin: 35px auto;
+
+    font-family: 'Open Sans', Helvetica;
+}
+
+.price_card{
+    width: 300px;
+    background: rgb(255, 255, 255);
+    display: inline-table;
+    top: 0;
+}
+.price_card:not(:last-child){
+    margin-right: 40px;
+}
+.header{
+    color: rgb(255, 255, 255);
+}
+.alpha .header{
+    background: #386dc1;
+}
+.bravo .header{
+    background: #BA4141;
+}
+.charlie .header{
+    background: #3a9649;
+}
+
+.price{
+    width: 100%;
+    font-size: 60px;
+    font-weight: 300;
+    display: block;
+    text-align: center;
+    padding: 30px 0 10px;
+}
+.name{
+    width: 100%;
+    font-size: 15px;
+    font-weight: 700;
+    display: block;
+    text-align: center;
+    padding: 0 0 30px;
+}
+.features{
+    list-style: none;
+    text-align: center;
+    color: rgb(138, 138, 138);
+    margin: 0;
+    padding: 0;
+}
+.features li{
+    margin: 0 35px;
+    padding: 20px 15px;
+    width: 200px;
+}
+.features li:not(:last-child){
+    border: 1px solid rgb(242, 242, 242);
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+
+.blazar-price-button.ui-button.ui-state-default {
+    color: rgb(255, 255, 255);
+    border: 0;
+    border-radius: 5px;
+    height: 40px;
+    width: 200px;
+    display: block;
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin: 20px auto 35px;
+}
+
+.alpha.blazar-price-button.ui-button.ui-state-default {
+    background: #386dc1;
+}
+.bravo.blazar-price-button.ui-button.ui-state-default {
+    background: #BA4141;
+}
+.charlie.blazar-price-button.ui-button.ui-state-default {
+    background: #3a9649;
+}
+
+.tip{
+    font-family: 'Indie Flower';
+    color: rgb(117, 117, 117);
+    margin: 5px 5px;
+}
+
+/* STICKY UPGRADE
+-------------------------------------------------- */
+
+a.stickyupgrade {
+    background: #386dc1;
+    font-family: "Myriad Pro";
+    font-size: 17px;
+    color: white;
+    text-transform: uppercase;
+    padding: 0 10px;
+    outline: none;
+    margin: 0 0px;
+    text-decoration: none;
+    position: fixed;
+    top: 109px;
+    right: 0;
+    /*width: 136px;*/
+    height: 40px;
+    line-height: 45px;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+
+    -webkit-transform-origin:100% 100%;
+    -moz-transform-origin:100% 100%;
+    transform-origin:100% 100%;
+}
+
+a.stickyupgrade:hover {
+    color: #eee;
+}
