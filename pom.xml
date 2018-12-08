@@ -95,6 +95,7 @@
         <module>fix-parser-tracker-spi</module>
         <module>fix-parser-messages-spi</module>
         <module>fix-parser-payment-api</module>
+        <module>fix-parser-payment-spi</module>
         <module>fix-parser-core-framework</module>
     </modules>
 
