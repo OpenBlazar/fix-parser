@@ -7,42 +7,38 @@
     <groupId>pl.zankowski</groupId>
     <artifactId>fix-parser-all</artifactId>
     <packaging>pom</packaging>
-    <version>1.0</version>
+    <version>1.0.0-SNAPSHOT</version>
 
-    <name>fix-parser-all</name>
-    <description>Fix Parser parent POM.</description>
-    <inceptionYear>2016</inceptionYear>
-    <organization>
-        <name>OpenBlazar</name>
-        <url>http://www.zankowski.pl</url>
-    </organization>
+    <parent>
+        <groupId>pl.zankowski.fixparser</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <name>Fix Parser Message</name>
+    <description>Fix Message Parsing component for Fix Parser</description>
+    <url>https://github.com/OpenBlazar/fix-parser.git</url>
+
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
         </license>
     </licenses>
 
     <developers>
         <developer>
-            <id>wza</id>
+            <id>WojciechZankowski</id>
             <name>Wojciech Zankowski</name>
-            <email>info@zankowski.pl</email>
-            <roles>
-                <role>Owner</role>
-                <role>Founder</role>
-                <role>Committer</role>
-            </roles>
         </developer>
     </developers>
 
     <scm>
-        <url>https://github.com/OpenBlazar/fix-parser</url>
-        <connection>scm:git:ssh://github.com/OpenBlazar/fix-parser.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/OpenBlazar/fix-parser.git
+        <connection>scm:git:git://github.com/OpenBlazar/fix-parser.git</connection>
+        <developerConnection>scm:git:git@github.com:OpenBlazar/fix-parser.git
         </developerConnection>
-        <tag>HEAD</tag>
+        <url>https://github.com/OpenBlazar/fix-parser.git</url>
+        <tag>master</tag>
     </scm>
 
     <properties>
@@ -76,26 +72,11 @@
 
     <modules>
         <module>fix-parser</module>
-        <module>fix-parser-messages</module>
         <module>fix-parser-common</module>
         <module>fix-parser-performance</module>
         <module>fix-parser-web</module>
-        <module>fix-parser-mail</module>
-        <module>fix-parser-user</module>
-        <module>fix-parser-tracker</module>
-        <module>fix-parser-payment</module>
         <module>fix-parser-core-entity</module>
-        <module>fix-parser-mail-spi</module>
-        <module>fix-parser-mail-api</module>
-        <module>fix-parser-user-spi</module>
-        <module>fix-parser-user-api</module>
-        <module>fix-parser-tracker-api</module>
-        <module>fix-parser-messages-api</module>
         <module>fix-parser-core</module>
-        <module>fix-parser-tracker-spi</module>
-        <module>fix-parser-messages-spi</module>
-        <module>fix-parser-payment-api</module>
-        <module>fix-parser-payment-spi</module>
         <module>fix-parser-core-framework</module>
     </modules>
 
@@ -107,7 +88,7 @@
             <dependency>
                 <groupId>pl.zankowski</groupId>
                 <artifactId>fix-parser-web</artifactId>
-                <version>1.0</version>
+                <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
@@ -201,7 +182,7 @@
             <dependency>
                 <groupId>pl.zankowski</groupId>
                 <artifactId>fix-parser-core-framework</artifactId>
-                <version>1.0</version>
+                <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
