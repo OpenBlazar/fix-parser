@@ -1,10 +1,11 @@
 package pl.zankowski.fixparser.web.model;
 
-import org.primefaces.model.LazyDataModel;
+//import org.primefaces.model.LazyDataModel;
 import pl.zankowski.fixparser.messages.api.FixMessageTO;
 
-public class FixMessageLazyDataModel extends LazyDataModel<FixMessageTO> {
+public class FixMessageLazyDataModel  {
 
+//    extends LazyDataModel<FixMessageTO>
 //    private final MessageService parserService;
 //    private final UserDetailsTO userDetails;
 //    private final DictionaryDescriptorTO providerDescriptor;

@@ -3,7 +3,7 @@ package pl.zankowski.fixparser.web.bean.help;
 import pl.zankowski.fixparser.messages.api.FixMessageTO;
 import pl.zankowski.fixparser.web.util.FixUtilities;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.faces.bean.ApplicationScoped;
 import javax.inject.Named;
 
 @Named("fixBean")

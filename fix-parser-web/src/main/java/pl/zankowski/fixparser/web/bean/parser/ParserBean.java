@@ -1,9 +1,9 @@
 package pl.zankowski.fixparser.web.bean.parser;
 
 import com.google.common.collect.Lists;
-import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import pl.zankowski.fixparser.messages.api.FixMessageTO;
 import pl.zankowski.fixparser.messages.api.ImmutableFixParserBaseRequestTO;
 import pl.zankowski.fixparser.messages.api.dictionary.DictionaryDescriptorTO;
@@ -14,13 +14,10 @@ import pl.zankowski.fixparser.web.bean.AbstractBean;
 import pl.zankowski.fixparser.web.util.FacesUtils;
 import pl.zankowski.fixparser.web.util.FixParserConstants;
 
-import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 @Named("parserBean")
 @ViewScoped
@@ -37,33 +34,16 @@ public class ParserBean extends AbstractBean {
 
     private FacesUtils facesUtils;
 
+    @Autowired
     private FixMessageClient fixMessageClient;
 
     private List<FixMessageTO> messages = new ArrayList<>();
     private List<DictionaryDescriptorTO> providers = Lists.newArrayList();
 
-    private ExecutorService executorService = Executors.newSingleThreadExecutor();
-
     protected DictionaryDescriptorTO selectedProvider;
     private FixMessageTO selectedMessage;
     private String shareKey;
     private String input;
-
-    @Inject
-    public void setFacesUtils(FacesUtils facesUtils) {
-        this.facesUtils = facesUtils;
-    }
-
-    @Inject
-    public void setFixMessageClient(FixMessageClient fixMessageClient) {
-        this.fixMessageClient = fixMessageClient;
-    }
-
-    @PostConstruct
-    @Override
-    public void init() {
-        super.init();
-    }
 
     public void doParse(String input) {
         synchronized (this) {

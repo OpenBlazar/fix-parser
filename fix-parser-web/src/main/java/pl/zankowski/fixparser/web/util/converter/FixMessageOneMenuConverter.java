@@ -1,14 +1,11 @@
 package pl.zankowski.fixparser.web.util.converter;
 
-import com.google.inject.Inject;
-import com.google.inject.Injector;
+import org.springframework.beans.factory.annotation.Autowired;
 import pl.zankowski.fixparser.messages.api.FixMessageTO;
 import pl.zankowski.fixparser.messages.api.ImmutableFixParserBaseRequestTO;
-import pl.zankowski.fixparser.messages.api.dictionary.DictionaryDescriptorTO;
 import pl.zankowski.fixparser.messages.api.dictionary.DictionaryLoaderType;
 import pl.zankowski.fixparser.messages.api.dictionary.ImmutableDictionaryDescriptorTO;
 import pl.zankowski.fixparser.messages.client.FixMessageClient;
-import pl.zankowski.fixparser.web.util.FacesUtils;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -23,24 +20,12 @@ public class FixMessageOneMenuConverter implements Converter {
     private static final char DELIMITER = ';';
     private static final char ENTRY_DELIMITER = '#';
 
-    private FacesUtils facesUtils;
+    @Autowired
     private FixMessageClient fixMessageClient;
 
     public FixMessageOneMenuConverter() {
         ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance()
                 .getExternalContext().getContext();
-        Injector injector = (Injector) servletContext.getAttribute(Injector.class.getName());
-        injector.injectMembers(this);
-    }
-
-    @Inject
-    public void setFacesUtils(FacesUtils facesUtils) {
-        this.facesUtils = facesUtils;
-    }
-
-    @Inject
-    public void setFixMessageClient(FixMessageClient fixMessageClient) {
-        this.fixMessageClient = fixMessageClient;
     }
 
     @Override

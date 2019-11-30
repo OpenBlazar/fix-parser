@@ -2,7 +2,7 @@ package pl.zankowski.fixparser.web.bean.user;
 
 import pl.zankowski.fixparser.web.bean.AbstractBean;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.RequestScoped;
 import javax.inject.Named;
 
 @Named("loginBean")

@@ -2,7 +2,7 @@ package pl.zankowski.fixparser.web.bean.user;
 
 import pl.zankowski.fixparser.web.bean.AbstractBean;
 
-import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 
 @Named("currentUser")
