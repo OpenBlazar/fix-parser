@@ -17,11 +17,6 @@
 
         <dependency>
             <groupId>pl.zankowski</groupId>
-            <artifactId>fix-parser-core-framework</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>pl.zankowski</groupId>
             <artifactId>fix-parser-auth-client</artifactId>
         </dependency>
 
@@ -33,13 +28,6 @@
         <dependency>
             <groupId>pl.zankowski</groupId>
             <artifactId>fix-parser-user-client</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>pl.zankowski</groupId>
-            <artifactId>fix-parser-messages</artifactId>
-            <type>test-jar</type>
-            <scope>test</scope>
         </dependency>
 
         <!-- External libraries -->

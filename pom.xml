@@ -68,7 +68,6 @@
         <module>fix-parser-app</module>
         <module>fix-parser-web</module>
         <module>fix-parser-core</module>
-        <module>fix-parser-core-framework</module>
         <module>fix-parser-messages-client</module>
         <module>fix-parser-user-client</module>
         <module>fix-parser-auth-client</module>
