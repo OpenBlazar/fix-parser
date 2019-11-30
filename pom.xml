@@ -58,26 +58,20 @@
         <commons.dbcp>1.4</commons.dbcp>
 
         <guice>4.2.1</guice>
-
         <shiro>1.3.2</shiro>
-
         <log4j>2.8.1</log4j>
-
         <junit>4.12</junit>
-
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <dockerfile-maven-version>1.4.7</dockerfile-maven-version>
     </properties>
 
     <modules>
-        <module>fix-parser</module>
-        <module>fix-parser-common</module>
-        <module>fix-parser-performance</module>
+        <module>fix-parser-app</module>
         <module>fix-parser-web</module>
-        <module>fix-parser-core-entity</module>
         <module>fix-parser-core</module>
         <module>fix-parser-core-framework</module>
+        <module>fix-parser-messages-client</module>
+        <module>fix-parser-user-client</module>
+        <module>fix-parser-auth-client</module>
     </modules>
 
     <dependencyManagement>
@@ -86,148 +80,22 @@
             <!-- projects -->
 
             <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-web</artifactId>
+                <groupId>pl.zankowski.fixparser</groupId>
+                <artifactId>auth-api</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-payment</artifactId>
-                <version>1.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-tracker</artifactId>
-                <version>1.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-mail</artifactId>
-                <version>1.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-user</artifactId>
-                <version>1.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser</artifactId>
-                <version>${bfp.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-tracker-api</artifactId>
-                <version>1.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-mail-spi</artifactId>
-                <version>${bfp.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-mail-api</artifactId>
-                <version>${bfp.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-messages</artifactId>
-                <version>${bfp.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-messages</artifactId>
-                <version>${bfp.version}</version>
-                <type>test-jar</type>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-common</artifactId>
-                <version>${bfp.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-common</artifactId>
-                <version>${bfp.version}</version>
-                <type>test-jar</type>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-core</artifactId>
-                <version>${bfp.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-core-entity</artifactId>
-                <version>${bfp.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-core-framework</artifactId>
+                <groupId>pl.zankowski.fixparser</groupId>
+                <artifactId>user-api</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-tracker-spi</artifactId>
-                <version>1.0</version>
+                <groupId>pl.zankowski.fixparser</groupId>
+                <artifactId>messages-api</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
             </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-user-api</artifactId>
-                <version>1.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-user-spi</artifactId>
-                <version>1.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-messages-spi</artifactId>
-                <version>1.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-messages-api</artifactId>
-                <version>1.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-payment-spi</artifactId>
-                <version>1.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>fix-parser-payment-api</artifactId>
-                <version>1.0</version>
-            </dependency>
-
-            <!-- libraries -->
 
             <!-- JSF -->
 
