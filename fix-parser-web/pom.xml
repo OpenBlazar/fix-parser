@@ -22,27 +22,17 @@
 
         <dependency>
             <groupId>pl.zankowski</groupId>
-            <artifactId>fix-parser-mail-spi</artifactId>
+            <artifactId>fix-parser-auth-client</artifactId>
         </dependency>
 
         <dependency>
             <groupId>pl.zankowski</groupId>
-            <artifactId>fix-parser-messages-spi</artifactId>
+            <artifactId>fix-parser-messages-client</artifactId>
         </dependency>
 
         <dependency>
             <groupId>pl.zankowski</groupId>
-            <artifactId>fix-parser-payment-spi</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>pl.zankowski</groupId>
-            <artifactId>fix-parser-tracker-spi</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>pl.zankowski</groupId>
-            <artifactId>fix-parser-user-spi</artifactId>
+            <artifactId>fix-parser-user-client</artifactId>
         </dependency>
 
         <dependency>

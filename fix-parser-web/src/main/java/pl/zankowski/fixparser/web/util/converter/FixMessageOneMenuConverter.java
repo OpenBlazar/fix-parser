@@ -2,19 +2,20 @@ package pl.zankowski.fixparser.web.util.converter;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;
-import pl.zankowski.fixparser.core.exception.FixParserBusinessException;
 import pl.zankowski.fixparser.messages.api.FixMessageTO;
+import pl.zankowski.fixparser.messages.api.ImmutableFixParserBaseRequestTO;
 import pl.zankowski.fixparser.messages.api.dictionary.DictionaryDescriptorTO;
-import pl.zankowski.fixparser.messages.spi.MessageService;
-import pl.zankowski.fixparser.user.api.Permission;
+import pl.zankowski.fixparser.messages.api.dictionary.DictionaryLoaderType;
+import pl.zankowski.fixparser.messages.api.dictionary.ImmutableDictionaryDescriptorTO;
+import pl.zankowski.fixparser.messages.client.FixMessageClient;
 import pl.zankowski.fixparser.web.util.FacesUtils;
-import pl.zankowski.fixparser.web.util.ShiroUtils;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.servlet.ServletContext;
+import java.util.List;
 
 @FacesConverter(value = "fixMessageConverter", forClass = Object.class)
 public class FixMessageOneMenuConverter implements Converter {
@@ -23,8 +24,7 @@ public class FixMessageOneMenuConverter implements Converter {
     private static final char ENTRY_DELIMITER = '#';
 
     private FacesUtils facesUtils;
-    private ShiroUtils shiroUtils;
-    private MessageService parserService;
+    private FixMessageClient fixMessageClient;
 
     public FixMessageOneMenuConverter() {
         ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance()
@@ -39,30 +39,23 @@ public class FixMessageOneMenuConverter implements Converter {
     }
 
     @Inject
-    public void setShiroUtils(ShiroUtils shiroUtils) {
-        this.shiroUtils = shiroUtils;
-    }
-
-    @Inject
-    public void setParserService(MessageService parserService) {
-        this.parserService = parserService;
+    public void setFixMessageClient(FixMessageClient fixMessageClient) {
+        this.fixMessageClient = fixMessageClient;
     }
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         int index = value.indexOf(DELIMITER);
 
-        DictionaryDescriptorTO providerDescriptor = null;
-        if (shiroUtils.isUserAuthenticated()) {
-            providerDescriptor = (DictionaryDescriptorTO) facesUtils.getContextAttribute(
-                    shiroUtils.getCurrentUserID().getId() + DictionaryDescriptorTO.class.getSimpleName());
-        }
+        final List<FixMessageTO> messages = fixMessageClient
+                .parseInput(ImmutableFixParserBaseRequestTO.builder()
+                        .input(value.substring(index + 1))
+                        .dictionaryDescriptor(ImmutableDictionaryDescriptorTO.builder()
+                                .loaderType(DictionaryLoaderType.QUICKFIX_LOADER)
+                                .build())
+                        .build());
 
-        try {
-            return parserService.parseInput(value.substring(index + 1));
-        } catch (FixParserBusinessException e) {
-            return null;
-        }
+        return messages.stream().findFirst().orElse(null);
     }
 
     @Override
@@ -71,7 +64,9 @@ public class FixMessageOneMenuConverter implements Converter {
             return "";
         } else {
             FixMessageTO fixMessage = (FixMessageTO) value;
-            return fixMessage.getMessageId().toString() + DELIMITER + parserService.parseInput(fixMessage);
+            return "";
+//            return fixMessage.getMessageId().toString() + DELIMITER +
+//                    fixMessageClient.parseInput(fixMessage);
         }
     }
 
