@@ -40,13 +40,21 @@
         <dependency>
             <groupId>com.sun.faces</groupId>
             <artifactId>jsf-api</artifactId>
-            <version>2.1.11</version>
         </dependency>
 
         <dependency>
             <groupId>com.sun.faces</groupId>
             <artifactId>jsf-impl</artifactId>
-            <version>2.1.11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.faces</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
         </dependency>
 
         <dependency>
@@ -79,18 +87,6 @@
             <artifactId>commons-fileupload</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.faces</artifactId>
-            <version>2.2.12</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-            <version>1</version>
-        </dependency>
-
         <!-- Test libraries -->
 
         <dependency>
@@ -102,15 +98,7 @@
     </dependencies>
 
     <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.joinfaces</groupId>
-                <artifactId>joinfaces-dependencies</artifactId>
-                <version>4.0.1</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
+
     </dependencyManagement>
 
 </project>
