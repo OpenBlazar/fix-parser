@@ -42,20 +42,16 @@
     </scm>
 
     <properties>
-        <bfp.version>1.0</bfp.version>
-
         <javax.el>3.0.0</javax.el>
         <javax.servlet.api>4.0.1</javax.servlet.api>
         <jstl>1.2</jstl>
 
-        <primefaces.bootstrap>1.0.10</primefaces.bootstrap>
-        <version.picketlink.javaee.bom>2.7.1.Final</version.picketlink.javaee.bom>
-        <taglibs.standard>1.2.5</taglibs.standard>
-
         <log4j>2.8.1</log4j>
         <dockerfile-maven-version>1.4.7</dockerfile-maven-version>
 
-        <primefaces>7.0</primefaces>
+        <taglibs.standard>1.2.5</taglibs.standard>
+        <primefaces.bootstrap>1.0.10</primefaces.bootstrap>
+        <primefaces>6.0</primefaces>
         <rewrite.version>3.4.3.Final</rewrite.version>
         <jsf.version>2.2.14</jsf.version>
     </properties>
@@ -172,6 +168,12 @@
             </dependency>
 
             <dependency>
+                <groupId>org.primefaces.themes</groupId>
+                <artifactId>bootstrap</artifactId>
+                <version>${primefaces.bootstrap}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.joinfaces</groupId>
                 <artifactId>joinfaces-dependencies</artifactId>
                 <version>4.0.1</version>
@@ -225,7 +227,6 @@
                 <version>${log4j}</version>
             </dependency>
 
-
         </dependencies>
     </dependencyManagement>
 
@@ -260,92 +261,6 @@
                 <directory>src/main/resources</directory>
             </resource>
         </resources>
-
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>com.spotify</groupId>
-                    <artifactId>dockerfile-maven-plugin</artifactId>
-                    <version>${dockerfile-maven-version}</version>
-                    <executions>
-                        <execution>
-                            <id>default</id>
-                            <goals>
-                                <goal>build</goal>
-                                <goal>push</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <repository>spotify/foobar</repository>
-                        <tag>${project.version}</tag>
-                        <buildArgs>
-                            <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
-                        </buildArgs>
-                    </configuration>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.6.1</version>
-                    <configuration>
-                        <source>${maven.compiler.source}</source>
-                        <target>${maven.compiler.target}</target>
-                    </configuration>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <version>3.0.0</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.0.2</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.19.1</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <version>3.0.0</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.jacoco</groupId>
-                    <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.7.9</version>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>prepare-agent</goal>
-                            </goals>
-                        </execution>
-                        <execution>
-                            <id>report</id>
-                            <phase>test</phase>
-                            <goals>
-                                <goal>report</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-shade-plugin</artifactId>
-                    <version>3.0.0</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
     </build>
 
 </project>
