@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  service-registry:
+    image: fixparser/service-registry
+    build: ../fix-parser-service-registry/service-registry-app
+    ports:
+      - 9060:9060
+  gateway:
+    image: fixparser/gateway
+    build: ../fix-parser-gateway/gateway-app
+    depends_on:
+      - service-registry
+    ports:
+      - 9063:9063
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "eureka.client.service-url.defaultZone": "http://service-registry:9060/eureka"
+      }'
