@@ -1,10 +1,32 @@
 version: "3.7"
 services:
+  user-database:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: fixparser
+      MYSQL_PASSWORD: wroclaw123
+      MYSQL_DATABASE: fixparser-user
+
+  messages-database:
+    image: mysql:latest
+    ports:
+      - 13306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: fixparser
+      MYSQL_PASSWORD: wroclaw123
+      MYSQL_DATABASE: fixparser-messages
+
   service-registry:
     image: fixparser/service-registry
     build: ../fix-parser-service-registry/service-registry-app
     ports:
       - 9060:9060
+      - 8761:8761
+
   gateway:
     image: fixparser/gateway
     build: ../fix-parser-gateway/gateway-app
@@ -15,4 +37,54 @@ services:
     environment:
       SPRING_APPLICATION_JSON: '{
         "eureka.client.service-url.defaultZone": "http://service-registry:9060/eureka"
+      }'
+
+  mail:
+    image: fixparser/mail
+    build: ../fix-parser-mail/mail-app
+    ports:
+      - 9062:9062
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "eureka.client.service-url.defaultZone": "http://service-registry:9060/eureka"
+      }'
+
+  user:
+    image: fixparser/user
+    build: ../fix-parser-user/user-app
+    depends_on:
+      - user-database
+    ports:
+      - 9061:9061
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "eureka.client.service-url.defaultZone": "http://service-registry:9060/eureka",
+        "spring.datasource.url": "jdbc:mysql://user-database/fixparser-user?&rewriteBatchedStatements=true&serverTimezone=UTC&useSSL=true",
+        "spring.datasource.username": "root",
+        "spring.datasource.password": "root"
+      }'
+
+  auth:
+    image: fixparser/auth
+    build: ../fix-parser-auth/auth-app
+    ports:
+      - 9064:9064
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "eureka.client.service-url.defaultZone": "http://service-registry:9060/eureka"
+      }'
+
+  messages:
+    image: fixparser/messages
+    build: ../fix-parser-messages/messages-app
+    depends_on:
+      - messages-database
+    ports:
+      - 9065:9065
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "eureka.client.service-url.defaultZone": "http://service-registry:9060/eureka",
+        "spring.datasource.url": "jdbc:mysql://messages-database:13306/fixparser-messages?&rewriteBatchedStatements=true&serverTimezone=UTC&useSSL=true",
+        "spring.datasource.username": "root",
+        "spring.datasource.password": "root"
       }'
