@@ -1,0 +1,20 @@
+<div flexLayout="column">
+  <textarea matInput class="width-min-full width-max-full parser-input" placeholder="{{ 'PARSER.PLACEHOLDER' | translate }}"
+            [formControl]="messagesFormControl"></textarea>
+  <div flexLayout="row" fxLayoutAlign="space-between" class="top-padded">
+    <div flexLayout="row">
+      <button mat-stroked-button color="primary" (click)="onSampleButtonClick()">{{ 'PARSER.SAMPLE' | translate }}</button>
+    </div>
+    <div flexLayout="row">
+      <mat-select #fontSize value="16px">
+        <mat-option value="10px">10px</mat-option>
+        <mat-option value="12px">12px</mat-option>
+        <mat-option value="14px">14px</mat-option>
+        <mat-option value="16px">16px</mat-option>
+        <mat-option value="18px">18px</mat-option>
+        <mat-option value="20px">20px</mat-option>
+      </mat-select>
+      <button mat-stroked-button color="primary" fxFlexAlign="end">{{ 'PARSER.PARSE' | translate }}</button>
+    </div>
+  </div>
+</div>

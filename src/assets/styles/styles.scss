@@ -1,0 +1,50 @@
+@import 'common/_variables';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.top-padded {
+  padding-top: $default-padding;
+}
+
+.left-padded {
+  padding-left: $default-padding;
+}
+
+.right-padded {
+  padding-right: $default-padding;
+}
+
+.bottom-padded {
+  padding-bottom: $default-padding;
+}
+
+.width {
+  &-full {
+    width: 100%;
+  }
+  &-min-full {
+    min-width: 100%;
+  }
+  &-max-full {
+    max-width: 100%;
+  }
+}
+
+.height {
+  &-full {
+    width: 100%;
+  }
+  &-min-full {
+    min-width: 100%;
+  }
+  &-max-full {
+    max-width: 100%;
+  }
+}
