@@ -1,6 +1,6 @@
-import {NgModule} from "@angular/core";
-import {RouterModule} from "@angular/router";
-import {ParserComponent} from "./parser.component";
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {ParserComponent} from './parser.component';
 
 @NgModule({
   imports: [

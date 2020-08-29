@@ -2,6 +2,20 @@
   "PARSER": {
     "PARSE": "Parse",
     "PLACEHOLDER": "Insert FIX message",
-    "SAMPLE": "Sample"
+    "SAMPLE": "Sample",
+    "MESSAGE": {
+      "TAG": "Tag",
+      "NAME": "Name",
+      "VALUE": "Value",
+      "DESCRIPTION": "Description"
+    },
+    "MESSAGES": {
+      "NUMBER": "No.",
+      "SENDER": "Sender",
+      "RECEIVER": "Receiver",
+      "SENDING_TIME": "Sending Time",
+      "MSG_TYPE": "Msg Type",
+      "SUMMARY": "Summary"
+    }
   }
 }
