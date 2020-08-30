@@ -1,0 +1,48 @@
+<table mat-table [dataSource]="fixMessages" class="width-full right-padded">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>{{ 'PARSER.MESSAGES.NUMBER' | translate }}</th>
+    <td mat-cell *matCellDef="let message"> {{message.messageId}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="sender">
+    <th mat-header-cell *matHeaderCellDef>{{ 'PARSER.MESSAGES.SENDER' | translate }}</th>
+    <td mat-cell *matCellDef="let message"> {{ message.sender?.fixValue?.value }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="receiver">
+    <th mat-header-cell *matHeaderCellDef>{{ 'PARSER.MESSAGES.RECEIVER' | translate }}</th>
+    <td mat-cell *matCellDef="let message"> {{ message.receiver?.fixValue?.value }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="sendingTime">
+    <th mat-header-cell *matHeaderCellDef>{{ 'PARSER.MESSAGES.SENDING_TIME' | translate }}</th>
+    <td mat-cell *matCellDef="let message"> {{ message.sendingTime?.fixValue?.value }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="msgType">
+    <th mat-header-cell *matHeaderCellDef>{{ 'PARSER.MESSAGES.MSG_TYPE' | translate }}</th>
+    <td mat-cell *matCellDef="let message">
+      <div class="field-column" [ngClass]="getOrdTypeStyle(message)">
+        {{ 'PARSER.ORD_TYPE.' + message.messageType?.fixValue?.description | translate:
+        {Default: message.messageType?.fixValue?.description} }}
+      </div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="summary">
+    <th mat-header-cell *matHeaderCellDef>{{ 'PARSER.MESSAGES.SUMMARY' | translate }}</th>
+    <td mat-cell *matCellDef="let message">
+      <ng-container *ngIf="message.ordStatus">
+        <div class="field-column" [ngClass]="getOrdStatusStyle(message)">
+          {{ 'PARSER.ORD_STATUS.' + message.ordStatus?.fixValue?.description | translate }}
+        </div>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="COLUMNS"></tr>
+  <tr mat-row *matRowDef="let row; columns: COLUMNS;"
+      class="selectableRow"
+      [ngClass]="getRowHighlight(row)"
+      (click)="onMessageSelection.emit(row)"></tr>
+</table>

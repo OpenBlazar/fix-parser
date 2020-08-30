@@ -3,12 +3,13 @@ import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {MissingTranslationHandler, TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import {AppComponent} from './app.component';
 import {ParserModule} from './parser/parser.module';
 import {AppRoutingModule} from './app.routing.module';
+import {MissingTranslationHelper} from './core/missing-translation-handler';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {AppRoutingModule} from './app.routing.module';
 
     HttpClientModule,
     TranslateModule.forRoot({
+      missingTranslationHandler: {provide: MissingTranslationHandler, useClass: MissingTranslationHelper},
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,

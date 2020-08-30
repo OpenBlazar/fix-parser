@@ -10,6 +10,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {ParserService} from './parser.service';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MessageComponent} from './message/message.component';
+import {CommonModule} from '@angular/common';
+import {MessagesComponent} from './messages/messages.component';
 
 @NgModule({
   imports: [
@@ -21,10 +24,13 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatInputModule,
     MatSelectModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    CommonModule
   ],
   declarations: [
     ParserComponent,
+    MessageComponent,
+    MessagesComponent
   ],
   providers: [
     ParserService

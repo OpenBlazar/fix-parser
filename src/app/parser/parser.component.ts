@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {isEmpty} from 'lodash';
 import {FormControl} from '@angular/forms';
+
 import {ParserService} from './parser.service';
 import {FixMessage} from '../model/fix-message.model';
-import {FixPair} from '../model/fix-pair.model';
 
 @Component({
   templateUrl: './parser.component.html',
@@ -29,11 +29,6 @@ export class ParserComponent implements OnInit {
   messagesFormControl: FormControl;
   messages: FixMessage[];
   selectedMessage: FixMessage;
-
-  messagesColumns: string[] = ['id', 'sender', 'receiver', 'sendingTime', 'msgType', 'summary'];
-  messageColumns: string[] = ['tag', 'name', 'value', 'description'];
-
-  styledTags: number[] = [4, 5, 18, 20, 35, 39, 40, 54, 59, 102, 103, 150];
 
   constructor(private parserService: ParserService) {
   }
@@ -63,36 +58,8 @@ export class ParserComponent implements OnInit {
     });
   }
 
-  getSender(fixMessage: FixMessage): string {
-    return this.findField(fixMessage.messageFields, 49)?.fixValue?.value;
-  }
-
-  getReceiver(fixMessage: FixMessage): string {
-    return this.findField(fixMessage.messageFields, 56)?.fixValue?.value;
-  }
-
-  getSendingTime(fixMessage: FixMessage): string {
-    return this.findField(fixMessage.messageFields, 52)?.fixValue?.value;
-  }
-
-  getMsgType(fixMessage: FixMessage): string {
-    return this.findField(fixMessage.messageFields, 35)?.fixValue?.description;
-  }
-
-  getSummary(fixMessage: FixMessage): string {
-    return this.findField(fixMessage.messageFields, 39)?.fixValue?.description;
-  }
-
-  findField(messageFields: FixPair[], tag: number): FixPair {
-    return messageFields.find(fixPair => fixPair.fixField.tag === tag);
-  }
-
   getMessage(selectedMessage: FixMessage): void {
     this.selectedMessage = selectedMessage;
-  }
-
-  getTagStyle(tag: number): boolean {
-    return this.styledTags.includes(tag);
   }
 
 }

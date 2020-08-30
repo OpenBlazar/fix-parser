@@ -16,6 +16,32 @@
       "SENDING_TIME": "Sending Time",
       "MSG_TYPE": "Msg Type",
       "SUMMARY": "Summary"
+    },
+    "ORD_STATUS": {
+      "NEW": "New",
+      "PARTIALLY_FILLED": "Partially filled",
+      "FILLED": "Filled",
+      "DONE_FOR_DAY": "Done for day",
+      "CANCELED": "Canceled",
+      "REPLACED": "Replaced",
+      "PENDING_CANCEL": "Pending cancel",
+      "STOPPED": "Stopped",
+      "REJECTED": "Rejected",
+      "SUSPENDED": "Suspended",
+      "PENDING_NEW": "Pending new",
+      "CALCULATED": "Calculated",
+      "EXPIRED": "Expired",
+      "ACCEPTED_FOR_BIDDING": "Accepted for bidding",
+      "PENDING_REPLACE": "Pending replace"
+    },
+    "ORD_TYPE": {
+      "REJECT": "Reject",
+      "HEARTBEAT": "Heartbeat",
+      "LOGOUT": "Logout",
+      "NEWORDERSINGLE": "New Order Single",
+      "EXECUTIONREPORT": "Execution Report",
+      "ORDERCANCELREPLACEREQUEST": "Order Cancel Replace",
+      "ORDERCANCELREQUEST": "Order Cancel"
     }
   }
 }
