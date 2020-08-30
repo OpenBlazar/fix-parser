@@ -3,6 +3,7 @@
     "PARSE": "Parse",
     "PLACEHOLDER": "Insert FIX message",
     "SAMPLE": "Sample",
+    "COMPARE_MESSAGES": "Compare messages",
     "MESSAGE": {
       "TAG": "Tag",
       "NAME": "Name",
@@ -39,9 +40,14 @@
       "HEARTBEAT": "Heartbeat",
       "LOGOUT": "Logout",
       "NEWORDERSINGLE": "New Order Single",
+      "ORDER_SINGLE": "New Order Single",
       "EXECUTIONREPORT": "Execution Report",
+      "EXECUTION_REPORT": "Execution Report",
+      "ORDER_CANCEL_REPLACE_REQUEST": "Order Cancel Replace",
       "ORDERCANCELREPLACEREQUEST": "Order Cancel Replace",
-      "ORDERCANCELREQUEST": "Order Cancel"
+      "ORDERCANCELREQUEST": "Order Cancel",
+      "ORDER_CANCEL_REQUEST": "Order Cancel",
+      "ORDER_CANCEL": "Order Cancel Replace"
     }
   }
 }

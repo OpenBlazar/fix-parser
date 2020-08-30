@@ -1,7 +1,9 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {isNil} from 'lodash';
 import {FixPair} from '../../model/fix-pair.model';
 import {FixMessage} from '../../model/fix-message.model';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
 
 export interface FixMessageView extends FixMessage {
   sender: FixPair;
@@ -33,11 +35,14 @@ export class MessagesComponent {
     D: 'fieldcolumn-green'
   };
   readonly COLUMNS: string[] = ['id', 'sender', 'receiver', 'sendingTime', 'msgType', 'summary'];
-  fixMessages: FixMessageView[];
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
+  dataSource: MatTableDataSource<FixMessageView>;
 
   @Input()
   set messages(messages: FixMessage[]) {
-    this.fixMessages = messages.map(message => (
+    const fixMessages = (messages || []).map(message => (
       {
         messageId: message.messageId,
         version: message.version,
@@ -47,9 +52,11 @@ export class MessagesComponent {
         receiver: this.findField(message.messageFields, 56),
         sendingTime: this.findField(message.messageFields, 52),
         ordStatus: this.findField(message.messageFields, 39)
-      }
-    ));
+      }));
+    this.dataSource = new MatTableDataSource(fixMessages);
+    this.dataSource.paginator = this.paginator;
   }
+
   @Input()
   selectedMessage: FixMessage;
 

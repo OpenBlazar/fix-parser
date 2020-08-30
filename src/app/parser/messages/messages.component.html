@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="fixMessages" class="width-full right-padded">
+<table mat-table [dataSource]="dataSource" class="width-full right-padded">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef>{{ 'PARSER.MESSAGES.NUMBER' | translate }}</th>
     <td mat-cell *matCellDef="let message"> {{message.messageId}} </td>
@@ -46,3 +46,4 @@
       [ngClass]="getRowHighlight(row)"
       (click)="onMessageSelection.emit(row)"></tr>
 </table>
+<mat-paginator [pageSizeOptions]="[15, 30, 50]" showFirstLastButtons></mat-paginator>

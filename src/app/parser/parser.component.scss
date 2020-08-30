@@ -1,4 +1,16 @@
+@import '../../assets/styles/styles';
+
 .parser-input {
   height: 10em
+}
+
+.dictionary-select {
+  min-width: 8rem;
+  line-height: 34px;
+  border-bottom: 1px solid $main-color;
+}
+
+.compare-title {
+  color: $main-color;
 }
 

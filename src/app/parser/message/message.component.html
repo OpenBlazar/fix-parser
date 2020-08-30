@@ -25,5 +25,6 @@
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="COLUMNS"></tr>
-  <tr mat-row *matRowDef="let row; columns: COLUMNS;"></tr>
+  <tr mat-row *matRowDef="let row; columns: COLUMNS;"
+      [ngClass]="getRowHighlight(row)"></tr>
 </table>

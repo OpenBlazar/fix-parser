@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {FixMessage} from '../model/fix-message.model';
 import {map} from 'rxjs/operators';
+import {DictionaryDescriptor} from '../model/dictionary-descriptor.model';
 
 
 const httpOptions = {
@@ -13,6 +14,12 @@ const httpOptions = {
   )
 };
 
+export interface ParseRequest {
+  username: string;
+  input: string;
+  dictionaryDescriptor: DictionaryDescriptor;
+}
+
 export const PARSER_SERVICE_URL = 'http://localhost:9065/messages';
 
 @Injectable()
@@ -21,7 +28,7 @@ export class ParserService {
   constructor(private http: HttpClient) {
   }
 
-  parse(input: any): Observable<FixMessage[]> {
+  parse(input: ParseRequest): Observable<FixMessage[]> {
     return this.http.post(PARSER_SERVICE_URL, input, httpOptions)
       .pipe(map(response => response as FixMessage[]));
   }

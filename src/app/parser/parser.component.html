@@ -4,19 +4,23 @@
             [formControl]="messagesFormControl"></textarea>
   <div fxLayout="row" fxLayoutAlign="space-between" class="top-padded">
     <div fxLayout="row">
-      <button mat-stroked-button color="primary"
+      <button mat-stroked-button
+              class="main-font-color"
               (click)="onSampleButtonClick()">{{ 'PARSER.SAMPLE' | translate }}</button>
     </div>
-    <div fxLayout="row">
-      <mat-select #fontSize value="16px">
-        <mat-option value="10px">10px</mat-option>
-        <mat-option value="12px">12px</mat-option>
-        <mat-option value="14px">14px</mat-option>
-        <mat-option value="16px">16px</mat-option>
-        <mat-option value="18px">18px</mat-option>
-        <mat-option value="20px">20px</mat-option>
-      </mat-select>
-      <button mat-stroked-button color="primary" (click)="onParseButtonClick()"
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div class="right-padded">
+        <mat-select [(ngModel)]="selectedDictionary"
+                    [compareWith]="compareObjects"
+                    class="dictionary-select">
+          <mat-option *ngFor="let dictionary of ($getDictionaries | async)" [value]="dictionary">
+            {{ dictionary.providerName }}
+          </mat-option>
+        </mat-select>
+      </div>
+      <button mat-stroked-button
+              class="left-padded main-font-color"
+              (click)="onParseButtonClick()"
               fxFlexAlign="end">{{ 'PARSER.PARSE' | translate }}</button>
     </div>
   </div>
@@ -27,11 +31,22 @@
                         [selectedMessage]="selectedMessage"
                         (onMessageSelection)="getMessage($event)"
                         class="width-full"></app-fix-messages>
-      <mat-paginator [pageSizeOptions]="[25, 50]" showFirstLastButtons></mat-paginator>
     </div>
     <div fxFlex="40" fxLayoutAlign="flex-end">
       <app-fix-message [selectedMessage]="selectedMessage"
                        class="width-full"></app-fix-message>
     </div>
+  </div>
+
+  <div fxLayout="row" class="top-padded">
+    <mat-expansion-panel class="width-full">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="compare-title">
+          {{ 'PARSER.COMPARE_MESSAGES' | translate }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-message-comparator class="width-full"
+                              [messages]="messages"></app-message-comparator>
+    </mat-expansion-panel>
   </div>
 </div>

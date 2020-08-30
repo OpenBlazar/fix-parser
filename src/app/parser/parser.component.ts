@@ -4,6 +4,10 @@ import {FormControl} from '@angular/forms';
 
 import {ParserService} from './parser.service';
 import {FixMessage} from '../model/fix-message.model';
+import {LoaderType} from '../model/loader-type.enum';
+import {DictionaryService} from './dictionary.service';
+import {Observable} from 'rxjs';
+import {DictionaryDescriptor} from '../model/dictionary-descriptor.model';
 
 @Component({
   templateUrl: './parser.component.html',
@@ -29,8 +33,19 @@ export class ParserComponent implements OnInit {
   messagesFormControl: FormControl;
   messages: FixMessage[];
   selectedMessage: FixMessage;
+  selectedDictionary: DictionaryDescriptor = {
+    loaderType: LoaderType.QUICKFIX_LOADER,
+    providerName: 'FIX5.0-SP2'
+  };
 
-  constructor(private parserService: ParserService) {
+  $getDictionaries: Observable<DictionaryDescriptor[]> = this.dictionaryService.getDictionaries();
+
+  compareObjects(o1: DictionaryDescriptor, o2: DictionaryDescriptor): boolean {
+    return o1.providerName === o2.providerName && o1.loaderType === o2.loaderType;
+  }
+
+  constructor(private parserService: ParserService,
+              private dictionaryService: DictionaryService) {
   }
 
   ngOnInit(): void {
@@ -46,10 +61,7 @@ export class ParserComponent implements OnInit {
     this.parserService.parse({
       username: 'test',
       input: this.messagesFormControl.value,
-      dictionaryDescriptor: {
-        loaderType: 'QUICKFIX_LOADER',
-        providerName: 'FIX4.2'
-      }
+      dictionaryDescriptor: this.selectedDictionary
     }).subscribe((messages: FixMessage[]) => {
       this.messages = messages;
       if (!isEmpty(messages)) {

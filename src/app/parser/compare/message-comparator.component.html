@@ -1,0 +1,16 @@
+<div fxLayout="row" fxLayoutAlign="space-around">
+  <div fxFlex="45">
+    <app-message-selector [messages]="_messages"
+                          [selectedMessage]="firstMessage"
+                          (onMessageSelected)="onFirstMessageSelected($event)"></app-message-selector>
+    <app-fix-message class="width-full"
+                     [selectedMessage]="firstMessage"></app-fix-message>
+  </div>
+  <div fxFlex="45">
+    <app-message-selector [messages]="_messages"
+                          [selectedMessage]="secondMessage"
+                          (onMessageSelected)="onSecondMessageSelected($event)"></app-message-selector>
+    <app-fix-message class="width-full"
+                     [selectedMessage]="secondMessage" [highlightedRows]="highlightedRows"></app-fix-message>
+  </div>
+</div>

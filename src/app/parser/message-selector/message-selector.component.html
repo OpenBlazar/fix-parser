@@ -1,0 +1,8 @@
+<mat-select [(ngModel)]="selectedMessage"
+            [compareWith]="compareObjects"
+            (ngModelChange)="onMessageSelected.emit($event)"
+            class="message-select">
+  <mat-option *ngFor="let message of messages" [value]="message">
+    {{ message.messageId }}, {{ message.messageType.fixValue.description }}
+  </mat-option>
+</mat-select>
